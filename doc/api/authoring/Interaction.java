@@ -1,7 +1,11 @@
-public interface Interaction {
-    Collection <Animation> interractionAnnimations
-    Collection<String Message>interractionMessages
-    Collection <Animations> getInterractionAnimations()
-    Message  getMessage()
+package authoring;
 
+import engine.backend.Animation;
+import engine.backend.Message;
+
+import java.util.Collection;
+
+public interface Interaction {
+    Collection <Animations> getInterractionAnimations();
+    Message getMessage();
 }
