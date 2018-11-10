@@ -1,4 +1,5 @@
 package engine.backend;
 
-public class PlayerActor {
+public Interface PlayerActor {
+    public getInventory();
 }
