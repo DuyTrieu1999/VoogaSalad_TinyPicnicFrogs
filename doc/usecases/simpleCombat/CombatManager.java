@@ -1,4 +1,4 @@
 package simpleCombat;
 
-public interface CombatManager {
+public class CombatManager {
 }
