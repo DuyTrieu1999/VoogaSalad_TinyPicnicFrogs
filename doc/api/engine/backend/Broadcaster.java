@@ -1,4 +1,5 @@
 package engine.backend;
 
-public class Broadcaster {
+public interface Broadcaster {
+    public void Broadcast(Message message);
 }
