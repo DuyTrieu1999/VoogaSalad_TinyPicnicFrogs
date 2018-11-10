@@ -1,4 +1,12 @@
 package engine.backend;
 
-public class GameWorld {
+public Interface GameWorld {
+
+	public handleCollisions();
+
+	public getAnimationList();
+
+	public loadStage();
+
+	public getGameMode();
 }
