@@ -1,4 +1,5 @@
 package engine.backend;
 
-public class CombatManager {
+public interface CombatManager {
+
 }

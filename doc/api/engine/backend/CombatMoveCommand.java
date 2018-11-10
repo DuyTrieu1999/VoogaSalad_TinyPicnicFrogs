@@ -1,4 +1,4 @@
 package engine.backend;
 
-public class CombatMoveCommand {
+public interface CombatMoveCommand {
 }

@@ -1,14 +1,19 @@
+package authoring;
+
+import engine.backend.Animation;
+import engine.backend.Message;
+
+import java.util.Collection;
+import java.util.Map;
+
+enum State{
+    ACTIVE, INACTIVE;
+}
 public interface ActorPrototype{
 
-    Collection <Animation> overworldAnimations
-    Collection<State> myStastes
-    Collection <Interraction> myInterractions
-    enum DEFAULT_STATE
-    Map <Message, State> messageStateMap
-
-    ActorPrototype clone()
-    Collection<Animation> getAnimations()
-    Collection <State> getStates()
-    State get defaultState()
-    Map<Message,State> get messageStateMap()
+    ActorPrototype clone();
+    Collection<Animation> getAnimations();
+    Collection <State> getStates();
+    State getDefaultState();
+    Map<Message,State> getMessageStateMap();
 }

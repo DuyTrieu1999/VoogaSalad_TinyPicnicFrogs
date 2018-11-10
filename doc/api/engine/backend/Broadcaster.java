@@ -1,5 +1,5 @@
 package engine.backend;
 
 public interface Broadcaster {
-    public void Broadcast(Message message);
+    public void broadcast(Message message);
 }
