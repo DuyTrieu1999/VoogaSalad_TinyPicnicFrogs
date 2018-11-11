@@ -2,9 +2,9 @@ package engine.backend;
 
 public class Coordinate {
 
-    int x;
-    int y;
-    int z;
+    private int x;
+    private int y;
+    private int z;
 
     Coordinate(int x, int y, int z){
         this.x = x;
