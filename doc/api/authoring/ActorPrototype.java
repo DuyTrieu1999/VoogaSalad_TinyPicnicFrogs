@@ -6,9 +6,6 @@ import engine.backend.Message;
 import java.util.Collection;
 import java.util.Map;
 
-enum State{
-    ACTIVE, INACTIVE;
-}
 public interface ActorPrototype{
 
     ActorPrototype clone();

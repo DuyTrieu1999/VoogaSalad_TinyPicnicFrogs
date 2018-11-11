@@ -1,5 +1,9 @@
 package engine.backend;
 
-public interface CombatManager {
+import authoring.Actor;
 
+import java.util.List;
+
+public interface CombatManager {
+    public void runCombat();
 }
