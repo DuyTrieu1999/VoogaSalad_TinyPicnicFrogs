@@ -89,7 +89,7 @@ The design at a high level includes a game authoring environment, a game engine,
 ![](https://i.imgur.com/XgRNf4E.png)
 
 * AuthoringView
-    * The AuthoringView acts our main class in the View part of our Model, View, Controller design. This class is responsible for setting up the main scene of our program and adding UI components to the root of our main scene. Most of the methods within this class will be private so that the GUI is closed to outside modifications. To create the GUI elements, the class will create a new instances of various objects. 
+    * The AuthoringView acts our main class in the View part of our Model, View, engine.controller design. This class is responsible for setting up the main scene of our program and adding UI components to the root of our main scene. Most of the methods within this class will be private so that the GUI is closed to outside modifications. To create the GUI elements, the class will create a new instances of various objects. 
     AuthoringView contains the following:
     * ActorMenu
         * the ActorMenu class defines the GUI element that displays the various ActorPrototype objects that the game author has created. From the menu itself, the user will be able to select a specific actor and then place it on the GameMap. 
@@ -159,7 +159,7 @@ The User Interface for our project consists of two main parts: an authoring envi
 
 #### Game Authoring Backend
 
-A major component of the Game Authoring Backend is the GameManager. It acts as the controller between the backend of game authoring and its front end. 
+A major component of the Game Authoring Backend is the GameManager. It acts as the engine.controller between the backend of game authoring and its front end. 
 
 The GameManager holds the MapManager, ActorManager, ActorPrototypeManager, and the MessageManager. There will only be one instance of each Manager.
 
@@ -167,7 +167,7 @@ There will be the possibility for multiple ActorPrototypes and Actors. By having
 
 All the other classes, such as Message, Interactions, Move are all used in the GameManager hierarchy.
 
-GameManager acts as the controller between front end and backend. The GameManager extends the interface IGameManager (named GameManager in APIs folder of the repo), where there is a method called parseData(). This will pass back the author's specifications. For example, if the author filled out an ActorPrototype, then GameManager would then take this information from the frontend and then decide which Manager to pass it to. 
+GameManager acts as the engine.controller between front end and backend. The GameManager extends the interface IGameManager (named GameManager in APIs folder of the repo), where there is a method called parseData(). This will pass back the author's specifications. For example, if the author filled out an ActorPrototype, then GameManager would then take this information from the frontend and then decide which Manager to pass it to. 
 
 The MapManager needs to be returned to the front end continuously. Each time the map gets updated, the backend needs to be update the information and pass it back to the front end. The GameManager has a getMapManager() method in order to do this.
 
@@ -202,7 +202,7 @@ tweak settings (i.e., monster hit-points or projectile speed or animation timing
 load previously created games to be edited again or nodded
 
 #### Design for game engine front end
-The highest design for game engine front end is the StateView class, which will determine what game mode (OverWorld, Battle) the game is in. The StateView class collects data about these modes through the Controller class, which will connect the back end and the front end. The Controller class passes informations about Actors, Animations mode, and GameMode to the StateView. 
+The highest design for game engine front end is the StateView class, which will determine what game mode (OverWorld, Battle) the game is in. The StateView class collects data about these modes through the engine.controller class, which will connect the back end and the front end. The engine.controller class passes informations about Actors, Animations mode, and GameMode to the StateView. 
 
 From this, the StateView can set the state of the game to OverWorld or Battle. The OverWorldView then controls which 
 part of the map is rendered in the view, and the ViewController will add and update the Actor and Animation through the animation cycle. Included in the ViewController are the ActorUI and Camera, which is to seperate the views inside. 
