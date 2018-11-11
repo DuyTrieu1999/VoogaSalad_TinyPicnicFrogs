@@ -1,8 +1,8 @@
-package game_engine_UI;
+package engine.frontend.game_engine_UI;
 
-import Controller.Controller;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import engine.controller.Controller;
 
 public class StateView {
     private Controller myController;

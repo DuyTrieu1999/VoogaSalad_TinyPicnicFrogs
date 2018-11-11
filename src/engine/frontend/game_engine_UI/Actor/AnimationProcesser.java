@@ -1,4 +1,4 @@
-package game_engine_UI;
+package engine.frontend.game_engine_UI.Actor;
 
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;

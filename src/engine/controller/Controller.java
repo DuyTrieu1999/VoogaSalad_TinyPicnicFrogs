@@ -1,6 +1,6 @@
-package Controller;
+package engine.controller;
 
-import game_engine_UI.StateView;
+import engine.frontend.game_engine_UI.StateView;
 
 public class Controller {
     private StateView myView;

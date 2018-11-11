@@ -110,7 +110,7 @@
     * This command defines the target stat (HP), amount of HP it restores
 
 * Author Loads a Map and breaks it up into segments
-    * A GUI will pop up when a new game is just being created. The author will specify the size of the map (will take in an integer) and there will be another field to specify an n to create an nxn grid. Save in MapManager. GameManager (which contains the MapManager) will act as a controller between the front end of the game authoring, so the fron end will have access to these values as well. 
+    * A GUI will pop up when a new game is just being created. The author will specify the size of the map (will take in an integer) and there will be another field to specify an n to create an nxn grid. Save in MapManager. GameManager (which contains the MapManager) will act as a engine.controller between the front end of the game authoring, so the fron end will have access to these values as well. 
 * Author creates a new Pokemon Prototype: assuming all states and messages are already pre-defined
     * ActorPrototypeManager's addNewPrototype() method is fired with all the data entered by the user
     * New ActorPrototype is created and stored in the ActorPrototype Collection

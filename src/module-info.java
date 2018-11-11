@@ -6,5 +6,7 @@ module voogasalad_tinypicnicfrogs {
     requires javafx.web;
     requires java.xml;
 
-    exports game_engine_UI;
+    exports engine.backend;
+    exports engine.frontend;
+    exports engine.controller;
 }

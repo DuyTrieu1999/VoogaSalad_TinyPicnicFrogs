@@ -1,6 +1,6 @@
-package game_engine_UI.Actor;
+package engine.frontend.game_engine_UI.Actor;
 
-public class Actor implements ActorUIAPI {
+public class ActorUi implements ActorUIAPI {
     public void setState() {
 
     }

@@ -1,4 +1,4 @@
-package game_engine_UI.Actor;
+package engine.frontend.game_engine_UI.Actor;
 
 public interface ActorUIAPI {
     public void setState();

@@ -1,4 +1,4 @@
-package game_engine_UI.OverWorld;
+package engine.frontend.game_engine_UI.OverWorld;
 
 import javafx.geometry.Point2D;
 
