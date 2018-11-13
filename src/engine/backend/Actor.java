@@ -3,21 +3,21 @@ package engine.backend;
 import engine.frontend.Animation;
 
 public class Actor {
-    Coordinate myCoordinate;
-    int myBoxHeight;
-    int myBoxWidth;
-    ActiveState myActiveState;
-    Animation myActiveAnimation;
-    Interaction myInteraction;
+    private Coordinate myCoordinate;
+    private int myBoxHeight;
+    private int myBoxWidth;
+    private ActiveState myActiveState;
+    private Animation myActiveAnimation;
+    private Interaction myInteraction;
 
-    int mySpeed;
+    private int mySpeed;
 
     //Overworld animations. TODO: put these in some kind of pretty structure
-    Animation myIdleAnimation;
-    Animation myLeftAnimation;
-    Animation myUpAnimation;
-    Animation myDownAnimation;
-    Animation myRightAnimation;
+    private Animation myIdleAnimation;
+    private Animation myLeftAnimation;
+    private Animation myUpAnimation;
+    private Animation myDownAnimation;
+    private Animation myRightAnimation;
 
     Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
@@ -31,6 +31,7 @@ public class Actor {
         myRightAnimation = new Animation("right");
         myUpAnimation = new Animation("up");
         myDownAnimation = new Animation("down");
+        myActiveAnimation = myIdleAnimation;
     }
 
     public Interaction getInteraction() {
@@ -62,14 +63,14 @@ public class Actor {
      * Moves the Actor up
      */
     public void moveUp(int amt) {
-        myCoordinate.setY(myCoordinate.getX()+amt);
+        myCoordinate.setY(myCoordinate.getX()-amt);
     }
 
     /**
      * Moves Actor down
      */
     public void moveDown(int amt) {
-        myCoordinate.setY(myCoordinate.getX()-amt);
+        myCoordinate.setY(myCoordinate.getX()+amt);
     }
 
     /**
