@@ -3,18 +3,35 @@ package engine.backend;
 import engine.frontend.Animation;
 
 public class Actor {
-    Coordinate myCoordinate;
-    int myBoxHeight;
-    int myBoxWidth;
-    ActiveState myActiveState;
-    Animation myActiveAnimation;
-    Interaction myInteraction;
+    private Coordinate myCoordinate;
+    private int myBoxHeight;
+    private int myBoxWidth;
+    private ActiveState myActiveState;
+    private Animation myActiveAnimation;
+    private Interaction myInteraction;
+
+    private int mySpeed;
+
+    //Overworld animations. TODO: put these in some kind of pretty structure
+    private Animation myIdleAnimation;
+    private Animation myLeftAnimation;
+    private Animation myUpAnimation;
+    private Animation myDownAnimation;
+    private Animation myRightAnimation;
 
     Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
         myActiveState = ActiveState.ACTIVE;
         myBoxHeight = 0;
         myBoxWidth = 0;
+
+        //TODO: this is also for testing purposes. Remove when unneeded
+        myIdleAnimation = new Animation("idle");
+        myLeftAnimation = new Animation("left");
+        myRightAnimation = new Animation("right");
+        myUpAnimation = new Animation("up");
+        myDownAnimation = new Animation("down");
+        myActiveAnimation = myIdleAnimation;
     }
 
     public Interaction getInteraction() {
@@ -45,28 +62,41 @@ public class Actor {
     /**
      * Moves the Actor up
      */
-    public void moveUp() {
-
+    public void moveUp(int amt) {
+        myCoordinate.setY(myCoordinate.getY()-amt);
+        myActiveAnimation = myUpAnimation;
     }
 
     /**
      * Moves Actor down
      */
-    public void moveDown() {
-
+    public void moveDown(int amt) {
+        myCoordinate.setY(myCoordinate.getY()+amt);
+        myActiveAnimation = myDownAnimation;
     }
 
     /**
      * Moves Actor left
      */
-    public void moveLeft() {
+    public void moveLeft(int amt) {
+        myCoordinate.setX(myCoordinate.getX()-amt);
+        myActiveAnimation = myLeftAnimation;
 
     }
 
     /**
      * Moves Actor right
      */
-    public void moveRight() {
+    public void moveRight(int amt) {
+        myCoordinate.setX(myCoordinate.getX()+  amt);
+        myActiveAnimation = myRightAnimation;
+    }
+
+    /**
+     * Sets the Actor to the idle position
+     */
+    public void idle(){
+        myActiveAnimation = myIdleAnimation;
 
     }
 
@@ -75,7 +105,22 @@ public class Actor {
      *
      * @param m The message sent to the Actor
      */
-    public void recieveMessage(Message m){
+    public void receiveMessage(Message m){
+        if(m.getMessageString() == "InactivateAll"){
+            myActiveState = ActiveState.INACTIVE;
+        }
+        if(m.getMessageString() == "ActivateAll"){
+            myActiveState = ActiveState.ACTIVE;
+        }
+        receiveCustomMessage(m);
+    }
+
+
+    /**
+     * Handles messages that are not common between all Actors.
+     * @param m the message
+     */
+    protected void receiveCustomMessage(Message m){
 
     }
 
