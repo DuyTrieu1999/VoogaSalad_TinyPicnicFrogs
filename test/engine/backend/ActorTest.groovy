@@ -4,14 +4,15 @@ import groovy.mock.interceptor.MockFor
 
 public class ActorTest extends GroovyTestCase {
     void testMove() {
+        ServiceLocator.provideGameWorld(new GameWorld(10, 10))
         def actor = new Actor()
         def oldX = actor.getCoordinate().getX()
         def oldY = actor.getCoordinate().getY()
         def oldZ = actor.getCoordinate().getZ()
 
-        actor.moveDown(10)
         actor.moveRight(10)
         assert actor.getCoordinate().getX() == oldX + 10
+        actor.moveDown(10)
         assert actor.getCoordinate().getY() == oldY + 10
         assert actor.getCoordinate().getZ() == oldZ
 
@@ -20,6 +21,7 @@ public class ActorTest extends GroovyTestCase {
 
         assert actor.getCoordinate().getX() == oldX
         assert actor.getCoordinate().getY() == oldY
+
     }
 
     void testMessage(){
@@ -46,35 +48,27 @@ public class ActorTest extends GroovyTestCase {
     }
 
     void testMoveEdge(){
+        ServiceLocator.provideGameWorld(new GameWorld(10, 10))
+        //make sure that the actor cannot move past bottom and right edges
         def actor = new Actor()
-        assert actor.getCoordinate().getX() == 0
-        assert actor.getCoordinate().getY() == 0
-
         //make sure that the actor cannot move past the top and left edges
         actor.moveUp(10)
-        assert actor.getCoordinate().getX() == 0
+        assert actor.getCoordinate().getY() == 0
         //we want to still trigger the animations even if the actor does not change position
         assert actor.getActiveAnimation().getName() == "up"
-        actor.moveRight(10)
+
+        actor.moveLeft(10)
+        assert actor.getCoordinate().getX() == 0
+        assert actor.getActiveAnimation().getName() == "left"
+
+
+        actor.moveDown(20)
         assert actor.getCoordinate().getY() == 0
+        assert actor.getActiveAnimation().getName() == "down"
+
+        actor.moveRight(20)
+        assert actor.getCoordinate().getX() == 0
         assert actor.getActiveAnimation().getName() == "right"
-
-
-
-        //make sure that the actor cannot move past bottom and right edges
-        def mockGameWorld = new MockFor(GameWorld)
-        mockGameWorld.demand.getMapHeight{10}
-        mockGameWorld.demand.getMapWidth{10}
-        mockGameWorld.use{
-            actor.moveDown(20)
-            assert actor.getCoordinate().getY() == 0
-            assert actor.getActiveAnimation().getName() == "down"
-
-            actor.moveRight(20)
-            assert actor.getCoordinate().getX() == 0
-            assert actor.getActiveAnimation().getName() == "right"
-
-        }
 
 
 

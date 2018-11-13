@@ -63,14 +63,16 @@ public class Actor {
      * Moves the Actor up
      */
     public void moveUp(int amt) {
-        myCoordinate.setY(myCoordinate.getX()-amt);
+        myCoordinate.setY(myCoordinate.getY()-amt);
+        myActiveAnimation = myUpAnimation;
     }
 
     /**
      * Moves Actor down
      */
     public void moveDown(int amt) {
-        myCoordinate.setY(myCoordinate.getX()+amt);
+        myCoordinate.setY(myCoordinate.getY()+amt);
+        myActiveAnimation = myDownAnimation;
     }
 
     /**
@@ -78,6 +80,7 @@ public class Actor {
      */
     public void moveLeft(int amt) {
         myCoordinate.setX(myCoordinate.getX()-amt);
+        myActiveAnimation = myLeftAnimation;
 
     }
 
@@ -85,13 +88,15 @@ public class Actor {
      * Moves Actor right
      */
     public void moveRight(int amt) {
-        myCoordinate.setX(myCoordinate.getX()+amt);
+        myCoordinate.setX(myCoordinate.getX()+  amt);
+        myActiveAnimation = myRightAnimation;
     }
 
     /**
      * Sets the Actor to the idle position
      */
     public void idle(){
+        myActiveAnimation = myIdleAnimation;
 
     }
 

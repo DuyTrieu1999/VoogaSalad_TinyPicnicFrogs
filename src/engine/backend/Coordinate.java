@@ -16,14 +16,21 @@ public class Coordinate {
     }
 
     public void setX(int x) {
+        if(!checkXBounds(x)){
+            return;
+        }
         this.x = x;
     }
 
     public int getY() {
+
         return y;
     }
 
     public void setY(int y) {
+        if(!checkYBounds(y)){
+            return;
+        }
         this.y = y;
     }
 
@@ -33,6 +40,16 @@ public class Coordinate {
 
     public void setZ(int z) {
         this.z = z;
+    }
+
+    private boolean checkXBounds(int x){
+        int mapWidth = ServiceLocator.getGameWorld().getMapWidth();
+        return (x >= 0 && x <= mapWidth);
+    }
+
+    private boolean checkYBounds(int y){
+        int mapHeight = ServiceLocator.getGameWorld().getMapHeight();
+        return (y >= 0 && y <= mapHeight);
     }
 
 }
