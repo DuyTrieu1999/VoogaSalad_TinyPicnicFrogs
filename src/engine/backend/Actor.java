@@ -62,20 +62,21 @@ public class Actor {
      * Moves the Actor up
      */
     public void moveUp(int amt) {
-
+        myCoordinate.setY(myCoordinate.getX()+amt);
     }
 
     /**
      * Moves Actor down
      */
     public void moveDown(int amt) {
-
+        myCoordinate.setY(myCoordinate.getX()-amt);
     }
 
     /**
      * Moves Actor left
      */
     public void moveLeft(int amt) {
+        myCoordinate.setX(myCoordinate.getX()-amt);
 
     }
 
@@ -83,7 +84,7 @@ public class Actor {
      * Moves Actor right
      */
     public void moveRight(int amt) {
-
+        myCoordinate.setX(myCoordinate.getX()+amt);
     }
 
     /**
