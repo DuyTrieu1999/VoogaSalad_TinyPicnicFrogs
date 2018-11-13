@@ -49,19 +49,31 @@ public class ActorTest extends GroovyTestCase {
         def actor = new Actor()
         assert actor.getCoordinate().getX() == 0
         assert actor.getCoordinate().getY() == 0
+
+        //make sure that the actor cannot move past the top and left edges
         actor.moveUp(10)
         assert actor.getCoordinate().getX() == 0
+        //we want to still trigger the animations even if the actor does not change position
+        assert actor.getActiveAnimation().getName() == "up"
         actor.moveRight(10)
         assert actor.getCoordinate().getY() == 0
+        assert actor.getActiveAnimation().getName() == "right"
 
+
+
+        //make sure that the actor cannot move past bottom and right edges
         def mockGameWorld = new MockFor(GameWorld)
         mockGameWorld.demand.getMapHeight{10}
         mockGameWorld.demand.getMapWidth{10}
         mockGameWorld.use{
             actor.moveDown(20)
-            assert(actor.getCoordinate().getY()) == 0
+            assert actor.getCoordinate().getY() == 0
+            assert actor.getActiveAnimation().getName() == "down"
+
             actor.moveRight(20)
-            assert(actor.getCoordinate().getX()) == 0
+            assert actor.getCoordinate().getX() == 0
+            assert actor.getActiveAnimation().getName() == "right"
+
         }
 
 
