@@ -9,7 +9,6 @@ public  abstract class Interaction {
     Map <String, Message> messageMap;
 
     /**
-     *
      * @param data: JSON representation of data relevant to interaction
      * @param messages: Map of messages called by interaction
      */

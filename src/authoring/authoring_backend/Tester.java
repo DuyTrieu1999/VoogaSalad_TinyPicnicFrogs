@@ -26,7 +26,7 @@ public class Tester {
                         "  \"animations\":[\"/resource/charizard1.png\",\"/resource/charizard2.png\"],\n" +
                         "  \"Interactions\": [{\n" +
                         "    \"type\":\"fight\",\n" +
-                        "    \"animations\":[\"/resource/charizard3.png\",\"/resource/charizard4.png\"],\n" +
+                        "    \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard3.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard4.png\"}],\n" +
                         "    \"Messages\":[\n" +
                         "      {\"key\":\"prototypeVictory\",\"messageKey\":\"onVictory\"},\n" +
                         "      {\"key\":\"prototypeDefeat\",\"messageKey\":\"onDefeat\"}\n" +
@@ -45,7 +45,7 @@ public class Tester {
                         "        \"targetActorNumber\":1,\n" +
                         "        \"targetActorType\":\"friend\",\n" +
                         "        \"targetValue\":10,\n" +
-                        "        \"targetType\":\"percentage\"\n" +
+                        "        \"targetType\":\"percent\"\n" +
                         "      },{\n" +
                         "        \"name\":\"special attack\",\n" +
                         "        \"targetStat\": \"HP\",\n" +
