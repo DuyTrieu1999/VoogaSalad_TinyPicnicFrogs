@@ -1,12 +1,12 @@
-package engine.backend;
+package engine.backend.Commands;
+
+import java.util.List;
 
 public abstract class Command {
     String myName;
     Object myTarget;
 
-    public void execute(){
-
-    }
+    public abstract void execute(List<Object> params);
 
     public void bind(Object target){
         myTarget = target;
