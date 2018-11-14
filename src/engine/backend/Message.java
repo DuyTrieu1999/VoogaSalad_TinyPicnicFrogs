@@ -2,7 +2,7 @@ package engine.backend;
 
 public class Message {
     String myMessageString;
-    Message(String messageString){
+    public Message(String messageString){
         myMessageString = messageString;
     }
     public String getMessageString(){
