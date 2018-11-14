@@ -18,7 +18,7 @@ public class Actor {
     private Animation myUpAnimation;
     private Animation myDownAnimation;
     private Animation myRightAnimation;
-
+// Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
     Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
         myActiveState = ActiveState.ACTIVE;
@@ -131,5 +131,9 @@ public class Actor {
         myActiveState = ActiveState.ACTIVE;
     }
 
+    /**
+     * Used by authoring to serialize the actor
+     */
+    public void serialize(){}
 
 }

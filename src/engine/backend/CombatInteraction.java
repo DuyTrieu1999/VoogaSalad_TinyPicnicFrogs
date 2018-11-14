@@ -1,11 +1,18 @@
 package engine.backend;
 
 import engine.frontend.Animation;
+import org.json.simple.JSONObject;
 
-public class CombatInteraction {
+import java.util.Map;
+
+public class CombatInteraction extends Interaction{
     Animation myCombatIdleAnimation;
     int myHealth;
-    CombatInteraction(){
+    //See Interraction changes
+    public CombatInteraction(JSONObject data, Map<String, Message> messages){
+        super(data,messages);
+
+
         //TODO: Test value
         myHealth = 10;
     }
