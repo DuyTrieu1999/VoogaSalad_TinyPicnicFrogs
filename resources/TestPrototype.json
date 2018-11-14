@@ -1,0 +1,38 @@
+{
+  "name":"charizard",
+  "animations":["/resource/charizard1.png","/resource/charizard2.png"],
+  "Interactions": [{
+    "type":"fight",
+    "animations":[{"key":"default","path":"/resource/charizard3.png"},{"key":"special","path":"/resource/charizard4.png"}],
+    "Messages":[
+      {"key":"prototypeVictory","messageKey":"onVictory"},
+      {"key":"prototypeDefeat","messageKey":"onDefeat"}
+    ],
+    "moves":[
+      {
+        "name":"basic attack",
+        "targetStat": "HP",
+        "targetActorNumber":1,
+        "targetActorType":"enemy",
+        "targetValue":10,
+        "targetType":"constant"
+      },{
+        "name":"basic regen",
+        "targetStat": "HP",
+        "targetActorNumber":1,
+        "targetActorType":"friend",
+        "targetValue":10,
+        "targetType":"percent"
+      },{
+        "name":"special attack",
+        "targetStat": "HP",
+        "targetActorNumber":3,
+        "targetActorType":"enemy",
+        "targetValue":10,
+        "targetType":"percent"
+      }
+    ]
+
+  }
+  ]
+}
