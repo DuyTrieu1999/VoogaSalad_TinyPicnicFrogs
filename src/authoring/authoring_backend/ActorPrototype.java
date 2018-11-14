@@ -54,6 +54,7 @@ public class ActorPrototype {
     private void parseInteraction(JSONObject ineractionJSON, Map<String, Message>interactionMessages){
         Interaction myInteraction;
         if(((String)ineractionJSON.get("type")).equals("fight")){
+            myInteraction= new CombatInteraction(ineractionJSON,interactionMessages);
         }
         else if(((String)ineractionJSON.get("type")).equals("collectible")){
             //create new collectible interaction
