@@ -1,6 +1,16 @@
 package engine.frontend.game_engine_UI.Actor;
 
+import engine.backend.Coordinate;
+import engine.frontend.Animation;
+
 public class ActorUi implements ActorUIAPI {
+    Animation myAnimation;
+    Coordinate myCoordinate;
+
+    public ActorUi () {
+
+    }
+
     public void setState() {
 
     }
@@ -10,6 +20,7 @@ public class ActorUi implements ActorUIAPI {
     public int[] getBoundaryBox() {
         return new int[0];
     }
-    public int getX() { return 0; }
-    public int getY() { return 0; }
+    public void setCoordinate(Coordinate coordinate) {
+        myCoordinate = coordinate;
+    }
 }
