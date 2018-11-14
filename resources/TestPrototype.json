@@ -3,7 +3,7 @@
   "animations":["/resource/charizard1.png","/resource/charizard2.png"],
   "Interactions": [{
     "type":"fight",
-    "animations":[{"default":"/resource/charizard3.png"},{"special":"/resource/charizard4.png"}],
+    "animations":[{"key":"default","path":"/resource/charizard3.png"},{"key":"special","path":"/resource/charizard4.png"}],
     "Messages":[
       {"key":"prototypeVictory","messageKey":"onVictory"},
       {"key":"prototypeDefeat","messageKey":"onDefeat"}
@@ -22,7 +22,7 @@
         "targetActorNumber":1,
         "targetActorType":"friend",
         "targetValue":10,
-        "targetType":"percentage"
+        "targetType":"percent"
       },{
         "name":"special attack",
         "targetStat": "HP",
