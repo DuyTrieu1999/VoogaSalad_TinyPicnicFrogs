@@ -1,5 +1,6 @@
 package engine.backend;
 
+import authoring.authoring_backend.ActorPrototype;
 import engine.frontend.Animation;
 
 public class Actor {
@@ -19,7 +20,7 @@ public class Actor {
     private Animation myDownAnimation;
     private Animation myRightAnimation;
 // Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
-    Actor() {
+    public Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
         myActiveState = ActiveState.ACTIVE;
         myBoxHeight = 0;
@@ -33,6 +34,7 @@ public class Actor {
         myDownAnimation = new Animation("down");
         myActiveAnimation = myIdleAnimation;
     }
+    public Actor(ActorPrototype prototype, int x, int y, int z){}
 
     public Interaction getInteraction() {
         return myInteraction;

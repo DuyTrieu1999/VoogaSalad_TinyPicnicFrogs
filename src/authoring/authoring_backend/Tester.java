@@ -23,14 +23,18 @@ public class Tester {
             try{
                 JSONObject obj=(JSONObject) parser.parse("{\n" +
                         "  \"name\":\"charizard\",\n" +
-                        "  \"animations\":[\"/resource/charizard1.png\",\"/resource/charizard2.png\"],\n" +
+                        "  \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard1.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard2.png\"}],\n" +
+                        "  \"stats\":[{\"key\":\"health\",\"value\":50},{\"key\":\"damage\",\"value\":5}\n" +
+                        "  ],\n" +
                         "  \"Interactions\": [{\n" +
+                        "    \"name\":\"fight1\",\n" +
                         "    \"type\":\"fight\",\n" +
                         "    \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard3.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard4.png\"}],\n" +
                         "    \"Messages\":[\n" +
                         "      {\"key\":\"prototypeVictory\",\"messageKey\":\"onVictory\"},\n" +
                         "      {\"key\":\"prototypeDefeat\",\"messageKey\":\"onDefeat\"}\n" +
                         "    ],\n" +
+                        "\n" +
                         "    \"moves\":[\n" +
                         "      {\n" +
                         "        \"name\":\"basic attack\",\n" +

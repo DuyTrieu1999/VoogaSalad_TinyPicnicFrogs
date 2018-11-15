@@ -22,7 +22,7 @@ public class CombatMove extends Command {
         targetValue=Integer.parseInt(String.valueOf(params.get("targetValue")));
         myTargetType=parseTargetType((String)params.get("targetType"));
         myTargetActor=parseTargetActor((String)params.get("targetActorType"));
-        System.out.println(stringify());
+
 
     }
 
@@ -42,7 +42,11 @@ public class CombatMove extends Command {
         else throw new IllegalArgumentException("invalid target type");
     }
 
-    public String stringify(){
-        return super.myName+": "+"stat:"+stat+", value: "+targetValue+","+", number:"+targetActorNum+ ", type: "+myTargetType.toString()+", actor: "+myTargetActor.toString();
+    /**
+     * for testing purposes
+     */
+    @Override
+    public void serialize(){
+        System.out.println(super.myName+": "+"stat:"+stat+", value: "+targetValue+","+", number:"+targetActorNum+ ", type: "+myTargetType.toString()+", actor: "+myTargetActor.toString());
     }
 }
