@@ -2,30 +2,38 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.PlayerActor;
-import engine.frontend.Animation;
+import engine.controller.Controller;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 
-import java.util.Collection;
+import java.util.*;
 
 public class OverWorldView implements OverWorldViewAPI {
     private Collection<Actor> myActors;
-    private Collection<Animation> myAnimations;
+    private Collection<ImageView> myAnimations;
 
     private Camera myCamera;
 
     private BorderPane displayPane;
     private PlayerActor myPlayer;
 
-    public OverWorldView () {
+    public OverWorldView (PlayerActor player, Controller controller) {
+        myCamera = new Camera();
+        myActors = controller.getActor();
+        myAnimations = controller.getAnimation();
+        myPlayer = player;
         this.setUpDisplay();
     }
     public void updateWorldView () {
         clearOverWorld();
         this.addActors();
+        this.setViewByZ();
     }
     private void addActors () {
+        for (Actor actor: myActors) {
 
+        }
     }
     private void clearOverWorld () {
         this.myAnimations.clear();
@@ -44,5 +52,8 @@ public class OverWorldView implements OverWorldViewAPI {
         clipBoundaries.widthProperty().bind(pane.widthProperty());
         clipBoundaries.heightProperty().bind(pane.heightProperty());
         pane.setClip(clipBoundaries);
+    }
+    private void setViewByZ() {
+
     }
 }
