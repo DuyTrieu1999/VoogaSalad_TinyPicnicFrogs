@@ -1,6 +1,7 @@
 package engine.controller;
 
 import engine.backend.Actor;
+import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
@@ -20,8 +21,8 @@ public class Controller {
     public Collection<Actor> getActor () {
         return new ArrayList<Actor>();
     }
-    public Collection<ImageView> getAnimation () {
-        return new ArrayList<ImageView>();
+    public Collection<AnimationObject> getAnimation () {
+        return new ArrayList<AnimationObject>();
     }
     public PlayerActor getPlayer () {
         return new PlayerActor();

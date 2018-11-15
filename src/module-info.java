@@ -8,7 +8,6 @@ module voogasalad_tinypicnicfrogs {
     requires json.simple;
 
     exports engine.backend;
-    exports engine.frontend;
     exports engine.controller;
     exports engine.frontend.game_engine_UI;
 }

@@ -1,6 +1,7 @@
 package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
+import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
 import engine.controller.Controller;
 import javafx.scene.image.ImageView;
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class OverWorldView implements OverWorldViewAPI {
     private Collection<Actor> myActors;
-    private Collection<ImageView> myAnimations;
+    private Collection<AnimationObject> myAnimations;
 
     private Camera myCamera;
 
@@ -19,10 +20,10 @@ public class OverWorldView implements OverWorldViewAPI {
     private PlayerActor myPlayer;
 
     public OverWorldView (PlayerActor player, Controller controller) {
-        myCamera = new Camera();
         myActors = controller.getActor();
         myAnimations = controller.getAnimation();
         myPlayer = player;
+        myCamera = new Camera(myPlayer);
         this.setUpDisplay();
     }
     public void updateWorldView () {
@@ -33,6 +34,13 @@ public class OverWorldView implements OverWorldViewAPI {
     private void addActors () {
         for (Actor actor: myActors) {
 
+        }
+    }
+    private void moveCamera () {
+        for (AnimationObject animationObject: myAnimations) {
+            ImageView animationView = animationObject.getAnimationView();
+            animationView.setTranslateX(myCamera.getTranslateX());
+            animationView.setTranslateY(myCamera.getTranslateY());
         }
     }
     private void clearOverWorld () {

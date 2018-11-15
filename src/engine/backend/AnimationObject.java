@@ -9,4 +9,7 @@ public class AnimationObject {
     public AnimationObject (String name) {
         this.animationName = name;
     }
+    public ImageView getAnimationView () {
+        return this.animationView;
+    }
 }
