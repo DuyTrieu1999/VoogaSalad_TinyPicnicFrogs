@@ -3,6 +3,7 @@ package authoring.authoring_backend;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,9 @@ import java.util.Map;
  */
 public class ActorPrototypeManager {
     private Map<String,ActorPrototype>actorPrototypeMap;
-    protected ActorPrototypeManager(){}
+    protected ActorPrototypeManager(){
+        actorPrototypeMap= new HashMap<>();
+    }
 
     /**
      *
@@ -22,8 +25,9 @@ public class ActorPrototypeManager {
     protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
       testMessageParsing(prototypeMessages);
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
+    prototype.serialize();
 
-     // actorPrototypeMap.put(prototype.getName(),prototype);
+      actorPrototypeMap.put(prototype.getName(),prototype);
 
     }
 

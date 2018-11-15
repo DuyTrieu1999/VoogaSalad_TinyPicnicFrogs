@@ -15,4 +15,9 @@ public abstract class Command {
     public String getName(){
         return myName;
     }
+
+    /**
+     * for testing purposese
+     */
+    public void serialize(){System.out.println(getName());}
 }

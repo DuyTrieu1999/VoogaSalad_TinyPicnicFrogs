@@ -27,6 +27,9 @@ public class ActorManager {
             actor.serialize();
         }
     }
+    protected void createActor(ActorPrototype actorPrototype, int x, int y, int z){
+        Actor actor= new Actor(actorPrototype,x,y,z);
+    }
     protected void serializeActor(String id){
         actorMap.get(id).serialize();
     }
