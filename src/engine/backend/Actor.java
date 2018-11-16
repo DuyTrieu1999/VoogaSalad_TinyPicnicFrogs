@@ -3,41 +3,51 @@ package engine.backend;
 import authoring.authoring_backend.ActorPrototype;
 import engine.frontend.Animation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Actor {
     private Coordinate myCoordinate;
     private int myBoxHeight;
     private int myBoxWidth;
     private ActiveState myActiveState;
     private Animation myActiveAnimation;
-    private Interaction myInteraction;
+    private Map <String, Interaction> myInteractionMap;
+    private Map<String, Integer>myStatsMap;
 
     private int mySpeed;
 
+    private Map<String, Animation> myAnimationMap;
     //Overworld animations. TODO: put these in some kind of pretty structure
-    private Animation myIdleAnimation;
-    private Animation myLeftAnimation;
-    private Animation myUpAnimation;
-    private Animation myDownAnimation;
-    private Animation myRightAnimation;
+
+
 // Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
     public Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
         myActiveState = ActiveState.ACTIVE;
         myBoxHeight = 0;
         myBoxWidth = 0;
-
-        //TODO: this is also for testing purposes. Remove when unneeded
-        myIdleAnimation = new Animation("idle");
-        myLeftAnimation = new Animation("left");
-        myRightAnimation = new Animation("right");
-        myUpAnimation = new Animation("up");
-        myDownAnimation = new Animation("down");
-        myActiveAnimation = myIdleAnimation;
+        myAnimationMap=new HashMap<>();
     }
-    public Actor(ActorPrototype prototype, int x, int y, int z){}
+    public Actor(ActorPrototype prototype, int x, int y, int z){
+        myCoordinate= new Coordinate(x,y,z);
+        myAnimationMap=parseAnimations(prototype.getAnimationMap());
+        myInteractionMap=prototype.getInteractionMap();
+        myStatsMap= prototype.getMyStats();
+        myActiveAnimation=myAnimationMap.get("idle");
 
-    public Interaction getInteraction() {
-        return myInteraction;
+    }
+    public Map <String,Animation>parseAnimations(Map<String,String>imagePaths){
+        Map<String,Animation> animations = new HashMap<>();
+        for(String s: imagePaths.keySet()){
+            Animation animation= new Animation(s,imagePaths.get(s));
+            animations.put(s,animation);
+        }
+        return animations;
+    }
+
+    public Interaction getInteraction(String key) {
+        return myInteractionMap.get(key);
     }
 
     public int getBoxHeight() {
@@ -66,7 +76,7 @@ public class Actor {
      */
     public void moveUp(int amt) {
         myCoordinate.setY(myCoordinate.getY()-amt);
-        myActiveAnimation = myUpAnimation;
+        myActiveAnimation = myAnimationMap.get("up");
     }
 
     /**
@@ -74,7 +84,7 @@ public class Actor {
      */
     public void moveDown(int amt) {
         myCoordinate.setY(myCoordinate.getY()+amt);
-        myActiveAnimation = myDownAnimation;
+        myActiveAnimation = myAnimationMap.get("down");
     }
 
     /**
@@ -82,7 +92,7 @@ public class Actor {
      */
     public void moveLeft(int amt) {
         myCoordinate.setX(myCoordinate.getX()-amt);
-        myActiveAnimation = myLeftAnimation;
+        myActiveAnimation = myAnimationMap.get("left");
 
     }
 
@@ -91,14 +101,14 @@ public class Actor {
      */
     public void moveRight(int amt) {
         myCoordinate.setX(myCoordinate.getX()+  amt);
-        myActiveAnimation = myRightAnimation;
+        myActiveAnimation = myAnimationMap.get("right");
     }
 
     /**
      * Sets the Actor to the idle position
      */
     public void idle(){
-        myActiveAnimation = myIdleAnimation;
+        myActiveAnimation = myAnimationMap.get("idle");
 
     }
 

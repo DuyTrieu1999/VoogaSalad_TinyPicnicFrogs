@@ -13,4 +13,7 @@ public class Animation {
     public Animation(String name){
         myName = name;
     }
+    public Animation(String name, String path){
+        myName = name;
+    }
 }

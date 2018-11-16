@@ -91,4 +91,21 @@ public class ActorPrototype {
             interractionMap.get(s).serialize();
         }
     }
+
+    /**
+     * Used by Actor when instantiating from prototype
+     * @return animation map
+     */
+    public Map<String,String>getAnimationMap(){return animationMap;}
+    /**
+     * Used by Actor when instantiating from prototype
+     * @return interaction map
+     */
+    public Map<String,Interaction>getInteractionMap(){return interractionMap;}
+    /**
+     * Used by Actor when instantiating from prototype
+     * @return stats map
+     */
+    public Map <String,Integer>getMyStats(){return myStats;}
+
 }
