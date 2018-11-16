@@ -1,7 +1,6 @@
 package engine.backend;
 
-import authoring.authoring_backend.ActorPrototype;
-import engine.frontend.Animation;
+import javafx.animation.Animation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,16 +10,29 @@ public class Actor {
     private int myBoxHeight;
     private int myBoxWidth;
     private ActiveState myActiveState;
+<<<<<<< HEAD
     private Animation myActiveAnimation;
     private Map <String, Interaction> myInteractionMap;
     private Map<String, Integer>myStatsMap;
+=======
+    private AnimationObject myActiveAnimation;
+    private Interaction myInteraction;
+>>>>>>> 61c34d51d9ecce6c898aeec9079ba44398b9606f
 
     private int mySpeed;
 
     private Map<String, Animation> myAnimationMap;
     //Overworld animations. TODO: put these in some kind of pretty structure
+<<<<<<< HEAD
 
 
+=======
+    private AnimationObject myIdleAnimation;
+    private AnimationObject myLeftAnimation;
+    private AnimationObject myUpAnimation;
+    private AnimationObject myDownAnimation;
+    private AnimationObject myRightAnimation;
+>>>>>>> 61c34d51d9ecce6c898aeec9079ba44398b9606f
 // Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
     public Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
@@ -36,6 +48,16 @@ public class Actor {
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
 
+<<<<<<< HEAD
+=======
+        //TODO: this is also for testing purposes. Remove when unneeded
+        myIdleAnimation = new AnimationObject("idle");
+        myLeftAnimation = new AnimationObject("left");
+        myRightAnimation = new AnimationObject("right");
+        myUpAnimation = new AnimationObject("up");
+        myDownAnimation = new AnimationObject("down");
+        myActiveAnimation = myIdleAnimation;
+>>>>>>> 61c34d51d9ecce6c898aeec9079ba44398b9606f
     }
     public Map <String,Animation>parseAnimations(Map<String,String>imagePaths){
         Map<String,Animation> animations = new HashMap<>();
@@ -58,7 +80,7 @@ public class Actor {
         return myBoxWidth;
     }
 
-    public Animation getActiveAnimation() {
+    public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
     }
 
