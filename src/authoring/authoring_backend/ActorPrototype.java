@@ -5,7 +5,6 @@ import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,7 @@ public class ActorPrototype {
     Map<String, Interaction>interractionMap;
     Map<String, Integer>myStats;
     private String name;
+
     protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
         name=(String)data.get("name");
         animationMap=parseAnimations(data);
@@ -27,6 +27,20 @@ public class ActorPrototype {
         interractionMap= new HashMap<>();
         parseInterractions((JSONArray)data.get("Interactions"),prototypeMessages);
 
+    }
+
+    /**
+     * Constructor used for cloning prototype
+     * @param animationMapP
+     * @param interractionMapP
+     * @param statsMap
+     * @param nameP
+     */
+    protected ActorPrototype(Map<String,String>animationMapP,Map<String, Interaction>interractionMapP,Map<String, Integer>statsMap, String nameP){
+        animationMap=animationMapP;
+        interractionMap=interractionMapP;
+        myStats=statsMap;
+        name=nameP;
     }
     protected String getName(){return name;}
 
@@ -90,6 +104,9 @@ public class ActorPrototype {
             System.out.println(s);
             interractionMap.get(s).serialize();
         }
+    }
+    protected ActorPrototype clone(){
+        return new ActorPrototype(animationMap,interractionMap,myStats,name);
     }
 
     /**
