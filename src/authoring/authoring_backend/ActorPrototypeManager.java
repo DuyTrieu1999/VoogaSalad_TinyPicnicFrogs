@@ -1,8 +1,14 @@
 package authoring.authoring_backend;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +18,9 @@ import java.util.Map;
  */
 public class ActorPrototypeManager {
     private Map<String,ActorPrototype>actorPrototypeMap;
-    protected ActorPrototypeManager(){}
+    protected ActorPrototypeManager(){
+        actorPrototypeMap= new HashMap<>();
+    }
 
     /**
      *
@@ -23,8 +31,16 @@ public class ActorPrototypeManager {
       testMessageParsing(prototypeMessages);
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
 
-     // actorPrototypeMap.put(prototype.getName(),prototype);
 
+      actorPrototypeMap.put(prototype.getName(),prototype);
+
+    }
+    protected ActorPrototype getPrototype(String key){
+        return actorPrototypeMap.get(key);
+    }
+
+    protected ActorPrototype getNewPrototypeInstance(String key){
+        return actorPrototypeMap.get(key).clone();
     }
 
     private void testMessageParsing( List<Map<String, Message>> prototypeMessages){
@@ -36,4 +52,22 @@ public class ActorPrototypeManager {
             }
         }
     }
+    protected void serializeAllPrototypes(String path){
+        int index=0;
+        XStream serializer = new XStream(new DomDriver());
+        for(ActorPrototype actor:actorPrototypeMap.values()){
+            index+=1;
+            String serialized= serializer.toXML(actor);
+            try{
+                Files.write(Paths.get(path+"prototype-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+        }
+    }
+    protected void loadPrototype(String key, String path){
+        XStream serializer = new XStream(new DomDriver());
+        ActorPrototype loadedActorPrototype=(ActorPrototype) serializer.fromXML(Paths.get(path).toFile());
+        actorPrototypeMap.put(key,loadedActorPrototype);
+    }
+
+
+
 }

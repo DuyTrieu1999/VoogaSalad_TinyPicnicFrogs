@@ -1,0 +1,66 @@
+API Review Questions
+===
+
+## Group Members
+Allen Qiu (asq3)
+Brooke Keene (bzk2)
+Janice Liu (jl691)
+Orgil Batzaya (ob29)
+
+### Different Teams (Authoring Frontend)
+* Yeet
+    * API Design
+        * RenderSystem - creates visual controls (i.e. buttons, sliders, panes)
+        * Editor - calls public methods from RenderSystem
+            * MapEditor
+            * CharacterEditor
+            * GameEditor
+* Tiny Picnic Frogs
+    * API Design
+        * ActorMenu - allows user to access the different actors they have created
+        * GameMap - lets user place an actor in the actual overworld
+
+### Part 1
+> What about your API/design is intended to be flexible?
+* RenderSystem is able to be used by any system or editor. To add to the existing elements create new methods.
+
+> How is your API/design encapsulating your implementation decisions?
+* Game player has access to the RenderSystem and can use the UI elements defined in the API. 
+
+> How is your part linked to other parts of the project?
+* The front end of the game authoring environment passes the user's game design into the backend of the game authoring environment so that it can compile it into a format that the game player can run the game.
+
+> What exceptions (error cases) might occur in your part and how will you handle them (or not, by throwing)?
+* Invalid inputs or selections
+    * throw an invalid exception (through an alert box)
+
+> Why do you think your API/design is good (also define what your measure of good is)?
+* Relatively extendable - have the ability to add new controls and editors
+    * good, because follows the open closed principle
+
+### Part 2
+> Discuss the use cases/issues that you are responsible for: are they descriptive, appropriate, reasonably sized?
+* Create a GUI
+* Allow users to load a map
+* Allow users to add actors
+* Allow users to add actors to spots on the map
+
+> Estimate how long you think each will take and why. What, if anything, makes estimating these tasks uncertain?
+* Create a GUI
+    * 1 day
+* Allow users to load a map
+    * Half a day
+* Allow users to add actors
+    * Half a day
+* Allow users to add actors to spots on the map
+    * 1 day
+
+> What feature/design problem are you most excited to work on?
+* Being able to click and add actors to a map
+
+> What feature/design problem are you most worried about working on?
+* Connecting the front end of the authoring environment to the back end of the authoring environment
+* user defined hit boxes for each frame for each character an saving/loading this data in the game authoring and game player
+
+> What major feature do you plan to implement this weekend?
+* Being able to add and customize actors to the map

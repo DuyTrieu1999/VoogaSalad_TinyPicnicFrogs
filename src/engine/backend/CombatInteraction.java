@@ -2,7 +2,6 @@ package engine.backend;
 
 import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
-import engine.frontend.Animation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CombatInteraction extends Interaction{
-    Animation myCombatIdleAnimation;
+    AnimationObject myCombatIdleAnimation;
     List<Command>commandList;
     int myHealth;
     //See Interraction changes
@@ -36,7 +35,11 @@ public class CombatInteraction extends Interaction{
         for(int i=0;i<movesArr.size();i+=1){
             CombatMove commandMove = new CombatMove((JSONObject)movesArr.get(i));
             commandList.add(commandMove);
-            System.out.println(commandMove.getName());
         }
+    }
+    @Override
+    public void serialize(){
+        super.serialize();
+        for(Command c:commandList){c.serialize();}
     }
 }
