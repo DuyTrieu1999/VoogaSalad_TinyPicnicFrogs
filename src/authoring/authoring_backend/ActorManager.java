@@ -50,4 +50,10 @@ public class ActorManager {
     protected void serializeActor(String id){
         actorMap.get(id).serialize();
     }
+    protected void loadActor(String key, String path){
+        XStream serializer = new XStream(new DomDriver());
+        Actor loadedActor=(Actor) serializer.fromXML(Paths.get(path).toFile());
+        actorMap.put(key,loadedActor);
+    }
+
 }

@@ -14,7 +14,7 @@ public class Actor {
     private Map <String, Interaction> myInteractionMap;
     private Map<String, Integer>myStatsMap;
     private Map<String, Animation> myAnimationMap;
-
+    private String myName;
     private ActiveState myActiveState;
     private Animation myActiveAnimation;
 

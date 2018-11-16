@@ -47,6 +47,12 @@ public class MessageManager {
           try{
               Files.write(Paths.get(path+"message-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
       }
+
   }
+    protected void loadMessage(String key,String path){
+        XStream serializer = new XStream(new DomDriver());
+        Message loadedMessage=(Message)serializer.fromXML(Paths.get(path).toFile());
+        messageMap.put(key,loadedMessage);
+    }
 
 }
