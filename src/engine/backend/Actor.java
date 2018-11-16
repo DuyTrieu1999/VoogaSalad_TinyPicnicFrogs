@@ -1,24 +1,23 @@
 package engine.backend;
 
-import authoring.authoring_backend.ActorPrototype;
-import engine.frontend.Animation;
+import javafx.animation.Animation;
 
 public class Actor {
     private Coordinate myCoordinate;
     private int myBoxHeight;
     private int myBoxWidth;
     private ActiveState myActiveState;
-    private Animation myActiveAnimation;
+    private AnimationObject myActiveAnimation;
     private Interaction myInteraction;
 
     private int mySpeed;
 
     //Overworld animations. TODO: put these in some kind of pretty structure
-    private Animation myIdleAnimation;
-    private Animation myLeftAnimation;
-    private Animation myUpAnimation;
-    private Animation myDownAnimation;
-    private Animation myRightAnimation;
+    private AnimationObject myIdleAnimation;
+    private AnimationObject myLeftAnimation;
+    private AnimationObject myUpAnimation;
+    private AnimationObject myDownAnimation;
+    private AnimationObject myRightAnimation;
 // Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
     public Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
@@ -27,11 +26,11 @@ public class Actor {
         myBoxWidth = 0;
 
         //TODO: this is also for testing purposes. Remove when unneeded
-        myIdleAnimation = new Animation("idle");
-        myLeftAnimation = new Animation("left");
-        myRightAnimation = new Animation("right");
-        myUpAnimation = new Animation("up");
-        myDownAnimation = new Animation("down");
+        myIdleAnimation = new AnimationObject("idle");
+        myLeftAnimation = new AnimationObject("left");
+        myRightAnimation = new AnimationObject("right");
+        myUpAnimation = new AnimationObject("up");
+        myDownAnimation = new AnimationObject("down");
         myActiveAnimation = myIdleAnimation;
     }
     public Actor(ActorPrototype prototype, int x, int y, int z){}
@@ -48,7 +47,7 @@ public class Actor {
         return myBoxWidth;
     }
 
-    public Animation getActiveAnimation() {
+    public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
     }
 

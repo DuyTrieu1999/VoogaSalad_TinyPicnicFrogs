@@ -1,21 +1,25 @@
 package engine.frontend.game_engine_UI;
 
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import engine.frontend.game_engine_UI.BattleWorld.BattleView;
+import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 
 public class StateView {
     private Controller myController;
-    private StackPane myPane;
-    private static Pane myBackGround;
+    private OverWorldView myWorldView;
+    private BattleView myBattleView;
 
-    public void setGameWorld() {
+    public StateView() {
         myController = new Controller(this);
-        myBackGround = new Pane();
-        myPane = new StackPane();
         setUpScene();
     }
     private void setUpScene () {
 
+    }
+    public OverWorldView getMyWorldView () {
+        return myWorldView;
+    }
+    public BattleView getMyBattleView () {
+        return myBattleView;
     }
 }

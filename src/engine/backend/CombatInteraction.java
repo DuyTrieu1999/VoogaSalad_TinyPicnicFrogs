@@ -2,7 +2,6 @@ package engine.backend;
 
 import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
-import engine.frontend.Animation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CombatInteraction extends Interaction{
-    Animation myCombatIdleAnimation;
+    AnimationObject myCombatIdleAnimation;
     List<Command>commandList;
     int myHealth;
     //See Interraction changes
