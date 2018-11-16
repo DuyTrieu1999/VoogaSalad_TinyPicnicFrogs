@@ -35,7 +35,11 @@ public class CombatInteraction extends Interaction{
         for(int i=0;i<movesArr.size();i+=1){
             CombatMove commandMove = new CombatMove((JSONObject)movesArr.get(i));
             commandList.add(commandMove);
-            System.out.println(commandMove.getName());
         }
+    }
+    @Override
+    public void serialize(){
+        super.serialize();
+        for(Command c:commandList){c.serialize();}
     }
 }

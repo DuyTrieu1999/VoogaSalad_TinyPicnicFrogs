@@ -19,7 +19,7 @@ public class Actor {
     private AnimationObject myDownAnimation;
     private AnimationObject myRightAnimation;
 // Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
-    Actor() {
+    public Actor() {
         myCoordinate = new Coordinate(0, 0, 0);
         myActiveState = ActiveState.ACTIVE;
         myBoxHeight = 0;
@@ -33,6 +33,7 @@ public class Actor {
         myDownAnimation = new AnimationObject("down");
         myActiveAnimation = myIdleAnimation;
     }
+    public Actor(ActorPrototype prototype, int x, int y, int z){}
 
     public Interaction getInteraction() {
         return myInteraction;
