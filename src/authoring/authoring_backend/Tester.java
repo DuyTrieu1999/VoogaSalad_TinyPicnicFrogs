@@ -16,6 +16,8 @@ public class Tester {
         JSONObject data = loadJSON();
         if(data!=null){
             gameManager.createActorPrototype(data);
+            gameManager.createActor("charizard",0,0,0);
+            gameManager.saveGame("./resources/","./resources/authoring/");
         }
     }
         private static JSONObject loadJSON(){
@@ -67,6 +69,8 @@ public class Tester {
             }catch (ParseException e){
                 e.printStackTrace();
             }
+
+
             return null;
     }
 }

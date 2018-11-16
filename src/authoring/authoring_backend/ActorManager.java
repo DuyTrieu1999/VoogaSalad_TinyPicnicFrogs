@@ -1,7 +1,13 @@
 package authoring.authoring_backend;
 
-import engine.backend.Actor;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import engine.backend.*;
 
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,13 +28,24 @@ public class ActorManager {
     protected Actor getActor(String id){
         return actorMap.get(id);
     }
-    protected void serializeAllActors(){
+
+    /**
+     * Saves all actors
+     * @param path: path of the folder where to store actors
+     */
+    protected void serializeAllActors(String path){
+        int index=0;
+        XStream serializer = new XStream(new DomDriver());
         for(Actor actor:actorMap.values()){
-            actor.serialize();
+            index+=1;
+            String serialized= serializer.toXML(actor);
+            try{
+            Files.write(Paths.get(path+"actor-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
         }
     }
     protected void createActor(ActorPrototype actorPrototype, int x, int y, int z){
         Actor actor= new Actor(actorPrototype,x,y,z);
+        addActor(actor,actorPrototype.getName());
     }
     protected void serializeActor(String id){
         actorMap.get(id).serialize();
