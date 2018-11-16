@@ -64,6 +64,7 @@ public class GameManager {
         actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),x,y,z);
     }
     public Actor getActor(String id){return actorManager.getActor(id);}
+    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);}
 
     /**
      * Saves all created actors and messages
@@ -74,6 +75,16 @@ public class GameManager {
         actorManager.serializeAllActors(gamePath);
         messageManager.serializeAllMessages(gamePath);
         actorPrototypeManager.serializeAllPrototypes(authoringPath);
+    }
+
+    public void loadActor(String key, String path){
+        actorManager.loadActor(key,path);
+    }
+    public void loadMessage(String key, String path){
+        messageManager.loadMessage(key, path);
+    }
+    public void loadPrototype(String key, String path){
+        actorPrototypeManager.loadPrototype(key, path);
     }
 
 }

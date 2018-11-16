@@ -2,7 +2,6 @@ package authoring.authoring_backend;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import engine.backend.Actor;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
 
@@ -36,6 +35,9 @@ public class ActorPrototypeManager {
       actorPrototypeMap.put(prototype.getName(),prototype);
 
     }
+    protected ActorPrototype getPrototype(String key){
+        return actorPrototypeMap.get(key);
+    }
 
     protected ActorPrototype getNewPrototypeInstance(String key){
         return actorPrototypeMap.get(key).clone();
@@ -60,6 +62,12 @@ public class ActorPrototypeManager {
                 Files.write(Paths.get(path+"prototype-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
         }
     }
+    protected void loadPrototype(String key, String path){
+        XStream serializer = new XStream(new DomDriver());
+        ActorPrototype loadedActorPrototype=(ActorPrototype) serializer.fromXML(Paths.get(path).toFile());
+        actorPrototypeMap.put(key,loadedActorPrototype);
+    }
+
 
 
 }
