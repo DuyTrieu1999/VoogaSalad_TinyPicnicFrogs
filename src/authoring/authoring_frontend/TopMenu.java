@@ -7,9 +7,17 @@ import javafx.scene.layout.HBox;
 
 import java.util.ResourceBundle;
 
+/**
+ * TopMenu
+ *
+ * Creates a MenuBar that allows user to select from various menus
+ * of settings and basic functions
+ *
+ * @author brookekeene
+ */
 public class TopMenu extends HBox {
     public static final String DEFAULT_RESOURCE = "English";
-//    public static final String DEFAULT_STYLESHEET = "light.css";
+
     private MenuBar myMenu;
     private ResourceBundle myResources;
 
@@ -19,7 +27,7 @@ public class TopMenu extends HBox {
     public TopMenu() {
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
-//        myScene.getStylesheets().add(STYLESHEET);
+
         this.getChildren().add(myMenu);
         this.addAllMenus();
     }
@@ -50,6 +58,7 @@ public class TopMenu extends HBox {
         });
 
         newActor.setOnAction(e -> {
+            PrototypeWindow makeNewActor = new PrototypeWindow();
             System.out.println("Open Popup Window"); //TODO: replace this with code
         });
 
