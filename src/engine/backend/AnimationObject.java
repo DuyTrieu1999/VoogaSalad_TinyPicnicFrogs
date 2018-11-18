@@ -12,4 +12,5 @@ public class AnimationObject {
     public ImageView getAnimationView () {
         return this.animationView;
     }
+    public String getName(){return animationName;}
 }

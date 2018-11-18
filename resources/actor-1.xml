@@ -76,15 +76,15 @@
   <myAnimationMap>
     <entry>
       <string>special</string>
-      <engine.frontend.Animation>
-        <myName>special</myName>
-      </engine.frontend.Animation>
+      <engine.backend.AnimationObject>
+        <animationName>special</animationName>
+      </engine.backend.AnimationObject>
     </entry>
     <entry>
       <string>default</string>
-      <engine.frontend.Animation>
-        <myName>default</myName>
-      </engine.frontend.Animation>
+      <engine.backend.AnimationObject>
+        <animationName>default</animationName>
+      </engine.backend.AnimationObject>
     </entry>
   </myAnimationMap>
 </engine.backend.Actor>
