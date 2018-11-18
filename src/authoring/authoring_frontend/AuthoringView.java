@@ -52,6 +52,15 @@ public class AuthoringView {
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
         myBorder = new BorderPane();
         myRoot.getChildren().add(myBorder);
+
+        BorderPane mainView = new BorderPane();
+        ActorMenu selectActors = new ActorMenu(myManager);
+        //myRoot.getChildren().add(selectActors.getActorMenu());
+        mainView.setLeft(selectActors.getActorMenu());
+        GameMap maps = new GameMap(myManager);
+        //myRoot.getChildren().add(maps.getGameMap());
+        mainView.setCenter(maps.getGameMap());
+        myRoot.getChildren().add(mainView);
 //        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);
 //        myScene.getStylesheets().add(STYLESHEET);
     }
