@@ -1,7 +1,6 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
 
-import engine.backend.Actor;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -22,7 +21,7 @@ abstract class SideView extends Group {
         BorderPane stats = displayStats();
         this.getChildren().add(stats);
         //initialize current actor
-        current_a = new Image(this.getClass().getClassLoader().getResourceAsStream(actor_image);
+        current_a = new Image(this.getClass().getClassLoader().getResourceAsStream(actor_image));
         current_actor = new ImageView(current_a);
         this.getChildren().add(current_actor);
     }
@@ -49,6 +48,6 @@ abstract class SideView extends Group {
 
         //update these
         current_actor.setImage(current_a); //whatever the current actor's current image is
-        
+
     }
 }
