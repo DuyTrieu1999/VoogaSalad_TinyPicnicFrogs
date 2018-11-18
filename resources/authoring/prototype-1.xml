@@ -1,0 +1,82 @@
+<authoring.authoring__backend.ActorPrototype>
+  <animationMap>
+    <entry>
+      <string>special</string>
+      <string>/resource/charizard2.png</string>
+    </entry>
+    <entry>
+      <string>default</string>
+      <string>/resource/charizard1.png</string>
+    </entry>
+  </animationMap>
+  <interractionMap>
+    <entry>
+      <string>fight1</string>
+      <engine.backend.CombatInteraction>
+        <animationMap>
+          <entry>
+            <string>special</string>
+            <string>/resource/charizard4.png</string>
+          </entry>
+          <entry>
+            <string>default</string>
+            <string>/resource/charizard3.png</string>
+          </entry>
+        </animationMap>
+        <messageMap>
+          <entry>
+            <string>prototypeVictory</string>
+            <engine.backend.Message>
+              <myMessageString>Player won</myMessageString>
+            </engine.backend.Message>
+          </entry>
+          <entry>
+            <string>prototypeDefeat</string>
+            <engine.backend.Message>
+              <myMessageString>Game over</myMessageString>
+            </engine.backend.Message>
+          </entry>
+        </messageMap>
+        <myName>fight1</myName>
+        <commandList>
+          <engine.backend.Commands.CombatMove>
+            <myName>basic attack</myName>
+            <stat>HP</stat>
+            <targetActorNum>1</targetActorNum>
+            <targetValue>10</targetValue>
+            <myTargetType>CONSTANT</myTargetType>
+            <myTargetActor>ENEMY</myTargetActor>
+          </engine.backend.Commands.CombatMove>
+          <engine.backend.Commands.CombatMove>
+            <myName>basic regen</myName>
+            <stat>HP</stat>
+            <targetActorNum>1</targetActorNum>
+            <targetValue>10</targetValue>
+            <myTargetType>PERCENTAGE</myTargetType>
+            <myTargetActor>FRIEND</myTargetActor>
+          </engine.backend.Commands.CombatMove>
+          <engine.backend.Commands.CombatMove>
+            <myName>special attack</myName>
+            <stat>HP</stat>
+            <targetActorNum>3</targetActorNum>
+            <targetValue>10</targetValue>
+            <myTargetType>PERCENTAGE</myTargetType>
+            <myTargetActor>ENEMY</myTargetActor>
+          </engine.backend.Commands.CombatMove>
+        </commandList>
+        <myHealth>10</myHealth>
+      </engine.backend.CombatInteraction>
+    </entry>
+  </interractionMap>
+  <myStats>
+    <entry>
+      <string>damage</string>
+      <int>5</int>
+    </entry>
+    <entry>
+      <string>health</string>
+      <int>50</int>
+    </entry>
+  </myStats>
+  <name>charizard</name>
+</authoring.authoring__backend.ActorPrototype>

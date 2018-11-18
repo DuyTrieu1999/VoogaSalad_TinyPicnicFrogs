@@ -1,7 +1,13 @@
 package authoring.authoring_backend;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import engine.backend.Actor;
 import engine.backend.Message;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,4 +38,21 @@ public class MessageManager {
   protected void createMessage(String key, String messageBody){
         messageMap.put(key,new Message(messageBody));
   }
+  protected void serializeAllMessages(String path){
+      int index=0;
+      XStream serializer = new XStream(new DomDriver());
+      for(Message message:messageMap.values()){
+          index+=1;
+          String serialized= serializer.toXML(message);
+          try{
+              Files.write(Paths.get(path+"message-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+      }
+
+  }
+    protected void loadMessage(String key,String path){
+        XStream serializer = new XStream(new DomDriver());
+        Message loadedMessage=(Message)serializer.fromXML(Paths.get(path).toFile());
+        messageMap.put(key,loadedMessage);
+    }
+
 }
