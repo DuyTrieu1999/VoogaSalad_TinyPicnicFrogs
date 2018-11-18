@@ -2,6 +2,10 @@ package engine.backend.Commands;
 
 import java.util.List;
 
+/**
+ * Just for testing
+ */
+
 public class TestCommand extends Command {
     TestCommand(){
         super("Test Command");

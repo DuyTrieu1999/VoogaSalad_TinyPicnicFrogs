@@ -4,6 +4,8 @@ import org.json.simple.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public  abstract class Interaction {
     Map<String,String> animationMap;
     Map <String, Message> messageMap;

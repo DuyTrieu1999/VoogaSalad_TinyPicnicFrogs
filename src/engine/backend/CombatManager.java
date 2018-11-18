@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * @author Christopher Lin cl349
+ */
 public class CombatManager {
     List<CombatInteraction> myAllies;
     List<CombatInteraction> myEnemies;
     AI myAI;
     private List<Turn> turnList;
 
+    /**
+     *
+     * @param allies List of CombatInteractions representing allies
+     * @param enemies .. representing enemies
+     * @param initiativeComparator A comparator used to sort the Turn list
+     */
     CombatManager(List<CombatInteraction> allies, List<CombatInteraction> enemies, Comparator<Turn> initiativeComparator){
         myAllies = allies;
         myEnemies = enemies;
@@ -23,6 +32,9 @@ public class CombatManager {
         turnList.sort(initiativeComparator);
     }
 
+    /**
+     * Runs the combat interaction until one side is completely dead
+     */
     public void runCombat(){
         while(myAllies.size() > 0 || myEnemies.size() > 0){
             //run the current turn and put it on the end of the queue

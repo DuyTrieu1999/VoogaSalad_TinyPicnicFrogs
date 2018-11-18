@@ -3,6 +3,10 @@ package engine.backend;
 import menu.CommandLineMenu;
 import menu.Menu;
 
+/**
+ * Executes a player controlled turn
+ * @author Christopher Lin cl349
+ */
 public class PlayerTurn extends Turn {
 
     PlayerTurn(CombatInteraction controlledAlly){

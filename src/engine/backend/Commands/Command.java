@@ -2,6 +2,10 @@ package engine.backend.Commands;
 
 import java.util.List;
 
+/**
+ * An abstract class that reifies method calls
+ * @author Christopher Lin
+ */
 public abstract class Command {
     String myName;
     Object myTarget;
@@ -14,12 +18,21 @@ public abstract class Command {
         myName =name;
     }
 
+    /**
+     * Runs the method
+     * @param params A list of parameters
+     */
+
     public abstract void execute(List<Object> params);
 
     public void bind(Object target){
         myTarget = target;
     }
 
+    /**
+     *
+     * @return name of the command. Useful for the menu
+     */
     public String getName(){
         return myName;
     }

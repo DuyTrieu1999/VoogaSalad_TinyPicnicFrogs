@@ -2,6 +2,11 @@ package engine.backend;
 
 import java.util.Comparator;
 
+/**
+ * a simple initiative order
+ * @author Christopher Lin cl349
+ */
+
 public class LowestHealthFirstInitiative implements Comparator<Turn> {
     @Override
     public int compare(Turn t1, Turn t2) {
