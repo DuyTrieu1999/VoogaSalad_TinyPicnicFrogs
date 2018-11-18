@@ -1,20 +1,18 @@
 package engine.backend
 
+import groovy.json.JsonParser
 import groovy.mock.interceptor.StubFor
+import org.json.simple.JSONArray
+import org.json.simple.JSONObject
+import org.json.simple.parser.JSONParser
+import sun.security.util.IOUtils
+
+@SuppressWarnings("all")
 
 class CombatManagerTest extends GroovyTestCase {
-    void testRunCombat(){
-        def allyCI = new CombatInteraction()
-        def enemyCI = new CombatInteraction()
-
-
-        def mockAI = [getMove: "blah"] as AI
-
-        def combatMan = new CombatManager([allyCI],[enemyCI],mockAI)
 
 
 
 
-    }
 
 }

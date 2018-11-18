@@ -9,6 +9,12 @@ public  abstract class Interaction {
     Map <String, Message> messageMap;
     String myName;
 
+    //TODO: fill out defaults
+    public Interaction(){
+
+    }
+
+
     /**
      * @param data: JSON representation of data relevant to interaction
      * @param messages: Map of messages called by interaction

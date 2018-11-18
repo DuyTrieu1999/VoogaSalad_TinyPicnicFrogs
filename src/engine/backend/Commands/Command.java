@@ -6,6 +6,8 @@ public abstract class Command {
     String myName;
     Object myTarget;
 
+    //TODO: consider refactoring to interface
+
     public abstract void execute(List<Object> params);
 
     public void bind(Object target){

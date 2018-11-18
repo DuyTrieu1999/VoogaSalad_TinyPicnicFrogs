@@ -1,4 +1,5 @@
 package engine.backend;
 
-public class Turn {
+public abstract class Turn {
+    public abstract void executeTurn();
 }
