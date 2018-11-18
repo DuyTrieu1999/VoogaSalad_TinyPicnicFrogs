@@ -15,16 +15,18 @@ abstract class SideView extends Group {
 
     double current_hp;
 
+    Image current_a;
+    ImageView current_actor;
+
     public SideView(String actor_image) {
         BorderPane stats = displayStats();
         this.getChildren().add(stats);
-        ImageView actor = stringToImageView(actor_image);
-        this.getChildren().add(actor);
+        //initialize current actor
+        current_a = new Image(this.getClass().getClassLoader().getResourceAsStream(actor_image);
+        current_actor = new ImageView(current_a);
+        this.getChildren().add(current_actor);
     }
 
-    private ImageView stringToImageView(String image) {
-        return new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(image)));
-    }
 
     BorderPane displayStats() {
         BorderPane borderPane = new BorderPane();
@@ -45,6 +47,8 @@ abstract class SideView extends Group {
         //update when switching out
         hpBar.setProgress(current_hp);
 
-        //then reset the view
+        //update these
+        current_actor.setImage(current_a); //whatever the current actor's current image is
+        
     }
 }
