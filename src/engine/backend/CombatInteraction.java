@@ -13,6 +13,16 @@ public class CombatInteraction extends Interaction{
     AnimationObject myCombatIdleAnimation;
     List<Command>commandList;
     int myHealth;
+
+
+    public CombatInteraction(){
+
+    }
+
+    public List<Command> getCommandList(){
+        return commandList;
+    }
+
     //See Interraction changes
     public CombatInteraction(JSONObject data, Map<String, Message> messages){
         super(data,messages);

@@ -1,5 +1,4 @@
 package simpleCombat;
-
 import authoring.Actor;
 import engine.backend.Turn;
 
@@ -32,6 +31,5 @@ public class CombatManager implements engine.backend.CombatManager {
             broadcaster.broadcast(new LoseMessage());
         }
     }
-
 
 }

@@ -22,7 +22,7 @@ public class CombatMove extends Command {
     private Map<String, AnimationObject> myAnimationMap;
 
     public CombatMove(JSONObject params){
-        super.myName=(String)params.get("name");
+        super((String)params.get("name"));
         stat=(String)params.get("targetStat");
         targetActorNum=Integer.parseInt(String.valueOf(params.get("targetActorNumber")));
         targetValue=Integer.parseInt(String.valueOf(params.get("targetValue")));
@@ -33,6 +33,9 @@ public class CombatMove extends Command {
 
     }
 
+    public Animation  getAnimation(){
+        return myAnimation;
+    }
 
     @Override
     public void execute(List<Object> params) {

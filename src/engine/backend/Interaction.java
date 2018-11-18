@@ -4,10 +4,18 @@ import org.json.simple.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public  abstract class Interaction {
     Map<String,AnimationObject> animationMap;
     Map <String, Message> messageMap;
     String myName;
+
+    //TODO: fill out defaults
+    public Interaction(){
+
+    }
+
 
     /**
      * @param data: JSON representation of data relevant to interaction

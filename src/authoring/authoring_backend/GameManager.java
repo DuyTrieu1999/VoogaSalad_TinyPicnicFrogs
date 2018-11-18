@@ -2,6 +2,7 @@ package authoring.authoring_backend;
 
 
 import engine.backend.Actor;
+import engine.backend.Coordinate;
 import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -61,6 +62,7 @@ public class GameManager {
     }
 
     public void createActor(String actorPrototypeID, int x, int y, int z){
+        int[] globalCoords = mapManager.calculateGlobal(x,y);
         actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),x,y,z);
     }
     public Actor getActor(String id){return actorManager.getActor(id);}
@@ -86,5 +88,9 @@ public class GameManager {
     public void loadPrototype(String key, String path){
         actorPrototypeManager.loadPrototype(key, path);
     }
+
+
+
+
 
 }
