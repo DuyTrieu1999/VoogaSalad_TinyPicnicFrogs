@@ -1,48 +1,49 @@
 package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
+import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
-import engine.frontend.Animation;
+import engine.controller.Controller;
+import engine.frontend.game_engine_UI.WorldView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Rectangle;
 
-import java.util.Collection;
+import java.util.*;
 
-public class OverWorldView implements OverWorldViewAPI {
+public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Collection<Actor> myActors;
-    private Collection<Animation> myAnimations;
+    private Collection<AnimationObject> myAnimations;
 
     private Camera myCamera;
 
     private BorderPane displayPane;
     private PlayerActor myPlayer;
 
-    public OverWorldView () {
-        this.setUpDisplay();
+    public OverWorldView (PlayerActor player, Controller controller) {
+        super(player, controller);
+        myCamera = new Camera(myPlayer);
     }
-    public void updateWorldView () {
-        clearOverWorld();
-        this.addActors();
-    }
-    private void addActors () {
+    public void setUpWorld () {
 
     }
-    private void clearOverWorld () {
-        this.myAnimations.clear();
-        displayPane.getChildren().clear();
+    @Override
+    public void updateView () {
+
     }
-    private void setUpDisplay () {
-        displayPane = new BorderPane();
-        displayPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        HBox.setHgrow(displayPane, Priority.ALWAYS);
-        VBox.setVgrow(displayPane, Priority.ALWAYS);
-        clipBound(displayPane);
-        this.updateWorldView();
+    public void setCamera(Camera newCamera) {
+        this.myCamera = newCamera;
     }
-    private void clipBound(Pane pane) {
-        Rectangle clipBoundaries = new Rectangle();
-        clipBoundaries.widthProperty().bind(pane.widthProperty());
-        clipBoundaries.heightProperty().bind(pane.heightProperty());
-        pane.setClip(clipBoundaries);
+    public Camera getCamera() {
+        return this.myCamera;
+    }
+    public Pane getView () {
+        return displayPane;
+    }
+    public void moveCamera () {
+        for (AnimationObject animationObject: myAnimations) {
+            ImageView animationView = animationObject.getAnimationView();
+            animationView.setTranslateX(- myCamera.getTranslateX());
+            animationView.setTranslateY(- myCamera.getTranslateY());
+        }
     }
 }
