@@ -5,7 +5,6 @@ import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
-import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.Collection;

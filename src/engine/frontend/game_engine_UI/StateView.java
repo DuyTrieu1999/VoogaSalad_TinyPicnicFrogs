@@ -1,8 +1,10 @@
 package engine.frontend.game_engine_UI;
 
+import engine.backend.PlayerActor;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
+import javafx.scene.Scene;
 
 public class StateView {
     private Controller myController;
@@ -11,10 +13,14 @@ public class StateView {
 
     public StateView() {
         myController = new Controller(this);
-        setUpScene();
+        setUpView();
     }
-    private void setUpScene () {
-
+    private void setUpView () {
+        PlayerActor player = myController.getPlayer();
+        myWorldView = new OverWorldView(player, myController);
+    }
+    public Scene getScene () {
+        return myWorldView.getMyScene();
     }
     public OverWorldView getMyWorldView () {
         return myWorldView;
