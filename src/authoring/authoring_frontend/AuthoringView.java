@@ -23,7 +23,7 @@ public class AuthoringView {
     public static final Color DEFAULT_BACKGROUND = Color.WHITE;
     private Group myRoot;
     private Scene myScene;
-    private BorderPane myBorder;
+    private BorderPane myMainView;
 
     private GameManager myManager;
 
@@ -50,31 +50,21 @@ public class AuthoringView {
     private void initializeUI() {
         myRoot = new Group();
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
-        myBorder = new BorderPane();
-        myRoot.getChildren().add(myBorder);
+        myMainView = new BorderPane();
 
-        BorderPane mainView = new BorderPane();
-        ActorMenu selectActors = new ActorMenu(myManager);
-        //myRoot.getChildren().add(selectActors.getActorMenu());
-        mainView.setLeft(selectActors.getActorMenu());
-        GameMap maps = new GameMap(myManager);
-        //myRoot.getChildren().add(maps.getGameMap());
-        mainView.setCenter(maps.getGameMap());
-        myRoot.getChildren().add(mainView);
-//        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);
-//        myScene.getStylesheets().add(STYLESHEET);
-    }
-
-    /**
-     *
-     */
-    private void setupUI() {
         ActorMenu selectActors = new ActorMenu(myManager);
         TopMenu topBar = new TopMenu();
         GameMap maps = new GameMap(myManager);
-        myBorder.setTop(topBar);
-        myBorder.setRight(selectActors);
-        myBorder.setLeft(maps);
+
+        myMainView.setTop(topBar);
+        myMainView.setRight(selectActors.getActorMenu());
+        //myRoot.getChildren().add(selectActors.getActorMenu());
+        myMainView.setLeft(maps.getGameMap());
+        //myRoot.getChildren().add(maps.getGameMap());
+
+        myRoot.getChildren().add(myMainView);
+//        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);
+//        myScene.getStylesheets().add(STYLESHEET);
     }
 
     /**

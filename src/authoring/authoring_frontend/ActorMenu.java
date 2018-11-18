@@ -20,7 +20,7 @@ public class ActorMenu extends VBox {
     public ActorMenu(GameManager manager) {
         myManager = manager;
         this.getChildren().add(new Label("menu"));
-        setupMenu();
+        //setupMenu();
     }
 
     public void setupMenu(){
