@@ -26,13 +26,15 @@ public class MapManager {
         myMapWidth = mapWidth;
         myMapHeight = mapHeight;
         square = n;
+        squareHeight = myMapHeight / n;
+        squareWidth = myMapWidth / n;
         //globalCoords = new HashMap<Integer, Coordinate>();
 
     }
 
     /**
-     * The purpose is to divide the parameters given by the author into squares, and then create an empty
-     * map which assigns those squares to a list of Actor Objects.
+     * The purpose is to divide the parameters given by the author into squares, and then returns the numbers to the
+     * GameManager
      *
      * @param width
      * @param height
@@ -40,17 +42,11 @@ public class MapManager {
      * @return
      */
 
-    public Map<Integer, List<Actor>> divideMap(int width, int height, int n) {
-        mySquares = new HashMap<Integer, List<Actor>>();
-        int totalSquares = width / n * height / n;
-        squareHeight = height / n;
-        squareWidth = width / n;
+    public Integer divideMap(int width, int height, int n) {
 
+        int totalSquares = width / n * height / n;
         //need to communicate with front end how the squares are being laid out
-        for (int i = 0; i < totalSquares; i++) {
-            mySquares.put(i, new ArrayList<Actor>());
-        }
-        return mySquares;
+        return totalSquares;
 
     }
 
@@ -62,31 +58,22 @@ public class MapManager {
      */
 
     //everything initiated wrt the the top left corner
-    //ask Michael: assumes that the x, y, z coords are all wrt to the square itself, and that we are numbering
-    //the squares in a specific way
-    public Coordinate calculateGlobal(int squareNum, Actor a) {
-        int row = squareNum / square;
-        int col = squareNum % square;
+    //ask Michael: assumes that the x, y, z coords are all wrt to the square itself, and we are using coordinates
+    //for the square  map
 
+    public Coordinate calculateGlobal(int squareX, int squareY, Actor a) {
+//        int row = squareNum / square;
+//        int col = squareNum % square; this was assuming square labeling 1, 2, 3...
 
         Coordinate actorCoords = a.getCoordinate();
         int globalZ = actorCoords.getZ();
 
-        int globalX = actorCoords.getX() + row * squareWidth;
-        int globalY = actorCoords.getY() + col*squareHeight;
+        int globalX = actorCoords.getX() + squareX * squareWidth;
+        int globalY = actorCoords.getY() + squareY * squareHeight;
 
         Coordinate global = new Coordinate(globalX, globalY, globalZ);
 
         return global;
     }
-
-    public void updateMap(Actor a, int squareNum){
-        //everytime the author puts something on the map, the map must be updated, mySquares
-        mySquares.get(squareNum).add(a);
-
-
-    }
-    //update GameManager to communicate coords and updated map
-
 
 }
