@@ -1,5 +1,6 @@
 package engine.backend;
 
+import authoring.authoring_backend.ActorPrototype;
 import javafx.animation.Animation;
 
 public class Actor {
