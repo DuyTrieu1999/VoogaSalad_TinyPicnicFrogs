@@ -5,7 +5,6 @@ import menu.Menu;
 
 public class PlayerTurn extends Turn {
 
-    CombatInteraction myInt;
     PlayerTurn(CombatInteraction controlledAlly){
         myInt = controlledAlly;
     }

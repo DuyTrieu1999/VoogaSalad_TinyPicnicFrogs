@@ -20,7 +20,7 @@ public class CombatMove extends Command {
 
 
     public CombatMove(JSONObject params){
-        super.myName=(String)params.get("name");
+        super((String)params.get("name"));
         stat=(String)params.get("targetStat");
         targetActorNum=Integer.parseInt(String.valueOf(params.get("targetActorNumber")));
         targetValue=Integer.parseInt(String.valueOf(params.get("targetValue")));

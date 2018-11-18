@@ -2,9 +2,9 @@ package engine.backend;
 
 import java.util.Comparator;
 
-public class LowestHealthFirstInitiative implements Comparator<CombatInteraction> {
+public class LowestHealthFirstInitiative implements Comparator<Turn> {
     @Override
-    public int compare(CombatInteraction c1, CombatInteraction c2) {
-        return c2.getHealth()-c1.getHealth();
+    public int compare(Turn t1, Turn t2) {
+        return t2.getCombatInteraction().getHealth()-t1.getCombatInteraction().getHealth();
     }
 }

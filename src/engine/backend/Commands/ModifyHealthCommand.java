@@ -5,6 +5,9 @@ import engine.backend.CombatInteraction;
 import java.util.List;
 
 public class ModifyHealthCommand extends Command {
+    ModifyHealthCommand(){
+        super("Modify Health");
+    }
 
     @Override
     public void execute(List<Object> params) {

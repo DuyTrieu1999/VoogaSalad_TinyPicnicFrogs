@@ -2,7 +2,6 @@ package engine.backend;
 
 public class AITurn extends Turn {
 
-    CombatInteraction myInt;
     AITurn(CombatInteraction controlledEnemy){
         myInt = controlledEnemy;
     }

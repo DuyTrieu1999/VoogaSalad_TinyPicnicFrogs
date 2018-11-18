@@ -10,7 +10,7 @@ public class CombatManager {
     AI myAI;
     private List<Turn> turnList;
 
-    CombatManager(List<CombatInteraction> allies, List<CombatInteraction> enemies, AI combatAI, Comparator<Turn> initiativeComparator){
+    CombatManager(List<CombatInteraction> allies, List<CombatInteraction> enemies, Comparator<Turn> initiativeComparator){
         myAllies = allies;
         myEnemies = enemies;
         turnList = new ArrayList<>();

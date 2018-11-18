@@ -7,6 +7,12 @@ public abstract class Command {
     Object myTarget;
 
     //TODO: consider refactoring to interface
+    Command(){
+        myName = "default name";
+    }
+    Command(String name){
+        myName =name;
+    }
 
     public abstract void execute(List<Object> params);
 
