@@ -19,21 +19,24 @@
         "targetActorNumber":1,
         "targetActorType":"enemy",
         "targetValue":10,
-        "targetType":"constant"
+        "targetType":"constant",
+        "animations":[{"key":"default","path":"/resource/charizard5.png"},{"key":"special","path":"/resource/charizard6.png"}]
       },{
         "name":"basic regen",
         "targetStat": "HP",
         "targetActorNumber":1,
         "targetActorType":"friend",
         "targetValue":10,
-        "targetType":"percent"
+        "targetType":"percent",
+        "animations":[{"key":"default","path":"/resource/charizard5.png"},{"key":"special","path":"/resource/charizard6.png"}]
       },{
         "name":"special attack",
         "targetStat": "HP",
         "targetActorNumber":3,
         "targetActorType":"enemy",
         "targetValue":10,
-        "targetType":"percent"
+        "targetType":"percent",
+        "animations":[{"key":"default","path":"/resource/charizard5.png"},{"key":"special","path":"/resource/charizard6.png"}]
       }
     ]
 

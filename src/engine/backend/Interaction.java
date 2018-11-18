@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 public  abstract class Interaction {
-    Map<String,String> animationMap;
+    Map<String,AnimationObject> animationMap;
     Map <String, Message> messageMap;
     String myName;
 
@@ -37,7 +37,7 @@ public  abstract class Interaction {
     private void loadAnimationMap(JSONArray data){
         for(int i=0;i<data.size();i+=1){
             JSONObject animation=(JSONObject)data.get(i);
-            animationMap.put((String)animation.get("key"),(String)animation.get("path"));
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
         }
     }
 

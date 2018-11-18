@@ -33,7 +33,7 @@ public class Actor {
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            AnimationObject animation= new AnimationObject(s);
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
             animations.put(s,animation);
         }
         return animations;
@@ -46,7 +46,7 @@ public class Actor {
 
 
     public AnimationObject getActiveAnimation() {
-        return new AnimationObject(myActiveAnimation.getName());
+        return myActiveAnimation;
     }
 
     public ActiveState getActiveState() {
