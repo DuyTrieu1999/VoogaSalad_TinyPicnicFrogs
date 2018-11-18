@@ -77,21 +77,24 @@ public class GameManagetTester {
                     "        \"targetActorNumber\":1,\n" +
                     "        \"targetActorType\":\"enemy\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"constant\"\n" +
+                    "        \"targetType\":\"constant\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      },{\n" +
                     "        \"name\":\"basic regen\",\n" +
                     "        \"targetStat\": \"HP\",\n" +
                     "        \"targetActorNumber\":1,\n" +
                     "        \"targetActorType\":\"friend\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"percent\"\n" +
+                    "        \"targetType\":\"percent\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      },{\n" +
                     "        \"name\":\"special attack\",\n" +
                     "        \"targetStat\": \"HP\",\n" +
                     "        \"targetActorNumber\":3,\n" +
                     "        \"targetActorType\":\"enemy\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"percent\"\n" +
+                    "        \"targetType\":\"percent\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      }\n" +
                     "    ]\n" +
                     "\n" +
