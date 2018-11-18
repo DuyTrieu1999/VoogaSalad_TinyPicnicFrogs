@@ -21,6 +21,7 @@ public class ActorManager {
     protected ActorManager(){
         actorMap = new HashMap<>();
     }
+
     protected String addActor(Actor actor, String id){
         actorMap.put(id,actor);
         return id;
