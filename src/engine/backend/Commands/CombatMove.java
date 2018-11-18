@@ -2,6 +2,7 @@ package engine.backend.Commands;
 
 import engine.backend.Actor;
 import engine.backend.CombatInteraction;
+import javafx.animation.Animation;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -14,9 +15,12 @@ public class CombatMove extends Command {
     private enum targetType {CONSTANT,PERCENTAGE};
     private targetType myTargetType;
     private targetActor myTargetActor;
+    private Animation myAnimation;
+
+
 
     public CombatMove(JSONObject params){
-        super.myName=(String)params.get("name");
+        super((String)params.get("name"));
         stat=(String)params.get("targetStat");
         targetActorNum=Integer.parseInt(String.valueOf(params.get("targetActorNumber")));
         targetValue=Integer.parseInt(String.valueOf(params.get("targetValue")));
@@ -26,6 +30,9 @@ public class CombatMove extends Command {
 
     }
 
+    public Animation  getAnimation(){
+        return myAnimation;
+    }
 
     @Override
     public void execute(List<Object> params) {
