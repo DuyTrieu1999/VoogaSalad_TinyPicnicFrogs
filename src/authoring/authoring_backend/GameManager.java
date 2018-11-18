@@ -1,10 +1,10 @@
 package authoring.authoring_backend;
 
 
+import engine.backend.Actor;
 import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,10 +29,11 @@ public class GameManager {
         mapManager= new MapManager();
     }
 
-    public void createActor(String actrorPrototypeID, double x, double y, double z){}
+
     public void createMessage(String key, String value){
         messageManager.createMessage(key,value);
     }
+    public Message getMessage(String key){return messageManager.getMessage(key);}
     public void createMap(JSONObject mapData){}
 
     /**
@@ -58,4 +59,32 @@ public class GameManager {
         }
         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
     }
+
+    public void createActor(String actorPrototypeID, int x, int y, int z){
+        actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),x,y,z);
+    }
+    public Actor getActor(String id){return actorManager.getActor(id);}
+    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);}
+
+    /**
+     * Saves all created actors and messages
+     * @param gamePath: path of the folder to which the game data is saved
+     * @param authoringPath: path of the folder to which the authoring data is saved
+     */
+    public void saveGame(String gamePath, String authoringPath){
+        actorManager.serializeAllActors(gamePath);
+        messageManager.serializeAllMessages(gamePath);
+        actorPrototypeManager.serializeAllPrototypes(authoringPath);
+    }
+
+    public void loadActor(String key, String path){
+        actorManager.loadActor(key,path);
+    }
+    public void loadMessage(String key, String path){
+        messageManager.loadMessage(key, path);
+    }
+    public void loadPrototype(String key, String path){
+        actorPrototypeManager.loadPrototype(key, path);
+    }
+
 }

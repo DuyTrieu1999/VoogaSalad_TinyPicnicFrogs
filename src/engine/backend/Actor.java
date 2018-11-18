@@ -1,55 +1,50 @@
 package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
-import javafx.animation.Animation;
+import engine.backend.Commands.Command;
+import engine.backend.AnimationObject
+import java.util.HashMap;
+
+import java.util.Map;
 
 public class Actor {
+
+
     private Coordinate myCoordinate;
-    private int myBoxHeight;
-    private int myBoxWidth;
+    private Map <String, Interaction> myInteractionMap;
+    private Map<String, Integer>myStatsMap;
+    private Map<String, AnimationObject> myAnimationMap;
+    private String myName;
     private ActiveState myActiveState;
     private AnimationObject myActiveAnimation;
-    private Interaction myInteraction;
 
-    private int mySpeed;
 
-    //Overworld animations. TODO: put these in some kind of pretty structure
-    private AnimationObject myIdleAnimation;
-    private AnimationObject myLeftAnimation;
-    private AnimationObject myUpAnimation;
-    private AnimationObject myDownAnimation;
-    private AnimationObject myRightAnimation;
-// Eventually needs to be public and take ActorPrototype and X,Y,Z as a parameter
-    public Actor() {
-        myCoordinate = new Coordinate(0, 0, 0);
-        myActiveState = ActiveState.ACTIVE;
-        myBoxHeight = 0;
-        myBoxWidth = 0;
+    public Actor(){}
+    public Actor(ActorPrototype prototype, int x, int y, int z){
+        myCoordinate= new Coordinate(x,y,z);
+        myAnimationMap=parseAnimations(prototype.getAnimationMap());
+        myInteractionMap=prototype.getInteractionMap();
+        myStatsMap= prototype.getMyStats();
+        myActiveAnimation=myAnimationMap.get("idle");
 
-        //TODO: this is also for testing purposes. Remove when unneeded
-        myIdleAnimation = new AnimationObject("idle");
-        myLeftAnimation = new AnimationObject("left");
-        myRightAnimation = new AnimationObject("right");
-        myUpAnimation = new AnimationObject("up");
-        myDownAnimation = new AnimationObject("down");
-        myActiveAnimation = myIdleAnimation;
     }
-    public Actor(ActorPrototype prototype, int x, int y, int z){}
-
-    public Interaction getInteraction() {
-        return myInteraction;
+    public Map <String,Animation>parseAnimations(Map<String,String>imagePaths){
+        Map<String,Animation> animations = new HashMap<>();
+        for(String s: imagePaths.keySet()){
+            Animation animation= new Animation(s,imagePaths.get(s));
+            animations.put(s,animation);
+        }
+        return animations;
     }
 
-    public int getBoxHeight() {
-        return myBoxHeight;
+    public Interaction getInteraction(String key) {
+        return myInteractionMap.get(key);
     }
 
-    public int getBoxWidth() {
-        return myBoxWidth;
-    }
+
 
     public AnimationObject getActiveAnimation() {
-        return myActiveAnimation;
+        return new AnimationObject(myActiveAnimation.getName());
     }
 
     public ActiveState getActiveState() {
@@ -66,7 +61,7 @@ public class Actor {
      */
     public void moveUp(int amt) {
         myCoordinate.setY(myCoordinate.getY()-amt);
-        myActiveAnimation = myUpAnimation;
+        myActiveAnimation = myAnimationMap.get("up");
     }
 
     /**
@@ -74,7 +69,7 @@ public class Actor {
      */
     public void moveDown(int amt) {
         myCoordinate.setY(myCoordinate.getY()+amt);
-        myActiveAnimation = myDownAnimation;
+        myActiveAnimation = myAnimationMap.get("down");
     }
 
     /**
@@ -82,7 +77,7 @@ public class Actor {
      */
     public void moveLeft(int amt) {
         myCoordinate.setX(myCoordinate.getX()-amt);
-        myActiveAnimation = myLeftAnimation;
+        myActiveAnimation = myAnimationMap.get("left");
 
     }
 
@@ -91,14 +86,14 @@ public class Actor {
      */
     public void moveRight(int amt) {
         myCoordinate.setX(myCoordinate.getX()+  amt);
-        myActiveAnimation = myRightAnimation;
+        myActiveAnimation = myAnimationMap.get("right");
     }
 
     /**
      * Sets the Actor to the idle position
      */
     public void idle(){
-        myActiveAnimation = myIdleAnimation;
+        myActiveAnimation = myAnimationMap.get("idle");
 
     }
 
@@ -136,6 +131,8 @@ public class Actor {
     /**
      * Used by authoring to serialize the actor
      */
-    public void serialize(){}
+    public void serialize(){
+
+    }
 
 }
