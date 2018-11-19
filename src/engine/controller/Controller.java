@@ -28,6 +28,6 @@ public class Controller {
     public PlayerActor getPlayer () {
         return new PlayerActor();
     }
-    public List<Command> getActiveCommands () { return new ArrayList<>(); }
+    public List<Command> getActiveCommands () { return myView.getActiveCommand(); }
     public void setAllCommand(List<Command> commands) { setAllCommand(commands); }
 }

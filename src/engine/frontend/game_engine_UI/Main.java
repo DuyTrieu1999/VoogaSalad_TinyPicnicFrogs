@@ -9,7 +9,7 @@ public class Main extends Application {
     }
 
     public void start(Stage stage) {
-        StateView stateView = new StateView();
+        StateView stateView = new StateView(stage);
         stage.setTitle("SLogo Team 08");
         stage.setScene(stateView.getScene());
         stage.show();
