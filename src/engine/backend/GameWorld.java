@@ -1,5 +1,8 @@
 package engine.backend;
 
+/**
+ * @author Christopher Lin cl349
+ */
 public class GameWorld {
 
     private static int myMapHeight;

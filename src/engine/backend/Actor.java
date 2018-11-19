@@ -1,8 +1,10 @@
 package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
+
 import engine.backend.Commands.Command;
-import engine.frontend.Animation;
+import engine.backend.AnimationObject;
+
 import java.util.HashMap;
 
 import java.util.Map;
@@ -13,10 +15,10 @@ public class Actor {
     private Coordinate myCoordinate;
     private Map <String, Interaction> myInteractionMap;
     private Map<String, Integer>myStatsMap;
-    private Map<String, Animation> myAnimationMap;
+    private Map<String, AnimationObject> myAnimationMap;
     private String myName;
     private ActiveState myActiveState;
-    private Animation myActiveAnimation;
+    private AnimationObject myActiveAnimation;
 
 
     public Actor(){}
@@ -28,10 +30,10 @@ public class Actor {
         myActiveAnimation=myAnimationMap.get("idle");
 
     }
-    public Map <String,Animation>parseAnimations(Map<String,String>imagePaths){
-        Map<String,Animation> animations = new HashMap<>();
+    public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
+        Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            Animation animation= new Animation(s,imagePaths.get(s));
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
             animations.put(s,animation);
         }
         return animations;
@@ -44,7 +46,7 @@ public class Actor {
 
 
     public AnimationObject getActiveAnimation() {
-        return new AnimationObject(myActiveAnimation.getName());
+        return myActiveAnimation;
     }
 
     public ActiveState getActiveState() {

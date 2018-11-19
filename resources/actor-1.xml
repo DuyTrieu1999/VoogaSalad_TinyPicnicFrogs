@@ -11,11 +11,17 @@
         <animationMap>
           <entry>
             <string>special</string>
-            <string>/resource/charizard4.png</string>
+            <engine.backend.AnimationObject>
+              <animationName>special</animationName>
+              <animationPath>/resource/charizard4.png</animationPath>
+            </engine.backend.AnimationObject>
           </entry>
           <entry>
             <string>default</string>
-            <string>/resource/charizard3.png</string>
+            <engine.backend.AnimationObject>
+              <animationName>default</animationName>
+              <animationPath>/resource/charizard3.png</animationPath>
+            </engine.backend.AnimationObject>
           </entry>
         </animationMap>
         <messageMap>
@@ -41,6 +47,22 @@
             <targetValue>10</targetValue>
             <myTargetType>CONSTANT</myTargetType>
             <myTargetActor>ENEMY</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/charizard6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/charizard5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
           <engine.backend.Commands.CombatMove>
             <myName>basic regen</myName>
@@ -49,6 +71,22 @@
             <targetValue>10</targetValue>
             <myTargetType>PERCENTAGE</myTargetType>
             <myTargetActor>FRIEND</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/charizard6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/charizard5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
           <engine.backend.Commands.CombatMove>
             <myName>special attack</myName>
@@ -57,6 +95,22 @@
             <targetValue>10</targetValue>
             <myTargetType>PERCENTAGE</myTargetType>
             <myTargetActor>ENEMY</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/charizard6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/charizard5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
         </commandList>
         <myHealth>10</myHealth>
@@ -76,15 +130,17 @@
   <myAnimationMap>
     <entry>
       <string>special</string>
-      <engine.frontend.Animation>
-        <myName>special</myName>
-      </engine.frontend.Animation>
+      <engine.backend.AnimationObject>
+        <animationName>special</animationName>
+        <animationPath>/resource/charizard2.png</animationPath>
+      </engine.backend.AnimationObject>
     </entry>
     <entry>
       <string>default</string>
-      <engine.frontend.Animation>
-        <myName>default</myName>
-      </engine.frontend.Animation>
+      <engine.backend.AnimationObject>
+        <animationName>default</animationName>
+        <animationPath>/resource/charizard1.png</animationPath>
+      </engine.backend.AnimationObject>
     </entry>
   </myAnimationMap>
 </engine.backend.Actor>

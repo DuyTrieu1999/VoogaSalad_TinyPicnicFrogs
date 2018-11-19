@@ -4,7 +4,16 @@ import engine.backend.CombatInteraction;
 
 import java.util.List;
 
+/**
+ * Modifies health. Mostly for testing
+ *
+ * @author Christopher Lin
+ */
+
 public class ModifyHealthCommand extends Command {
+    ModifyHealthCommand(){
+        super("Modify Health");
+    }
 
     @Override
     public void execute(List<Object> params) {
