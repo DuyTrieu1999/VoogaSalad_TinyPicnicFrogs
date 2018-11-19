@@ -2,12 +2,14 @@ package engine.controller;
 
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
+import engine.backend.Commands.Command;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Controller {
     private StateView myView;
@@ -26,4 +28,6 @@ public class Controller {
     public PlayerActor getPlayer () {
         return new PlayerActor();
     }
+    public List<Command> getActiveCommands () { return new ArrayList<>(); }
+    public void setAllCommand(List<Command> commands) { setAllCommand(commands); }
 }
