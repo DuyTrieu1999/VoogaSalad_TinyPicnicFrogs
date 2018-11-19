@@ -1,7 +1,13 @@
 package engine.backend;
 
+
+/**
+ * Used to pass global messages to actors
+ * @author Christopher Lin cl349
+ */
+
 public class Message {
-    String myMessageString;
+    private String myMessageString;
     public Message(String messageString){
         myMessageString = messageString;
     }

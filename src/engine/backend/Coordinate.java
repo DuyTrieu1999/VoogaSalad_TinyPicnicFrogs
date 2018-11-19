@@ -1,5 +1,8 @@
 package engine.backend;
 
+/**
+ * @Christopher Lin cl349
+ */
 public class Coordinate {
 
     private int x;
