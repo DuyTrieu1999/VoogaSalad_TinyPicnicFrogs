@@ -6,7 +6,6 @@ public class ActiveItem {
     private static BorderPane activeItem = null;
 
     public static void setActiveItem(BorderPane newActiveItem){
-        //newActiveItem.setOnMouseClicked(null);
         activeItem = newActiveItem;
     }
 

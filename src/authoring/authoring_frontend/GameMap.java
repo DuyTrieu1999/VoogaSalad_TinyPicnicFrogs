@@ -26,8 +26,11 @@ public class GameMap extends BorderPane {
                 thisCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if(ActiveItem.getActiveItem() != null){
-                            thisCell.setCenter(ActiveItem.getActiveItem());
+                        BorderPane activeTile = ActiveItem.getActiveItem();
+                        if(activeTile != null){
+                            activeTile.setOnMouseClicked(null);
+                            thisCell.setCenter(activeTile);
+                            ActiveItem.setActiveItem(null);
                         }
                         else {
                             thisCell.setCenter(null);

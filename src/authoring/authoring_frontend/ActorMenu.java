@@ -4,6 +4,7 @@ import authoring.authoring_backend.GameManager;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class ActorMenu extends VBox {
     private GameManager myManager;
-    private FlowPane tilePane = new FlowPane(Orientation.HORIZONTAL, 5, 5);
+    private ScrollPane tilePane = new ScrollPane();
     private BorderPane activeTile = null;
 
     public ActorMenu(GameManager manager) {
@@ -25,11 +26,12 @@ public class ActorMenu extends VBox {
 
     public void setupMenu(){
         //todo: sprite number detection
-        tilePane.setPrefWrapLength(200);
+        tilePane.setPrefViewportWidth(200);
+        tilePane.setPrefViewportHeight(400);
         tilePane.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         ArrayList<BorderPane> tileImages = new ArrayList<>();
-        for(int j=0;j<40;j++){
+        for(int j=0;j<100;j++){
             for(int i=1;i<5;i++) {
                 BorderPane thisTileImage = new BorderPane(new ImageView(new Image(i + ".png")));
                 thisTileImage.setOnMouseClicked(event -> {
@@ -38,11 +40,14 @@ public class ActorMenu extends VBox {
                         activeTile = thisTileImage;
                         activeTile.setStyle("-fx-border-color: blue;");
                         ActiveItem.setActiveItem(activeTile);
+                        System.out.println("First tile clicked");
                     }
                     else if(activeTile == thisTileImage){
                         //deselect
                         activeTile.setStyle(null);
+                        activeTile = null;
                         ActiveItem.setActiveItem(null);
+                        System.out.println("deselect");
                     }
                     else {
                         //replace old selection
@@ -50,15 +55,19 @@ public class ActorMenu extends VBox {
                         activeTile = thisTileImage;
                         activeTile.setStyle("-fx-border-color: blue;");
                         ActiveItem.setActiveItem(activeTile);
+                        System.out.println("replace old");
                     }
                 });
                 tileImages.add(thisTileImage);
             }
         }
-        tilePane.getChildren().addAll(tileImages);
+        FlowPane tileHolder = new FlowPane();
+        tileHolder.getChildren().addAll(tileImages);
+        tileHolder.setPrefWrapLength(200);
+        tilePane.setContent(tileHolder);
     }
 
-    public FlowPane getActorMenu(){
+    public ScrollPane getActorMenu(){
         return tilePane;
     }
 

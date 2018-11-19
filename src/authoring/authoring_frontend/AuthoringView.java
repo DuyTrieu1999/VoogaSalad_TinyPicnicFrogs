@@ -5,6 +5,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.util.ResourceBundle;
@@ -55,11 +57,14 @@ public class AuthoringView {
 
         BorderPane mainView = new BorderPane();
         ActorMenu selectActors = new ActorMenu(myManager);
-        //myRoot.getChildren().add(selectActors.getActorMenu());
-        mainView.setLeft(selectActors.getActorMenu());
         GameMap maps = new GameMap(myManager);
-        //myRoot.getChildren().add(maps.getGameMap());
         mainView.setCenter(maps.getGameMap());
+        LayerMenu myLayers = new LayerMenu();
+        VBox leftSide = new VBox();
+        leftSide.setMaxHeight(600);
+        leftSide.setMaxWidth(400);
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), myLayers.getLayerList());
+        mainView.setLeft(leftSide);
         myRoot.getChildren().add(mainView);
 //        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);
 //        myScene.getStylesheets().add(STYLESHEET);
