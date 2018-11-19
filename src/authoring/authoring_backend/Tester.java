@@ -16,7 +16,7 @@ public class Tester {
         JSONObject data = loadJSON();
         if(data!=null){
             gameManager.createActorPrototype(data);
-            gameManager.createActor("charizard",0,0,0,0,0);
+            gameManager.createActor("charizard",0,0,0, 1, 1);
             gameManager.saveGame("./resources/","./resources/authoring/");
         }
     }
