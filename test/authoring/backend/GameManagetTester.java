@@ -33,8 +33,8 @@ public class GameManagetTester {
     public void testReadActorNotNull(){
         GameManager manager = new GameManager();
         setUp(manager);
-        manager.loadActor("boss","./resources/actor-1.xml");
-        assertNotEquals(null,manager.getActor("boss"));
+        manager.loadActors("./resources/actors.xml");
+        assertNotEquals(null,manager.getActor("charizard"));
     }
     @Test
     public void testReadPrototypeNotNull(){
@@ -51,7 +51,7 @@ public class GameManagetTester {
         JSONObject data = loadJSON();
         if(data!=null){
             manager.createActorPrototype(data);
-            manager.createActor("charizard",0,0,0);
+            manager.createActor("charizard",0,0,0,0,0);
             manager.saveGame("./resources/","./resources/authoring/");
         }
     }

@@ -86,8 +86,8 @@ public class GameManager {
         actorPrototypeManager.serializeAllPrototypes(authoringPath);
     }
 
-    public void loadActor(String key, String path){
-        actorManager.loadActor(key,path);
+    public void loadActors(String path){
+        actorManager.loadActors(path);
     }
     public void loadMessage(String key, String path){
         messageManager.loadMessage(key, path);
