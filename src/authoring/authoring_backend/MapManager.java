@@ -43,7 +43,7 @@ public class MapManager {
     //ask Michael: assumes that the x, y, z coords are all wrt to the square itself
     //The actor has not been created yet
 
-    public int[] calculateGlobal(int squareX, int squareY) {
+    public int[] calculateGlobal(int squareX, int squareY,int squareRow, int SquareCol) {
 //        int row = squareNum / square;
 //        int col = squareNum % square; this was assuming square labeling 1, 2, 3...
 

@@ -35,14 +35,11 @@ public class ActorManager {
      * @param path: path of the folder where to store actors
      */
     protected void serializeAllActors(String path){
-        int index=0;
         XStream serializer = new XStream(new DomDriver());
-        for(Actor actor:actorMap.values()){
-            index+=1;
-            String serialized= serializer.toXML(actor);
-            try{
-            Files.write(Paths.get(path+"actor-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
-        }
+        String serialized= serializer.toXML(actorMap);
+        try{
+            Files.write(Paths.get(path+"actors.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+
     }
     protected void createActor(ActorPrototype actorPrototype, int x, int y, int z){
         Actor actor= new Actor(actorPrototype,x,y,z);
@@ -51,10 +48,13 @@ public class ActorManager {
     protected void serializeActor(String id){
         actorMap.get(id).serialize();
     }
-    protected void loadActor(String key, String path){
+    protected void loadActors(String path){
         XStream serializer = new XStream(new DomDriver());
-        Actor loadedActor=(Actor) serializer.fromXML(Paths.get(path).toFile());
-        actorMap.put(key,loadedActor);
+        Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get(path).toFile());
+        actorMap.putAll(loadedMap);
     }
+
+
+
 
 }
