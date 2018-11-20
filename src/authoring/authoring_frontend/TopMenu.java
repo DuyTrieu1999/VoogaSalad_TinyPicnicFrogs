@@ -54,7 +54,7 @@ public class TopMenu extends HBox {
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
 
         newGame.setOnAction(e -> {
-            System.out.println("Open AuthoringView"); //TODO: replace this with code
+            System.out.println("Open New AuthoringView"); //TODO: replace this with code
         });
 
         newActor.setOnAction(e -> {

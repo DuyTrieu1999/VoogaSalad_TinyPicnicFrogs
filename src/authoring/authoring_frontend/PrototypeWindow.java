@@ -1,11 +1,10 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_frontend.Forms.PrototypeForm;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,15 +24,14 @@ public class PrototypeWindow {
     private ResourceBundle myResources;
     private Scene myWindow;
     private Group myRoot;
-    private FlowPane myContent;
 
+    /**
+     * Constructor
+     */
     public PrototypeWindow() {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myRoot = new Group();
         myWindow = new Scene(myRoot);
-        myContent = new FlowPane();
-
-        myRoot.getChildren().add(myContent);
 
         this.addContent();
         this.display();
@@ -53,12 +51,36 @@ public class PrototypeWindow {
         window.show();
     }
 
+    /**
+     * creates the elements needed to get the data for a prototype
+     */
     private void addContent() {
-        Label IDLbl = new Label(myResources.getString("PrototypeID"));
-        TextField prototypeID = new TextField();
-        Button saveBtn = new Button(myResources.getString("Save"));
-
-        myContent.getChildren().addAll(IDLbl, prototypeID, saveBtn);
+        ScrollPane scroller = new ScrollPane();
+        PrototypeForm myContent = new PrototypeForm();
+        scroller.setContent(myContent);
+        myRoot.getChildren().add(scroller);
     }
 
+    /**
+     * checks that all information necessary has been filled out
+     * @return boolean, True if errors exist and False otherwise
+     */
+    private boolean checkErrors() {
+        return false;
+    }
+
+    /**
+     * saves all information as a JSON Object to be passed to backend
+     */
+    private void saveJSON(TextField id) {
+        System.out.println(id.getText());
+        System.out.println("saving...");
+    }
+
+    /**
+     * returns Prototype saved as JSON Object
+     */
+    public void getPrototype() {
+
+    }
 }
