@@ -16,5 +16,5 @@ public class AnimationObject {
         return this.animationView;
     }
     public String getName(){return animationName;}
-    public Coordinate getCoordinate(){return coordinate}
+    public Coordinate getCoordinate(){return coordinate;}
 }
