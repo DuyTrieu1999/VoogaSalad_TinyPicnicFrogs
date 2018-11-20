@@ -133,4 +133,5 @@
     </entry>
   </myStats>
   <name>charizard</name>
+  <isPlayer>false</isPlayer>
 </authoring.authoring__backend.ActorPrototype>

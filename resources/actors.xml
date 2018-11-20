@@ -146,6 +146,7 @@
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
+      <isPlayerActor>false</isPlayerActor>
     </engine.backend.Actor>
   </entry>
 </map>

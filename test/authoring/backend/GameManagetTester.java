@@ -61,8 +61,10 @@ public class GameManagetTester {
             JSONObject obj=(JSONObject) parser.parse("{\n" +
                     "  \"name\":\"charizard\",\n" +
                     "  \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard1.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard2.png\"}],\n" +
-                    "  \"stats\":[{\"key\":\"health\",\"value\":50},{\"key\":\"damage\",\"value\":5}\n" +
+                    "  \"stats\":[{\"key\":\"health\",\"value\":50},{\"key\":\"damage\",\"value\":5},\n" +
+                    "\n" +
                     "  ],\n" +
+                    "  \"isPlayer\":false,\n" +
                     "  \"Interactions\": [{\n" +
                     "    \"name\":\"fight1\",\n" +
                     "    \"type\":\"fight\",\n" +

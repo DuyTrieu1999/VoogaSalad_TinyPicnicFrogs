@@ -46,6 +46,15 @@ public class Actor {
         return myInteractionMap.get(key);
     }
 
+    /**
+     *
+     * @return interraction object associated with the first key in the keyset
+     */
+    public Interaction getInteraction(){
+        String key =(String)myInteractionMap.keySet().toArray()[0];
+        return myInteractionMap.get(key);
+    }
+
 
 
     public AnimationObject getActiveAnimation() {
