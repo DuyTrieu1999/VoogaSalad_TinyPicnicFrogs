@@ -16,8 +16,10 @@ public class ActorMenu extends VBox {
     private GameManager myManager;
     private ScrollPane tilePane = new ScrollPane();
     private BorderPane selectedPane = null;
+    private String programName;
 
-    public ActorMenu(GameManager manager) {
+    public ActorMenu(GameManager manager, String name) {
+        programName = name;
         myManager = manager;
         this.getChildren().add(new Label("menu"));
         setupMenu();
@@ -34,10 +36,10 @@ public class ActorMenu extends VBox {
                 Actor thisActor = new Actor(new Image(i + ".png"));
                 BorderPane thisTileImage = new BorderPane(thisActor.getActorImage());
                 thisTileImage.setOnMouseClicked(event -> {
-                    Actor currentActiveActor = ActiveItem.getActiveItem();
+                    Actor currentActiveActor = ActiveItem.getActiveItem(programName);
                     if(currentActiveActor == null){
                         //first tile clicked
-                        ActiveItem.setActiveItem(thisActor);
+                        ActiveItem.setActiveItem(programName, thisActor);
                         thisTileImage.setStyle("-fx-border-color: blue;");
                         selectedPane = thisTileImage;
                     }
@@ -45,12 +47,12 @@ public class ActorMenu extends VBox {
                         //deselect
                         selectedPane.setStyle(null);
                         selectedPane = null;
-                        ActiveItem.setActiveItem(null);
+                        ActiveItem.removeActiveItem(programName);
                     }
                     else {
                         //replace old selection
                         selectedPane.setStyle(null);
-                        ActiveItem.setActiveItem(thisActor);
+                        ActiveItem.setActiveItem(programName, thisActor);
                         selectedPane = thisTileImage;
                         thisTileImage.setStyle("-fx-border-color: blue;");
                     }

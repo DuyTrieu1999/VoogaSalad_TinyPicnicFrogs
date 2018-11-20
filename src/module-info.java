@@ -12,4 +12,5 @@ module voogasalad_tinypicnicfrogs {
     exports engine.controller;
     exports authoring.authoring_backend;
     exports authoring.authoring_frontend;
+    exports authoring.authoring_frontend.Forms;
 }

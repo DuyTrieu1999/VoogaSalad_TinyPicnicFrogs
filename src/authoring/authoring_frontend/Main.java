@@ -10,7 +10,7 @@ public class Main extends Application {
 
     public void start(Stage primaryStage) {
         AuthoringView environment = new AuthoringView();
-        primaryStage.setTitle("Tiny Picnic Frogs");
+        primaryStage.setTitle(environment.getProjectName());
         primaryStage.setScene(environment.getScene());
         primaryStage.show();
     }

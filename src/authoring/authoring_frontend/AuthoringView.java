@@ -23,20 +23,32 @@ import java.util.ResourceBundle;
  */
 public class AuthoringView {
     public static final int WIDTH = 1000;
-    public static final int HEIGHT = 600;
+    public static final int HEIGHT = 620;
     public static final Color DEFAULT_BACKGROUND = Color.WHITE;
     private Group myRoot;
     private Scene myScene;
-    private BorderPane myBorder;
+    private BorderPane myMainView;
 
     private GameManager myManager;
+    private MapManager mapManager;
+    private String projectName;
+    private int numberUnsavedProjects = 1;
 
     /**
      * Constructor
      */
     public AuthoringView() {
         myManager = new GameManager();
+        projectName = "Project " + numberUnsavedProjects;
+        numberUnsavedProjects++;
         this.initializeUI();
+    }
+
+    public AuthoringView(int width, int height) {
+        myManager = new GameManager();
+        projectName = "Project " + numberUnsavedProjects;
+        numberUnsavedProjects++;
+        this.initializeUI(width, height);
     }
 
     /**
@@ -54,15 +66,12 @@ public class AuthoringView {
     private void initializeUI() {
         myRoot = new Group();
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
-        myBorder = new BorderPane();
-        myRoot.getChildren().add(myBorder);
+        myMainView = new BorderPane();
+        mapManager = new MapManager();
 
-        BorderPane mainView = new BorderPane();
-        ActorMenu selectActors = new ActorMenu(myManager);
-        GameMap maps = new GameMap(myManager);
-        mainView.setCenter(maps.getGameMap());
+        ActorMenu selectActors = new ActorMenu(myManager, projectName);
         LayerMenu myLayers = new LayerMenu();
-        MapMenu myMaps = new MapMenu();
+        MapMenu myMaps = new MapMenu(projectName, mapManager);
         VBox leftSide = new VBox();
         leftSide.setMaxHeight(600);
         leftSide.setMaxWidth(400);
@@ -70,22 +79,35 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myLayers.getLayerList(), myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
-        mainView.setLeft(leftSide);
-        myRoot.getChildren().add(mainView);
-//        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);
-//        myScene.getStylesheets().add(STYLESHEET);
+        TopMenu topBar = new TopMenu();
+        myMainView.setCenter(mapManager.getActiveMap().getMyGrid());
+        myMainView.setLeft(leftSide);
+        myMainView.setTop(topBar);
+        myRoot.getChildren().add(myMainView);
     }
 
-    /**
-     *
-     */
-    private void setupUI() {
-        ActorMenu selectActors = new ActorMenu(myManager);
+    private void initializeUI(int width, int height) {
+        myRoot = new Group();
+        myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
+        myMainView = new BorderPane();
+        mapManager = new MapManager();
+
+
+        ActorMenu selectActors = new ActorMenu(myManager, projectName);
+        LayerMenu myLayers = new LayerMenu();
+        MapMenu myMaps = new MapMenu(projectName, mapManager);
+        VBox leftSide = new VBox();
+        leftSide.setMaxHeight(600);
+        leftSide.setMaxWidth(400);
+        TabPane layersAndMaps = new TabPane();
+        layersAndMaps.getTabs().addAll(myLayers.getLayerList(), myMaps.getMapList());
+        layersAndMaps.setSide(Side.BOTTOM);
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
         TopMenu topBar = new TopMenu();
-        GameMap maps = new GameMap(myManager);
-        myBorder.setTop(topBar);
-        myBorder.setRight(selectActors);
-        myBorder.setLeft(maps);
+        myMainView.setLeft(leftSide);
+        myMainView.setCenter(mapManager.getActiveMap().getMyGrid());
+        myMainView.setTop(topBar);
+        myRoot.getChildren().add(myMainView);
     }
 
     /**
@@ -107,6 +129,10 @@ public class AuthoringView {
      */
     private void makeGameMap() {
 
+    }
+
+    public String getProjectName(){
+        return projectName;
     }
 
 }
