@@ -2,8 +2,10 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -60,10 +62,14 @@ public class AuthoringView {
         GameMap maps = new GameMap(myManager);
         mainView.setCenter(maps.getGameMap());
         LayerMenu myLayers = new LayerMenu();
+        MapMenu myMaps = new MapMenu();
         VBox leftSide = new VBox();
         leftSide.setMaxHeight(600);
         leftSide.setMaxWidth(400);
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myLayers.getLayerList());
+        TabPane layersAndMaps = new TabPane();
+        layersAndMaps.getTabs().addAll(myLayers.getLayerList(), myMaps.getMapList());
+        layersAndMaps.setSide(Side.BOTTOM);
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
         mainView.setLeft(leftSide);
         myRoot.getChildren().add(mainView);
 //        myResources = ResourceBundle.getBundle(RESOURCE_PACKAGE + UI_TEXT);

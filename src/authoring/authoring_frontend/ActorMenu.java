@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class ActorMenu extends VBox {
     private GameManager myManager;
     private ScrollPane tilePane = new ScrollPane();
-    private BorderPane activeTile = null;
+    private BorderPane selectedPane = null;
 
     public ActorMenu(GameManager manager) {
         myManager = manager;
@@ -31,36 +30,33 @@ public class ActorMenu extends VBox {
         tilePane.setBorder(new Border(new BorderStroke(Color.BLACK,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         ArrayList<BorderPane> tileImages = new ArrayList<>();
-        for(int j=0;j<100;j++){
-            for(int i=1;i<5;i++) {
-                BorderPane thisTileImage = new BorderPane(new ImageView(new Image(i + ".png")));
+            for(int i=1;i<43;i++) {
+                Actor thisActor = new Actor(new Image(i + ".png"));
+                BorderPane thisTileImage = new BorderPane(thisActor.getActorImage());
                 thisTileImage.setOnMouseClicked(event -> {
-                    if(activeTile == null){
+                    Actor currentActiveActor = ActiveItem.getActiveItem();
+                    if(currentActiveActor == null){
                         //first tile clicked
-                        activeTile = thisTileImage;
-                        activeTile.setStyle("-fx-border-color: blue;");
-                        ActiveItem.setActiveItem(activeTile);
-                        System.out.println("First tile clicked");
+                        ActiveItem.setActiveItem(thisActor);
+                        thisTileImage.setStyle("-fx-border-color: blue;");
+                        selectedPane = thisTileImage;
                     }
-                    else if(activeTile == thisTileImage){
+                    else if(currentActiveActor.equals(thisActor)){
                         //deselect
-                        activeTile.setStyle(null);
-                        activeTile = null;
+                        selectedPane.setStyle(null);
+                        selectedPane = null;
                         ActiveItem.setActiveItem(null);
-                        System.out.println("deselect");
                     }
                     else {
                         //replace old selection
-                        activeTile.setStyle(null);
-                        activeTile = thisTileImage;
-                        activeTile.setStyle("-fx-border-color: blue;");
-                        ActiveItem.setActiveItem(activeTile);
-                        System.out.println("replace old");
+                        selectedPane.setStyle(null);
+                        ActiveItem.setActiveItem(thisActor);
+                        selectedPane = thisTileImage;
+                        thisTileImage.setStyle("-fx-border-color: blue;");
                     }
                 });
                 tileImages.add(thisTileImage);
             }
-        }
         FlowPane tileHolder = new FlowPane();
         tileHolder.getChildren().addAll(tileImages);
         tileHolder.setPrefWrapLength(200);
@@ -69,9 +65,5 @@ public class ActorMenu extends VBox {
 
     public ScrollPane getActorMenu(){
         return tilePane;
-    }
-
-    public BorderPane getActiveTile(){
-        return activeTile;
     }
 }

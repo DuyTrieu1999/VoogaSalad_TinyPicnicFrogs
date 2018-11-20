@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 
 public class GameMap extends BorderPane {
     private GameManager myManager;
@@ -20,20 +21,19 @@ public class GameMap extends BorderPane {
     public void createGrid(){
         for(int i=0;i<30;i++){
             for(int j=0;j<20;j++){
-                BorderPane thisCell = new BorderPane();
-                thisCell.setPrefSize(16, 16);
+                StackPane thisCell = new StackPane();
+                thisCell.setPrefSize(18, 18);
                 thisCell.setStyle("-fx-border-color: black;");
-                thisCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        BorderPane activeTile = ActiveItem.getActiveItem();
-                        if(activeTile != null){
-                            activeTile.setOnMouseClicked(null);
-                            thisCell.setCenter(activeTile);
-                            ActiveItem.setActiveItem(null);
-                        }
-                        else {
-                            thisCell.setCenter(null);
+                thisCell.setOnMouseClicked(event -> {
+                    Actor activeActor = ActiveItem.getActiveItem();
+                    if(activeActor != null){
+                        BorderPane activeTile = new BorderPane(activeActor.getActorImage());
+                        activeTile.setOnMouseClicked(null);
+                        thisCell.getChildren().add(activeTile);
+                    }
+                    else {
+                        if(thisCell.getChildren().size() > 0){
+                            thisCell.getChildren().remove(thisCell.getChildren().size()-1);
                         }
                     }
                 });

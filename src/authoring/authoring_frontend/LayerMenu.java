@@ -1,13 +1,12 @@
 package authoring.authoring_frontend;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -27,6 +26,7 @@ public class LayerMenu extends HBox {
         layerView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         layerView.getItems().add(new Layer());
         layerView.setPrefHeight(200);
+        layerView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> ActiveLayer.setActiveLayer(newValue));
         return layerView;
     }
 
@@ -45,9 +45,12 @@ public class LayerMenu extends HBox {
         return buttonView;
     }
 
-    public VBox getLayerList(){
+    public Tab getLayerList(){
         layerList.getChildren().addAll(setupButtons(), setupList());
-        return layerList;
+        Tab layerTab = new Tab();
+        layerTab.setText("Layers");
+        layerTab.setContent(layerList);
+        return layerTab;
     }
 
     public Layer getCurrentLayer(){

@@ -1,15 +1,13 @@
 package authoring.authoring_frontend;
 
-import javafx.scene.layout.BorderPane;
-
 public class ActiveItem {
-    private static BorderPane activeItem = null;
+    private static Actor activeItem = null;
 
-    public static void setActiveItem(BorderPane newActiveItem){
+    public static void setActiveItem(Actor newActiveItem){
         activeItem = newActiveItem;
     }
 
-    public static BorderPane getActiveItem(){
+    public static Actor getActiveItem(){
         return activeItem;
     }
 }
