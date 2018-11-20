@@ -58,15 +58,22 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
+
         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+
     }
 
-    public void createActor(String actorPrototypeID, int x, int y, int z){
-        int[] globalCoords = mapManager.calculateGlobal(x,y);
-        actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),x,y,z);
+    public void createActor(String actorPrototypeID, int x, int y, int z,int row,int col){
+        int[] globalCoords = mapManager.calculateGlobal(x,y,row,col);
+        actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),globalCoords[0],globalCoords[1],z);
     }
     public Actor getActor(String id){return actorManager.getActor(id);}
-    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);}
+    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);
+
+
+    }
+
+
 
     /**
      * Saves all created actors and messages
@@ -79,8 +86,8 @@ public class GameManager {
         actorPrototypeManager.serializeAllPrototypes(authoringPath);
     }
 
-    public void loadActor(String key, String path){
-        actorManager.loadActor(key,path);
+    public void loadActors(String path){
+        actorManager.loadActors(path);
     }
     public void loadMessage(String key, String path){
         messageManager.loadMessage(key, path);

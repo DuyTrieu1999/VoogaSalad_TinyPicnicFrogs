@@ -19,6 +19,7 @@ public class Actor {
     private String myName;
     private ActiveState myActiveState;
     private AnimationObject myActiveAnimation;
+    private boolean isPlayerActor;
 
 
     public Actor(){}
@@ -28,6 +29,8 @@ public class Actor {
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+        isPlayerActor = prototype.getIsPlayer();
+
 
     }
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
@@ -56,6 +59,10 @@ public class Actor {
     public Coordinate getCoordinate() {
         return myCoordinate;
     }
+
+    public boolean getIsPlayerActor() {return isPlayerActor;}
+
+
 
 
     /**

@@ -6,6 +6,7 @@ public class AnimationObject {
     private String animationName;
     private String animationPath;
     ImageView animationView;
+    Coordinate coordinate;
 
     public AnimationObject (String name,String path) {
         this.animationName = name;
@@ -15,4 +16,5 @@ public class AnimationObject {
         return this.animationView;
     }
     public String getName(){return animationName;}
+    public Coordinate getCoordinate(){return coordinate}
 }
