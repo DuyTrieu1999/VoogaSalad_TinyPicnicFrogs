@@ -2,11 +2,11 @@
   <animationMap>
     <entry>
       <string>special</string>
-      <string>/resource/pikachu2.png</string>
+      <string>/resource/charizard2.png</string>
     </entry>
     <entry>
       <string>default</string>
-      <string>/resource/pikachu1.png</string>
+      <string>/resource/charizard1.png</string>
     </entry>
   </animationMap>
   <interractionMap>
@@ -18,14 +18,14 @@
             <string>special</string>
             <engine.backend.AnimationObject>
               <animationName>special</animationName>
-              <animationPath>/resource/pikachu4.png</animationPath>
+              <animationPath>/resource/charizard4.png</animationPath>
             </engine.backend.AnimationObject>
           </entry>
           <entry>
             <string>default</string>
             <engine.backend.AnimationObject>
               <animationName>default</animationName>
-              <animationPath>/resource/pikachu3.png</animationPath>
+              <animationPath>/resource/charizard3.png</animationPath>
             </engine.backend.AnimationObject>
           </entry>
         </animationMap>
@@ -57,14 +57,14 @@
                 <string>special</string>
                 <engine.backend.AnimationObject>
                   <animationName>special</animationName>
-                  <animationPath>/resource/pikachu6.png</animationPath>
+                  <animationPath>/resource/charizard6.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
               <entry>
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>/resource/pikachu5.png</animationPath>
+                  <animationPath>/resource/charizard5.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </myAnimationMap>
@@ -81,14 +81,14 @@
                 <string>special</string>
                 <engine.backend.AnimationObject>
                   <animationName>special</animationName>
-                  <animationPath>/resource/pikachu6.png</animationPath>
+                  <animationPath>/resource/charizard6.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
               <entry>
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>/resource/pikachu5.png</animationPath>
+                  <animationPath>/resource/charizard5.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </myAnimationMap>
@@ -105,14 +105,14 @@
                 <string>special</string>
                 <engine.backend.AnimationObject>
                   <animationName>special</animationName>
-                  <animationPath>/resource/pikachu6.png</animationPath>
+                  <animationPath>/resource/charizard6.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
               <entry>
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>/resource/pikachu5.png</animationPath>
+                  <animationPath>/resource/charizard5.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </myAnimationMap>
@@ -132,6 +132,6 @@
       <int>50</int>
     </entry>
   </myStats>
-  <name>pikachu</name>
+  <name>charizard</name>
   <isPlayer>false</isPlayer>
 </authoring.authoring__backend.ActorPrototype>
