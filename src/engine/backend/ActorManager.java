@@ -24,17 +24,6 @@ public class ActorManager {
     public List<Actor> getInactiveActors() { return inactiveActors;}
 
     /**
-     * @return
-     */
-    public List<AnimationObject> getAnimationObjects() {
-        List<AnimationObject> activeAnimationObjects = new List<AnimationObject>();
-        for(Actor actor : activeActors) {
-            activeAnimationObjects.add(actor.getActiveAnimation());
-        }
-        return activeAnimationObjects;
-    }
-
-    /**
      * changes an actor's state
      * @param removeList
      * @param addList
