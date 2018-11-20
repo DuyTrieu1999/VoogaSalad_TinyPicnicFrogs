@@ -5,9 +5,11 @@ import engine.backend.Actor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 public class GameManagetTester {
     @Test
@@ -31,8 +33,8 @@ public class GameManagetTester {
     public void testReadActorNotNull(){
         GameManager manager = new GameManager();
         setUp(manager);
-        manager.loadActor("boss","./resources/actor-1.xml");
-        assertNotEquals(null,manager.getActor("boss"));
+        manager.loadActors("./resources/actors.xml");
+        assertNotEquals(null,manager.getActor("charizard"));
     }
     @Test
     public void testReadPrototypeNotNull(){
@@ -49,7 +51,7 @@ public class GameManagetTester {
         JSONObject data = loadJSON();
         if(data!=null){
             manager.createActorPrototype(data);
-            manager.createActor("charizard",0,0,0);
+            manager.createActor("charizard",0,0,0,0,0);
             manager.saveGame("./resources/","./resources/authoring/");
         }
     }
@@ -77,21 +79,24 @@ public class GameManagetTester {
                     "        \"targetActorNumber\":1,\n" +
                     "        \"targetActorType\":\"enemy\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"constant\"\n" +
+                    "        \"targetType\":\"constant\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      },{\n" +
                     "        \"name\":\"basic regen\",\n" +
                     "        \"targetStat\": \"HP\",\n" +
                     "        \"targetActorNumber\":1,\n" +
                     "        \"targetActorType\":\"friend\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"percent\"\n" +
+                    "        \"targetType\":\"percent\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      },{\n" +
                     "        \"name\":\"special attack\",\n" +
                     "        \"targetStat\": \"HP\",\n" +
                     "        \"targetActorNumber\":3,\n" +
                     "        \"targetActorType\":\"enemy\",\n" +
                     "        \"targetValue\":10,\n" +
-                    "        \"targetType\":\"percent\"\n" +
+                    "        \"targetType\":\"percent\",\n" +
+                    "        \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard5.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard6.png\"}]\n" +
                     "      }\n" +
                     "    ]\n" +
                     "\n" +

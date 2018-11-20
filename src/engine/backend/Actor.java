@@ -1,6 +1,10 @@
 package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
+
+import engine.backend.Commands.Command;
+import engine.backend.AnimationObject;
+
 import java.util.HashMap;
 
 import java.util.Map;
@@ -15,6 +19,7 @@ public class Actor {
     private String myName;
     private ActiveState myActiveState;
     private AnimationObject myActiveAnimation;
+    private boolean isPlayerActor;
 
 
     public Actor(){}
@@ -24,12 +29,14 @@ public class Actor {
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+        isPlayerActor = prototype.getIsPlayer();
+
 
     }
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            AnimationObject animation= new AnimationObject(s);
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
             animations.put(s,animation);
         }
         return animations;
@@ -42,7 +49,7 @@ public class Actor {
 
 
     public AnimationObject getActiveAnimation() {
-        return new AnimationObject(myActiveAnimation.getName());
+        return myActiveAnimation;
     }
 
     public ActiveState getActiveState() {
@@ -52,6 +59,10 @@ public class Actor {
     public Coordinate getCoordinate() {
         return myCoordinate;
     }
+
+    public boolean getIsPlayerActor() {return isPlayerActor;}
+
+
 
 
     /**
