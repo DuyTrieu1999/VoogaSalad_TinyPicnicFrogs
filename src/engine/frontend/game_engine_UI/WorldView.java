@@ -1,14 +1,11 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.Actor;
 import engine.backend.AnimationObject;
-import engine.backend.Coordinate;
 import engine.backend.PlayerActor;
 import engine.controller.Controller;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 
@@ -23,22 +20,17 @@ public abstract class WorldView {
     private Collection<AnimationObject> myAnimations;
     private PlayerActor myPlayer;
 
-    public WorldView (PlayerActor player, Controller controller) {
+    public WorldView (Controller controller) {
         myAnimations = controller.getAnimation();
-        myPlayer = player;
+        myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
         myScene = new Scene(displayPane);
     }
     public void updateView () {
         clearView();
+        addActors();
         this.setViewByZ();
-    }
-    public void addImageToActor (AnimationObject animation, Actor actor) {
-        ImageView view = animation.getAnimationView();
-        Coordinate coor = actor.getCoordinate();
-        view.setTranslateX(coor.getX());
-        view.setTranslateY(coor.getY());
     }
     private void init () {
         animation.setCycleCount(Timeline.INDEFINITE);
@@ -50,6 +42,11 @@ public abstract class WorldView {
     public void clearView () {
         this.myAnimations.clear();
         displayPane.getChildren().clear();
+    }
+    private void addActors () {
+        for (AnimationObject animationObject: myAnimations) {
+            displayPane.getChildren().add(animationObject.getAnimationView());
+        }
     }
     private void setUpDisplay () {
         displayPane = new BorderPane();

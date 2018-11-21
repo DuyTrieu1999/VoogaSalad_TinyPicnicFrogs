@@ -24,16 +24,17 @@ public class StateView {
         setUpStage();
         setUpView();
     }
-    private void setUpView () {
+    private Scene setUpView () {
         PlayerActor player = myController.getPlayer();
-        myWorldView = new OverWorldView(player, myController);
-        myStage.setScene(myWorldView.getMyScene());
-        myStage.show();
+        myWorldView = new OverWorldView(myController);
+        return myWorldView.getMyScene();
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
         myStage.setMinWidth(600);
         myStage.setMinHeight(300);
+        myStage.setScene(setUpView());
+        myStage.show();
     }
     public OverWorldView getMyWorldView () {
         return myWorldView;
