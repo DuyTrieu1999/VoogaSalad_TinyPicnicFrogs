@@ -55,7 +55,7 @@ public class CombatManager {
                     deadList.add(e);
                 }
             }
-            myEnemies.removeAll(myEnemies);
+            myEnemies.removeAll(deadList);
         }
     }
 }

@@ -50,6 +50,7 @@ public class GameWorld {
     private void launchInteraction(Interaction interaction){
         if(interaction instanceof  CombatInteraction){
             myGameState = GameState.Combat;
+
         }
     }
 
