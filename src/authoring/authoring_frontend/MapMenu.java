@@ -40,7 +40,6 @@ public class MapMenu extends HBox {
             @Override
             public void handle(MouseEvent event) {
                 if(event.getClickCount() == 2){
-                    System.out.println("Detected double click");
                     mapManager.setActiveMap(mapView.getSelectionModel().getSelectedItem());
                 }
             }
@@ -82,7 +81,9 @@ public class MapMenu extends HBox {
             Optional<Pair<String, String>> result = dialog.showAndWait();
 
             result.ifPresent(widthHeight -> {
-                mapView.getItems().add(0, mapManager.createMap(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue())));
+                String thisNewMap = mapManager.createMap(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
+                mapView.getItems().add(0, thisNewMap);
+                mapManager.setActiveMap(thisNewMap);
             });
         });
         Button deleteMap = new Button("Delete Map");

@@ -67,7 +67,7 @@ public class AuthoringView {
         myRoot = new Group();
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
         myMainView = new BorderPane();
-        mapManager = new MapManager();
+        mapManager = new MapManager(projectName);
 
         ActorMenu selectActors = new ActorMenu(myManager, projectName);
         LayerMenu myLayers = new LayerMenu();
@@ -80,7 +80,8 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
         TopMenu topBar = new TopMenu();
-        myMainView.setCenter(mapManager.getActiveMap().getMyGrid());
+
+        myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setLeft(leftSide);
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);
@@ -90,7 +91,7 @@ public class AuthoringView {
         myRoot = new Group();
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
         myMainView = new BorderPane();
-        mapManager = new MapManager();
+        mapManager = new MapManager(projectName);
 
 
         ActorMenu selectActors = new ActorMenu(myManager, projectName);
@@ -104,8 +105,9 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
         TopMenu topBar = new TopMenu();
+
         myMainView.setLeft(leftSide);
-        myMainView.setCenter(mapManager.getActiveMap().getMyGrid());
+        myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);
     }

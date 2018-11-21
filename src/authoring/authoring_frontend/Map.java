@@ -4,9 +4,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import javax.sound.midi.SysexMessage;
+
 public class Map {
     private int id;
-    private GridPane myGrid = new GridPane();
+    private GridPane myGrid;
     private int width;
     private int height;
     private String programName;
@@ -20,6 +22,7 @@ public class Map {
         width = mapWidth;
         height = mapHeight;
         programName = pName;
+        myGrid = new GridPane();
         createMap();
     }
 
