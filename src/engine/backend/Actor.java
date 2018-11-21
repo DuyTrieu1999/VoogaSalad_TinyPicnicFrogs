@@ -17,9 +17,11 @@ public class Actor {
     private Map<String, Integer>myStatsMap;
     private Map<String, AnimationObject> myAnimationMap;
     private String myName;
-    private ActiveState myActiveState;
     private AnimationObject myActiveAnimation;
+
     private boolean isPlayerActor;
+
+    private Bounds myBounds;
 
 
     public Actor(){}
@@ -30,6 +32,7 @@ public class Actor {
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
         isPlayerActor = prototype.getIsPlayer();
+        myBounds=prototype.getBounds();
 
 
     }
@@ -46,6 +49,7 @@ public class Actor {
         return myInteractionMap.get(key);
     }
 
+
     /**
      *
      * @return interraction object associated with the first key in the keyset
@@ -55,15 +59,16 @@ public class Actor {
         return myInteractionMap.get(key);
     }
 
+    public Bounds getBounds(){
+        return myBounds;
+    }
+
 
 
     public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
     }
 
-    public ActiveState getActiveState() {
-        return myActiveState;
-    }
 
     public Coordinate getCoordinate() {
         return myCoordinate;
@@ -96,7 +101,6 @@ public class Actor {
     public void moveLeft(int amt) {
         myCoordinate.setX(myCoordinate.getX()-amt);
         myActiveAnimation = myAnimationMap.get("left");
-
     }
 
     /**
@@ -121,13 +125,7 @@ public class Actor {
      * @param m The message sent to the Actor
      */
     public void receiveMessage(Message m){
-        if(m.getMessageString() == "InactivateAll"){
-            myActiveState = ActiveState.INACTIVE;
-        }
-        if(m.getMessageString() == "ActivateAll"){
-            myActiveState = ActiveState.ACTIVE;
-        }
-        receiveCustomMessage(m);
+
     }
 
 
@@ -139,12 +137,6 @@ public class Actor {
 
     }
 
-    private void inactivate(){
-        myActiveState = ActiveState.INACTIVE;
-    }
-    private void activate(){
-        myActiveState = ActiveState.ACTIVE;
-    }
 
     /**
      * Used by authoring to serialize the actor
