@@ -19,9 +19,6 @@ public class Controller {
         this.myView = view;
     }
 
-    public Collection<Actor> getActor () {
-        return new ArrayList<Actor>();
-    }
     public Collection<AnimationObject> getAnimation () {
         return new ArrayList<AnimationObject>();
     }

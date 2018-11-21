@@ -6,6 +6,7 @@ import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -20,12 +21,19 @@ public class StateView {
     public StateView(Stage stage) {
         this.myStage = stage;
         myController = new Controller(this);
+        setUpStage();
         setUpView();
     }
     private void setUpView () {
         PlayerActor player = myController.getPlayer();
         myWorldView = new OverWorldView(player, myController);
         myStage.setScene(myWorldView.getMyScene());
+        myStage.show();
+    }
+    private void setUpStage () {
+        myStage.setTitle("VoogaSalad");
+        myStage.setMinWidth(600);
+        myStage.setMinHeight(300);
     }
     public OverWorldView getMyWorldView () {
         return myWorldView;
