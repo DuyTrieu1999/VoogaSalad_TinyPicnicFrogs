@@ -1,8 +1,8 @@
 package engine.backend;
 
 public class Bounds {
-    int width;
-    int height;
+   private int width;
+   private int height;
 
     public int getHeight() {
         return height;
@@ -17,14 +17,14 @@ public class Bounds {
     }
 
     //the top left of bounding box expressed relative to the top of the Actor's coordinates
-    int relX;
-    int relY;
+   private int relX;
+    private int relY;
 
     public int getWidth() {
         return width;
     }
 
-    Bounds(int width, int height, int relX, int relY){
+    public Bounds(int width, int height, int relX, int relY){
         this.width = width;
         this.height = height;
         this.relX = relX;

@@ -32,6 +32,7 @@ public class Actor {
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
         isPlayerActor = prototype.getIsPlayer();
+        myBounds=prototype.getBounds();
 
 
     }
