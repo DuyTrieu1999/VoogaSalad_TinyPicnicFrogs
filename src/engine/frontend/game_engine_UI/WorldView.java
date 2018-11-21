@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.Collection;
 import java.util.List;
 
-public class WorldView {
+public abstract class WorldView {
     protected Timeline animation = new Timeline();
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
@@ -53,6 +53,9 @@ public class WorldView {
     }
     private void init () {
         animation.setCycleCount(Timeline.INDEFINITE);
+    }
+    public Scene getMyScene () {
+        return myScene;
     }
     public void clearView () {
         this.myAnimations.clear();
