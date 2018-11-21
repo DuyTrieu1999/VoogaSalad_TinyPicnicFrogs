@@ -2,6 +2,7 @@ package engine.controller;
 
 import engine.backend.AnimationObject;
 import engine.backend.Commands.Command;
+import engine.backend.Commands.GameState;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
@@ -29,4 +30,7 @@ public class Controller {
 
     private Consumer<List<Command>> allCommandConsumer = e -> myView.setAllCommand(e);
     public void setAllCommand(List<Command> commands) { allCommandConsumer.accept(commands); }
+
+    private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
+    public GameState getGameState () { return  gameStateSupplier.get(); }
 }
