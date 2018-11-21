@@ -6,7 +6,6 @@ import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -26,9 +25,7 @@ public class StateView {
     private void setUpView () {
         PlayerActor player = myController.getPlayer();
         myWorldView = new OverWorldView(player, myController);
-    }
-    public Scene getScene () {
-        return myWorldView.getMyScene();
+        myStage.setScene(myWorldView.getMyScene());
     }
     public OverWorldView getMyWorldView () {
         return myWorldView;
@@ -36,5 +33,6 @@ public class StateView {
     public BattleView getMyBattleView () {
         return myBattleView;
     }
-    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands);}
+    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands); }
+    public List<Command> getActiveCommand () { return myMenu.returnActiveCommands(); }
 }

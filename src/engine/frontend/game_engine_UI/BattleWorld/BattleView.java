@@ -10,6 +10,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
     }
     @Override
     public void updateView () {
-
+        super.updateView();
     }
+
 }

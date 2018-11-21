@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class MenuView {
     private Scene menuScene;
@@ -21,6 +20,7 @@ public abstract class MenuView {
 
     public MenuView () {
         setUp();
+        menuScene = new Scene(pane);
     }
     private void setUp() {
         pane = new BorderPane();
@@ -50,4 +50,5 @@ public abstract class MenuView {
     public List<Command> returnActiveCommands () {
         return activeCommands;
     }
+    public Scene getMenuScene () { return menuScene; }
 }
