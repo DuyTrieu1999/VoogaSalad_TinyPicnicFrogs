@@ -1,7 +1,12 @@
 package engine.frontend.game_engine_UI.KeyEventHandler;
 
-public class KeyEventHandler {
-    public KeyEventHandler () {
+import javafx.scene.Scene;
 
+public class KeyEventHandler {
+    private Scene myScene;
+
+    public KeyEventHandler (Scene scene) {
+        this.myScene = scene;
     }
+
 }

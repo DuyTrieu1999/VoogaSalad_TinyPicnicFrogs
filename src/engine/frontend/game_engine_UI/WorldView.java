@@ -20,12 +20,10 @@ public abstract class WorldView {
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
 
-    private Collection<Actor> myActors;
     private Collection<AnimationObject> myAnimations;
     private PlayerActor myPlayer;
 
     public WorldView (PlayerActor player, Controller controller) {
-        myActors = controller.getActor();
         myAnimations = controller.getAnimation();
         myPlayer = player;
         this.setUpDisplay();
@@ -34,16 +32,7 @@ public abstract class WorldView {
     }
     public void updateView () {
         clearView();
-        this.addActors();
         this.setViewByZ();
-    }
-    public void addActors () {
-        for (Actor actor: myActors) {
-            AnimationObject activeAnimation = actor.getActiveAnimation();
-            this.myAnimations.add(activeAnimation);
-            this.addImageToActor(activeAnimation, actor);
-            displayPane.getChildren().add(activeAnimation.getAnimationView());
-        }
     }
     public void addImageToActor (AnimationObject animation, Actor actor) {
         ImageView view = animation.getAnimationView();
@@ -53,6 +42,7 @@ public abstract class WorldView {
     }
     private void init () {
         animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
     }
     public Scene getMyScene () {
         return myScene;
