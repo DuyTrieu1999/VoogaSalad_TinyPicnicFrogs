@@ -7,6 +7,7 @@ module voogasalad_tinypicnicfrogs {
     requires java.xml;
     requires json.simple;
     requires xstream;
+    requires groovy.all;
 
     opens authoring.authoring_backend to xstream;
     opens engine.backend to xstream;
