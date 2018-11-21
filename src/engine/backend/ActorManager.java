@@ -7,7 +7,7 @@ public class ActorManager {
     List<Actor> allActors;
     List<Actor> activeActors;
     List<Actor> inactiveActors;
-    Actor myPlayerActor;
+    PlayerActor myPlayerActor;
 
 
     ActorManager(List<Actor> actorList){
@@ -16,10 +16,10 @@ public class ActorManager {
         activeActors = new ArrayList<>();
     }
 
-    public Actor getPlayerActor(){
+    public PlayerActor getPlayerActor(){
         return myPlayerActor;
     }
-    public void setPlayerActor(Actor player){
+    public void setPlayerActor(PlayerActor player){
         myPlayerActor = player;
     }
 

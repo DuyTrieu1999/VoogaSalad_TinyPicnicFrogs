@@ -5,8 +5,8 @@ import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
 
 public class BattleView extends WorldView implements BattleViewAPI {
-    public BattleView(PlayerActor player, Controller controller) {
-        super(player, controller);
+    public BattleView(Controller controller) {
+        super(controller);
     }
     @Override
     public void updateView () {

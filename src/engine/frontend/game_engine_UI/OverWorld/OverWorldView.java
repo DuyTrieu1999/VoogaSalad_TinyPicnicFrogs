@@ -19,8 +19,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private BorderPane displayPane;
     private PlayerActor myPlayer;
 
-    public OverWorldView (PlayerActor player, Controller controller) {
-        super(player, controller);
+    public OverWorldView (Controller controller) {
+        super(controller);
         myCamera = new Camera(myPlayer);
     }
     public void setUpWorld () {
