@@ -2,11 +2,11 @@
   <animationMap>
     <entry>
       <string>special</string>
-      <string>/resource/charizard2.png</string>
+      <string>/resource/pikachu2.png</string>
     </entry>
     <entry>
       <string>default</string>
-      <string>/resource/charizard1.png</string>
+      <string>/resource/pikachu1.png</string>
     </entry>
   </animationMap>
   <interractionMap>
@@ -16,11 +16,17 @@
         <animationMap>
           <entry>
             <string>special</string>
-            <string>/resource/charizard4.png</string>
+            <engine.backend.AnimationObject>
+              <animationName>special</animationName>
+              <animationPath>/resource/pikachu4.png</animationPath>
+            </engine.backend.AnimationObject>
           </entry>
           <entry>
             <string>default</string>
-            <string>/resource/charizard3.png</string>
+            <engine.backend.AnimationObject>
+              <animationName>default</animationName>
+              <animationPath>/resource/pikachu3.png</animationPath>
+            </engine.backend.AnimationObject>
           </entry>
         </animationMap>
         <messageMap>
@@ -46,6 +52,22 @@
             <targetValue>10</targetValue>
             <myTargetType>CONSTANT</myTargetType>
             <myTargetActor>ENEMY</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/pikachu6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/pikachu5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
           <engine.backend.Commands.CombatMove>
             <myName>basic regen</myName>
@@ -54,6 +76,22 @@
             <targetValue>10</targetValue>
             <myTargetType>PERCENTAGE</myTargetType>
             <myTargetActor>FRIEND</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/pikachu6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/pikachu5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
           <engine.backend.Commands.CombatMove>
             <myName>special attack</myName>
@@ -62,6 +100,22 @@
             <targetValue>10</targetValue>
             <myTargetType>PERCENTAGE</myTargetType>
             <myTargetActor>ENEMY</myTargetActor>
+            <myAnimationMap>
+              <entry>
+                <string>special</string>
+                <engine.backend.AnimationObject>
+                  <animationName>special</animationName>
+                  <animationPath>/resource/pikachu6.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/pikachu5.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </myAnimationMap>
           </engine.backend.Commands.CombatMove>
         </commandList>
         <myHealth>10</myHealth>
@@ -78,5 +132,12 @@
       <int>50</int>
     </entry>
   </myStats>
-  <name>charizard</name>
+  <name>pikachu</name>
+  <myBound>
+    <width>5</width>
+    <height>5</height>
+    <relX>0</relX>
+    <relY>0</relY>
+  </myBound>
+  <isPlayer>false</isPlayer>
 </authoring.authoring__backend.ActorPrototype>
