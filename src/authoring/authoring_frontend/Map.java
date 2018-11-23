@@ -3,8 +3,10 @@ package authoring.authoring_frontend;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Pair;
 
 import javax.sound.midi.SysexMessage;
+import java.util.HashMap;
 
 public class Map {
     private int id;
@@ -12,6 +14,7 @@ public class Map {
     private int width;
     private int height;
     private String programName;
+    private HashMap<Pair<Integer, Integer>, String> connectedPoints;
 
     Map(int mapWidth, int mapHeight, String pName){
         this(1, mapWidth, mapHeight, pName);
@@ -23,6 +26,7 @@ public class Map {
         height = mapHeight;
         programName = pName;
         myGrid = new GridPane();
+        connectedPoints = new HashMap<>();
         createMap();
     }
 
