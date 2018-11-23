@@ -7,12 +7,12 @@ module voogasalad_tinypicnicfrogs {
     requires java.xml;
     requires json.simple;
     requires xstream;
+    requires java.desktop;
     //requires groovy.all;
 
     opens authoring.authoring_backend to xstream;
     opens engine.backend to xstream;
     opens engine.backend.Commands to xstream;
-    opens engine.frontend to xstream;
     opens engine.frontend.game_engine_UI to xstream;
     exports engine.backend;
     exports engine.controller;
