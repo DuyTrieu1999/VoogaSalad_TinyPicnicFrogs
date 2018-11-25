@@ -44,13 +44,6 @@ public class AuthoringView {
         this.initializeUI();
     }
 
-    public AuthoringView(int width, int height) {
-        myManager = new GameManager();
-        projectName = "Project " + numberUnsavedProjects;
-        numberUnsavedProjects++;
-        this.initializeUI(width, height);
-    }
-
     /**
      *
      * @return
@@ -79,35 +72,10 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myLayers.getLayerList(), myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
-        TopMenu topBar = new TopMenu();
+        TopMenu topBar = new TopMenu(myManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setLeft(leftSide);
-        myMainView.setTop(topBar);
-        myRoot.getChildren().add(myMainView);
-    }
-
-    private void initializeUI(int width, int height) {
-        myRoot = new Group();
-        myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
-        myMainView = new BorderPane();
-        mapManager = new MapManager(projectName);
-
-
-        ActorMenu selectActors = new ActorMenu(myManager, projectName);
-        LayerMenu myLayers = new LayerMenu();
-        MapMenu myMaps = new MapMenu(projectName, mapManager);
-        VBox leftSide = new VBox();
-        leftSide.setMaxHeight(600);
-        leftSide.setMaxWidth(400);
-        TabPane layersAndMaps = new TabPane();
-        layersAndMaps.getTabs().addAll(myLayers.getLayerList(), myMaps.getMapList());
-        layersAndMaps.setSide(Side.BOTTOM);
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), layersAndMaps);
-        TopMenu topBar = new TopMenu();
-
-        myMainView.setLeft(leftSide);
-        myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);
     }
