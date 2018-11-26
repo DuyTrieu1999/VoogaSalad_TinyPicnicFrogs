@@ -15,4 +15,8 @@ public class Actor {
     public ImageView getActorImage(){
         return new ImageView(actorImage);
     }
+
+    public String getName(){
+        return "test";
+    }
 }

@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class Map {
     private int id;
-    private GridPane myGrid;
+    private Grid myGrid;
     private int width;
     private int height;
     private String programName;
@@ -25,9 +25,9 @@ public class Map {
         width = mapWidth;
         height = mapHeight;
         programName = pName;
-        myGrid = new GridPane();
+        myGrid = new Grid(width, height, programName);
         connectedPoints = new HashMap<>();
-        createMap();
+        //createMap();
     }
 
     public int getMapID(){
@@ -38,6 +38,7 @@ public class Map {
         return "Map " + id;
     }
 
+    /*
     public void createMap(){
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
@@ -61,8 +62,13 @@ public class Map {
             }
         }
     }
+    */
 
-    public GridPane getMyGrid(){
+    public GridPane getGridPane(){
+        return myGrid.getGridPane();
+    }
+
+    public Grid getGrid(){
         return myGrid;
     }
 }

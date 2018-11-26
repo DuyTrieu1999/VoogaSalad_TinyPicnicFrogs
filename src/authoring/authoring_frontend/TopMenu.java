@@ -1,12 +1,16 @@
 package authoring.authoring_frontend;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -23,13 +27,15 @@ public class TopMenu extends HBox {
 
     private MenuBar myMenu;
     private ResourceBundle myResources;
+    private MapManager mapManager;
 
     /**
      * Constructor
      */
-    public TopMenu() {
+    public TopMenu(MapManager maps) {
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
+        mapManager = maps;
 
         this.getChildren().add(myMenu);
         this.addAllMenus();
@@ -42,6 +48,7 @@ public class TopMenu extends HBox {
         addFileTab();
         addEditTab();
         addViewTab();
+        addGameTab();
     }
 
     //TODO: refactor so that each add...Tab() calls an instance of a MenuChoice
@@ -156,5 +163,30 @@ public class TopMenu extends HBox {
         viewMenu.getItems().add(themeSubmenu);
 
         myMenu.getMenus().add(viewMenu);
+    }
+
+    private void addGameTab(){
+        Menu gameMenu = new Menu(myResources.getString("Game"));
+
+        MenuItem run = new MenuItem(myResources.getString("Run"));
+
+        run.setOnAction(e -> {
+            System.out.println("run the game"); //TODO: replace this with code
+
+            for(String mapName:mapManager.getMapList()){
+                Map thisMap = mapManager.getMap(mapName);
+                Grid thisGrid = thisMap.getGrid();
+                Cell[][] theseCells = thisGrid.getCells();
+                for(int i=0;i<theseCells.length;i++){
+                    for(int j=0;j<theseCells[i].length;j++){
+                        System.out.println("This cell at (" + i + ", " + j + ") has " + theseCells[i][j].getActors().size() + " actors!");
+                    }
+                }
+            }
+        });
+
+        gameMenu.getItems().add(run);
+
+        myMenu.getMenus().add(gameMenu);
     }
 }

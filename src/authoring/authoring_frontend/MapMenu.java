@@ -92,7 +92,22 @@ public class MapMenu extends HBox {
             mapView.getItems().removeAll(selectedMaps);
             mapManager.removeMap(selectedMaps);
         });
-        buttonView.getChildren().addAll(newMap, deleteMap);
+        Button connectMaps = new Button("Connect Maps");
+        connectMaps.setOnAction(event -> {
+            if(mapManager.getMapList().size() >= 1){
+                new MapConnector(mapManager);
+            }
+            else {
+                //error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("You have no maps to connect!");
+
+                alert.showAndWait();
+            }
+        });
+        buttonView.getChildren().addAll(newMap, deleteMap, connectMaps);
         return buttonView;
     }
 
