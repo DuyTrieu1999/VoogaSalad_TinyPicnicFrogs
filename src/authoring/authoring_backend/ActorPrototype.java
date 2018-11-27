@@ -23,6 +23,12 @@ public class ActorPrototype {
     private Bounds myBound;
     private boolean isPlayer;
 
+    /**
+     *
+     * @param data JSON representation of the prototype
+     * @param prototypeMessages  List that maps interactions to messages it sends
+     */
+
     protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
         name=(String)data.get("name");
         animationMap=parseAnimations(data);
@@ -99,6 +105,12 @@ public class ActorPrototype {
             //create new background interaction
         }
     }
+
+    /**
+     *
+     * @param boundsJSON JSON of bounds
+     * @return Bounds object
+     */
     private Bounds parseBounds(JSONObject boundsJSON){
         int relX=Integer.parseInt(String.valueOf(boundsJSON.get("relX")));
         int relY=Integer.parseInt(String.valueOf(boundsJSON.get("relY")));
@@ -121,6 +133,10 @@ public class ActorPrototype {
             interractionMap.get(s).serialize();
         }
     }
+
+    /**
+     * @return the new instance of the actor prototype
+     */
     protected ActorPrototype clone(){
         return new ActorPrototype(animationMap,interractionMap,myStats,name, isPlayer, myBound);
     }
@@ -140,7 +156,15 @@ public class ActorPrototype {
      * @return stats map
      */
     public Map <String,Integer>getMyStats(){return myStats;}
+
+    /**
+     * @return isPlayer
+     */
     public boolean getIsPlayer(){ return isPlayer;}
+
+    /**
+     * @return Bounds
+     */
     public Bounds getBounds(){
         return myBound;
     }

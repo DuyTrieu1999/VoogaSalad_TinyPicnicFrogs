@@ -40,6 +40,11 @@ public class MessageManager {
   protected void createMessage(String key, String messageBody){
         messageMap.put(key,new Message(messageBody));
   }
+
+    /**
+     * Serializes all messages to XML file
+     * @param path path to folder of xml file
+     */
   protected void serializeAllMessages(String path){
       int index=0;
       XStream serializer = new XStream(new DomDriver());
@@ -51,6 +56,12 @@ public class MessageManager {
       }
 
   }
+
+    /**
+     * Loads message from an XML file
+     * @param key key for the message to be saved under
+     * @param path path to the message XML file
+     */
     protected void loadMessage(String key,String path){
         XStream serializer = new XStream(new DomDriver());
         Message loadedMessage=(Message)serializer.fromXML(Paths.get(path).toFile());
@@ -61,5 +72,11 @@ public class MessageManager {
       messageList.addAll(messageMap.keySet());
       return messageList;
     }
+
+    /**
+     * Removes message from map
+     * @param id id of the message to be removed
+     */
+    protected void deleteMessage(String id){messageMap.remove(id);}
 
 }
