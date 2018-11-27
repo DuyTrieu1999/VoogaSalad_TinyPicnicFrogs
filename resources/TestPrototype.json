@@ -1,7 +1,7 @@
 {
   "name":"charizard",
   "animations":[{"key":"default","path":"/resource/charizard1.png"},{"key":"special","path":"/resource/charizard2.png"}],
-  "stats":[{"key":"health","value":50},{"key":"damage","value":5},
+  "stats":[{"key":"health","value":50},{"key":"damage","value":5}
 
   ],
   "bounds":{
