@@ -43,7 +43,7 @@ public class ActorManager {
     }
     protected void createActor(ActorPrototype actorPrototype, int x, int y, int z){
         Actor actor= new Actor(actorPrototype,x,y,z);
-        addActor(actor,actorPrototype.getName());
+        addActor(actor,actorPrototype.getName()+x+"-"+y+"-"+z);
     }
     protected void serializeActor(String id){
         actorMap.get(id).serialize();
