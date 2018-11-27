@@ -1,10 +1,9 @@
 package authoring.authoring_frontend;
 
-import authoring.authoring_frontend.Forms.PrototypeForm;
+import authoring.authoring_backend.GameManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -20,18 +19,22 @@ import java.util.ResourceBundle;
  */
 public class PrototypeWindow {
     public static final String DEFAULT_RESOURCE = "English";
-//    public static final String DEFAULT_STYLESHEET = "light.css";
+    //    public static final String DEFAULT_STYLESHEET = "light.css";
+    public static int SIZE = 500;
     private ResourceBundle myResources;
     private Scene myWindow;
     private Group myRoot;
+    private PrototypeForm myContent;
+    private GameManager myManager;
 
     /**
      * Constructor
      */
-    public PrototypeWindow() {
+    public PrototypeWindow(GameManager manager) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myRoot = new Group();
-        myWindow = new Scene(myRoot);
+        myWindow = new Scene(myRoot, SIZE, SIZE);
+        myManager = manager;
 
         this.addContent();
         this.display();
@@ -42,7 +45,7 @@ public class PrototypeWindow {
      * by the file represented by myContent
      */
     private void display() {
-        Stage window = new Stage();
+        Stage window = new Stage(); //TODO: create preference width and height
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(myResources.getString("NewPrototype"));
@@ -55,32 +58,11 @@ public class PrototypeWindow {
      * creates the elements needed to get the data for a prototype
      */
     private void addContent() {
-        ScrollPane scroller = new ScrollPane();
-        PrototypeForm myContent = new PrototypeForm();
-        scroller.setContent(myContent);
-        myRoot.getChildren().add(scroller);
-    }
-
-    /**
-     * checks that all information necessary has been filled out
-     * @return boolean, True if errors exist and False otherwise
-     */
-    private boolean checkErrors() {
-        return false;
-    }
-
-    /**
-     * saves all information as a JSON Object to be passed to backend
-     */
-    private void saveJSON(TextField id) {
-        System.out.println(id.getText());
-        System.out.println("saving...");
-    }
-
-    /**
-     * returns Prototype saved as JSON Object
-     */
-    public void getPrototype() {
-
+        ScrollPane mySP = new ScrollPane();
+        myContent = new PrototypeForm(myManager);
+        mySP.setContent(myContent);
+        mySP.setMaxSize(SIZE,SIZE);
+        myRoot.getChildren().add(mySP);
     }
 }
+

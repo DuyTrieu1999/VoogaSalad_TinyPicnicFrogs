@@ -54,4 +54,12 @@ public class ActorManager {
         actorMap.putAll(loadedMap);
     }
 
+   //create a method that removes Actors, if frontend removes Actor from the map
+    protected void deleteActor(String uniqueID){
+        actorMap.remove(uniqueID);
+    }
+
+
+
+
 }
