@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -14,15 +15,17 @@ public class Grid {
     private int gridWidth;
     private int gridHeight;
     private String programName;
+    private GameManager gameManager;
 
-    Grid(String name){
-        this(30, 20, name);
+    Grid(String name, GameManager myManager){
+        this(30, 20, name, myManager);
     }
 
-    Grid(int width, int height, String name){
+    Grid(int width, int height, String name, GameManager myManager){
         gridWidth = width;
         gridHeight = height;
         programName = name;
+        gameManager = myManager;
         mapGridPane = new GridPane();
         myCells = new Cell[width][height];
         for(int i=0;i<width;i++){
@@ -45,6 +48,7 @@ public class Grid {
                 thisCell.getChildren().add(activeActor.getActorImage());
                 //thisCell.setOnMouseClicked(null);
                 myCells[x][y].addActor(activeActor);
+                gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
             }
             else {
                 if(thisCell.getChildren().size() > 0){

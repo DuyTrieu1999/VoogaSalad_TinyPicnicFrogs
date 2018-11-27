@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -15,18 +16,20 @@ public class Map {
     private int height;
     private String programName;
     private HashMap<Pair<Integer, Integer>, String> connectedPoints;
+    private GameManager gameManager;
 
-    Map(int mapWidth, int mapHeight, String pName){
-        this(1, mapWidth, mapHeight, pName);
+    Map(int mapWidth, int mapHeight, String pName, GameManager myManager){
+        this(1, mapWidth, mapHeight, pName, myManager);
     }
 
-    Map(int mapID, int mapWidth, int mapHeight, String pName){
+    Map(int mapID, int mapWidth, int mapHeight, String pName, GameManager myManager){
         id = mapID;
         width = mapWidth;
         height = mapHeight;
         programName = pName;
-        myGrid = new Grid(width, height, programName);
+        myGrid = new Grid(width, height, programName, myManager);
         connectedPoints = new HashMap<>();
+        gameManager = myManager;
         //createMap();
     }
 

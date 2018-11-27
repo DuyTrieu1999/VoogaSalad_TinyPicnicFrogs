@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -15,13 +16,15 @@ public class MapManager {
     private String programName;
     private BorderPane activeMap = new BorderPane();
     private ArrayList<Portal> portals = new ArrayList<>();
+    private GameManager gameManager;
 
-    MapManager(String pName){
+    MapManager(String pName, GameManager myManager){
         programName = pName;
+        gameManager = myManager;
     }
 
     public void createMap(String name, int width, int height){
-        gameMaps.put(name, new Map(width, height, programName));
+        gameMaps.put(name, new Map(width, height, programName, gameManager));
     }
 
     public String createMap(int width, int height){

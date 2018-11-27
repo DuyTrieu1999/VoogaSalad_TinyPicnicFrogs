@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -117,6 +118,11 @@ public class MapMenu extends HBox {
         layerTab.setText("Maps");
         layerTab.setContent(mapList);
         return layerTab;
+    }
+
+    public VBox getMapPane(){
+        mapList.getChildren().addAll(setupButtons(), setupList());
+        return mapList;
     }
 
     public Map getCurrentMap(){
