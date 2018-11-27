@@ -19,15 +19,18 @@ public class MapManager {
      *
      * @param width
      * @param height
-     * @param n
+     * @param
      * @return
      */
 
-    public Integer divideMap(int width, int height, int n) {
 
-        int totalSquares = width / n * height / n;
-        squareHeight = height / n;
-        squareWidth = width / n;
+    //number of rows and cols
+    //TODO: doublecheck
+    public Integer divideMap(int width, int height, int rows, int cols) {
+
+        int totalSquares = rows * cols;
+        squareHeight = height / cols;
+        squareWidth = width / rows;
         return totalSquares;
 
     }

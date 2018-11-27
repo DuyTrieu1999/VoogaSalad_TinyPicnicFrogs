@@ -1,13 +1,11 @@
 package authoring.authoring_frontend;
 
-import javafx.geometry.Insets;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import authoring.authoring_backend.GameManager;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.util.Pair;
 
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -21,13 +19,16 @@ import java.util.ResourceBundle;
 public class TopMenu extends HBox {
     public static final String DEFAULT_RESOURCE = "English";
 
+    private GameManager myManager;
     private MenuBar myMenu;
     private ResourceBundle myResources;
+    private PrototypeWindow myNewActor;
 
     /**
      * Constructor
      */
-    public TopMenu() {
+    public TopMenu(GameManager manager) {
+        myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
 
@@ -57,48 +58,11 @@ public class TopMenu extends HBox {
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
 
         newGame.setOnAction(e -> {
-            Dialog<Pair<String, String>> dialog = new Dialog<>();
-            dialog.setTitle("New Game");
-            dialog.setHeaderText("Enter the dimensions of the map:");
-            ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-            dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-            GridPane grid = new GridPane();
-            grid.setHgap(10);
-            grid.setVgap(10);
-            grid.setPadding(new Insets(20, 150, 10, 10));
-            TextField xSize = new TextField();
-            xSize.setPromptText("Width");
-            TextField ySize = new TextField();
-            ySize.setPromptText("Height");
-
-            grid.add(new Label("Width:"), 0, 0);
-            grid.add(xSize, 1, 0);
-            grid.add(new Label("Height:"), 0, 1);
-            grid.add(ySize, 1, 1);
-
-            dialog.getDialogPane().setContent(grid);
-
-            dialog.setResultConverter(dialogButton -> {
-                if (dialogButton == loginButtonType) {
-                    return new Pair<>(xSize.getText(), ySize.getText());
-                }
-                return null;
-            });
-
-            Optional<Pair<String, String>> result = dialog.showAndWait();
-
-            result.ifPresent(widthHeight -> {
-                Stage newAuthoringView = new Stage();
-                AuthoringView environment = new AuthoringView(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
-                newAuthoringView.setTitle(environment.getProjectName());
-                newAuthoringView.setScene(environment.getScene());
-                newAuthoringView.show();
-            });
+            System.out.println("Open New AuthoringView"); //TODO: replace this with code
         });
 
         newActor.setOnAction(e -> {
-            PrototypeWindow makeNewActor = new PrototypeWindow();
-            System.out.println("Open Popup Window"); //TODO: replace this with code
+            myNewActor = new PrototypeWindow(myManager);
         });
 
         newSubmenu.getItems().add(newGame);
