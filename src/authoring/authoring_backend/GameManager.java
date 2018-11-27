@@ -99,7 +99,7 @@ public class GameManager {
     /**
      *Method to pass the frontend to backend for MapManager: dividing the map
      */
-
+    public List<String>getMessageIds(){return messageManager.getMessageId();}
 
 
 
