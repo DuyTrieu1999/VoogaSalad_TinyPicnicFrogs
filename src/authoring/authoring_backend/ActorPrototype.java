@@ -1,4 +1,5 @@
 package authoring.authoring_backend;
+import engine.backend.Bounds;
 import engine.backend.CombatInteraction;
 import engine.backend.Interaction;
 import engine.backend.Message;
@@ -15,10 +16,12 @@ import java.util.Map;
  * Dependencies: Interraction
  */
 public class ActorPrototype {
-    Map<String,String>animationMap;
-    Map<String, Interaction>interractionMap;
-    Map<String, Integer>myStats;
+    private Map<String,String>animationMap;
+    private Map<String, Interaction>interractionMap;
+    private Map<String, Integer>myStats;
     private String name;
+    private Bounds myBound;
+    private boolean isPlayer;
 
     protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
         name=(String)data.get("name");
@@ -26,6 +29,9 @@ public class ActorPrototype {
         myStats=parseStats((JSONArray) data.get("stats"));
         interractionMap= new HashMap<>();
         parseInterractions((JSONArray)data.get("Interactions"),prototypeMessages);
+        isPlayer =(boolean)data.get("isPlayer");
+        myBound=parseBounds((JSONObject)data.get("bounds"));
+
 
     }
 
@@ -36,11 +42,13 @@ public class ActorPrototype {
      * @param statsMap
      * @param nameP
      */
-    protected ActorPrototype(Map<String,String>animationMapP,Map<String, Interaction>interractionMapP,Map<String, Integer>statsMap, String nameP){
+    protected ActorPrototype(Map<String,String>animationMapP,Map<String, Interaction>interractionMapP,Map<String, Integer>statsMap, String nameP, boolean player, Bounds bounds){
         animationMap=animationMapP;
         interractionMap=interractionMapP;
         myStats=statsMap;
         name=nameP;
+        isPlayer = player;
+        myBound=bounds;
     }
     protected String getName(){return name;}
 
@@ -91,6 +99,14 @@ public class ActorPrototype {
             //create new background interaction
         }
     }
+    private Bounds parseBounds(JSONObject boundsJSON){
+        int relX=Integer.parseInt(String.valueOf(boundsJSON.get("relX")));
+        int relY=Integer.parseInt(String.valueOf(boundsJSON.get("relY")));
+        int width=Integer.parseInt(String.valueOf(boundsJSON.get("width")));
+        int height=Integer.parseInt(String.valueOf(boundsJSON.get("height")));
+      
+        return new Bounds(width,height,relX,relY);
+    }
 
     /**
      * For testing purposes
@@ -106,7 +122,7 @@ public class ActorPrototype {
         }
     }
     protected ActorPrototype clone(){
-        return new ActorPrototype(animationMap,interractionMap,myStats,name);
+        return new ActorPrototype(animationMap,interractionMap,myStats,name, isPlayer, myBound);
     }
 
     /**
@@ -124,5 +140,9 @@ public class ActorPrototype {
      * @return stats map
      */
     public Map <String,Integer>getMyStats(){return myStats;}
+    public boolean getIsPlayer(){ return isPlayer;}
+    public Bounds getBounds(){
+        return myBound;
+    }
 
 }

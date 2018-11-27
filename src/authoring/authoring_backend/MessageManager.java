@@ -8,7 +8,9 @@ import engine.backend.Message;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,6 +55,11 @@ public class MessageManager {
         XStream serializer = new XStream(new DomDriver());
         Message loadedMessage=(Message)serializer.fromXML(Paths.get(path).toFile());
         messageMap.put(key,loadedMessage);
+    }
+    protected List<String> getMessageId(){
+      List<String>messageList = new ArrayList<>();
+      messageList.addAll(messageMap.keySet());
+      return messageList;
     }
 
 }

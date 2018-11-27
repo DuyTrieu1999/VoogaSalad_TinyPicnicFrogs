@@ -1,62 +1,52 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.Actor;
 import engine.backend.AnimationObject;
-import engine.backend.Coordinate;
 import engine.backend.PlayerActor;
 import engine.controller.Controller;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Collection;
 import java.util.List;
 
-public class WorldView {
+public abstract class WorldView {
     protected Timeline animation = new Timeline();
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
 
-    private Collection<Actor> myActors;
     private Collection<AnimationObject> myAnimations;
     private PlayerActor myPlayer;
 
-    public WorldView (PlayerActor player, Controller controller) {
-        myActors = controller.getActor();
+    public WorldView (Controller controller) {
         myAnimations = controller.getAnimation();
-        myPlayer = player;
+        myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
         myScene = new Scene(displayPane);
     }
     public void updateView () {
         clearView();
-        this.addActors();
+        addActors();
         this.setViewByZ();
-    }
-    public void addActors () {
-        for (Actor actor: myActors) {
-            AnimationObject activeAnimation = actor.getActiveAnimation();
-            this.myAnimations.add(activeAnimation);
-            this.addImageToActor(activeAnimation, actor);
-            displayPane.getChildren().add(activeAnimation.getAnimationView());
-        }
-    }
-    public void addImageToActor (AnimationObject animation, Actor actor) {
-        ImageView view = animation.getAnimationView();
-        Coordinate coor = actor.getCoordinate();
-        view.setTranslateX(coor.getX());
-        view.setTranslateY(coor.getY());
     }
     private void init () {
         animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
+    }
+    public Scene getMyScene () {
+        return myScene;
     }
     public void clearView () {
         this.myAnimations.clear();
         displayPane.getChildren().clear();
+    }
+    private void addActors () {
+        for (AnimationObject animationObject: myAnimations) {
+            displayPane.getChildren().add(animationObject.getAnimationView());
+        }
     }
     private void setUpDisplay () {
         displayPane = new BorderPane();

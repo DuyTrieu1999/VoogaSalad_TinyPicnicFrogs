@@ -43,7 +43,7 @@ public class GameManager {
      * See JSON helper file for what data would look like
      */
 
-    public void createActorPrototype(JSONObject formData){
+    public String createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("Interactions");
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
         for(int i=0;i<interractionArr.size();i+=1)
@@ -58,15 +58,20 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
-        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+
+        return actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+
     }
 
-    public void createActor(String actorPrototypeID, int x, int y, int z){
-        int[] globalCoords = mapManager.calculateGlobal(x,y);
-        actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),x,y,z);
+    public void createActor(String actorPrototypeID, int x, int y, int z,int row,int col){
+        int[] globalCoords = mapManager.calculateGlobal(x,y,row,col);
+        actorManager.createActor(actorPrototypeManager.getNewPrototypeInstance(actorPrototypeID),globalCoords[0],globalCoords[1],z);
     }
     public Actor getActor(String id){return actorManager.getActor(id);}
-    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);}
+    public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);
+
+
+    }
 
     /**
      * Saves all created actors and messages
@@ -79,15 +84,22 @@ public class GameManager {
         actorPrototypeManager.serializeAllPrototypes(authoringPath);
     }
 
-    public void loadActor(String key, String path){
-        actorManager.loadActor(key,path);
+    public void loadActors(String path){
+        actorManager.loadActors(path);
     }
+
     public void loadMessage(String key, String path){
         messageManager.loadMessage(key, path);
     }
+
     public void loadPrototype(String key, String path){
         actorPrototypeManager.loadPrototype(key, path);
     }
+
+    /**
+     *Method to pass the frontend to backend for MapManager: dividing the map
+     */
+    public List<String>getMessageIds(){return messageManager.getMessageId();}
 
 
 

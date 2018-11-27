@@ -1,0 +1,8 @@
+{
+  "name":"grass",
+  "animations":[{"key":"idle","path":"/resource/charizard1.png"}],
+
+  "isPlayer":false,
+  "Interactions": [
+  ]
+}

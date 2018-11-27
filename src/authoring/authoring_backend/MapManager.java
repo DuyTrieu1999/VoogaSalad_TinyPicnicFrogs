@@ -19,15 +19,18 @@ public class MapManager {
      *
      * @param width
      * @param height
-     * @param n
+     * @param
      * @return
      */
 
-    public Integer divideMap(int width, int height, int n) {
 
-        int totalSquares = width / n * height / n;
-        squareHeight = height / n;
-        squareWidth = width / n;
+    //number of rows and cols
+    //TODO: doublecheck
+    public Integer divideMap(int width, int height, int rows, int cols) {
+
+        int totalSquares = rows * cols;
+        squareHeight = height / cols;
+        squareWidth = width / rows;
         return totalSquares;
 
     }
@@ -43,7 +46,7 @@ public class MapManager {
     //ask Michael: assumes that the x, y, z coords are all wrt to the square itself
     //The actor has not been created yet
 
-    public int[] calculateGlobal(int squareX, int squareY) {
+    public int[] calculateGlobal(int squareX, int squareY,int squareRow, int SquareCol) {
 //        int row = squareNum / square;
 //        int col = squareNum % square; this was assuming square labeling 1, 2, 3...
 

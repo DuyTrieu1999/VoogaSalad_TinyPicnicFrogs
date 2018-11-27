@@ -27,12 +27,12 @@ public class ActorPrototypeManager {
      * @param data JSON representation of data entered by autjor
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
-    protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
+    protected String createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
       testMessageParsing(prototypeMessages);
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
-
-
+      
       actorPrototypeMap.put(prototype.getName(),prototype);
+      return prototype.getName();
 
     }
     protected ActorPrototype getPrototype(String key){
@@ -66,6 +66,10 @@ public class ActorPrototypeManager {
         XStream serializer = new XStream(new DomDriver());
         ActorPrototype loadedActorPrototype=(ActorPrototype) serializer.fromXML(Paths.get(path).toFile());
         actorPrototypeMap.put(key,loadedActorPrototype);
+    }
+
+    protected void deletePrototype(String name){
+        actorPrototypeMap.remove(name);
     }
 
 
