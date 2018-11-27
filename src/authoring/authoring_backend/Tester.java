@@ -25,8 +25,8 @@ public class Tester {
             JSONParser parser = new JSONParser();
 
             try{
-                JSONObject obj = (JSONObject) parser.parse(new File("./resources/TestPrototype.json").toString());
-                System.out.println("JSON:"+obj.toJSONString());
+                JSONObject obj = (JSONObject) parser.parse(new File("/Users/janice/Code/CS308/voogasalad_tinypicnicfrogs/resources/TestPrototype.json").toString());
+               // System.out.println("JSON:"+obj.toJSONString());
 //                JSONObject obj=(JSONObject) parser.parse("{\n" +
 //                        "  \"name\":\"charizard\",\n" +
 //                        "  \"animations\":[{\"key\":\"default\",\"path\":\"/resource/charizard1.png\"},{\"key\":\"special\",\"path\":\"/resource/charizard2.png\"}],\n" +

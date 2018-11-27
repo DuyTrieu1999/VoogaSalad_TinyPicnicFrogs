@@ -68,6 +68,10 @@ public class ActorPrototypeManager {
         actorPrototypeMap.put(key,loadedActorPrototype);
     }
 
+    protected void deletePrototype(String name){
+        actorPrototypeMap.remove(name);
+    }
+
 
 
 }

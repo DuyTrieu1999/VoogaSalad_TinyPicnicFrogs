@@ -73,8 +73,6 @@ public class GameManager {
 
     }
 
-
-
     /**
      * Saves all created actors and messages
      * @param gamePath: path of the folder to which the game data is saved
@@ -89,12 +87,19 @@ public class GameManager {
     public void loadActors(String path){
         actorManager.loadActors(path);
     }
+
     public void loadMessage(String key, String path){
         messageManager.loadMessage(key, path);
     }
+
     public void loadPrototype(String key, String path){
         actorPrototypeManager.loadPrototype(key, path);
     }
+
+    /**
+     *Method to pass the frontend to backend for MapManager: dividing the map
+     */
+
 
 
 
