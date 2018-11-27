@@ -1,0 +1,425 @@
+[
+  {
+    "name":"grass",
+    "animations":[
+      {"key":"default","path":"1.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"treebottom",
+    "animations":[
+      {"key":"default","path":"2.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"treemiddle",
+    "animations":[
+      {"key":"default","path":"3.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"treetop",
+    "animations":[
+      {"key":"default","path":"4.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bouldertopleft",
+    "animations":[
+      {"key":"default","path":"5.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bouldertopright",
+    "animations":[
+      {"key":"default","path":"6.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulderbottomleft",
+    "animations":[
+      {"key":"default","path":"7.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulderbottomright",
+    "animations":[
+      {"key":"default","path":"8.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder2topleft",
+    "animations":[
+      {"key":"default","path":"9.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder2topright",
+    "animations":[
+      {"key":"default","path":"10.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder2bottomleft",
+    "animations":[
+      {"key":"default","path":"11.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder2bottomright",
+    "animations":[
+      {"key":"default","path":"12.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder3",
+    "animations":[
+      {"key":"default","path":"13.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder4",
+    "animations":[
+      {"key":"default","path":"14.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder5top",
+    "animations":[
+      {"key":"default","path":"15.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder5bottom",
+    "animations":[
+      {"key":"default","path":"16.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder6top",
+    "animations":[
+      {"key":"default","path":"17.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"boulder6bottom",
+    "animations":[
+      {"key":"default","path":"18.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bigholetopleft",
+    "animations":[
+      {"key":"default","path":"19.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bigholetopright",
+    "animations":[
+      {"key":"default","path":"20.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bigholebottomleft",
+    "animations":[
+      {"key":"default","path":"21.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"bigholebottomright",
+    "animations":[
+      {"key":"default","path":"22.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"smallholeleft",
+    "animations":[
+      {"key":"default","path":"23.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"smallholeright",
+    "animations":[
+      {"key":"default","path":"24.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"dirtpatch",
+    "animations":[
+      {"key":"default","path":"25.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hilltopleft",
+    "animations":[
+      {"key":"default","path":"26.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hilltopmiddle",
+    "animations":[
+      {"key":"default","path":"27.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hilltopright",
+    "animations":[
+      {"key":"default","path":"28.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillmiddleleft",
+    "animations":[
+      {"key":"default","path":"29.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillmiddlemiddle",
+    "animations":[
+      {"key":"default","path":"30.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillmiddleright",
+    "animations":[
+      {"key":"default","path":"31.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillbottomleft",
+    "animations":[
+      {"key":"default","path":"32.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillbottommiddle",
+    "animations":[
+      {"key":"default","path":"33.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"hillbottomright",
+    "animations":[
+      {"key":"default","path":"34.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2topleft",
+    "animations":[
+      {"key":"default","path":"35.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2topright",
+    "animations":[
+      {"key":"default","path":"36.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2farleft",
+    "animations":[
+      {"key":"default","path":"37.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2left",
+    "animations":[
+      {"key":"default","path":"38.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2right",
+    "animations":[
+      {"key":"default","path":"39.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2farright",
+    "animations":[
+      {"key":"default","path":"40.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2bottomleft",
+    "animations":[
+      {"key":"default","path":"41.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"tree2bottomright",
+    "animations":[
+      {"key":"default","path":"42.png"}
+    ],
+    "isPlayer":false,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"orangeplayer",
+    "animations":[
+      {"key":"default","path":"43.png"}
+    ],
+    "isPlayer":true,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"brownplayer",
+    "animations":[
+      {"key":"default","path":"44.png"}
+    ],
+    "isPlayer":true,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"grayplayer",
+    "animations":[
+      {"key":"default","path":"45.png"}
+    ],
+    "isPlayer":true,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"greenplayer",
+    "animations":[
+      {"key":"default","path":"46.png"}
+    ],
+    "isPlayer":true,
+    "Interactions": [
+    ]
+  },
+  {
+    "name":"pinkplayer",
+    "animations":[
+      {"key":"default","path":"47.png"}
+    ],
+    "isPlayer":true,
+    "Interactions": [
+    ]
+  }
+]

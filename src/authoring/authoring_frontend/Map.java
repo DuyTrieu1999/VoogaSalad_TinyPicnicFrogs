@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -10,24 +11,26 @@ import java.util.HashMap;
 
 public class Map {
     private int id;
-    private GridPane myGrid;
+    private Grid myGrid;
     private int width;
     private int height;
     private String programName;
     private HashMap<Pair<Integer, Integer>, String> connectedPoints;
+    private GameManager gameManager;
 
-    Map(int mapWidth, int mapHeight, String pName){
-        this(1, mapWidth, mapHeight, pName);
+    Map(int mapWidth, int mapHeight, String pName, GameManager myManager){
+        this(1, mapWidth, mapHeight, pName, myManager);
     }
 
-    Map(int mapID, int mapWidth, int mapHeight, String pName){
+    Map(int mapID, int mapWidth, int mapHeight, String pName, GameManager myManager){
         id = mapID;
         width = mapWidth;
         height = mapHeight;
         programName = pName;
-        myGrid = new GridPane();
+        myGrid = new Grid(width, height, programName, myManager);
         connectedPoints = new HashMap<>();
-        createMap();
+        gameManager = myManager;
+        //createMap();
     }
 
     public int getMapID(){
@@ -38,6 +41,7 @@ public class Map {
         return "Map " + id;
     }
 
+    /*
     public void createMap(){
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
@@ -61,8 +65,13 @@ public class Map {
             }
         }
     }
+    */
 
-    public GridPane getMyGrid(){
+    public GridPane getGridPane(){
+        return myGrid.getGridPane();
+    }
+
+    public Grid getGrid(){
         return myGrid;
     }
 }
