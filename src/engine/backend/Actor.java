@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class Actor {
 
-
     private Coordinate myCoordinate;
     private Map <String, Interaction> myInteractionMap;
     private Map<String, Integer>myStatsMap;
@@ -30,9 +29,8 @@ public class Actor {
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
         isPlayerActor = prototype.getIsPlayer();
-
-
     }
+
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
@@ -46,7 +44,14 @@ public class Actor {
         return myInteractionMap.get(key);
     }
 
-
+    /**
+     *
+     * @return interraction object associated with the first key in the keyset
+     */
+    public Interaction getInteraction(){
+        String key =(String)myInteractionMap.keySet().toArray()[0];
+        return myInteractionMap.get(key);
+    }
 
     public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
@@ -62,10 +67,7 @@ public class Actor {
 
     public boolean getIsPlayerActor() {return isPlayerActor;}
 
-
-
-
-    /**
+	/**
      * Moves the Actor up
      */
     public void moveUp(int amt) {
