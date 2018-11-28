@@ -1,7 +1,5 @@
 package engine.backend
 
-import engine.backend.Commands.GameState
-
 class GameWorldTest extends GroovyTestCase {
     GameWorld myGameWorld
     void setUp(){

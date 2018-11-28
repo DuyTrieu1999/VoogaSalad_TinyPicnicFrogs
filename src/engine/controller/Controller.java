@@ -2,7 +2,7 @@ package engine.controller;
 
 import engine.backend.AnimationObject;
 import engine.backend.Commands.Command;
-import engine.backend.Commands.GameState;
+import engine.backend.GameState;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
