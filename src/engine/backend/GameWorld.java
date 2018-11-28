@@ -1,9 +1,7 @@
 package engine.backend;
 
 import engine.backend.Commands.*;
-import javafx.concurrent.Service;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,9 +84,12 @@ public class GameWorld {
 
     }
 
-    public void handleInput(KeyEvent e){
-        if(keyMap.containsKey(e.getCode())){
-            keyMap.get(e.getCode()).execute(null);
+    public void handleInput(KeyCode c){
+        final int DEFAULT_MOVE_AMOUNT = 10;
+        var defaultParams = new ArrayList<>();
+        defaultParams.add(DEFAULT_MOVE_AMOUNT);
+        if(keyMap.containsKey(c)){
+            keyMap.get(c).execute(defaultParams);
         }
     }
 

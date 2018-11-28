@@ -1,4 +1,4 @@
-package engine.backend.Commands;
+package engine.backend;
 
 public enum GameState {
     Combat, Overworld;
