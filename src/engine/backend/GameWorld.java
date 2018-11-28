@@ -27,10 +27,21 @@ public class GameWorld {
         myName = "Game";
         myGameState = GameState.Overworld;
         keyMap = new HashMap<>();
-        keyMap.put(KeyCode.W, new MoveUpCommand());
-        keyMap.put(KeyCode.A, new MoveLeftCommand());
-        keyMap.put(KeyCode.S, new MoveDownCommand());
-        keyMap.put(KeyCode.D, new MoveRightCommand());
+        var myPlayer = ServiceLocator.getActorManager().getPlayerActor();
+
+        //Default keybinds. TODO: let these be player controlled
+        var PlayerMoveUp = new MoveUpCommand();
+        PlayerMoveUp.bind(myPlayer);
+        var PlayerMoveDown = new MoveDownCommand();
+        PlayerMoveDown.bind(myPlayer);
+        var PlayerMoveLeft = new MoveLeftCommand();
+        PlayerMoveLeft.bind(myPlayer);
+        var PlayerMoveRight = new MoveRightCommand();
+        PlayerMoveRight.bind(myPlayer);
+        keyMap.put(KeyCode.W, PlayerMoveUp);
+        keyMap.put(KeyCode.A, PlayerMoveLeft);
+        keyMap.put(KeyCode.S, PlayerMoveDown);
+        keyMap.put(KeyCode.D, PlayerMoveRight);
     }
 
     public static int getMapHeight(){
