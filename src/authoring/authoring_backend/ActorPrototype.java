@@ -1,8 +1,5 @@
 package authoring.authoring_backend;
-import engine.backend.Bounds;
-import engine.backend.CombatInteraction;
-import engine.backend.Interaction;
-import engine.backend.Message;
+import engine.backend.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -102,7 +99,8 @@ public class ActorPrototype {
             //create new collectible interaction
         }
         else if(((String)ineractionJSON.get("type")).equals("background")){
-            //create new background interaction
+            myInteraction= new BackgroundInteraction(ineractionJSON,interactionMessages);
+            interractionMap.put(myInteraction.getName(),myInteraction);
         }
     }
 
