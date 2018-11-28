@@ -25,7 +25,7 @@ public class ActorManager {
     /**
      *
      * @param actor already existing actor
-     * @param id id under whic to add the actor
+     * @param id id under which to add the actor
      * @return actor id
      */
     private String addActor(Actor actor, String id){

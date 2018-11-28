@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * @author Michael Glushakov
- * Purpose: maages all messages created by game author
+ * Purpose: manages all messages created by game author
  */
 public class MessageManager {
     Map<String, Message> messageMap;
