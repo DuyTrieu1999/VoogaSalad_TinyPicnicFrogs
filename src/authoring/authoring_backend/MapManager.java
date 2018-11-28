@@ -24,7 +24,6 @@ public class MapManager {
      */
 
 
-    //number of rows and cols
     //TODO: doublecheck
     public Integer divideMap(int width, int height, int rows, int cols) {
 

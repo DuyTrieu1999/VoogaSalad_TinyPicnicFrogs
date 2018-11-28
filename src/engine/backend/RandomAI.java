@@ -6,7 +6,7 @@ import engine.backend.Commands.Command;
 import java.util.List;
 import java.util.Random;
 
-public class randomAI extends AI {
+public class RandomAI extends AI {
     @Override
     public Command getOption() {
         if(myOptions.size() == 0){

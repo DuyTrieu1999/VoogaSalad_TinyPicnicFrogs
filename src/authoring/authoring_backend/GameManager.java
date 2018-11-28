@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Michael Glushakov
+ * @author Michael Glushakov, Janice Liu
  * Purpose: Controller for authoring back-end, the only class that the front-end communicates with
  * Dependencies: ActorManager, ActorPrototypeManager, MessageManager, MapManager
  * Usages: Front-end should pass in the user-input through availible public methods. Return values TBD
@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     /**
-     * @param key key where to stor created message in a map
+     * @param key key where to store created message in a map
      * @param value the String constitution the body of the message
      */
     public void createMessage(String key, String value){
@@ -91,6 +91,8 @@ public class GameManager {
 
     }
 
+
+
     /**
      * Saves all created actors and messages
      * @param gamePath: path of the folder to which the game data is saved
@@ -101,6 +103,20 @@ public class GameManager {
         messageManager.serializeAllMessages(gamePath);
         actorPrototypeManager.serializeAllPrototypes(authoringPath);
     }
+
+    /**
+     * This method is called when the front end Map form information is saved so then the model can take care of setting
+     * up the map.
+     * @param width
+     * @param height
+     * @param row
+     * @param col
+     */
+
+    public void setUpMap(int width, int height, int row, int col){
+        mapManager.divideMap(width, height, row, col);
+    }
+
 
     /**
      * Loads the Actors from a pre-existing XML File
