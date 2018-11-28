@@ -11,12 +11,7 @@ public class ServiceLocator {
     private static GameWorld myGameWorld;
     private static AI myAI;
     private static ActorManager myActorManager;
-
-    /**
-     * Defaults to a gameworld with dimensions 0
-     *
-     * @return the GameWorld object
-     */
+    private static CombatManager myCombatManager;
     public static GameWorld getGameWorld(){
         if(myGameWorld == null){
             provideGameWorld(new GameWorld(0, 0));
@@ -40,6 +35,7 @@ public class ServiceLocator {
         return myAI;
     }
 
+
     public static ActorManager getActorManager(){
         if(myActorManager == null){
             provideActorManager(new ActorManager(null));
@@ -47,12 +43,16 @@ public class ServiceLocator {
         return myActorManager;
     }
 
-    /**
-     * TODO: set null default objects
-     *  Sets the ActorManager used by the game
-     * @param actorManager the GameWorld object to be returned by getter
-     *
-     */
+    public static CombatManager getCombatManager(){
+        if(myCombatManager == null){
+            myCombatManager = new CombatManager(null, null, null);
+        }
+        return myCombatManager;
+    }
+
+    public static void provideCombatManager(CombatManager combatManager){
+        myCombatManager = combatManager;
+    }
 
     public static void provideActorManager(ActorManager actorManager){myActorManager = actorManager;}
 

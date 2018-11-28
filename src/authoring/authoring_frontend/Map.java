@@ -16,7 +16,6 @@ public class Map {
     private int height;
     private String programName;
     private HashMap<Pair<Integer, Integer>, String> connectedPoints;
-    private GameManager gameManager;
 
     Map(int mapWidth, int mapHeight, String pName, GameManager myManager){
         this(1, mapWidth, mapHeight, pName, myManager);
@@ -29,7 +28,6 @@ public class Map {
         programName = pName;
         myGrid = new Grid(width, height, programName, myManager);
         connectedPoints = new HashMap<>();
-        gameManager = myManager;
         //createMap();
     }
 

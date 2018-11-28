@@ -1,11 +1,13 @@
 package engine.backend;
 
+
 import engine.backend.Commands.*;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Holds information and methods that are used for the entire game
@@ -75,7 +77,6 @@ public class GameWorld {
      */
     private void launchInteraction(Interaction interaction){
         if(interaction instanceof  CombatInteraction){
-            myGameState = GameState.Combat;
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
             activateOverWorld();
         }
@@ -93,8 +94,8 @@ public class GameWorld {
         var enemyList = new ArrayList<CombatInteraction>();
         enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
+        ServiceLocator.provideCombatManager(combatMan);
         combatMan.runCombat();
-
     }
 
     /**
