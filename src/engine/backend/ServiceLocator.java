@@ -19,7 +19,7 @@ public class ServiceLocator {
 
     public static AI getAI(){
         if(myGameWorld == null){
-            provideAI(new randomAI());
+            provideAI(new RandomAI());
         }
         return myAI;
     }

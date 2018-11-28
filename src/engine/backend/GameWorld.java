@@ -19,7 +19,7 @@ public class GameWorld {
 
     private Map<KeyCode, Command> keyMap;
 
-    GameWorld(int mapHeight, int mapWidth){
+    public GameWorld(int mapHeight, int mapWidth){
         myMapHeight = mapHeight;
         myMapWidth = mapWidth;
         myName = "Game";

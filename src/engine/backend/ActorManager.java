@@ -10,7 +10,7 @@ public class ActorManager {
     PlayerActor myPlayerActor;
 
 
-    ActorManager(List<Actor> actorList){
+    public ActorManager(List<Actor> actorList){
         allActors = actorList;
         inactiveActors = allActors;
         activeActors = new ArrayList<>();
