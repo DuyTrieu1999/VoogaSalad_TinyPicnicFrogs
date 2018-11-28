@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Manages the combat state (taking turns, etc).
+ *
  * @author Christopher Lin cl349
  */
 public class CombatManager {

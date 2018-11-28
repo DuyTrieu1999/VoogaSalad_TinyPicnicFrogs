@@ -1,5 +1,9 @@
 package engine.backend;
 
+
+/**
+ * Represents the bounding box
+ */
 public class Bounds {
    private int width;
    private int height;
