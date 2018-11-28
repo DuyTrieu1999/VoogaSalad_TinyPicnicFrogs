@@ -21,7 +21,6 @@ public class ActorManager {
         backgroundActors = new ArrayList<>();
         playableActors = new ArrayList<>();
         gameManager = gm;
-        /*
         try {
             loadDefaultActors();
         } catch (IOException e) {
@@ -29,7 +28,6 @@ public class ActorManager {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        */
     }
 
     public void addActor(Actor newActor, boolean isPlayable){
@@ -56,7 +54,7 @@ public class ActorManager {
         for(int i=0;i<defaultActors.size();i++){
             JSONObject thisActor = (JSONObject)defaultActors.get(i);
             gameManager.createActorPrototype(thisActor);
-            addActor(new Actor(thisActor), Boolean.parseBoolean((String)thisActor.get("isPlayer")));
+            addActor(new Actor(thisActor), (boolean) thisActor.get("isPlayer"));
         }
     }
 
