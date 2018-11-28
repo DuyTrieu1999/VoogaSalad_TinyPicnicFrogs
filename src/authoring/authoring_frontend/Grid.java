@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Grid {
@@ -53,6 +54,8 @@ public class Grid {
             else {
                 if(thisCell.getChildren().size() > 0){
                     thisCell.getChildren().remove(thisCell.getChildren().size()-1);
+                    ArrayList<Actor> actorsOfCell = myCells[x][y].getActors();
+                    gameManager.deleteActor(actorsOfCell.get(actorsOfCell.size()-1).getActorPrototypeID()+x+"-"+y+"-"+(thisCell.getChildren().size()-1));
                     myCells[x][y].removeActor();
                 }
             }

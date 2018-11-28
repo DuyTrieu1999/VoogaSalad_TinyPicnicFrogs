@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * Manages the combat state (taking turns, etc).
+ *
  * @author Christopher Lin cl349
  */
 public class CombatManager {
@@ -57,5 +59,37 @@ public class CombatManager {
             }
             myEnemies.removeAll(deadList);
         }
+    }
+
+    public List<Integer> getAlliesHealth(){
+        var healthList = new ArrayList<Integer>();
+        for(CombatInteraction a : myAllies){
+            healthList.add(a.getHealth());
+        }
+        return healthList;
+    }
+
+    public List<Integer> getEnemiesHealth(){
+        var healthList = new ArrayList<Integer>();
+        for(CombatInteraction a : myEnemies){
+            healthList.add(a.getHealth());
+        }
+        return healthList;
+    }
+
+    public List<AnimationObject> getAlliesIdleAnimation(){
+        var animationList = new ArrayList<AnimationObject>();
+        for(CombatInteraction a : myAllies){
+            animationList.add(a.getCombatIdleAnimation());
+        }
+        return animationList;
+    }
+
+    public List<AnimationObject> getEnemiesIdleAnimation(){
+        var animationList = new ArrayList<AnimationObject>();
+        for(CombatInteraction a : myEnemies){
+            animationList.add(a.getCombatIdleAnimation());
+        }
+        return animationList;
     }
 }

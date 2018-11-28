@@ -46,14 +46,13 @@ public class MessageManager {
      * @param path path to folder of xml file
      */
   protected void serializeAllMessages(String path){
-      int index=0;
+
       XStream serializer = new XStream(new DomDriver());
-      for(Message message:messageMap.values()){
-          index+=1;
-          String serialized= serializer.toXML(message);
-          try{
-              Files.write(Paths.get(path+"message-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
-      }
+      String serialized= serializer.toXML(messageMap);
+      try{
+          Files.write(Paths.get(path+"messages.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+
+
 
   }
 

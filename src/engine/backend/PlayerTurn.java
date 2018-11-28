@@ -17,6 +17,5 @@ public class PlayerTurn extends Turn {
     public void executeTurn() {
         Menu myMenu = new CommandLineMenu(myInt.getCommandList());
         myMenu.getChoices().get(0).execute(null);
-
     }
 }
