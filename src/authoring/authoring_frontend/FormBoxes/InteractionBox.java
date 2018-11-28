@@ -1,24 +1,25 @@
-package authoring.authoring_frontend.Forms;
+package authoring.authoring_frontend.FormBoxes;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InteractionBox extends FormBox {
-    private TextField myType;
-    private Map<String, String> myAnimations;
-    private Map<String, TextField> myMessages;
+    private SelectBox myType;
+    private List<AnimationBox> myAnimations;
+    private List<MessageBox> myMessages;
     private List<MoveBox> myMoves;
 
     public InteractionBox(String label) {
@@ -27,51 +28,62 @@ public class InteractionBox extends FormBox {
 
     @Override
     public void setContent() {
-        myMessages = new HashMap<>();
-        myAnimations = new HashMap<>();
+        myMessages = new ArrayList<>();
+        myAnimations = new ArrayList<>();
+        myMoves = new ArrayList<>();
         VBox myContent = new VBox();
 
         // Type
-        Label type = new Label(myResources.getString("type"));
-        myType = new TextField();
-        myContent.getChildren().addAll(type, myType);
+        ArrayList<String> types = new ArrayList<>(List.of("fight"));
+        myType = new SelectBox(myResources.getString("type"));
+        myType.setChoices(types);
+        myContent.getChildren().addAll(myType);
 
         // Animations
-        FileChooser myFC = new FileChooser();
-        myFC.setTitle(myResources.getString("NewFile"));
-        ImageView fileIm = new ImageView();
+        Label animations = new Label(myResources.getString("animations"));
+        Button addAnimationBtn = new Button(myResources.getString("AddNew"));
+        VBox animationsBox = new VBox();
+        animationsBox.setPadding(new Insets(PADDING));
+        animationsBox.getChildren().addAll(animations, addAnimationBtn);
+        this.getChildren().add(animationsBox);
 
-        Button fileBtn = new Button(myResources.getString("NewFile"));
-
-        fileBtn.setOnAction(e -> {
-            File file = myFC.showOpenDialog(getScene().getWindow());
-            //TODO: error check
-            if(file.toString().contains(".png") || file.toString().contains(".jpeg")) {
-                String fileName = file.toString();
-                myAnimations.put("default", fileName);
-                fileIm.setImage(new Image(file.toURI().toString()));
-
+        addAnimationBtn.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle(myResources.getString("animations"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("animation"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("animation"));
+            Optional<String> result = dialog.showAndWait();
+            if(result.isPresent()){
+                AnimationBox temp = new AnimationBox(result.get());
+                temp.setContent();
+                myAnimations.add(temp);
+                animationsBox.getChildren().add(temp);
             }
         });
-
-        myContent.getChildren().addAll(fileBtn, fileIm);
 
         // Messages
         // author defines key, selects from a list of possible messages
         // user defines key and body outside of prototype and then the body is added to a list of possible messages
         // get method from GameManager to get all messages
-        Label victoryM = new Label(myResources.getString("victory"));
-        TextField prototypeVictory = new TextField();
-        myMessages.put("victory", prototypeVictory);
-        Label defeatM = new Label(myResources.getString("defeat"));
-        TextField prototypeDefeat = new TextField();
-        myMessages.put("defeat", prototypeDefeat);
-        myContent.getChildren().addAll(victoryM, prototypeVictory, defeatM, prototypeDefeat);
+        Label messages = new Label(myResources.getString("messages"));
+        Button addMessageBtn = new Button(myResources.getString("AddNew"));
+        VBox messagesBox = new VBox();
+        messagesBox.setPadding(new Insets(PADDING));
+        messagesBox.getChildren().addAll(messages, addMessageBtn);
+        this.getChildren().add(messagesBox);
+
+        addMessageBtn.setOnAction(e -> {
+            MessageBox temp = new MessageBox("");
+            temp.setMessageChoices(new ArrayList<>(List.of("onVictory", "onDefeat")));
+            temp.setContent();
+            myMessages.add(temp);
+            messagesBox.getChildren().add(temp);
+        });
 
         // Moves
         //TODO: Complete this
 
-
+        myContent.getChildren().addAll(animationsBox, messagesBox);
         this.getChildren().add(myContent);
     }
 
@@ -83,31 +95,25 @@ public class InteractionBox extends FormBox {
         JSONArray myMoveJSON = new JSONArray();
 
         // Animations
-        JSONObject animation1JSON = new JSONObject();
-        animation1JSON.put("key", "default");
-        animation1JSON.put("path", myAnimations.get("default"));
+        for(AnimationBox box: myAnimations) {
+            myAnimationJSON.add(box.getContent());
+        }
 
         // Messages
         // TODO: createMessage(String key, String messageBody) will save message to messageMap in GameManager
-        JSONObject message1JSON = new JSONObject();
-        message1JSON.put("key", "prototypeVictory");
-        message1JSON.put("messageKey", myMessages.get("victory").getText());
 
-        JSONObject message2JSON = new JSONObject();
-        message2JSON.put("key", "prototypeDefeat");
-        message2JSON.put("messageKey", myMessages.get("defeat").getText());
-
-        myMessageJSON.add(message1JSON);
-        myMessageJSON.add(message2JSON);
+        for(int i = 0; i < myMessages.size(); i++) {
+            myMessageJSON.add(myMessages.get(i).getContent());
+        }
 
         // Moves
-        for(int i = 0; i < myMoves.size(); i++) {
-            myMoves.get(i);
-        }
         //TODO: complete this
+        for(int i = 0; i < myMoves.size(); i++) {
+            myMoveJSON.add(myMoves.get(i).getContent());
+        }
 
         myObject.put("name", myKey);
-        myObject.put("type", myType.getText());
+        myObject.put("type", myType.getChoice());
         myObject.put("animations", myAnimationJSON);
         myObject.put("messages", myMessageJSON);
         myObject.put("moves", myMoveJSON);
