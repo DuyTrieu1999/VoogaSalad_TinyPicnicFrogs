@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,11 +24,12 @@ public class MapMenu extends HBox {
     private HBox buttonView = new HBox();
     private String programName;
     private MapManager mapManager;
+    private GameManager gameManager;
 
     public MapMenu(String pName, MapManager manager) {
         this.getChildren().add(new Label("map"));
         programName = pName;
-        mapManager = manager;
+
     }
 
     public ListView<String> setupList(){

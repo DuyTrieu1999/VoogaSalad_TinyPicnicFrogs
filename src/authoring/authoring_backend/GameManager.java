@@ -31,7 +31,7 @@ public class GameManager {
     }
 
     /**
-     * @param key key where to stor created message in a map
+     * @param key key where to store created message in a map
      * @param value the String constitution the body of the message
      */
     public void createMessage(String key, String value){
@@ -151,6 +151,9 @@ public class GameManager {
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
 
+    public void setUpMap(int width, int height, int row, int col){
+        mapManager.divideMap(width, height, row, col);
+    }
 
 
 }
