@@ -1,7 +1,7 @@
 package engine.frontend.game_engine_UI;
 
 import engine.backend.Commands.Command;
-import engine.backend.Commands.GameState;
+import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;

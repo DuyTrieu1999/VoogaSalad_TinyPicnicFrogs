@@ -1,10 +1,11 @@
 package engine.backend;
 
-import engine.backend.Commands.GameState;
-import javafx.concurrent.Service;
+import engine.backend.Commands.*;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Christopher Lin cl349
@@ -16,12 +17,29 @@ public class GameWorld {
     private String myName;
     private GameState myGameState;
 
+    private Map<KeyCode, Command> keyMap;
 
     GameWorld(int mapHeight, int mapWidth){
         myMapHeight = mapHeight;
         myMapWidth = mapWidth;
         myName = "Game";
         myGameState = GameState.Overworld;
+        keyMap = new HashMap<>();
+        var myPlayer = ServiceLocator.getActorManager().getPlayerActor();
+
+        //Default keybinds. TODO: let these be player controlled
+        var PlayerMoveUp = new MoveUpCommand();
+        PlayerMoveUp.bind(myPlayer);
+        var PlayerMoveDown = new MoveDownCommand();
+        PlayerMoveDown.bind(myPlayer);
+        var PlayerMoveLeft = new MoveLeftCommand();
+        PlayerMoveLeft.bind(myPlayer);
+        var PlayerMoveRight = new MoveRightCommand();
+        PlayerMoveRight.bind(myPlayer);
+        keyMap.put(KeyCode.W, PlayerMoveUp);
+        keyMap.put(KeyCode.A, PlayerMoveLeft);
+        keyMap.put(KeyCode.S, PlayerMoveDown);
+        keyMap.put(KeyCode.D, PlayerMoveRight);
     }
 
     public static int getMapHeight(){
@@ -66,8 +84,13 @@ public class GameWorld {
 
     }
 
-    public void handleInput(KeyCode e){
-        
+    public void handleInput(KeyCode c){
+        final int DEFAULT_MOVE_AMOUNT = 10;
+        var defaultParams = new ArrayList<>();
+        defaultParams.add(DEFAULT_MOVE_AMOUNT);
+        if(keyMap.containsKey(c)){
+            keyMap.get(c).execute(defaultParams);
+        }
     }
 
 

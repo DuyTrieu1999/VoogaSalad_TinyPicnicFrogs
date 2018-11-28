@@ -21,7 +21,7 @@ public class ActorManager {
         backgroundActors = new ArrayList<>();
         playableActors = new ArrayList<>();
         gameManager = gm;
-        
+        /*
         try {
             loadDefaultActors();
         } catch (IOException e) {
@@ -29,7 +29,7 @@ public class ActorManager {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        */
     }
 
     public void addActor(Actor newActor, boolean isPlayable){
