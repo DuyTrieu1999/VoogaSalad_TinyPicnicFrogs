@@ -1,7 +1,7 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.Forms.*;
+import authoring.authoring_frontend.FormBoxes.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -75,14 +76,31 @@ public class PrototypeForm extends VBox {
         myAnimationForms.add(down);
         myAnimationForms.add(left);
         myAnimationForms.add(right);
+        for(FormBox box:myAnimationForms) {
+            box.setContent();
+        }
 
         this.getChildren().addAll(animations, idle, up, down, left, right);
 
         // Statistics
-        TextBox health = new TextBox("Health");
-        myStatisticsForms.add(health);
+        Button addSBtn = new Button(myResources.getString("AddNew"));
+        VBox statisticsBox = new VBox();
+        statisticsBox.setPadding(new Insets(PADDING));
+        this.getChildren().addAll(stats, statisticsBox, addSBtn);
 
-        this.getChildren().addAll(stats, health);
+        addSBtn.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle(myResources.getString("stats"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("stat"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("stat"));
+            Optional<String> result = dialog.showAndWait();
+            if(result.isPresent()){
+                TextBox temp = new TextBox(result.get());
+                temp.setContent();
+                myStatisticsForms.add(temp);
+                statisticsBox.getChildren().add(temp);
+            }
+        });
 
         // Interactions
         Button addIBtn = new Button(myResources.getString("AddNew"));
@@ -92,16 +110,15 @@ public class PrototypeForm extends VBox {
 
         addIBtn.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
-            dialog.setTitle("Interaction");
-            dialog.setHeaderText("Create New Interaction");
-            dialog.setContentText("Enter the name of the new interaction: ");
+            dialog.setTitle(myResources.getString("interactions"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("interaction"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("interaction"));
             Optional<String> result = dialog.showAndWait();
             if(result.isPresent()){
-                this.getChildren().remove(saveBtn);
                 InteractionBox temp = new InteractionBox(result.get());
+                temp.setContent();
                 myInteractionForms.add(temp);
                 interactionsBox.getChildren().add(temp);
-                this.getChildren().addAll(saveBtn);
             }
         });
 
@@ -136,6 +153,7 @@ public class PrototypeForm extends VBox {
 
         System.out.println(myPrototype);
         //myManager.createActorPrototype(myPrototype); //TODO: uncomment to parse actual JSON
+        // TODO: store ActorObject by passing JSON object
 
     }
 }

@@ -12,13 +12,14 @@ import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InteractionBox extends FormBox {
     private TextField myType;
     private Map<String, String> myAnimations;
     private Map<String, TextField> myMessages;
-//    private Map<String, >
+    private List<MoveBox> myMoves;
 
     public InteractionBox(String label) {
         super(label);
@@ -56,6 +57,9 @@ public class InteractionBox extends FormBox {
         myContent.getChildren().addAll(fileBtn, fileIm);
 
         // Messages
+        // author defines key, selects from a list of possible messages
+        // user defines key and body outside of prototype and then the body is added to a list of possible messages
+        // get method from GameManager to get all messages
         Label victoryM = new Label(myResources.getString("victory"));
         TextField prototypeVictory = new TextField();
         myMessages.put("victory", prototypeVictory);
@@ -84,6 +88,7 @@ public class InteractionBox extends FormBox {
         animation1JSON.put("path", myAnimations.get("default"));
 
         // Messages
+        // TODO: createMessage(String key, String messageBody) will save message to messageMap in GameManager
         JSONObject message1JSON = new JSONObject();
         message1JSON.put("key", "prototypeVictory");
         message1JSON.put("messageKey", myMessages.get("victory").getText());
@@ -96,6 +101,9 @@ public class InteractionBox extends FormBox {
         myMessageJSON.add(message2JSON);
 
         // Moves
+        for(int i = 0; i < myMoves.size(); i++) {
+            myMoves.get(i);
+        }
         //TODO: complete this
 
         myObject.put("name", myKey);

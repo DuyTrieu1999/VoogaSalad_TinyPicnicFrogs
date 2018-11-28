@@ -19,5 +19,5 @@ module voogasalad_tinypicnicfrogs {
     exports engine.frontend.game_engine_UI;
     exports authoring.authoring_backend;
     exports authoring.authoring_frontend;
-    exports authoring.authoring_frontend.Forms;
+    exports authoring.authoring_frontend.FormBoxes;
 }

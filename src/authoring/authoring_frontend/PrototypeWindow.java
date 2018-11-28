@@ -61,7 +61,7 @@ public class PrototypeWindow {
         ScrollPane mySP = new ScrollPane();
         myContent = new PrototypeForm(myManager);
         mySP.setContent(myContent);
-        mySP.setMaxSize(SIZE,SIZE);
+        mySP.setPrefSize(SIZE, SIZE);
         myRoot.getChildren().add(mySP);
     }
 }
