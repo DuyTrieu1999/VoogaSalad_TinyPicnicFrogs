@@ -1,11 +1,16 @@
 package engine.backend.Commands;
 
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import engine.backend.Actor;
+import engine.backend.AnimationObject;
 import engine.backend.CombatInteraction;
 import javafx.animation.Animation;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CombatMove extends Command {
     private String stat;
@@ -15,8 +20,8 @@ public class CombatMove extends Command {
     private enum targetType {CONSTANT,PERCENTAGE};
     private targetType myTargetType;
     private targetActor myTargetActor;
-    private Animation myAnimation;
 
+    private Map<String, AnimationObject> myAnimationMap;
 
 
     public CombatMove(JSONObject params){
@@ -26,12 +31,15 @@ public class CombatMove extends Command {
         targetValue=Integer.parseInt(String.valueOf(params.get("targetValue")));
         myTargetType=parseTargetType((String)params.get("targetType"));
         myTargetActor=parseTargetActor((String)params.get("targetActorType"));
+        myAnimationMap=parseAnimationMap((JSONArray)params.get("animations"));
 
 
     }
 
-    public Animation  getAnimation(){
-        return myAnimation;
+
+    public AnimationObject getAnimation(String key){
+        return myAnimationMap.get(key);
+
     }
 
     @Override
@@ -47,6 +55,15 @@ public class CombatMove extends Command {
         if(value.equals("friend"))return targetActor.FRIEND;
         else if(value.equals("enemy"))return targetActor.ENEMY;
         else throw new IllegalArgumentException("invalid target type");
+    }
+
+    public Map<String,AnimationObject>parseAnimationMap(JSONArray arr){
+        Map<String,AnimationObject>animationMap=new HashMap<>();
+        for(int i=0;i<arr.size();i+=1){
+            JSONObject animation=(JSONObject)arr.get(i);
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
+        }
+        return animationMap;
     }
 
     /**

@@ -1,0 +1,14 @@
+public class HitSwitch {
+    GameWorld g = new GameWorld();
+    Broadcaster b = new Broadcaster();
+    ActorManager am = new ActorManager();
+    Actor door = new Actor();
+
+    public HitSwitch() {
+        g.handleCollisions();
+        b.broadcast(switchHit);
+        d.receiveMessage();
+        d.setInactiveState();
+        am.deactivateActor();
+    }
+}
