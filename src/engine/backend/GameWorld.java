@@ -1,11 +1,13 @@
 package engine.backend;
 
+
 import engine.backend.Commands.*;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * @author Christopher Lin cl349
@@ -68,20 +70,20 @@ public class GameWorld {
 
     private void launchInteraction(Interaction interaction){
         if(interaction instanceof  CombatInteraction){
-            myGameState = GameState.Combat;
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
-            myGameState = GameState.Overworld;
+            activateOverWorld();
         }
     }
 
     private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInterction){
+        myGameState = GameState.Combat;
         var alliesList = new ArrayList<CombatInteraction>();
         alliesList.add(playerInteraction);
         var enemyList = new ArrayList<CombatInteraction>();
         enemyList.add(enemyInterction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
+        ServiceLocator.provideCombatManager(combatMan);
         combatMan.runCombat();
-
     }
 
     public void handleInput(KeyCode c){
