@@ -2,6 +2,7 @@ package engine.backend;
 
 import engine.backend.Commands.GameState;
 import javafx.concurrent.Service;
+import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,10 @@ public class GameWorld {
 
     }
 
+    public void handleInput(KeyEvent e){
+        
+    }
+
 
 
     public void activateOverWorld(){
@@ -97,6 +102,8 @@ public class GameWorld {
         System.out.println(yIntersects);
         return xIntersects && yIntersects;
     }
+
+
 
 
 }
