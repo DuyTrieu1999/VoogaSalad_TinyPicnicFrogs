@@ -1,10 +1,7 @@
 package engine.controller;
 
-import engine.backend.AnimationObject;
+import engine.backend.*;
 import engine.backend.Commands.Command;
-import engine.backend.GameState;
-import engine.backend.PlayerActor;
-import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
 
 import java.util.Collection;
@@ -36,4 +33,11 @@ public class Controller {
 
     private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
     public GameWorld getGameWorld () { return gameWorldSupplier.get(); }
+
+    private Supplier<AnimationObject> battlePlayerAnimationSupplier = () -> ServiceLocator;
+    public AnimationObject getBattlePlayerAnimation () { return battlePlayerAnimationSupplier.get(); }
+
+    private Supplier<AnimationObject> battleEnemyAnimationSupplier = () -> ServiceLocator;
+    public AnimationObject getBattleEnemyAnimation () { return battleEnemyAnimationSupplier.get(); }
+
 }
