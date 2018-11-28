@@ -1,10 +1,13 @@
 package engine.backend;
 
-import engine.backend.Commands.GameState;
+import engine.backend.Commands.*;
 import javafx.concurrent.Service;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Christopher Lin cl349
@@ -16,12 +19,18 @@ public class GameWorld {
     private String myName;
     private GameState myGameState;
 
+    private Map<KeyCode, Command> keyMap;
 
     GameWorld(int mapHeight, int mapWidth){
         myMapHeight = mapHeight;
         myMapWidth = mapWidth;
         myName = "Game";
         myGameState = GameState.Overworld;
+        keyMap = new HashMap<>();
+        keyMap.put(KeyCode.W, new MoveUpCommand());
+        keyMap.put(KeyCode.A, new MoveLeftCommand());
+        keyMap.put(KeyCode.S, new MoveDownCommand());
+        keyMap.put(KeyCode.D, new MoveRightCommand());
     }
 
     public static int getMapHeight(){
@@ -67,7 +76,9 @@ public class GameWorld {
     }
 
     public void handleInput(KeyEvent e){
-        
+        if(keyMap.containsKey(e.getCode())){
+            keyMap.get(e.getCode()).execute(null);
+        }
     }
 
 
