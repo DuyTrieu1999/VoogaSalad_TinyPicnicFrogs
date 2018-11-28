@@ -82,13 +82,8 @@ public class GameWorld {
         }
     }
 
-
-    /**
-     * Launches a CombatInteraction
-     * @param playerInteraction The CombatInteraction object held by the player's actor
-     * @param enemyInteraction The CombatInteraction object held by the non-player actor
-     */
     private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInteraction){
+        myGameState = GameState.Combat;
         var alliesList = new ArrayList<CombatInteraction>();
         alliesList.add(playerInteraction);
         var enemyList = new ArrayList<CombatInteraction>();
