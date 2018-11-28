@@ -3,6 +3,7 @@ package engine.controller;
 import engine.backend.AnimationObject;
 import engine.backend.Commands.Command;
 import engine.backend.Commands.GameState;
+import engine.backend.GameWorld;
 import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.StateView;
@@ -33,4 +34,7 @@ public class Controller {
 
     private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
     public GameState getGameState () { return  gameStateSupplier.get(); }
+
+    private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
+    public GameWorld getGameWorld () { return gameWorldSupplier.get(); }
 }

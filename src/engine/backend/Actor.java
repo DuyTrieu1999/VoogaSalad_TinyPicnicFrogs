@@ -2,9 +2,6 @@ package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
 
-import engine.backend.Commands.Command;
-import engine.backend.AnimationObject;
-
 import java.util.HashMap;
 
 import java.util.Map;

@@ -2,7 +2,7 @@ package engine.backend;
 
 import engine.backend.Commands.GameState;
 import javafx.concurrent.Service;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 
@@ -66,7 +66,7 @@ public class GameWorld {
 
     }
 
-    public void handleInput(KeyEvent e){
+    public void handleInput(KeyCode e){
         
     }
 
