@@ -75,12 +75,12 @@ public class GameWorld {
         }
     }
 
-    private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInterction){
+    private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInteraction){
         myGameState = GameState.Combat;
         var alliesList = new ArrayList<CombatInteraction>();
         alliesList.add(playerInteraction);
         var enemyList = new ArrayList<CombatInteraction>();
-        enemyList.add(enemyInterction);
+        enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
         combatMan.runCombat();

@@ -74,4 +74,20 @@ public class CombatManager {
         }
         return healthList;
     }
+
+    public List<AnimationObject> getAlliesIdleAnimation(){
+        var animationList = new ArrayList<AnimationObject>();
+        for(CombatInteraction a : myAllies){
+            animationList.add(a.getCombatIdleAnimation());
+        }
+        return animationList;
+    }
+
+    public List<AnimationObject> getEnemiesIdleAnimation(){
+        var animationList = new ArrayList<AnimationObject>();
+        for(CombatInteraction a : myEnemies){
+            animationList.add(a.getCombatIdleAnimation());
+        }
+        return animationList;
+    }
 }
