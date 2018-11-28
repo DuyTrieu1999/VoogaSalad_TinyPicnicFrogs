@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class Actor {
 
-
     private Coordinate myCoordinate;
     private Map <String, Interaction> myInteractionMap;
     private Map<String, Integer>myStatsMap;
@@ -31,9 +30,8 @@ public class Actor {
         myActiveAnimation=myAnimationMap.get("idle");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
-
-
     }
+
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
@@ -46,7 +44,6 @@ public class Actor {
     public Interaction getInteraction(String key) {
         return myInteractionMap.get(key);
     }
-
 
     /**
      *
@@ -61,12 +58,9 @@ public class Actor {
         return myBounds;
     }
 
-
-
     public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
     }
-
 
     public Coordinate getCoordinate() {
         return myCoordinate;
@@ -74,10 +68,7 @@ public class Actor {
 
     public boolean getIsPlayerActor() {return isPlayerActor;}
 
-
-
-
-    /**
+	/**
      * Moves the Actor up
      */
     public void moveUp(int amt) {
