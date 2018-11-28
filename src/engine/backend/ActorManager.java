@@ -9,6 +9,7 @@ public class ActorManager {
     List<Actor> inactiveActors;
     PlayerActor myPlayerActor;
 
+
     ActorManager(List<Actor> actorList){
         allActors = actorList;
         inactiveActors = allActors;
@@ -18,8 +19,12 @@ public class ActorManager {
     public PlayerActor getPlayerActor(){
         return myPlayerActor;
     }
+    public void setPlayerActor(PlayerActor player){
+        myPlayerActor = player;
+    }
 
-    public List<Actor> getActiveActors() { return activeActors;}
+
+
 
     /**
      * sets myPlayerActor
@@ -71,5 +76,9 @@ public class ActorManager {
      */
     public void inactivate(Actor actor) {
         changeActorState(activeActors, inactiveActors, actor);
+    }
+
+    public List<Actor> getActiveActors() {
+        return activeActors;
     }
 }

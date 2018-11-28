@@ -1,0 +1,134 @@
+package authoring.authoring_frontend;
+
+import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+
+public class MapConnector {
+    private Map firstMap;
+    private Map secondMap;
+    private Cell firstCell;
+    private Cell secondCell;
+    private MapManager mapManager;
+
+    MapConnector(MapManager manager){
+        mapManager = manager;
+        firstCell = null;
+        secondCell = null;
+        startConnector();
+    }
+
+    public void startConnector(){
+        firstMap = selectMapDialog();
+        if(firstMap != null){
+            selectSquareDialog(firstMap);
+            if(firstCell != null){
+                secondMap = selectMapDialog();
+                if(secondMap != null){
+                    selectSquareDialog(secondMap);
+                    if(secondCell != null){
+                        //connect
+                        mapManager.addPortal(new Portal(new Pair<>(firstCell.getX(), firstCell.getY()), firstMap, new Pair<>(secondCell.getX(), secondCell.getY()), secondMap, showReversableDialog(), mapManager));
+                        //System.out.println("Added a portal from " + firstMap + " at (" + firstCell.getX() + ", " + firstCell.getY() + ") to " + secondMap + " at (" + secondCell.getX() + ", " + secondCell.getY() + ")!");
+                    }
+                }
+            }
+        }
+    }
+
+    public Map selectMapDialog(){
+        List<String> choices = mapManager.getMapList();
+        if(choices.size() > 0){
+            ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
+            dialog.setTitle("Choose a Map");
+            dialog.setHeaderText("Choose a Map");
+            dialog.setContentText("Choose map to connect:");
+
+            Optional<String> result = dialog.showAndWait();
+
+            if (result.isPresent()){
+                return mapManager.getMap(result.get());
+            }
+            return null;
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Error: there are no maps!");
+
+            alert.showAndWait();
+            return null;
+        }
+    }
+
+    public void selectSquareDialog(Map selectFrom){
+        //BorderPane
+        GridPane selectOne = new GridPane();
+        Cell[][] myCells = selectFrom.getGrid().getCells();
+        for(int i=0;i<myCells.length;i++){
+            for(int j=0;j<myCells[i].length;j++){
+                StackPane thisCell = new StackPane();
+                thisCell.setPrefSize(18, 18);
+                thisCell.setStyle("-fx-border-color: black;");
+                for(Actor a:myCells[i][j].getActors()){
+                    thisCell.getChildren().add(a.getActorImage());
+                }
+                thisCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        thisCell.setStyle("-fx-border-color: blue;");
+                        int x = selectOne.getColumnIndex(thisCell);
+                        int y = selectOne.getRowIndex(thisCell);
+                        setCell(x, y, myCells);
+                    }
+                });
+                selectOne.add(thisCell, i, j);
+            }
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Choose a square");
+        alert.setHeaderText("Choose a square");
+        alert.setContentText("Choose a square that you want the portal to be placed on.");
+        alert.getDialogPane().setContent(selectOne);
+
+        alert.showAndWait();
+
+    }
+
+    public void setCell(int x, int y, Cell[][] myCells){
+        if(firstCell == null){
+            firstCell = myCells[x][y];
+        }
+        else {
+            secondCell = myCells[x][y];
+        }
+    }
+
+    public boolean showReversableDialog(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reversable portal?");
+        alert.setHeaderText("Reversable portal?");
+        alert.setContentText("Make the portal reversable?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+            return true;
+        }
+        return false;
+    }
+}
