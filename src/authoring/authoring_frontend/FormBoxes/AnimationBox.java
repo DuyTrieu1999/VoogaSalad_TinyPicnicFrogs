@@ -1,4 +1,4 @@
-package authoring.authoring_frontend.Forms;
+package authoring.authoring_frontend.FormBoxes;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
