@@ -33,4 +33,7 @@ public class Controller {
 
     private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
     public GameState getGameState () { return  gameStateSupplier.get(); }
+
+    private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
+    public GameWorld getGameWorld () { return gameWorldSupplier.get(); }
 }
