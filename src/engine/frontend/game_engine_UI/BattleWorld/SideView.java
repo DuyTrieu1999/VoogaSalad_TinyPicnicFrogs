@@ -11,6 +11,7 @@ abstract class SideView extends HBox {
     private ProgressBar hpBar;
     private AnimationObject myAnimation;
     private int myHealth;
+    private double maxHealth = myHealth;
     private BorderPane view;
 
     public SideView(AnimationObject actorAnimation) {
@@ -31,5 +32,6 @@ abstract class SideView extends HBox {
 
     public void setHealth(int health) {
         myHealth = health;
+        hpBar.setProgress(myHealth/maxHealth);
     }
 }
