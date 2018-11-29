@@ -13,6 +13,7 @@ public class Controller {
     private StateView myView;
 
     public Controller (StateView view) {
+        ServiceLocator.provideController(this);
         this.myView = view;
     }
 
