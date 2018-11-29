@@ -38,6 +38,7 @@ public class ServiceLocator {
 
     public static ActorManager getActorManager(){
         if(myActorManager == null){
+            System.out.println("NULL");
             provideActorManager(new ActorManager(null));
         }
         return myActorManager;

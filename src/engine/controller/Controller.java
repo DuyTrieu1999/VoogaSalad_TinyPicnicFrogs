@@ -17,7 +17,9 @@ public class Controller {
     }
 
     private Supplier<Collection<AnimationObject>> animationObjectSupplier = () -> ServiceLocator.getActorManager().getAnimationObjects();
-    public Collection<AnimationObject> getAnimation () { return animationObjectSupplier.get(); }
+    public Collection<AnimationObject> getAnimation () {
+        System.out.println("SIZE"+animationObjectSupplier.get().size());
+        return animationObjectSupplier.get(); }
 
     private Supplier<PlayerActor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
     public PlayerActor getPlayer () { return playerActorSupplier.get(); }

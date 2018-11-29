@@ -8,8 +8,10 @@ import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -26,13 +28,17 @@ public abstract class WorldView {
 
     private Collection<AnimationObject> myAnimations;
     private PlayerActor myPlayer;
+    private Controller myController;
 
     public WorldView (Controller controller) {
+        this.myController = controller;
         myAnimations = controller.getAnimation();
+        System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        myScene = new Scene(displayPane);
+        myScene = new Scene(displayPane, Color.GREENYELLOW);
+
     }
     public void updateView () {
         clearView();
@@ -57,8 +63,12 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+        myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
+
+            //System.out.println(this.getClass().getClassLoader().getResource().getPath());
             displayPane.getChildren().add(animationObject.getAnimationView());
+
         }
     }
     private void setUpDisplay () {
