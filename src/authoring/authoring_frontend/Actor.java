@@ -25,6 +25,7 @@ public class Actor {
         String imageURL = (String)defaultSprite.get("path");
         System.out.println(actorPrototypeID + ": " + imageURL);
         actorImage = new Image(imageURL);
+
     }
 
     /**

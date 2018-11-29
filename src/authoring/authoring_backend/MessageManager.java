@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * @author Michael Glushakov
- * Purpose: maages all messages created by game author
+ * Purpose: manages all messages created by game author
  */
 public class MessageManager {
     Map<String, Message> messageMap;
@@ -38,7 +38,7 @@ public class MessageManager {
      * @param messageBody
      */
   protected void createMessage(String key, String messageBody){
-        messageMap.put(key,new Message(messageBody));
+        messageMap.put(key, new Message(messageBody));
   }
 
     /**
