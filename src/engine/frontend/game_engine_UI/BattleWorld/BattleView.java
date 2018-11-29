@@ -19,21 +19,23 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     public BattleView(Controller controller) {
         super(controller);
-        menuView = new MenuView();
         if (controller.getCombatManager() != null) {
             this.myEnemy = controller.getBattleEnemyAnimation().get(0);
             this.myPlayer = controller.getBattlePlayerAnimation().get(0);
+            this.playerSide.setHealth(controller.getalliesHealth().get(0));
+            this.opponentSide.setHealth(controller.getEnemiesHealth().get(0));
             setUp();
         }
     }
 
     private void setUp() {
+        menuView = new MenuView();
         playerSide = new PlayerSide(myPlayer);
         opponentSide = new OpponentSide(myEnemy);
         root = new BorderPane();
-        root.getChildren().addAll(playerSide, opponentSide);
         root.setLeft(playerSide);
         root.setRight(opponentSide);
+        root.setBottom(menuView);
     }
 
     public void updateView () {
