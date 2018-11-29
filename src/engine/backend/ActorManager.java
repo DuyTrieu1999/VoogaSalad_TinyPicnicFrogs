@@ -7,32 +7,30 @@ public class ActorManager {
     List<Actor> allActors;
     List<Actor> activeActors;
     List<Actor> inactiveActors;
-    PlayerActor myPlayerActor;
+    Actor myPlayerActor;
 
 
     public ActorManager(List<Actor> actorList){
         allActors = actorList;
         inactiveActors = new ArrayList<>();
         activeActors = allActors;
+        setPlayerActor();
     }
 
-    public PlayerActor getPlayerActor(){
+    public Actor getPlayerActor(){
         return myPlayerActor;
     }
-    public void setPlayerActor(PlayerActor player){
+
+    public void setPlayerActor(PlayerActor player) {
         myPlayerActor = player;
     }
-
-
-
-
     /**
      * sets myPlayerActor
      */
     private void setPlayerActor(){
         for(Actor actor : allActors){
             if(actor.getIsPlayerActor()){
-                myPlayerActor = (PlayerActor) actor;
+                myPlayerActor = actor;
                 break;
             }
         }
