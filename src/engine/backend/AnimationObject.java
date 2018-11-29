@@ -8,13 +8,22 @@ public class AnimationObject {
     private String animationPath;
     private ImageView animationView;
     private Coordinate coordinate;
-
     public AnimationObject (String name,String path) {
+        this.animationName = name;
+        animationPath=path;
+        //System.out.println("TESTP"+path);
+        animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
+        //System.out.println("TEST: "+animationView.getImage().getUrl());
+        //coordinate=coordinateP;
+    }
+
+    public AnimationObject (String name,String path,Coordinate coordinateP) {
         this.animationName = name;
         animationPath=path;
         System.out.println("TESTP"+path);
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
         System.out.println("TEST: "+animationView.getImage().getUrl());
+        coordinate=coordinateP;
     }
     public ImageView getAnimationView () {
         return this.animationView;

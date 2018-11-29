@@ -1,14 +1,15 @@
 package engine.frontend.game_engine_UI.OverWorld;
 
+import engine.backend.Actor;
 import engine.backend.Coordinate;
 import engine.backend.PlayerActor;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 
 public class Camera extends Node {
-    PlayerActor myPlayer;
+    Actor myPlayer;
 
-    public Camera(PlayerActor player) {
+    public Camera(Actor player) {
         this.myPlayer = player;
     }
     public Point2D getPlayerLoc() {

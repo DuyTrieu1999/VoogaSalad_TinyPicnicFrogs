@@ -22,6 +22,7 @@ public class Actor {
 
 
     public Actor(){}
+
     public Actor(ActorPrototype prototype, int x, int y, int z){
         myCoordinate= new Coordinate(x,y,z);
         myAnimationMap=parseAnimations(prototype.getAnimationMap());
@@ -36,7 +37,7 @@ public class Actor {
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s),myCoordinate);
             animations.put(s,animation);
         }
         return animations;
