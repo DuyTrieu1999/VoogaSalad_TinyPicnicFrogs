@@ -8,7 +8,6 @@ module voogasalad_tinypicnicfrogs {
     requires json.simple;
     requires xstream;
     requires java.desktop;
-
     opens authoring.authoring_backend to xstream;
     opens authoring.authoring_frontend to xstream;
     opens engine.backend to xstream;
@@ -24,5 +23,6 @@ module voogasalad_tinypicnicfrogs {
     opens engine.frontend.game_engine_UI.SplashScreen to xstream;
     exports authoring.authoring_backend;
     exports authoring.authoring_frontend;
-    exports authoring.authoring_frontend.Forms;
+    exports authoring.authoring_frontend.FormBoxes;
 }
+

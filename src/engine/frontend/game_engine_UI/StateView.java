@@ -4,7 +4,6 @@ import engine.backend.Commands.Command;
 import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
-import engine.frontend.game_engine_UI.MenuView.OverWorldMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
@@ -16,6 +15,7 @@ import java.util.List;
 public class StateView {
     private Controller myController;
     private WorldView myView;
+    private BattleView myBattleView;
     private MenuView myMenu;
     private Stage myStage;
     private HashMap<GameState, Scene> sceneMap = new HashMap<>();
@@ -28,16 +28,15 @@ public class StateView {
         setUpStage();
     }
     private void setUpView () {
-        GameState state = myController.getGameState();
-        if (state == GameState.Overworld) {
-            myView = new OverWorldView(myController);
-        }
-        if (state == GameState.Combat) {
-            System.out.println("entered battle");
-            myView = new BattleView(myController);
-        }
+
         myScene = myView.getMyScene();
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
+    }
+    public void setOverWorldView () {
+        myView = new OverWorldView(myController);
+    }
+    public void setBattleView () {
+        myView = new BattleView(myController);
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
@@ -46,6 +45,7 @@ public class StateView {
         myStage.setScene(myScene);
         myStage.show();
     }
-    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands); }
-    public List<Command> getActiveCommand () { return myMenu.returnActiveCommands(); }
+
+    public void setAllCommand(List<Command> commands) { myBattleView.addCommandUI(commands); }
+    public List<Command> getActiveCommand () { return myBattleView.returnActiveCommands(); }
 }

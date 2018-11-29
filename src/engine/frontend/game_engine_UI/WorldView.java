@@ -2,7 +2,6 @@ package engine.frontend.game_engine_UI;
 
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
-import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
@@ -14,8 +13,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
-
 import java.util.Collection;
 import java.util.List;
 
@@ -41,7 +38,6 @@ public abstract class WorldView {
         this.setUpDisplay();
         init();
         myScene = new Scene(displayPane, Color.BLACK);
-
     }
     public void updateView () {
         clearView();
@@ -67,13 +63,13 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
-        System.out.println("fired");
+//        System.out.println("fired");
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
-            System.out.println(animationObject.getCoordinate().getX());
-            System.out.println(animationObject.getCoordinate().getY());
+//            System.out.println(animationObject.getCoordinate().getX());
+//            System.out.println(animationObject.getCoordinate().getY());
 
             animation.setX(animationObject.getCoordinate().getX());
             animation.setY(animationObject.getCoordinate().getY());

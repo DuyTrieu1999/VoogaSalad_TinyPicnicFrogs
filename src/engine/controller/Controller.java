@@ -43,6 +43,15 @@ public class Controller {
     private Supplier<List<AnimationObject>> battleEnemyAnimationSupplier = () -> ServiceLocator.getCombatManager().getEnemiesIdleAnimation();
     public List<AnimationObject> getBattleEnemyAnimation () { return battleEnemyAnimationSupplier.get(); }
 
+    private Supplier<List<Integer>> alliesBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getAlliesHealth();
+    public List<Integer> getalliesHealth () { return alliesBattleHealthSupplier.get(); }
+
+    private Supplier<List<Integer>> enemyBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getEnemiesHealth();
+    public List<Integer> getEnemiesHealth () { return alliesBattleHealthSupplier.get(); }
+
     private Supplier<CombatManager> combatManagerSupplier = () -> ServiceLocator.getCombatManager();
     public CombatManager getCombatManager () { return combatManagerSupplier.get(); }
+
+    public void setWorldView() { myView.setOverWorldView(); }
+    public void setBattleView() { myView.setBattleView(); }
 }

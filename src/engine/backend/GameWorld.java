@@ -141,8 +141,8 @@ public class GameWorld {
 
         boolean xIntersects = (a1MaxX > a2MinX && a1MaxX < a2MaxX) || (a2MaxX > a1MinX && a2MaxX < a1MaxX);
         boolean yIntersects = (a1MaxY > a2MinY && a1MaxY < a2MaxY) || (a2MaxY > a1MinY && a2MaxY < a1MaxY);
-        System.out.println(xIntersects);
-        System.out.println(yIntersects);
+//        System.out.println(xIntersects);
+//        System.out.println(yIntersects);
         return xIntersects && yIntersects;
     }
 
