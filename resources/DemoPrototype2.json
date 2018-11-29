@@ -8,8 +8,8 @@
   "bounds":{
     "relX":0,
     "relY":0,
-    "width":212,
-    "height":267
+    "width":50,
+    "height":50
   },
   "Interactions": [{
     "name":"fight",
