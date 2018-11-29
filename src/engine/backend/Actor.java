@@ -131,7 +131,9 @@ public class Actor {
      * Used by authoring to serialize the actor
      */
     public void serialize(){
-
+        for(AnimationObject obj:myAnimationMap.values()){
+            System.out.println(obj.getName());
+        }
     }
 
 }

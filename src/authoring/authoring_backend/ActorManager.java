@@ -48,7 +48,9 @@ public class ActorManager {
      */
     protected void serializeAllActors(String path){
         XStream serializer = new XStream(new DomDriver());
+        serializer.omitField(AnimationObject.class,"animationView");
         String serialized= serializer.toXML(actorMap);
+
         try{
             Files.write(Paths.get(path+"actors.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
 

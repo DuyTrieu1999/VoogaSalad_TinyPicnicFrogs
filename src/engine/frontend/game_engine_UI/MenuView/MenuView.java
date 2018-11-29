@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class MenuView {
+public class MenuView {
     private Scene menuScene;
     private BorderPane pane;
     private List<Command> commandList;
