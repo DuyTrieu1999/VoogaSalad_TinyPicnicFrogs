@@ -19,6 +19,7 @@ public class Actor {
         String imageURL = (String)defaultSprite.get("path");
         System.out.println(actorPrototypeID + ": " + imageURL);
         actorImage = new Image(imageURL);
+
     }
 
     //todo: remove later after testing after we make the json files

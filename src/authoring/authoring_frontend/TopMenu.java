@@ -35,6 +35,8 @@ public class TopMenu extends HBox {
     private ResourceBundle myResources;
     private PrototypeWindow myNewActor;
     private MapManager mapManager;
+    private MessageWindow myNewMessage;
+
 
     /**
      * Constructor
@@ -70,6 +72,7 @@ public class TopMenu extends HBox {
         Menu newSubmenu = new Menu(myResources.getString("New"));
         MenuItem newGame = new MenuItem(myResources.getString("Game"));
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
+        MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
         newGame.setOnAction(e -> {
             System.out.println("Open New AuthoringView"); //TODO: replace this with code
@@ -78,6 +81,9 @@ public class TopMenu extends HBox {
         newActor.setOnAction(e -> {
             myNewActor = new PrototypeWindow(myManager);
         });
+
+        newMessage.setOnAction(e -> {
+            myNewMessage = new MessageWindow(myManager); //TODO: complete MessageWindow
 
         newSubmenu.getItems().add(newGame);
         newSubmenu.getItems().add(newActor);
@@ -160,4 +166,9 @@ public class TopMenu extends HBox {
 
         myMenu.getMenus().add(gameMenu);
     }
+
+    //user creates a message: they enter a key, then a message body.
+    //they get stored in the messageMap using the gameManager
+    //when a user creates a new prototype, and they add a new interaction, there will be the option to put in a message
+    //the dropdown for the messages (such as onVictory, display 'yay') comes from these keys
 }
