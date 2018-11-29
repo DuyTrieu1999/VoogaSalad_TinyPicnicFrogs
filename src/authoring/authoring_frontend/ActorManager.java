@@ -5,8 +5,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -73,7 +76,7 @@ public class ActorManager {
      */
     public void loadDefaultActors() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader("resources/default.json"));
+        Object obj = parser.parse(new FileReader(new File("./resources/default.json")));
         JSONArray defaultActors = (JSONArray)obj;
         for(int i=0;i<defaultActors.size();i++){
             JSONObject thisActor = (JSONObject)defaultActors.get(i);
