@@ -29,7 +29,7 @@ public class Actor {
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
-        System.out.println("HERE");
+//        System.out.println("HERE");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
     }
@@ -133,7 +133,7 @@ public class Actor {
      * Used by authoring to serialize the actor
      */
     public void serialize(){
-        System.out.println(getActiveAnimation().getName());
+//        System.out.println(getActiveAnimation().getName());
 
     }
     public void setImages(){
