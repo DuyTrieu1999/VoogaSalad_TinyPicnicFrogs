@@ -90,7 +90,8 @@ public class GameWorld {
         enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
-        combatMan.runCombat();
+        //combatMan.runCombat();
+
     }
 
     /**

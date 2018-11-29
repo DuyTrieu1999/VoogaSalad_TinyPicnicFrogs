@@ -33,6 +33,7 @@ public class StateView {
             myView = new OverWorldView(myController);
         }
         if (state == GameState.Combat) {
+            System.out.println("entered battle");
             myView = new BattleView(myController);
         }
         myScene = myView.getMyScene();

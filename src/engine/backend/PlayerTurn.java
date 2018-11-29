@@ -3,6 +3,8 @@ package engine.backend;
 import menu.CommandLineMenu;
 import menu.Menu;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Executes a player controlled turn
  * @author Christopher Lin cl349
@@ -15,7 +17,11 @@ public class PlayerTurn extends Turn {
 
     @Override
     public void executeTurn() {
-        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
-        myMenu.getChoices().get(0).execute(null);
+        var myController = ServiceLocator.getController();
+        myController.setAllCommand(myInt.getCommandList());
+        myController.getActiveCommands();
+
+//        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
+//        myMenu.getChoices().get(0).execute(null);
     }
 }
