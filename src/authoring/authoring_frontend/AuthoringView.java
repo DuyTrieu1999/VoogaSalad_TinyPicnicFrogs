@@ -1,17 +1,11 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.geometry.Insets;
-import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.util.ResourceBundle;
 
 /**
  * AuthoringView
@@ -19,7 +13,7 @@ import java.util.ResourceBundle;
  * main frontend class that connects all UI elements
  * of the Game Authoring Environment
  *
- * @author brookekeene
+ * @author brookekeene, Allen Qiu
  */
 public class AuthoringView {
     public static final int WIDTH = 1000;

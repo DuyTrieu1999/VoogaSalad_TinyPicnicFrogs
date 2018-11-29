@@ -1,14 +1,13 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Pair;
-
-import javax.sound.midi.SysexMessage;
 import java.util.HashMap;
 
+/**
+ * 
+ */
 public class Map {
     private int id;
     private Grid myGrid;
