@@ -28,7 +28,7 @@ public class ActorPrototypeManager {
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
     protected String createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
-      testMessageParsing(prototypeMessages);
+//      testMessageParsing(prototypeMessages);
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
       
       actorPrototypeMap.put(prototype.getName(),prototype);
@@ -63,6 +63,7 @@ public class ActorPrototypeManager {
         System.out.println(prototypeMessages.get(0).size());
         for(Map<String,Message>map:prototypeMessages){
             for(String s:map.keySet()){
+
                 System.out.println(s+": "+map.get(s).getMessageString());
             }
         }

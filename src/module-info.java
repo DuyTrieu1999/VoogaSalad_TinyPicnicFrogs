@@ -16,6 +16,11 @@ module voogasalad_tinypicnicfrogs {
     exports engine.backend;
     exports engine.controller;
     exports engine.frontend.game_engine_UI;
+    opens engine.frontend.game_engine_UI.AnimationProcesser to xstream;
+    opens engine.frontend.game_engine_UI.BattleWorld to xstream;
+    opens engine.frontend.game_engine_UI.MenuView to xstream;
+    opens engine.frontend.game_engine_UI.OverWorld to xstream;
+    opens engine.frontend.game_engine_UI.SplashScreen to xstream;
     exports authoring.authoring_backend;
     exports authoring.authoring_frontend;
     exports authoring.authoring_frontend.Forms;

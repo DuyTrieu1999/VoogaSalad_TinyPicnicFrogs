@@ -978,7 +978,7 @@
       "width":5,
       "height":5
     },
-    "isPlayer":false,
+    "isPlayer":true,
     "Interactions": [{
       "name":"background",
       "type":"background",
@@ -1001,7 +1001,7 @@
       "width":5,
       "height":5
     },
-    "isPlayer":false,
+    "isPlayer":true,
     "Interactions": [{
       "name":"background",
       "type":"background",
@@ -1024,7 +1024,7 @@
       "width":5,
       "height":5
     },
-    "isPlayer":false,
+    "isPlayer":true,
     "Interactions": [{
       "name":"background",
       "type":"background",
@@ -1047,7 +1047,7 @@
       "width":5,
       "height":5
     },
-    "isPlayer":false,
+    "isPlayer":true,
     "Interactions": [{
       "name":"background",
       "type":"background",
@@ -1070,7 +1070,7 @@
       "width":5,
       "height":5
     },
-    "isPlayer":false,
+    "isPlayer":true,
     "Interactions": [{
       "name":"background",
       "type":"background",
