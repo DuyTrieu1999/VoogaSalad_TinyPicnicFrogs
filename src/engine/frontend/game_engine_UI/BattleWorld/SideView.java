@@ -25,7 +25,6 @@ abstract class SideView extends HBox {
         VBox box = new VBox();
         box.getChildren().add(myAnimation.getAnimationView());
         box.getChildren().add(hpBar);
-        view.getChildren().add(box);
         view.setCenter(box);
         this.getChildren().add(view);
     }

@@ -2,24 +2,22 @@ package engine.frontend.game_engine_UI;
 
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
-import engine.backend.PlayerActor;
 import engine.backend.ServiceLocator;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.OverWorld.Camera;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
-
 import java.util.Collection;
 import java.util.List;
 
-public abstract class WorldView {
+public abstract class WorldView extends HBox {
     protected Timeline animation = new Timeline();
     private KeyFrame frame;
     private Scene myScene;
@@ -33,20 +31,23 @@ public abstract class WorldView {
     private Actor myPlayer;
     private Controller myController;
 
+    protected Camera myCamera;
+
+
     public WorldView (Controller controller) {
+        myCamera = new Camera(myPlayer);
+
         this.myController = controller;
         myAnimations = controller.getAnimation();
-       // System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        myScene = new Scene(displayPane, Color.BLACK);
-
+        this.getChildren().add(displayPane);
     }
     public void updateView () {
         clearView();
         addActors();
-        this.setViewByZ();
+        //this.setViewByZ();
     }
     private void init () {
         frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
@@ -59,27 +60,30 @@ public abstract class WorldView {
         ServiceLocator.getGameWorld().detectCollisions();
         updateView();
     }
-    public Scene getMyScene () {
-        return myScene;
-    }
     public void clearView () {
         this.myAnimations.clear();
         displayPane.getChildren().clear();
     }
     private void addActors () {
-//        System.out.println("fired");
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
-//            System.out.println(animationObject.getCoordinate().getX());
-//            System.out.println(animationObject.getCoordinate().getY());
+       // System.out.println(animationObject.getName());
+            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
+            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
+            if(animationObject.getName().equals("idle: background.png")){
+                animation.setLayoutX(-300);
+                animation.setLayoutY(-300);
+//                animation.setFitHeight(2);
+//                animation.setFitWidth(50);
+            }
+            else{
+                animation.setLayoutY(100);
+                animation.setFitHeight(50);
+                animation.setFitWidth(50);
+            }
 
-            animation.setX(animationObject.getCoordinate().getX());
-            animation.setY(animationObject.getCoordinate().getY());
-            animation.setLayoutY(100);
-            animation.setFitHeight(50);
-            animation.setFitWidth(50);
             displayPane.getChildren().add(animation);
         }
     }
@@ -89,7 +93,9 @@ public abstract class WorldView {
         HBox.setHgrow(displayPane, Priority.ALWAYS);
         VBox.setVgrow(displayPane, Priority.ALWAYS);
         clipBound(displayPane);
-        this.updateView();
+        clearView();
+        addActors();
+        this.setViewByZ();
     }
     private void clipBound(Pane pane) {
         Rectangle clipBoundaries = new Rectangle();

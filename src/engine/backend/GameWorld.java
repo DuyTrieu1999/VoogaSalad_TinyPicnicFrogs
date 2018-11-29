@@ -2,11 +2,14 @@ package engine.backend;
 
 
 import engine.backend.Commands.*;
+import javafx.concurrent.Service;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Thread.sleep;
 
 
 /**
@@ -53,7 +56,7 @@ public class GameWorld {
 
 
     /**
-     * Called by frontend on update cycle to detect collisions and tigger the
+     * Called by frontend on update cycle to detect collisions and trigger the
      * correct interactions
      */
     public void detectCollisions(){
@@ -61,13 +64,15 @@ public class GameWorld {
         var collisionList = new ArrayList<Actor>();
         var playerActor = ServiceLocator.getActorManager().getPlayerActor();
         for(Actor a : actorList){
-
             if(overlaps(playerActor, a)){
                 collisionList.add(a);
             }
         }
         for(Actor c : collisionList){
             launchInteraction(c.getInteraction());
+            //Delete actors you collide with
+            //TODO: fix this shit
+            ServiceLocator.getActorManager().inactivate(c);
         }
     }
 
@@ -90,7 +95,15 @@ public class GameWorld {
         enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
-        combatMan.runCombat();
+        ServiceLocator.getController().setBattleView();
+        System.out.println("combat started");
+        //combatMan.runCombat();
+        try {
+            sleep(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -112,6 +125,7 @@ public class GameWorld {
      */
     public void activateOverWorld(){
         myGameState = GameState.Overworld;
+        ServiceLocator.getController().setWorldView();
     }
 
     /**
@@ -129,8 +143,6 @@ public class GameWorld {
         int a1MinX = a1Coordinate.getX()+a1Bounds.getRelX();
         int a1MaxY = a1Coordinate.getY()+a1Bounds.getRelY()+a1Bounds.getHeight();
         int a1MinY = a1Coordinate.getY()+a1Bounds.getRelY();
-
-
         var a2Coordinate = a2.getCoordinate();
         var a2Bounds = a2.getBounds();
         int a2MaxX = a2Coordinate.getX()+a2Bounds.getRelX()+a2Bounds.getWidth();
@@ -140,8 +152,6 @@ public class GameWorld {
 
         boolean xIntersects = (a1MaxX > a2MinX && a1MaxX < a2MaxX) || (a2MaxX > a1MinX && a2MaxX < a1MaxX);
         boolean yIntersects = (a1MaxY > a2MinY && a1MaxY < a2MaxY) || (a2MaxY > a1MinY && a2MaxY < a1MaxY);
-//        System.out.println(xIntersects);
-//        System.out.println(yIntersects);
         return xIntersects && yIntersects;
     }
 

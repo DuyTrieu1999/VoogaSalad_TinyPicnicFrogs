@@ -2,23 +2,31 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.Coordinate;
-import engine.backend.PlayerActor;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 
-public class Camera extends Node {
+public class Camera extends Pane {
     Actor myPlayer;
+
+    int xOffset;
+    int yOffset;
 
     public Camera(Actor player) {
         this.myPlayer = player;
     }
-    public Point2D getPlayerLoc() {
-        Coordinate coor = myPlayer.getCoordinate();
-        return new Point2D(coor.getX(), coor.getY());
-    }
     public void move() {
         Coordinate coor = myPlayer.getCoordinate();
-        this.setTranslateX(coor.getX());
-        this.setTranslateY(coor.getY());
+        this.xOffset = coor.getX()-200;
+        this.yOffset = coor.getY()-200;
+//        this.setTranslateX(coor.getX());
+//        this.setTranslateY(coor.getY());
+    }
+
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
     }
 }
