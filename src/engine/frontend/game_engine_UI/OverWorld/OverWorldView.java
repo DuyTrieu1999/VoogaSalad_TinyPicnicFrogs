@@ -2,6 +2,7 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
+import engine.backend.Coordinate;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.image.ImageView;
@@ -28,8 +29,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     @Override
     public void updateView () {
         super.updateView();
-//        myCamera.move();
-//        moveCamera();
+        myCamera.move();
+        moveCamera();
     }
     public void setCamera(Camera newCamera) {
         this.myCamera = newCamera;
@@ -42,9 +43,12 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     }
     public void moveCamera () {
         for (AnimationObject animationObject: myAnimations) {
+            Coordinate coor = animationObject.getCoordinate();
             ImageView animationView = animationObject.getAnimationView();
             animationView.setTranslateX(- myCamera.getTranslateX());
             animationView.setTranslateY(- myCamera.getTranslateY());
+//            coor.setX((int)animationView.getX());
+//            coor.setY((int)animationView.getY());
         }
     }
 }

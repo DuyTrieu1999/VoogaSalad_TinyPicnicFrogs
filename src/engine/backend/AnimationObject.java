@@ -11,10 +11,7 @@ public class AnimationObject {
     public AnimationObject (String name,String path) {
         this.animationName = name;
         animationPath=path;
-        //System.out.println("TESTP"+path);
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
-        //System.out.println("TEST: "+animationView.getImage().getUrl());
-        //coordinate=coordinateP;
     }
 
     public AnimationObject (String name,String path,Coordinate coordinateP) {
