@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI;
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
+import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -55,6 +56,7 @@ public abstract class WorldView {
         animation.play();
     }
     private void step(double elapsedTime) {
+        ServiceLocator.getGameWorld().detectCollisions();
         updateView();
     }
     public Scene getMyScene () {
