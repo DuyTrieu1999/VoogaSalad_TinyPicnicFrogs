@@ -44,13 +44,13 @@ public class ActorPrototypeManager {
     }
 
     private void testMessageParsing( List<Map<String, Message>> prototypeMessages){
-        System.out.println("Received:");
-        System.out.println(prototypeMessages.get(0).size());
-        for(Map<String,Message>map:prototypeMessages){
-            for(String s:map.keySet()){
-                System.out.println(s+": "+map.get(s).getMessageString());
-            }
-        }
+//        System.out.println("Received:");
+//        System.out.println(prototypeMessages.get(0).size());
+//        for(Map<String,Message>map:prototypeMessages){
+//            for(String s:map.keySet()){
+//                System.out.println(s+": "+map.get(s).getMessageString());
+//            }
+//        }
     }
     protected void serializeAllPrototypes(String path){
         int index=0;
