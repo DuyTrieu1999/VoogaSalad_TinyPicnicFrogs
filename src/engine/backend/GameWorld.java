@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Thread.sleep;
+
 
 /**
  * Holds information and methods that are used for the entire game
@@ -95,7 +97,12 @@ public class GameWorld {
         ServiceLocator.provideCombatManager(combatMan);
         ServiceLocator.getController().setBattleView();
         System.out.println("combat started");
-        combatMan.runCombat();
+        //combatMan.runCombat();
+        try {
+            sleep(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 

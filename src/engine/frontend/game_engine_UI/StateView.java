@@ -38,7 +38,14 @@ public class StateView {
         myView = new OverWorldView(myController);
     }
     public void setBattleView () {
-        myView = new BattleView(myController);
+        var myBattleView = new BattleView(myController);
+        Stage battleStage = new Stage();
+        battleStage.setTitle("Battle");
+        var battleScene = new Scene(myBattleView, 750, 600, Color.BLACK);
+        battleStage.setScene(battleScene);
+        battleStage.show();
+
+        System.out.println("root set");
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");

@@ -6,6 +6,8 @@ import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
         root = new BorderPane();
         root.setLeft(playerSide);
         root.setRight(opponentSide);
-        root.setBottom(menuView);
+        //root.setBottom(menuView);
         this.getChildren().add(root);
     }
 
