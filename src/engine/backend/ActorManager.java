@@ -12,19 +12,18 @@ public class ActorManager {
 
     public ActorManager(List<Actor> actorList){
         allActors = actorList;
-        inactiveActors = allActors;
-        activeActors = new ArrayList<>();
+        inactiveActors = new ArrayList<>();
+        activeActors = allActors;
+        setPlayerActor();
     }
 
     public PlayerActor getPlayerActor(){
         return myPlayerActor;
     }
+
     public void setPlayerActor(PlayerActor player){
         myPlayerActor = player;
     }
-
-
-
 
     /**
      * sets myPlayerActor
@@ -45,6 +44,7 @@ public class ActorManager {
      */
     public List<AnimationObject> getAnimationObjects() {
         List<AnimationObject> activeAnimationObjects = new ArrayList<>();
+        System.out.println("ACTIVE ACTORS:"+activeActors.size());
         for(Actor actor : activeActors) {
             activeAnimationObjects.add(actor.getActiveAnimation());
         }

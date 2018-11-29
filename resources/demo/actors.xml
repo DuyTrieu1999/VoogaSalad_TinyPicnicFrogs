@@ -16,7 +16,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/enemy_fight.png</animationPath>
+                  <animationPath>enemy_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -48,7 +48,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/enemy_left.png</animationPath>
+                      <animationPath>enemy_left.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
@@ -69,35 +69,35 @@
           <string>top</string>
           <engine.backend.AnimationObject>
             <animationName>top</animationName>
-            <animationPath>demo/enemy_top.png</animationPath>
+            <animationPath>enemy_top.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>demo/enemy_idle.png</animationPath>
+            <animationPath>enemy_idle.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>left</string>
           <engine.backend.AnimationObject>
             <animationName>left</animationName>
-            <animationPath>demo/enemy_left.png</animationPath>
+            <animationPath>enemy_left.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>bottom</string>
           <engine.backend.AnimationObject>
             <animationName>bottom</animationName>
-            <animationPath>demo/enemy_bot.png</animationPath>
+            <animationPath>enemy_bot.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>right</string>
           <engine.backend.AnimationObject>
             <animationName>right</animationName>
-            <animationPath>demo/enemy_right.png</animationPath>
+            <animationPath>enemy_right.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
@@ -128,7 +128,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/player_fight.png</animationPath>
+                  <animationPath>player_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -156,7 +156,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/player_right.png</animationPath>
+                      <animationPath>player_right.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
@@ -177,35 +177,35 @@
           <string>top</string>
           <engine.backend.AnimationObject>
             <animationName>top</animationName>
-            <animationPath>demo/player_top.png</animationPath>
+            <animationPath>player_top.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>demo/player_idle.png</animationPath>
+            <animationPath>player_idle.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>left</string>
           <engine.backend.AnimationObject>
             <animationName>left</animationName>
-            <animationPath>demo/player_left.png</animationPath>
+            <animationPath>player_left.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>bottom</string>
           <engine.backend.AnimationObject>
             <animationName>bottom</animationName>
-            <animationPath>demo/player_bot.png</animationPath>
+            <animationPath>player_bot.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>right</string>
           <engine.backend.AnimationObject>
             <animationName>right</animationName>
-            <animationPath>demo/player_right.png</animationPath>
+            <animationPath>player_right.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
