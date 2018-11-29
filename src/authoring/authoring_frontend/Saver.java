@@ -1,21 +1,27 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
+/**
+ * Saver class to save the program state.
+ *
+ * @author Allen Qiu
+ */
 public class Saver {
     private ActorManager actorManager;
     private MapManager mapManager;
     private GameManager gameManager;
 
+    /**
+     * Constructor
+     * @param a ActorManager of the game
+     * @param m MapManager of the game
+     * @param g GameManager of the game
+     */
     Saver(ActorManager a, MapManager m, GameManager g){
         actorManager = a;
         mapManager = m;
@@ -23,6 +29,9 @@ public class Saver {
         saveFile();
     }
 
+    /**
+     * Saves the file
+     */
     private void saveFile(){
         File selectedDirectory =getFileChooser();
 
@@ -45,6 +54,10 @@ public class Saver {
         }
     }
 
+    /**
+     * Gets the file chooser.
+     * @return Selected file.
+     */
     private File getFileChooser(){
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Save Game");
