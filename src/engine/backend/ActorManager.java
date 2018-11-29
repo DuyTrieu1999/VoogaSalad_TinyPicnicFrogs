@@ -21,9 +21,16 @@ public class ActorManager {
         return myPlayerActor;
     }
 
+<<<<<<< HEAD
     public void setPlayerActor(PlayerActor player) {
         myPlayerActor = player;
     }
+=======
+    public void setPlayerActor(PlayerActor player){
+        myPlayerActor = player;
+    }
+
+>>>>>>> 945f63682c85cc63ff9b8fefd4ef5e4178d1322a
     /**
      * sets myPlayerActor
      */
