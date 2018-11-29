@@ -4,7 +4,6 @@ import engine.backend.Commands.Command;
 import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
-import engine.frontend.game_engine_UI.MenuView.OverWorldMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
@@ -31,7 +30,7 @@ public class StateView {
     private void setUpView () {
         myWorldView = new OverWorldView(myController);
         myBattleView = new BattleView(myController);
-        myMenu = new OverWorldMenu();
+        myMenu = new MenuView();
         sceneMap.put(GameState.Overworld, myWorldView.getMyScene());
         sceneMap.put(GameState.Combat, myBattleView.getMyScene());
         myScene = sceneMap.get(myController.getGameState());
