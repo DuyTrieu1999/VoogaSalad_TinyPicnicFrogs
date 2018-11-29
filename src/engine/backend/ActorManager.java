@@ -11,7 +11,9 @@ public class ActorManager {
 
 
     public ActorManager(List<Actor> actorList){
+
         allActors = actorList;
+      //  setPlayerActor();
         inactiveActors = new ArrayList<>();
         activeActors = allActors;
         setPlayerActor();
