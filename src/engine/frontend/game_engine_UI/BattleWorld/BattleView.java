@@ -36,10 +36,11 @@ public class BattleView extends WorldView implements BattleViewAPI {
         root.setLeft(playerSide);
         root.setRight(opponentSide);
         root.setBottom(menuView);
+        this.getChildren().add(root);
     }
 
     public void updateView () {
-        super.updateView();
+//        super.updateView();
     }
     public void addCommandUI(List<Command> command) {menuView.addCommandUI(command);}
     public List<Command> returnActiveCommands() {return menuView.returnActiveCommands();}
