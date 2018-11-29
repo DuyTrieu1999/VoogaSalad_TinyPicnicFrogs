@@ -75,7 +75,7 @@ public class Actor {
      */
     public void moveUp(int amt) {
         myCoordinate.setY(myCoordinate.getY()-amt);
-        myActiveAnimation = myAnimationMap.get("up");
+        myActiveAnimation = myAnimationMap.get("top");
     }
 
     /**
@@ -83,7 +83,7 @@ public class Actor {
      */
     public void moveDown(int amt) {
         myCoordinate.setY(myCoordinate.getY()+amt);
-        myActiveAnimation = myAnimationMap.get("down");
+        myActiveAnimation = myAnimationMap.get("bottom");
     }
 
     /**

@@ -109,8 +109,8 @@
       <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
       <isPlayerActor>true</isPlayerActor>
       <myBounds>
-        <width>212</width>
-        <height>267</height>
+        <width>50</width>
+        <height>50</height>
         <relX>0</relX>
         <relY>0</relY>
       </myBounds>
@@ -222,8 +222,8 @@
       <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
       <isPlayerActor>true</isPlayerActor>
       <myBounds>
-        <width>212</width>
-        <height>267</height>
+        <width>50</width>
+        <height>50</height>
         <relX>0</relX>
         <relY>0</relY>
       </myBounds>

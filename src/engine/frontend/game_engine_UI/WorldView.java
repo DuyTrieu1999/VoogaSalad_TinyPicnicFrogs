@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI;
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
+import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -55,7 +56,8 @@ public abstract class WorldView {
         animation.play();
     }
     private void step(double elapsedTime) {
-
+        ServiceLocator.getGameWorld().detectCollisions();
+        updateView();
     }
     public Scene getMyScene () {
         return myScene;
@@ -65,10 +67,14 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+        System.out.println("fired");
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
+            System.out.println(animationObject.getCoordinate().getX());
+            System.out.println(animationObject.getCoordinate().getY());
+
             animation.setX(animationObject.getCoordinate().getX());
             animation.setY(animationObject.getCoordinate().getY());
             animation.setLayoutY(100);
