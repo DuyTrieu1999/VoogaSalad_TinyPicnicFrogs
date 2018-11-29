@@ -1,5 +1,6 @@
 package authoring.authoring_frontend.FormBoxes;
 
+import engine.backend.Message;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,9 +22,14 @@ public class InteractionBox extends FormBox {
     private List<AnimationBox> myAnimations;
     private List<MessageBox> myMessages;
     private List<MoveBox> myMoves;
+    private List<String> typeChoices;
+    private List<String> messageChoices;
+
 
     public InteractionBox(String label) {
         super(label);
+        typeChoices = new ArrayList<>(List.of("fight"));;
+        messageChoices = new ArrayList<>(List.of("onVictory", "onDefeat"));
     }
 
     @Override
@@ -34,9 +40,8 @@ public class InteractionBox extends FormBox {
         VBox myContent = new VBox();
 
         // Type
-        ArrayList<String> types = new ArrayList<>(List.of("fight"));
         myType = new SelectBox(myResources.getString("type"));
-        myType.setChoices(types);
+        myType.setChoices(typeChoices);
         myContent.getChildren().addAll(myType);
 
         // Animations
@@ -61,9 +66,6 @@ public class InteractionBox extends FormBox {
         });
 
         // Messages
-        // author defines key, selects from a list of possible messages
-        // user defines key and body outside of prototype and then the body is added to a list of possible messages
-        // get method from GameManager to get all messages
         Label messages = new Label(myResources.getString("messages"));
         Button addMessageBtn = new Button(myResources.getString("AddNew"));
         VBox messagesBox = new VBox();
@@ -72,7 +74,7 @@ public class InteractionBox extends FormBox {
 
         addMessageBtn.setOnAction(e -> {
             MessageBox temp = new MessageBox("");
-            temp.setMessageChoices(new ArrayList<>(List.of("onVictory", "onDefeat")));
+            temp.setMessageChoices(messageChoices);
             temp.setContent();
             myMessages.add(temp);
             messagesBox.getChildren().add(temp);
@@ -118,14 +120,13 @@ public class InteractionBox extends FormBox {
         // Messages
         // TODO: createMessage(String key, String messageBody) will save message to messageMap in GameManager
 
-        for(int i = 0; i < myMessages.size(); i++) {
-            myMessageJSON.add(myMessages.get(i).getContent());
+        for(MessageBox box:myMessages) {
+            myMessageJSON.add(box.getContent());
         }
 
         // Moves
-        //TODO: complete this
-        for(int i = 0; i < myMoves.size(); i++) {
-            myMoveJSON.add(myMoves.get(i).getContent());
+        for(MoveBox box:myMoves) {
+            myMoveJSON.add(box.getContent());
         }
 
         myObject.put("name", myKey);
