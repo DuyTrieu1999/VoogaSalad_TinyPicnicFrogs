@@ -26,6 +26,7 @@ public class AnimationObject {
         coordinate=coordinateP;
     }
     public ImageView getAnimationView () {
+        System.out.println(coordinate.getX());
         return this.animationView;
     }
     public String getName(){return animationName+": "+animationPath;}
