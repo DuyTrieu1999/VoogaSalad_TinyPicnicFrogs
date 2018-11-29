@@ -26,15 +26,18 @@ public class MapMenu extends HBox {
     private MapManager mapManager;
     private GameManager gameManager;
 
-    public MapMenu(String pName, MapManager manager) {
+    public MapMenu(String pName, MapManager manager, GameManager gm) {
         this.getChildren().add(new Label("map"));
         programName = pName;
+        mapManager = manager;
+        gameManager = gm;
 
     }
 
     public ListView<String> setupList(){
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String newMap = mapManager.createMap(30, 20);
+        gameManager.setUpMap(30, 20, 1, 1);
         mapView.getItems().add(newMap);
         //ActiveMap.setActiveMap(programName, newMap);
         mapManager.setActiveMap(newMap);

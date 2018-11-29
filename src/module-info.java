@@ -11,6 +11,7 @@ module voogasalad_tinypicnicfrogs {
     //requires groovy.all;
 
     opens authoring.authoring_backend to xstream;
+    opens authoring.authoring_frontend to xstream;
     opens engine.backend to xstream;
     opens engine.backend.Commands to xstream;
     opens engine.frontend.game_engine_UI to xstream;
