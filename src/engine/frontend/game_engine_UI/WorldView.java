@@ -4,6 +4,7 @@ import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.ServiceLocator;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.OverWorld.Camera;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -30,7 +31,12 @@ public abstract class WorldView extends HBox {
     private Actor myPlayer;
     private Controller myController;
 
+    protected Camera myCamera;
+
+
     public WorldView (Controller controller) {
+        myCamera = new Camera(myPlayer);
+
         this.myController = controller;
         myAnimations = controller.getAnimation();
         myPlayer = controller.getPlayer();
@@ -65,8 +71,8 @@ public abstract class WorldView extends HBox {
             animation.setLayoutX(100);
 //            System.out.println(animationObject.getCoordinate().getX());
 //            System.out.println(animationObject.getCoordinate().getY());
-            animation.setX(animationObject.getCoordinate().getX());
-            animation.setY(animationObject.getCoordinate().getY());
+            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
+            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
             animation.setLayoutY(100);
             animation.setFitHeight(50);
             animation.setFitWidth(50);
