@@ -66,7 +66,7 @@ public class AuthoringView {
 
         ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
         LayerMenu myLayers = new LayerMenu();
-        MapMenu myMaps = new MapMenu(projectName, mapManager);
+        MapMenu myMaps = new MapMenu(projectName, mapManager, myManager);
         VBox leftSide = new VBox();
         leftSide.setMaxHeight(600);
         leftSide.setMaxWidth(400);
@@ -76,7 +76,7 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         */
         leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
-        TopMenu topBar = new TopMenu(myManager, mapManager);
+        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setLeft(leftSide);
@@ -93,7 +93,7 @@ public class AuthoringView {
 
         ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
         LayerMenu myLayers = new LayerMenu();
-        MapMenu myMaps = new MapMenu(projectName, mapManager);
+        MapMenu myMaps = new MapMenu(projectName, mapManager, myManager);
         VBox leftSide = new VBox();
         leftSide.setMaxHeight(600);
         leftSide.setMaxWidth(400);
@@ -103,7 +103,7 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         */
         leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
-        TopMenu topBar = new TopMenu(myManager, mapManager);
+        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setLeft(leftSide);
         myMainView.setCenter(mapManager.getActiveMap());
