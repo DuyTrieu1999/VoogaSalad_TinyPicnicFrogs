@@ -4,6 +4,7 @@ import engine.backend.Commands.Command;
 import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
+import engine.frontend.game_engine_UI.MenuView.OverWorldMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
@@ -28,15 +29,13 @@ public class StateView {
         setUpStage();
     }
     private void setUpView () {
-        OverWorldView overWorldView = new OverWorldView(myController);
-        BattleView battleView = new BattleView(myController);
-        sceneMap.put(GameState.Overworld, overWorldView.getMyScene());
-        sceneMap.put(GameState.Combat, battleView.getMyScene());
+        myWorldView = new OverWorldView(myController);
+        myBattleView = new BattleView(myController);
+        myMenu = new OverWorldMenu();
+        sceneMap.put(GameState.Overworld, myWorldView.getMyScene());
+        sceneMap.put(GameState.Combat, myBattleView.getMyScene());
         myScene = sceneMap.get(myController.getGameState());
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
-    }
-    public Scene getMyScene () {
-        return myScene;
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
