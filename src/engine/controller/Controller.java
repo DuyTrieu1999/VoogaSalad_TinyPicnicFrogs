@@ -19,7 +19,7 @@ public class Controller {
 
     private Supplier<Collection<AnimationObject>> animationObjectSupplier = () -> ServiceLocator.getActorManager().getAnimationObjects();
     public Collection<AnimationObject> getAnimation () {
-        System.out.println("SIZE"+animationObjectSupplier.get().size());
+//        System.out.println("SIZE"+animationObjectSupplier.get().size());
         return animationObjectSupplier.get(); }
 
     private Supplier<Actor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
@@ -51,4 +51,7 @@ public class Controller {
 
     private Supplier<CombatManager> combatManagerSupplier = () -> ServiceLocator.getCombatManager();
     public CombatManager getCombatManager () { return combatManagerSupplier.get(); }
+
+    public void setWorldView() { myView.setOverWorldView(); }
+    public void setBattleView() { myView.setBattleView(); }
 }

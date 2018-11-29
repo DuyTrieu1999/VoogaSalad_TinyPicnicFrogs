@@ -10,8 +10,12 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * Menu for the actor that is displayed on the left side.
+ *
+ * @author Allen Qiu
+ */
 public class ActorMenu extends VBox {
-    private final int NUM_ACTORS = 43;
     private GameManager myManager;
     private ScrollPane backgroundTilePane = new ScrollPane();
     private ScrollPane actorTilePane = new ScrollPane();
@@ -19,6 +23,12 @@ public class ActorMenu extends VBox {
     private ActorManager actorManager;
     private String programName;
 
+    /**
+     * Constructor
+     * @param manager GameManager for this game.
+     * @param aManager ActorManager for this game.
+     * @param name Name of the program.
+     */
     public ActorMenu(GameManager manager, ActorManager aManager, String name) {
         programName = name;
         actorManager = aManager;
@@ -27,11 +37,19 @@ public class ActorMenu extends VBox {
         setupTabs();
     }
 
+    /**
+     * Sets up the content of the two different tabs in the menu.
+     */
     private void setupTabs(){
         backgroundTilePane.setContent(setupTab(actorManager.getBackgroundActors()));
         actorTilePane.setContent(setupTab(actorManager.getPlayableActors()));
     }
 
+    /**
+     * Sets up a tab and loads the actors and sets the on click actions.
+     * @param actorList The list of actors to create a list from.
+     * @return A FlowPane with the images of the actors loaded.
+     */
     private FlowPane setupTab(ArrayList<Actor> actorList){
         backgroundTilePane.setPrefViewportWidth(200);
         backgroundTilePane.setPrefViewportHeight(400);
@@ -69,6 +87,10 @@ public class ActorMenu extends VBox {
         return tileHolder;
     }
 
+    /**
+     * Gets a tab pane of the actors.
+     * @return TabPane containing tabs of playable and non-playable actors.
+     */
     public TabPane getActorMenu(){
         TabPane allTabs = new TabPane();
         Tab backgroundTab = new Tab();

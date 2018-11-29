@@ -47,7 +47,7 @@ public  abstract class Interaction {
      * for testing purposes
      */
     public void serialize(){
-        System.out.println(myName);
+//        System.out.println(myName);
         for(String s:animationMap.keySet()){System.out.println(s+": "+animationMap.get(s));}
         for(String s:messageMap.keySet()){
             System.out.println(s+":"+messageMap.get(s).getMessageString());
