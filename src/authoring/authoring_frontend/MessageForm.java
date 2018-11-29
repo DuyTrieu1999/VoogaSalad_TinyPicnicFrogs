@@ -1,8 +1,7 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.Forms.FormBox;
-import authoring.authoring_frontend.Forms.InteractionBox;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
