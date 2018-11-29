@@ -37,9 +37,6 @@ public class StateView {
         myScene = sceneMap.get(myController.getGameState());
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
     }
-    public Scene getMyScene () {
-        return myScene;
-    }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
         myStage.setMinWidth(600);

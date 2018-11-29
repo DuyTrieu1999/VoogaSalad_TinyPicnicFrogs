@@ -4,7 +4,6 @@ import engine.backend.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Main extends Application {
