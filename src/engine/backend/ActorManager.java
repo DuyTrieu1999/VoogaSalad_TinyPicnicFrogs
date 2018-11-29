@@ -46,7 +46,7 @@ public class ActorManager {
      */
     public List<AnimationObject> getAnimationObjects() {
         List<AnimationObject> activeAnimationObjects = new ArrayList<>();
-        System.out.println("ACTIVE ACTORS:"+activeActors.size());
+//        System.out.println("ACTIVE ACTORS:"+activeActors.size());
         for(Actor actor : activeActors) {
             activeAnimationObjects.add(actor.getActiveAnimation());
         }

@@ -2,16 +2,22 @@ package authoring.authoring_frontend;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-
+/**
+ * Actor class to represent any item that has any picture or interaction.
+ *
+ * @author Allen Qiu
+ */
 public class Actor {
     private Image actorImage;
     private String actorPrototypeID;
 
+    /**
+     * Constructor for the actor.
+     * @param actor JSON object of the actor.
+     */
     Actor(JSONObject actor){
         actorPrototypeID = (String)actor.get("name");
         JSONArray animations = (JSONArray)actor.get("animations");
@@ -22,16 +28,18 @@ public class Actor {
 
     }
 
-    //todo: remove later after testing after we make the json files
-    Actor(Image aImage, String name){
-        actorImage = aImage;
-        actorPrototypeID = name;
-    }
-
+    /**
+     * Gets an image representation of the actor.
+     * @return
+     */
     public ImageView getActorImage(){
         return new ImageView(actorImage);
     }
 
+    /**
+     * Gets the ID.
+     * @return The ID of the actor prototype.
+     */
     public String getActorPrototypeID(){
         return actorPrototypeID;
     }

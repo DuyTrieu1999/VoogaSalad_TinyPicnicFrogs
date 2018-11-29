@@ -29,7 +29,7 @@ public class Main extends Application {
         var actorMan = new ActorManager(dummyActorList);
         System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
-        var gameWorld = new GameWorld(10, 10);
+        var gameWorld = new GameWorld(1000, 1000);
         ServiceLocator.provideGameWorld(gameWorld);
     }
 

@@ -1,4 +1,4 @@
-package authoring.authoring_frontend.Forms;
+package authoring.authoring_frontend.FormBoxes;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
  */
 public abstract class FormBox extends HBox {
     public static final String DEFAULT_RESOURCE = "English";
+    public static final int WIDTH = 500;
     public static final int PADDING = 10;
     protected ResourceBundle myResources;
     protected String myKey;
@@ -28,7 +29,7 @@ public abstract class FormBox extends HBox {
         myKey = label.toLowerCase();
         this.getChildren().add(myLabel);
         this.setPadding(new Insets(PADDING));
-        this.setContent(); //TODO: remove so that I can make form boxes within form boxes
+        //this.setWidth(WIDTH);
     }
 
     /**

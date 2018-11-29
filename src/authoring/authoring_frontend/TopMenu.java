@@ -76,6 +76,7 @@ public class TopMenu extends HBox {
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
         MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
+        // New
         newGame.setOnAction(e -> {
             System.out.println("Open New AuthoringView"); //TODO: replace this with code
         });
@@ -91,6 +92,7 @@ public class TopMenu extends HBox {
         newSubmenu.getItems().add(newGame);
         newSubmenu.getItems().add(newActor);
 
+        // Open
         MenuItem openItem = new MenuItem(myResources.getString("Open"));
 
         openItem.setOnAction(e -> {
@@ -113,6 +115,7 @@ public class TopMenu extends HBox {
     private void addEditTab(){
         Menu editMenu = new Menu(myResources.getString("Edit"));
 
+        // Save
         MenuItem saveItem = new MenuItem(myResources.getString("Save"));
 
         saveItem.setOnAction(e -> {
@@ -130,6 +133,7 @@ public class TopMenu extends HBox {
     private void addViewTab(){
         Menu viewMenu = new Menu(myResources.getString("View"));
 
+        // Theme
         Menu themeSubmenu = new Menu(myResources.getString("Theme"));
         MenuItem lightTheme = new MenuItem(myResources.getString("Light"));
         MenuItem darkTheme = new MenuItem(myResources.getString("Dark"));

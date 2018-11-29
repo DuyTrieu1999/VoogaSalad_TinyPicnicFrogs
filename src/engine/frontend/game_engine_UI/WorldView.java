@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI;
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
+import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -24,7 +25,7 @@ public abstract class WorldView {
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
 
-    private double FRAMES_PER_SECOND = 1;
+    private double FRAMES_PER_SECOND = 60;
     private double MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
     private double SECOND_DELAY = 100.0/ FRAMES_PER_SECOND;
 
@@ -35,7 +36,7 @@ public abstract class WorldView {
     public WorldView (Controller controller) {
         this.myController = controller;
         myAnimations = controller.getAnimation();
-        System.out.println("SIZE2 "+myAnimations.size());
+       // System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
@@ -43,7 +44,7 @@ public abstract class WorldView {
 
     }
     public void updateView () {
-        //clearView();
+        clearView();
         addActors();
         this.setViewByZ();
     }
@@ -55,6 +56,7 @@ public abstract class WorldView {
         animation.play();
     }
     private void step(double elapsedTime) {
+        ServiceLocator.getGameWorld().detectCollisions();
         updateView();
     }
     public Scene getMyScene () {
@@ -65,10 +67,14 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+//        System.out.println("fired");
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
+//            System.out.println(animationObject.getCoordinate().getX());
+//            System.out.println(animationObject.getCoordinate().getY());
+
             animation.setX(animationObject.getCoordinate().getX());
             animation.setY(animationObject.getCoordinate().getY());
             animation.setLayoutY(100);
