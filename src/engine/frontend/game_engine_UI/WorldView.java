@@ -8,6 +8,7 @@ import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -32,7 +33,7 @@ public abstract class WorldView {
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        myScene = new Scene(displayPane);
+        myScene = new Scene(displayPane, Color.BLACK);
     }
     public void updateView () {
         clearView();

@@ -8,7 +8,6 @@ module voogasalad_tinypicnicfrogs {
     requires json.simple;
     requires xstream;
     requires java.desktop;
-
     opens authoring.authoring_backend to xstream;
     opens authoring.authoring_frontend to xstream;
     opens engine.backend to xstream;

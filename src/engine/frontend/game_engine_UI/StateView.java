@@ -16,7 +16,6 @@ public class StateView {
     private Controller myController;
     private OverWorldView myWorldView;
     private BattleView myBattleView;
-    private MenuView myMenu;
     private Stage myStage;
     private HashMap<GameState, Scene> sceneMap = new HashMap<>();
     private Scene myScene;
@@ -30,7 +29,6 @@ public class StateView {
     private void setUpView () {
         myWorldView = new OverWorldView(myController);
         myBattleView = new BattleView(myController);
-        myMenu = new MenuView();
         sceneMap.put(GameState.Overworld, myWorldView.getMyScene());
         sceneMap.put(GameState.Combat, myBattleView.getMyScene());
         myScene = sceneMap.get(myController.getGameState());
@@ -49,6 +47,6 @@ public class StateView {
     public BattleView getMyBattleView () {
         return myBattleView;
     }
-    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands); }
-    public List<Command> getActiveCommand () { return myMenu.returnActiveCommands(); }
+    public void setAllCommand(List<Command> commands) { myBattleView.addCommandUI(commands); }
+    public List<Command> getActiveCommand () { return myBattleView.returnActiveCommands(); }
 }
