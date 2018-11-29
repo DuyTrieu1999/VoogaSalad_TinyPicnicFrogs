@@ -6,6 +6,7 @@ import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -76,7 +77,9 @@ public abstract class WorldView extends HBox {
         HBox.setHgrow(displayPane, Priority.ALWAYS);
         VBox.setVgrow(displayPane, Priority.ALWAYS);
         clipBound(displayPane);
-        this.updateView();
+        clearView();
+        addActors();
+        this.setViewByZ();
     }
     private void clipBound(Pane pane) {
         Rectangle clipBoundaries = new Rectangle();

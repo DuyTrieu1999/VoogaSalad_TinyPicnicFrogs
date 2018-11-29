@@ -42,7 +42,9 @@ public class Controller {
     }
 
     private Supplier<List<AnimationObject>> battleEnemyAnimationSupplier = () -> ServiceLocator.getCombatManager().getEnemiesIdleAnimation();
-    public List<AnimationObject> getBattleEnemyAnimation () { return battleEnemyAnimationSupplier.get(); }
+    public List<AnimationObject> getBattleEnemyAnimation () {
+        System.out.println(battleEnemyAnimationSupplier.get());
+        return battleEnemyAnimationSupplier.get(); }
 
     private Supplier<List<Integer>> alliesBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getAlliesHealth();
     public List<Integer> getalliesHealth () { return alliesBattleHealthSupplier.get(); }
