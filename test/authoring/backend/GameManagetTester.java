@@ -59,8 +59,8 @@ public class GameManagetTester {
             manager.createActorPrototype(data);
             manager.createActorPrototype(data2);
          //   manager.createActorPrototype(backgroundData);
-            manager.createActor("player",100,100,0,0,0);
-            manager.createActor("enemy",400,400,0,0,0);
+            manager.createActor("player",0,0,0,0,0);
+            manager.createActor("enemy",350,350,0,0,0);
            // manager.createActor("grass",0,0,0,0,0);
             manager.saveGame("./resources/demo/","./resources/authoring/");
         }

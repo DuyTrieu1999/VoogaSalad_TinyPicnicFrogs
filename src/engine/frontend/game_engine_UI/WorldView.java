@@ -7,6 +7,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -37,18 +38,18 @@ public abstract class WorldView {
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        myScene = new Scene(displayPane, Color.GREENYELLOW);
+        myScene = new Scene(displayPane, Color.BLACK);
 
     }
     public void updateView () {
-        clearView();
+        //clearView();
         addActors();
         this.setViewByZ();
     }
     private void init () {
-        animation.setCycleCount(Timeline.INDEFINITE);
         frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
                 e -> this.step(SECOND_DELAY));
+        animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(frame);
         animation.play();
     }
@@ -65,10 +66,14 @@ public abstract class WorldView {
     private void addActors () {
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
-
-            //System.out.println(this.getClass().getClassLoader().getResource().getPath());
-            displayPane.getChildren().add(animationObject.getAnimationView());
-
+            ImageView animation = animationObject.getAnimationView();
+            animation.setLayoutX(100);
+            animation.setX(animationObject.getCoordinate().getX());
+            animation.setY(animationObject.getCoordinate().getY());
+            animation.setLayoutY(100);
+            animation.setFitHeight(50);
+            animation.setFitWidth(50);
+            displayPane.getChildren().add(animation);
         }
     }
     private void setUpDisplay () {
