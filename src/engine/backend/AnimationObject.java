@@ -16,7 +16,7 @@ public class AnimationObject {
    // Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("demo/player_fight.png"));
     //System.out.println(this.getClass().getClassLoader().getResource("demo/player_fight.png").getPath());
 
-        animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("demo/player_fight.png")));
+        animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
     }
     public ImageView getAnimationView () {
         return this.animationView;

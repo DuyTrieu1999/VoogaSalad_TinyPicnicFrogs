@@ -58,7 +58,7 @@ public class GameManagetTester {
         if(data!=null){
             manager.createActorPrototype(data);
             manager.createActorPrototype(data2);
-            manager.createActorPrototype(backgroundData);
+         //   manager.createActorPrototype(backgroundData);
             manager.createActor("player",100,100,0,0,0);
             manager.createActor("enemy",400,400,0,0,0);
            // manager.createActor("grass",0,0,0,0,0);

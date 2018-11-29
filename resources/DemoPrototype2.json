@@ -1,6 +1,6 @@
 {
   "name":"enemy",
-  "animations":[{"key":"idle","path":"demo/enemy.png"},{"key":"left","path":"demo/enemy_left.png"},{"key":"right","path":"demo/enemy_right.png"},{"key":"top","path":"demo/enemy_top.png"},{"key":"bottom","path":"demo/enemy_bot.png"}],
+  "animations":[{"key":"idle","path":"demo/enemy_idle.png"},{"key":"left","path":"demo/enemy_left.png"},{"key":"right","path":"demo/enemy_right.png"},{"key":"top","path":"demo/enemy_top.png"},{"key":"bottom","path":"demo/enemy_bot.png"}],
   "stats":[{"key":"health","value":50}
 
   ],

@@ -76,7 +76,7 @@
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>demo/enemy.png</animationPath>
+            <animationPath>demo/enemy_idle.png</animationPath>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
