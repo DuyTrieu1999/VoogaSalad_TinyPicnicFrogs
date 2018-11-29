@@ -117,6 +117,10 @@ public class GameManager {
         mapManager.divideMap(width, height, row, col);
     }
 
+    public void updateMessageMap(String key, String value){
+        messageManager.createMessage(key, value);
+        //TODO: fix this, then use the call in the front end
+    }
 
     /**
      * Loads the Actors from a pre-existing XML File

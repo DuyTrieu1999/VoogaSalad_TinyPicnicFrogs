@@ -38,7 +38,7 @@ public class MessageManager {
      * @param messageBody
      */
   protected void createMessage(String key, String messageBody){
-        messageMap.put(key,new Message(messageBody));
+        messageMap.put(key, new Message(messageBody));
   }
 
     /**

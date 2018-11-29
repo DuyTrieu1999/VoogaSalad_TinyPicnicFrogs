@@ -67,7 +67,7 @@ public class MessageForm extends VBox {
         myMessage.put("messageKey", myMessageKey.getText());
         myMessage.put("messageBody", myMessageBody.getText());
 
-        myManager.createMessage(myMessageKey.getText(), myMessageBody.getText()); //TODO: uncomment to parse actual JSON
+        myManager.createMessage(myMessageKey.getText(), myMessageBody.getText());
 
     }
 }
