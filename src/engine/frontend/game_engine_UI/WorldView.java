@@ -1,5 +1,6 @@
 package engine.frontend.game_engine_UI;
 
+import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
 import engine.controller.Controller;
@@ -27,7 +28,7 @@ public abstract class WorldView {
     private double SECOND_DELAY = 100.0/ FRAMES_PER_SECOND;
 
     private Collection<AnimationObject> myAnimations;
-    private PlayerActor myPlayer;
+    private Actor myPlayer;
     private Controller myController;
 
     public WorldView (Controller controller) {
