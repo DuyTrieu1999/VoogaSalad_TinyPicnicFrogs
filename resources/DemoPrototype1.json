@@ -1,6 +1,6 @@
 {
   "name":"player",
-  "animations":[{"key":"idle","path":"./resources/demo/player_idle.png"},{"key":"left","path":"./resources/demo/player_left.png"},{"key":"right","path":"./resources/demo/player_right.png"},{"key":"top","path":"./resources/demo/player_top.png"},{"key":"bottom","path":"./resources/demo/player_bot.png"}],
+  "animations":[{"key":"idle","path":"demo/player_idle.png"},{"key":"left","path":"demo/player_left.png"},{"key":"right","path":"demo/player_right.png"},{"key":"top","path":"demo/player_top.png"},{"key":"bottom","path":"demo/player_bot.png"}],
   "stats":[{"key":"health","value":50}
 
   ],
@@ -14,7 +14,7 @@
   "Interactions": [{
     "name":"fight",
     "type":"fight",
-    "animations":[{"key":"default","path":"./resources/demo/player_fight.png"}],
+    "animations":[{"key":"default","path":"demo/player_fight.png"}],
     "Messages":[
       {"key":"prototypeVictory","messageKey":"onVictory"},
       {"key":"prototypeDefeat","messageKey":"onDefeat"}
@@ -28,7 +28,7 @@
         "targetActorType":"enemy",
         "targetValue":10,
         "targetType":"constant",
-        "animations":[{"key":"default","path":"./resources/demo/player_right.png"}]
+        "animations":[{"key":"default","path":"demo/player_right.png"}]
       }
     ]
 

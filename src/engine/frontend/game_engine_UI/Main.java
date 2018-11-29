@@ -39,6 +39,7 @@ public class Main extends Application {
         Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get("./resources/demo/actors.xml").toFile());
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
+        for(Actor actor:actorList){actor.serialize();}
         return actorList;
     }
 }
