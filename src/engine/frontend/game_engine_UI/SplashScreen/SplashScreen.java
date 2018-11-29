@@ -5,7 +5,7 @@ import javafx.scene.layout.BorderPane;
 abstract class SplashScreen extends BorderPane {
 
     static final double SCREEN_WIDTH = 1000;
-    static final double SCREEN_HEIGHT = 800;
+    static final double SCREEN_HEIGHT = 620;
 
     SplashScreen() {
         this.setPrefHeight(SCREEN_HEIGHT);

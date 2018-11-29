@@ -22,12 +22,14 @@ public class Actor {
 
 
     public Actor(){}
+
     public Actor(ActorPrototype prototype, int x, int y, int z){
         myCoordinate= new Coordinate(x,y,z);
         myAnimationMap=parseAnimations(prototype.getAnimationMap());
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+        System.out.println("HERE");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
     }
@@ -35,7 +37,7 @@ public class Actor {
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s),myCoordinate);
             animations.put(s,animation);
         }
         return animations;
@@ -131,9 +133,11 @@ public class Actor {
      * Used by authoring to serialize the actor
      */
     public void serialize(){
-        for(AnimationObject obj:myAnimationMap.values()){
-            System.out.println(obj.getName());
-        }
+        System.out.println(getActiveAnimation().getName());
+
+    }
+    public void setImages(){
+        for(AnimationObject a:myAnimationMap.values()){a.setImage();}
     }
 
 }

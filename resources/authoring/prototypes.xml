@@ -5,23 +5,23 @@
       <animationMap>
         <entry>
           <string>top</string>
-          <string>demo/enemy_top.png</string>
+          <string>enemy_top.png</string>
         </entry>
         <entry>
           <string>idle</string>
-          <string>demo/enemy_idle.png</string>
+          <string>enemy_idle.png</string>
         </entry>
         <entry>
           <string>left</string>
-          <string>demo/enemy_left.png</string>
+          <string>enemy_left.png</string>
         </entry>
         <entry>
           <string>bottom</string>
-          <string>demo/enemy_bot.png</string>
+          <string>enemy_bot.png</string>
         </entry>
         <entry>
           <string>right</string>
-          <string>demo/enemy_right.png</string>
+          <string>enemy_right.png</string>
         </entry>
       </animationMap>
       <interractionMap>
@@ -33,7 +33,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/enemy_fight.png</animationPath>
+                  <animationPath>enemy_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -65,7 +65,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/enemy_left.png</animationPath>
+                      <animationPath>enemy_left.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
@@ -97,23 +97,23 @@
       <animationMap>
         <entry>
           <string>top</string>
-          <string>demo/player_top.png</string>
+          <string>player_top.png</string>
         </entry>
         <entry>
           <string>idle</string>
-          <string>demo/player_idle.png</string>
+          <string>player_idle.png</string>
         </entry>
         <entry>
           <string>left</string>
-          <string>demo/player_left.png</string>
+          <string>player_left.png</string>
         </entry>
         <entry>
           <string>bottom</string>
-          <string>demo/player_bot.png</string>
+          <string>player_bot.png</string>
         </entry>
         <entry>
           <string>right</string>
-          <string>demo/player_right.png</string>
+          <string>player_right.png</string>
         </entry>
       </animationMap>
       <interractionMap>
@@ -125,7 +125,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/player_fight.png</animationPath>
+                  <animationPath>player_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -153,7 +153,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/player_right.png</animationPath>
+                      <animationPath>player_right.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
