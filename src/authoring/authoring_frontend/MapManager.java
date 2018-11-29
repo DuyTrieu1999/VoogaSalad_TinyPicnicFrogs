@@ -62,6 +62,10 @@ public class MapManager {
         }
     }
 
+    public HashMap<String, Map> getGameMaps(){
+        return gameMaps;
+    }
+
     public List<String> getMapList(){
         return new ArrayList<>(gameMaps.keySet());
     }

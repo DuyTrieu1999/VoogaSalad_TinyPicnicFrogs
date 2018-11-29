@@ -2,6 +2,7 @@ package authoring.authoring_backend;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import engine.backend.AnimationObject;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
 
@@ -76,13 +77,14 @@ public class ActorPrototypeManager {
     protected void serializeAllPrototypes(String path){
         int index=0;
         XStream serializer = new XStream(new DomDriver());
-        for(ActorPrototype actor:actorPrototypeMap.values()){
-            index+=1;
-            String serialized= serializer.toXML(actor);
+        serializer.omitField(AnimationObject.class,"animationView");
+        String serialized= serializer.toXML(actorPrototypeMap);
+
             try{
-                Files.write(Paths.get(path+"prototype-"+index+".xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+
+                Files.write(Paths.get(path+"prototypes.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
         }
-    }
+
 
     /**
      *  Loads a prototype from an XML File
