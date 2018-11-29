@@ -15,7 +15,7 @@ public class MessageWindow {
     private ResourceBundle myResources;
     private Scene myWindow;
     private Group myRoot;
-    private PrototypeForm myContent;
+    private MessageForm myMessageForm;
     private GameManager myManager;
 
     public MessageWindow(GameManager manager) {
@@ -25,6 +25,7 @@ public class MessageWindow {
         myManager = manager;
 
         this.display();
+        this.addContent();
     }
 
     private void display() {
@@ -39,8 +40,8 @@ public class MessageWindow {
 
     private void addContent() {
         ScrollPane mySP = new ScrollPane();
-        myContent = new PrototypeForm(myManager);
-        mySP.setContent(myContent);
+        myMessageForm = new MessageForm(myManager);
+        mySP.setContent(myMessageForm);
         mySP.setMaxSize(SIZE,SIZE);
         myRoot.getChildren().add(mySP);
     }

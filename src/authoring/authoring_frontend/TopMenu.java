@@ -85,7 +85,8 @@ public class TopMenu extends HBox {
         });
 
         newMessage.setOnAction(e -> {
-            myNewMessage = new MessageWindow(myManager); //TODO: complete MessageWindow
+                    myNewMessage = new MessageWindow(myManager); //TODO: complete MessageWindow
+                });
 
         newSubmenu.getItems().add(newGame);
         newSubmenu.getItems().add(newActor);
@@ -105,10 +106,11 @@ public class TopMenu extends HBox {
         myMenu.getMenus().add(fileMenu);
     }
 
+
     /**
      * creates new Edit menu with choices: Save
      */
-    private void addEditTab() {
+    private void addEditTab(){
         Menu editMenu = new Menu(myResources.getString("Edit"));
 
         MenuItem saveItem = new MenuItem(myResources.getString("Save"));
@@ -125,7 +127,7 @@ public class TopMenu extends HBox {
     /**
      * creates new View menu with choices: Theme (Light, Dark)
      */
-    private void addViewTab() {
+    private void addViewTab(){
         Menu viewMenu = new Menu(myResources.getString("View"));
 
         Menu themeSubmenu = new Menu(myResources.getString("Theme"));
@@ -176,4 +178,8 @@ public class TopMenu extends HBox {
     //they get stored in the messageMap using the gameManager
     //when a user creates a new prototype, and they add a new interaction, there will be the option to put in a message
     //the dropdown for the messages (such as onVictory, display 'yay') comes from these keys
+
+    //key is the message key
+    //value is the Message object
+
 }
