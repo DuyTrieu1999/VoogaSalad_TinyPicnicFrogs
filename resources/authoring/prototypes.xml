@@ -1,13 +1,76 @@
 <map>
   <entry>
-    <string>enemy400-400-0</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>400</x>
-        <y>400</y>
-        <z>0</z>
-      </myCoordinate>
-      <myInteractionMap>
+    <string>grass</string>
+    <authoring.authoring__backend.ActorPrototype>
+      <animationMap>
+        <entry>
+          <string>idle</string>
+          <string>/resource/grass.png</string>
+        </entry>
+      </animationMap>
+      <interractionMap>
+        <entry>
+          <string>background</string>
+          <engine.backend.BackgroundInteraction>
+            <animationMap>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>/resource/grass.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </animationMap>
+            <messageMap>
+              <entry>
+                <string>backroundTouched</string>
+                <engine.backend.Message>
+                  <myMessageString>Player won</myMessageString>
+                </engine.backend.Message>
+              </entry>
+            </messageMap>
+            <myName>background</myName>
+            <canPassThrough>false</canPassThrough>
+          </engine.backend.BackgroundInteraction>
+        </entry>
+      </interractionMap>
+      <myStats/>
+      <name>grass</name>
+      <myBound>
+        <width>5</width>
+        <height>5</height>
+        <relX>0</relX>
+        <relY>0</relY>
+      </myBound>
+      <isPlayer>false</isPlayer>
+    </authoring.authoring__backend.ActorPrototype>
+  </entry>
+  <entry>
+    <string>enemy</string>
+    <authoring.authoring__backend.ActorPrototype>
+      <animationMap>
+        <entry>
+          <string>top</string>
+          <string>demo/enemy_top.png</string>
+        </entry>
+        <entry>
+          <string>idle</string>
+          <string>demo/enemy.png</string>
+        </entry>
+        <entry>
+          <string>left</string>
+          <string>demo/enemy_left.png</string>
+        </entry>
+        <entry>
+          <string>bottom</string>
+          <string>demo/enemy_bot.png</string>
+        </entry>
+        <entry>
+          <string>right</string>
+          <string>demo/enemy_right.png</string>
+        </entry>
+      </animationMap>
+      <interractionMap>
         <entry>
           <string>fight</string>
           <engine.backend.CombatInteraction>
@@ -23,9 +86,7 @@
             <messageMap>
               <entry>
                 <string>prototypeVictory</string>
-                <engine.backend.Message>
-                  <myMessageString>Player won</myMessageString>
-                </engine.backend.Message>
+                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.BackgroundInteraction/messageMap/entry/engine.backend.Message"/>
               </entry>
               <entry>
                 <string>prototypeDefeat</string>
@@ -57,69 +118,49 @@
             <myHealth>10</myHealth>
           </engine.backend.CombatInteraction>
         </entry>
-      </myInteractionMap>
-      <myStatsMap>
+      </interractionMap>
+      <myStats>
         <entry>
           <string>health</string>
           <int>50</int>
         </entry>
-      </myStatsMap>
-      <myAnimationMap>
-        <entry>
-          <string>top</string>
-          <engine.backend.AnimationObject>
-            <animationName>top</animationName>
-            <animationPath>demo/enemy_top.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>demo/enemy.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>left</string>
-          <engine.backend.AnimationObject>
-            <animationName>left</animationName>
-            <animationPath>demo/enemy_left.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <engine.backend.AnimationObject>
-            <animationName>bottom</animationName>
-            <animationPath>demo/enemy_bot.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>right</string>
-          <engine.backend.AnimationObject>
-            <animationName>right</animationName>
-            <animationPath>demo/enemy_right.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
-      <isPlayerActor>true</isPlayerActor>
-      <myBounds>
+      </myStats>
+      <name>enemy</name>
+      <myBound>
         <width>212</width>
         <height>267</height>
         <relX>0</relX>
         <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
+      </myBound>
+      <isPlayer>true</isPlayer>
+    </authoring.authoring__backend.ActorPrototype>
   </entry>
   <entry>
-    <string>player100-100-0</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>100</x>
-        <y>100</y>
-        <z>0</z>
-      </myCoordinate>
-      <myInteractionMap>
+    <string>player</string>
+    <authoring.authoring__backend.ActorPrototype>
+      <animationMap>
+        <entry>
+          <string>top</string>
+          <string>demo/player_top.png</string>
+        </entry>
+        <entry>
+          <string>idle</string>
+          <string>demo/player_idle.png</string>
+        </entry>
+        <entry>
+          <string>left</string>
+          <string>demo/player_left.png</string>
+        </entry>
+        <entry>
+          <string>bottom</string>
+          <string>demo/player_bot.png</string>
+        </entry>
+        <entry>
+          <string>right</string>
+          <string>demo/player_right.png</string>
+        </entry>
+      </animationMap>
+      <interractionMap>
         <entry>
           <string>fight</string>
           <engine.backend.CombatInteraction>
@@ -135,11 +176,11 @@
             <messageMap>
               <entry>
                 <string>prototypeVictory</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.BackgroundInteraction/messageMap/entry/engine.backend.Message"/>
               </entry>
               <entry>
                 <string>prototypeDefeat</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry[2]/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
               </entry>
             </messageMap>
             <myName>fight</myName>
@@ -165,58 +206,21 @@
             <myHealth>10</myHealth>
           </engine.backend.CombatInteraction>
         </entry>
-      </myInteractionMap>
-      <myStatsMap>
+      </interractionMap>
+      <myStats>
         <entry>
           <string>health</string>
           <int>50</int>
         </entry>
-      </myStatsMap>
-      <myAnimationMap>
-        <entry>
-          <string>top</string>
-          <engine.backend.AnimationObject>
-            <animationName>top</animationName>
-            <animationPath>demo/player_top.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>demo/player_idle.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>left</string>
-          <engine.backend.AnimationObject>
-            <animationName>left</animationName>
-            <animationPath>demo/player_left.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <engine.backend.AnimationObject>
-            <animationName>bottom</animationName>
-            <animationPath>demo/player_bot.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>right</string>
-          <engine.backend.AnimationObject>
-            <animationName>right</animationName>
-            <animationPath>demo/player_right.png</animationPath>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
-      <isPlayerActor>true</isPlayerActor>
-      <myBounds>
+      </myStats>
+      <name>player</name>
+      <myBound>
         <width>212</width>
         <height>267</height>
         <relX>0</relX>
         <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
+      </myBound>
+      <isPlayer>true</isPlayer>
+    </authoring.authoring__backend.ActorPrototype>
   </entry>
 </map>
