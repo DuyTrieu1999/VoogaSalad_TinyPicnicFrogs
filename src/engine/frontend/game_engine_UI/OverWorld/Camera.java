@@ -2,7 +2,6 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.Coordinate;
-import engine.backend.PlayerActor;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 

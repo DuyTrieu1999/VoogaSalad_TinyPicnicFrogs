@@ -16,7 +16,7 @@ import javafx.util.Duration;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class WorldView {
+public abstract class WorldView extends HBox {
     protected Timeline animation = new Timeline();
     private KeyFrame frame;
     private Scene myScene;
@@ -33,11 +33,10 @@ public abstract class WorldView {
     public WorldView (Controller controller) {
         this.myController = controller;
         myAnimations = controller.getAnimation();
-       // System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        myScene = new Scene(displayPane, Color.BLACK);
+        this.getChildren().add(displayPane);
     }
     public void updateView () {
         clearView();
@@ -54,9 +53,6 @@ public abstract class WorldView {
     private void step(double elapsedTime) {
         ServiceLocator.getGameWorld().detectCollisions();
         updateView();
-    }
-    public Scene getMyScene () {
-        return myScene;
     }
     public void clearView () {
         this.myAnimations.clear();

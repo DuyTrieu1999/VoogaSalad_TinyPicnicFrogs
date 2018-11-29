@@ -7,6 +7,7 @@ import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class StateView {
     }
     private void setUpView () {
         setOverWorldView();
-        myScene = myView.getMyScene();
+        myScene = new Scene(myView, 750, 600, Color.BLACK);
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
     }
     public void setOverWorldView () {

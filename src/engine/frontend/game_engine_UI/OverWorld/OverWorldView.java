@@ -2,7 +2,6 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
-import engine.backend.PlayerActor;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.image.ImageView;

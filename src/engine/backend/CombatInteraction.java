@@ -16,7 +16,7 @@ public class CombatInteraction extends Interaction{
 
 
     public CombatInteraction(){
-
+        super();
     }
 
     public AnimationObject getCombatIdleAnimation(){
@@ -32,7 +32,7 @@ public class CombatInteraction extends Interaction{
         super(data,messages);
         commandList= new ArrayList<>();
         parseMoves((JSONArray)data.get("moves"));
-
+        myCombatIdleAnimation=animationMap.get("default");
         //TODO: Test value
         myHealth = 10;
     }
@@ -55,5 +55,11 @@ public class CombatInteraction extends Interaction{
     public void serialize(){
         super.serialize();
         for(Command c:commandList){c.serialize();}
+    }
+    @Override
+    public void setImages(){
+        super.setImages();
+        myCombatIdleAnimation=super.animationMap.get("default");
+        System.out.println(myCombatIdleAnimation.getName());
     }
 }
