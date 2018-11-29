@@ -14,17 +14,16 @@ public class ActorManager {
         allActors = actorList;
         inactiveActors = new ArrayList<>();
         activeActors = allActors;
+        setPlayerActor();
     }
 
     public PlayerActor getPlayerActor(){
         return myPlayerActor;
     }
+
     public void setPlayerActor(PlayerActor player){
         myPlayerActor = player;
     }
-
-
-
 
     /**
      * sets myPlayerActor
