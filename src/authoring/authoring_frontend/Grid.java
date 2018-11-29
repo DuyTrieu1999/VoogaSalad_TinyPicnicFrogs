@@ -1,15 +1,16 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
+/**
+ * Grid class to store the total grid in a map.
+ *
+ * @author Allen
+ */
 public class Grid {
     private GridPane mapGridPane;
     private Cell[][] myCells;
@@ -18,10 +19,22 @@ public class Grid {
     private String programName;
     private GameManager gameManager;
 
+    /**
+     * Default constructor makes a 30x20 grid.
+     * @param name Program name.
+     * @param myManager GameManager of current game.
+     */
     Grid(String name, GameManager myManager){
         this(30, 20, name, myManager);
     }
 
+    /**
+     * Constructor
+     * @param width Width in squares.
+     * @param height Height in squares.
+     * @param name Program name.
+     * @param myManager GameManager of current game.
+     */
     Grid(int width, int height, String name, GameManager myManager){
         gridWidth = width;
         gridHeight = height;
@@ -37,6 +50,10 @@ public class Grid {
         }
     }
 
+    /**
+     * Creates a cell.
+     * @return A StackPane with the cell contents.
+     */
     private StackPane createCell(){
         StackPane thisCell = new StackPane();
         thisCell.setPrefSize(18, 18);
@@ -47,7 +64,6 @@ public class Grid {
             int y = mapGridPane.getRowIndex(thisCell);
             if(activeActor != null){
                 thisCell.getChildren().add(activeActor.getActorImage());
-                //thisCell.setOnMouseClicked(null);
                 myCells[x][y].addActor(activeActor);
                 gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
             }
@@ -63,10 +79,18 @@ public class Grid {
         return thisCell;
     }
 
+    /**
+     * Gets the GridPane of this grid.
+     * @return GridPane
+     */
     public GridPane getGridPane(){
         return mapGridPane;
     }
 
+    /**
+     * Gets matrix of cells in this grid.
+     * @return Matrix of cells contained in this grid.
+     */
     public Cell[][] getCells(){
         return myCells;
     }

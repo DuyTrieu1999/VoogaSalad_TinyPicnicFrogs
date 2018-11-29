@@ -1,23 +1,20 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Pair;
-
-import javax.swing.text.html.StyleSheet;
 import java.util.Optional;
 
+/**
+ * Menu of maps on the left side of the window.
+ *
+ * @author Allen Qiu
+ */
 public class MapMenu extends HBox {
     private VBox mapList = new VBox();
     private ListView<String> mapView = new ListView<>();
@@ -26,6 +23,12 @@ public class MapMenu extends HBox {
     private MapManager mapManager;
     private GameManager gameManager;
 
+    /**
+     * Constructor
+     * @param pName Program name
+     * @param manager MapManager of the game
+     * @param gm GameManager of the game
+     */
     public MapMenu(String pName, MapManager manager, GameManager gm) {
         this.getChildren().add(new Label("map"));
         programName = pName;
@@ -34,25 +37,29 @@ public class MapMenu extends HBox {
 
     }
 
+    /**
+     * Initializes the list for the first time.
+     * @return ListView of map names.
+     */
     public ListView<String> setupList(){
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String newMap = mapManager.createMap(30, 20);
         gameManager.setUpMap(30, 20, 1, 1);
         mapView.getItems().add(newMap);
-        //ActiveMap.setActiveMap(programName, newMap);
         mapManager.setActiveMap(newMap);
         mapView.setPrefHeight(200);
-        mapView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getClickCount() == 2){
-                    mapManager.setActiveMap(mapView.getSelectionModel().getSelectedItem());
-                }
+        mapView.setOnMouseClicked(event -> {
+            if(event.getClickCount() == 2){
+                mapManager.setActiveMap(mapView.getSelectionModel().getSelectedItem());
             }
         });
         return mapView;
     }
 
+    /**
+     * Creates the buttons.
+     * @return HBox with buttons.
+     */
     public HBox setupButtons(){
         Button newMap = new Button("New Map");
         newMap.setOnAction(event -> {
@@ -117,6 +124,10 @@ public class MapMenu extends HBox {
         return buttonView;
     }
 
+    /**
+     * Gets a list of maps.
+     * @return Tab with a list of maps.
+     */
     public Tab getMapList(){
         mapList.getChildren().addAll(setupButtons(), setupList());
         Tab layerTab = new Tab();
@@ -125,11 +136,19 @@ public class MapMenu extends HBox {
         return layerTab;
     }
 
+    /**
+     * Gets pane with all the tabs.
+     * @return VBox with all the tabs.
+     */
     public VBox getMapPane(){
         mapList.getChildren().addAll(setupButtons(), setupList());
         return mapList;
     }
 
+    /**
+     * Get the currently selected map.
+     * @return Currently selected map.
+     */
     public Map getCurrentMap(){
         ObservableList<String> selectedMaps = mapView.getSelectionModel().getSelectedItems();
         if(selectedMaps.size() > 0){

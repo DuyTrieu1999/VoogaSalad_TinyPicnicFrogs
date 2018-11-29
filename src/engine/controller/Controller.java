@@ -18,10 +18,12 @@ public class Controller {
     }
 
     private Supplier<Collection<AnimationObject>> animationObjectSupplier = () -> ServiceLocator.getActorManager().getAnimationObjects();
-    public Collection<AnimationObject> getAnimation () { return animationObjectSupplier.get(); }
+    public Collection<AnimationObject> getAnimation () {
+//        System.out.println("SIZE"+animationObjectSupplier.get().size());
+        return animationObjectSupplier.get(); }
 
-    private Supplier<PlayerActor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
-    public PlayerActor getPlayer () { return playerActorSupplier.get(); }
+    private Supplier<Actor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
+    public Actor getPlayer () { return playerActorSupplier.get(); }
 
     private Supplier<List<Command>> activeCommandSupplier = () -> myView.getActiveCommand();
     public List<Command> getActiveCommands () { return activeCommandSupplier.get(); }

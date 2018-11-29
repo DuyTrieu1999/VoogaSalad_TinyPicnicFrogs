@@ -1,16 +1,20 @@
 package engine.frontend.game_engine_UI;
 
+import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.PlayerActor;
+import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -21,19 +25,23 @@ public abstract class WorldView {
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
 
-    private double FRAMES_PER_SECOND = 1;
+    private double FRAMES_PER_SECOND = 60;
     private double MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
     private double SECOND_DELAY = 100.0/ FRAMES_PER_SECOND;
 
     private Collection<AnimationObject> myAnimations;
-    private PlayerActor myPlayer;
+    private Actor myPlayer;
+    private Controller myController;
 
     public WorldView (Controller controller) {
+        this.myController = controller;
         myAnimations = controller.getAnimation();
+       // System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
         myScene = new Scene(displayPane, Color.BLACK);
+
     }
     public void updateView () {
         clearView();
@@ -41,13 +49,14 @@ public abstract class WorldView {
         this.setViewByZ();
     }
     private void init () {
-        animation.setCycleCount(Timeline.INDEFINITE);
         frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
                 e -> this.step(SECOND_DELAY));
+        animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(frame);
         animation.play();
     }
     private void step(double elapsedTime) {
+        ServiceLocator.getGameWorld().detectCollisions();
         updateView();
     }
     public Scene getMyScene () {
@@ -58,8 +67,20 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+//        System.out.println("fired");
+        myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
-            displayPane.getChildren().add(animationObject.getAnimationView());
+            ImageView animation = animationObject.getAnimationView();
+            animation.setLayoutX(100);
+//            System.out.println(animationObject.getCoordinate().getX());
+//            System.out.println(animationObject.getCoordinate().getY());
+
+            animation.setX(animationObject.getCoordinate().getX());
+            animation.setY(animationObject.getCoordinate().getY());
+            animation.setLayoutY(100);
+            animation.setFitHeight(50);
+            animation.setFitWidth(50);
+            displayPane.getChildren().add(animation);
         }
     }
     private void setUpDisplay () {

@@ -1,10 +1,10 @@
 <map>
   <entry>
-    <string>enemy400-400-0</string>
+    <string>player0-0-0</string>
     <engine.backend.Actor>
       <myCoordinate>
-        <x>400</x>
-        <y>400</y>
+        <x>0</x>
+        <y>0</y>
         <z>0</z>
       </myCoordinate>
       <myInteractionMap>
@@ -16,7 +16,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/enemy_fight.png</animationPath>
+                  <animationPath>player_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -48,7 +48,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/enemy_left.png</animationPath>
+                      <animationPath>player_right.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
@@ -69,54 +69,59 @@
           <string>top</string>
           <engine.backend.AnimationObject>
             <animationName>top</animationName>
-            <animationPath>demo/enemy_top.png</animationPath>
+            <animationPath>player_top.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>demo/enemy_idle.png</animationPath>
+            <animationPath>player_idle.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>left</string>
           <engine.backend.AnimationObject>
             <animationName>left</animationName>
-            <animationPath>demo/enemy_left.png</animationPath>
+            <animationPath>player_left.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>bottom</string>
           <engine.backend.AnimationObject>
             <animationName>bottom</animationName>
-            <animationPath>demo/enemy_bot.png</animationPath>
+            <animationPath>player_bot.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>right</string>
           <engine.backend.AnimationObject>
             <animationName>right</animationName>
-            <animationPath>demo/enemy_right.png</animationPath>
+            <animationPath>player_right.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
       <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
       <isPlayerActor>true</isPlayerActor>
       <myBounds>
-        <width>212</width>
-        <height>267</height>
+        <width>50</width>
+        <height>50</height>
         <relX>0</relX>
         <relY>0</relY>
       </myBounds>
     </engine.backend.Actor>
   </entry>
   <entry>
-    <string>player100-100-0</string>
+    <string>enemy350-350-0</string>
     <engine.backend.Actor>
       <myCoordinate>
-        <x>100</x>
-        <y>100</y>
+        <x>350</x>
+        <y>350</y>
         <z>0</z>
       </myCoordinate>
       <myInteractionMap>
@@ -128,7 +133,7 @@
                 <string>default</string>
                 <engine.backend.AnimationObject>
                   <animationName>default</animationName>
-                  <animationPath>demo/player_fight.png</animationPath>
+                  <animationPath>enemy_fight.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -156,7 +161,7 @@
                     <string>default</string>
                     <engine.backend.AnimationObject>
                       <animationName>default</animationName>
-                      <animationPath>demo/player_right.png</animationPath>
+                      <animationPath>enemy_left.png</animationPath>
                     </engine.backend.AnimationObject>
                   </entry>
                 </myAnimationMap>
@@ -177,43 +182,48 @@
           <string>top</string>
           <engine.backend.AnimationObject>
             <animationName>top</animationName>
-            <animationPath>demo/player_top.png</animationPath>
+            <animationPath>enemy_top.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>demo/player_idle.png</animationPath>
+            <animationPath>enemy_idle.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>left</string>
           <engine.backend.AnimationObject>
             <animationName>left</animationName>
-            <animationPath>demo/player_left.png</animationPath>
+            <animationPath>enemy_left.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>bottom</string>
           <engine.backend.AnimationObject>
             <animationName>bottom</animationName>
-            <animationPath>demo/player_bot.png</animationPath>
+            <animationPath>enemy_bot.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
         <entry>
           <string>right</string>
           <engine.backend.AnimationObject>
             <animationName>right</animationName>
-            <animationPath>demo/player_right.png</animationPath>
+            <animationPath>enemy_right.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
       <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
       <isPlayerActor>true</isPlayerActor>
       <myBounds>
-        <width>212</width>
-        <height>267</height>
+        <width>50</width>
+        <height>50</height>
         <relX>0</relX>
         <relY>0</relY>
       </myBounds>

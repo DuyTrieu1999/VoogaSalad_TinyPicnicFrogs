@@ -22,6 +22,7 @@ public class MenuView extends HBox {
         pane = new BorderPane();
         commandList = new ArrayList<>();
         layoutBoxes = new ArrayList<>();
+        activeCommands = new ArrayList<>();
         addLayout();
         addSelectedButton();
         pane.getChildren().addAll(layoutBoxes);

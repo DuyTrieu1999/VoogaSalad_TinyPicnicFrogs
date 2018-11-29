@@ -31,7 +31,7 @@ public class ActorPrototype {
         animationMap=parseAnimations(data);
         myStats=parseStats((JSONArray) data.get("stats"));
         interractionMap= new HashMap<>();
-        parseInterractions((JSONArray)data.get("Interactions"),prototypeMessages);
+        parseInterractions((JSONArray)data.get("interactions"),prototypeMessages);
         isPlayer =(boolean)data.get("isPlayer");
         myBound=parseBounds((JSONObject)data.get("bounds"));
 

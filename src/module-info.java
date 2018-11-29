@@ -23,5 +23,10 @@ module voogasalad_tinypicnicfrogs {
     opens engine.frontend.game_engine_UI.SplashScreen to xstream;
     exports authoring.authoring_backend;
     exports authoring.authoring_frontend;
+<<<<<<< HEAD
     exports authoring.authoring_frontend.Forms;
 }
+=======
+    exports authoring.authoring_frontend.FormBoxes;
+}
+>>>>>>> 6db361009336f829fd6443e4bf9c42230b28c7a1

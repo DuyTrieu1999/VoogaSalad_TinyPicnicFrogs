@@ -3,10 +3,7 @@ package engine.frontend.game_engine_UI;
 import engine.backend.Commands.Command;
 import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
-<<<<<<< HEAD
 import engine.frontend.game_engine_UI.MenuView.MenuView;
-=======
->>>>>>> ac808cec84bf6082597bd682666e1c6c5492faea
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
@@ -17,8 +14,9 @@ import java.util.List;
 
 public class StateView {
     private Controller myController;
-    private OverWorldView myWorldView;
-    private BattleView myBattleView;
+
+    private WorldView myView;
+    private MenuView myMenu;
     private Stage myStage;
     private HashMap<GameState, Scene> sceneMap = new HashMap<>();
     private Scene myScene;
@@ -30,11 +28,14 @@ public class StateView {
         setUpStage();
     }
     private void setUpView () {
-        myWorldView = new OverWorldView(myController);
-        myBattleView = new BattleView(myController);
-        sceneMap.put(GameState.Overworld, myWorldView.getMyScene());
-        sceneMap.put(GameState.Combat, myBattleView.getMyScene());
-        myScene = sceneMap.get(myController.getGameState());
+        GameState state = myController.getGameState();
+        if (state == GameState.Overworld) {
+            myView = new OverWorldView(myController);
+        }
+        if (state == GameState.Combat) {
+            myView = new BattleView(myController);
+        }
+        myScene = myView.getMyScene();
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
     }
     private void setUpStage () {
@@ -44,12 +45,8 @@ public class StateView {
         myStage.setScene(myScene);
         myStage.show();
     }
-    public OverWorldView getMyWorldView () {
-        return myWorldView;
-    }
-    public BattleView getMyBattleView () {
-        return myBattleView;
-    }
-    public void setAllCommand(List<Command> commands) { myBattleView.addCommandUI(commands); }
-    public List<Command> getActiveCommand () { return myBattleView.returnActiveCommands(); }
+
+    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands); }
+    public List<Command> getActiveCommand () { return myMenu.returnActiveCommands(); }
+
 }

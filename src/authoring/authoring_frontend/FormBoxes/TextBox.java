@@ -1,4 +1,4 @@
-package authoring.authoring_frontend.Forms;
+package authoring.authoring_frontend.FormBoxes;
 
 import javafx.scene.control.TextField;
 import org.json.simple.JSONObject;

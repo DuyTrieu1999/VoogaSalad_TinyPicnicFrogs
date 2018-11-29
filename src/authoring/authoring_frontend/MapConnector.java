@@ -5,17 +5,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Connects different or same maps to create portals.
+ *
+ * @author Allen Qiu
+ */
 public class MapConnector {
     private Map firstMap;
     private Map secondMap;
@@ -23,6 +23,10 @@ public class MapConnector {
     private Cell secondCell;
     private MapManager mapManager;
 
+    /**
+     * Constructor
+     * @param manager MapManager of the environment.
+     */
     MapConnector(MapManager manager){
         mapManager = manager;
         firstCell = null;
@@ -30,6 +34,9 @@ public class MapConnector {
         startConnector();
     }
 
+    /**
+     * Goes down the pathway of dialogs to connect maps.
+     */
     public void startConnector(){
         firstMap = selectMapDialog();
         if(firstMap != null){
@@ -48,6 +55,10 @@ public class MapConnector {
         }
     }
 
+    /**
+     * Gets a list of maps and prompts the user to choose one.
+     * @return The Map selected by the user.
+     */
     public Map selectMapDialog(){
         List<String> choices = mapManager.getMapList();
         if(choices.size() > 0){
@@ -74,6 +85,10 @@ public class MapConnector {
         }
     }
 
+    /**
+     * Prompts the user to select a square from a map.
+     * @param selectFrom The map to select from.
+     */
     public void selectSquareDialog(Map selectFrom){
         //BorderPane
         GridPane selectOne = new GridPane();
@@ -109,7 +124,13 @@ public class MapConnector {
 
     }
 
-    public void setCell(int x, int y, Cell[][] myCells){
+    /**
+     * Chooses the first and second cells.
+     * @param x The x-coordinate.
+     * @param y The y-coordinate.
+     * @param myCells The matrix of cells.
+     */
+    private void setCell(int x, int y, Cell[][] myCells){
         if(firstCell == null){
             firstCell = myCells[x][y];
         }
@@ -118,6 +139,10 @@ public class MapConnector {
         }
     }
 
+    /**
+     * Prompts user if the portal is reversable.
+     * @return Boolean containing whether the portal is reversable.
+     */
     public boolean showReversableDialog(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Reversable portal?");
