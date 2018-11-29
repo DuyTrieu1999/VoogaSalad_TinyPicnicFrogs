@@ -1,19 +1,18 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
-public class Victory extends SplashScreen {
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+public class Victory extends SplashScreen {
 
     @Override
     void addElements() {
-
+        ImageView you_win = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("you_win.png")));
+        this.setCenter(you_win);
     }
 
-    Victory(String imgfile) {
-        super(imgfile);
+    Victory() {
+        super();
     }
-
-    /*don't really know if this needs to be a splash screen, but we definitely need victory text and maybe
-    victory music.
-     */
 
 }
