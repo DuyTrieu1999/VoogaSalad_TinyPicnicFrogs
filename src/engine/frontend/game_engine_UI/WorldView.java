@@ -4,12 +4,12 @@ import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.ServiceLocator;
 import engine.controller.Controller;
-import engine.frontend.game_engine_UI.OverWorld.Camera;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
@@ -31,17 +31,14 @@ public abstract class WorldView extends HBox {
     private Actor myPlayer;
     private Controller myController;
 
-    protected Camera myCamera;
-
-
     public WorldView (Controller controller) {
-        myCamera = new Camera(myPlayer);
-
         this.myController = controller;
         myAnimations = controller.getAnimation();
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
+
+
         this.getChildren().add(displayPane);
     }
     public void updateView () {
@@ -65,17 +62,25 @@ public abstract class WorldView extends HBox {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+        ImageView backgroundView=new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("background.png")));
+       // displayPane.getChildren().add(backgroundView);
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
+            System.out.println(animationObject.getName());
+            if(!animationObject.getName().equals("idle: background.png")){
+                animation.setFitWidth(50);
+                animation.setFitHeight(50);
+                animation.setLayoutY(100);
+            }
+            else{animation.setLayoutX(-300);
+                animation.setLayoutY(-300);}
 //            System.out.println(animationObject.getCoordinate().getX());
 //            System.out.println(animationObject.getCoordinate().getY());
-            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
-            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
-            animation.setLayoutY(100);
-            animation.setFitHeight(50);
-            animation.setFitWidth(50);
+            animation.setX(animationObject.getCoordinate().getX());
+            animation.setY(animationObject.getCoordinate().getY());
+
             displayPane.getChildren().add(animation);
         }
     }

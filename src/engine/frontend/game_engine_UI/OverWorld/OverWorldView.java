@@ -14,6 +14,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Collection<Actor> myActors;
     private Collection<AnimationObject> myAnimations;
 
+    private Camera myCamera;
 
     private BorderPane displayPane;
     private Actor myPlayer;
@@ -27,7 +28,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
 
     @Override
     public void updateView () {
-        super.updateView();
+       // super.updateView();
         myCamera.move();
         moveCamera();
     }
