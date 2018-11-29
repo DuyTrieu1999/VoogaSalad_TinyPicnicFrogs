@@ -24,7 +24,7 @@ public abstract class WorldView {
     private Scene myScene;
     private BorderPane displayPane = new BorderPane();
 
-    private double FRAMES_PER_SECOND = 1;
+    private double FRAMES_PER_SECOND = 60;
     private double MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
     private double SECOND_DELAY = 100.0/ FRAMES_PER_SECOND;
 
@@ -35,7 +35,7 @@ public abstract class WorldView {
     public WorldView (Controller controller) {
         this.myController = controller;
         myAnimations = controller.getAnimation();
-        System.out.println("SIZE2 "+myAnimations.size());
+       // System.out.println("SIZE2 "+myAnimations.size());
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
@@ -43,7 +43,7 @@ public abstract class WorldView {
 
     }
     public void updateView () {
-        //clearView();
+        clearView();
         addActors();
         this.setViewByZ();
     }
@@ -55,7 +55,7 @@ public abstract class WorldView {
         animation.play();
     }
     private void step(double elapsedTime) {
-        updateView();
+
     }
     public Scene getMyScene () {
         return myScene;
