@@ -44,9 +44,10 @@ public class ServiceLocator {
     }
 
     public static CombatManager getCombatManager(){
-        if(myCombatManager == null){
-            myCombatManager = new CombatManager(null, null, null);
-        }
+//        if(myCombatManager == null){
+//            //myCombatManager = new CombatManager(null, null, null);
+//            return null;
+//        }
         return myCombatManager;
     }
 
