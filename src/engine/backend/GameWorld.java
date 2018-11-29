@@ -2,6 +2,7 @@ package engine.backend;
 
 
 import engine.backend.Commands.*;
+import javafx.concurrent.Service;
 import javafx.scene.input.KeyCode;
 
 import java.util.ArrayList;
@@ -84,6 +85,7 @@ public class GameWorld {
 
     private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInteraction){
         myGameState = GameState.Combat;
+        ServiceLocator.getController().setBattleView();
         var alliesList = new ArrayList<CombatInteraction>();
         alliesList.add(playerInteraction);
         var enemyList = new ArrayList<CombatInteraction>();
@@ -113,6 +115,7 @@ public class GameWorld {
      */
     public void activateOverWorld(){
         myGameState = GameState.Overworld;
+        ServiceLocator.getController().setWorldView();
     }
 
     /**

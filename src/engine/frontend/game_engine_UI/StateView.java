@@ -28,7 +28,7 @@ public class StateView {
         setUpStage();
     }
     private void setUpView () {
-
+        setOverWorldView();
         myScene = myView.getMyScene();
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
     }
