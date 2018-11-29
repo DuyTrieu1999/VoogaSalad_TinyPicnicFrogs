@@ -2,7 +2,6 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.Actor;
 import engine.backend.Coordinate;
-import engine.backend.PlayerActor;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 
@@ -16,7 +15,7 @@ public class Camera extends Node {
         Coordinate coor = myPlayer.getCoordinate();
         return new Point2D(coor.getX(), coor.getY());
     }
-    public void move() {
+    protected void move() {
         Coordinate coor = myPlayer.getCoordinate();
         this.setTranslateX(coor.getX());
         this.setTranslateY(coor.getY());

@@ -27,6 +27,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     @Override
     public void updateView () {
         super.updateView();
+//        myCamera.move();
+//        moveCamera();
     }
     public void setCamera(Camera newCamera) {
         this.myCamera = newCamera;
