@@ -46,13 +46,13 @@ public class GameManager {
      * See JSON helper file for what data would look like
      */
 
-    public String createActorPrototype(JSONObject formData){
-        JSONArray interractionArr=(JSONArray)formData.get("Interactions");
+    public void createActorPrototype(JSONObject formData){
+        JSONArray interractionArr=(JSONArray)formData.get("interactions");
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
         for(int i=0;i<interractionArr.size();i+=1)
         {
             JSONObject interraction=(JSONObject) interractionArr.get(i);
-            JSONArray interractionMessages=(JSONArray)interraction.get("Messages");
+            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
 
             Map<String,Message>messageMap=new HashMap<>();
             for(int j=0;j<interractionMessages.size();j+=1){

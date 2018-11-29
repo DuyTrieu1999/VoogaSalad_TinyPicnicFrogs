@@ -1,4 +1,4 @@
-package authoring.authoring_frontend.Forms;
+package authoring.authoring_frontend.FormBoxes;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -16,7 +16,7 @@ import java.io.File;
  * @author brookekeene
  */
 public class AnimationBox extends FormBox {
-    private String fileName; //TODO: check if this should be stored as a Path object
+    private String fileName;
 
     public AnimationBox(String label) {
         super(label);

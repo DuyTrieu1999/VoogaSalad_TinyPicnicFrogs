@@ -1,12 +1,10 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.Forms.*;
+import authoring.authoring_frontend.FormBoxes.*;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.json.simple.JSONArray;
@@ -17,6 +15,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * PrototypeForm
+ *
+ * Creates a VBox that contains all of the FormBox
+ * elements and that saves a JSON Object representing
+ * the ActorPrototype created
+ *
+ * @author brookekeene
+ */
 public class PrototypeForm extends VBox {
     public static final String DEFAULT_RESOURCE = "English";
     public static int SIZE = 500;
@@ -26,6 +33,8 @@ public class PrototypeForm extends VBox {
     private List<FormBox> myStatisticsForms;
     private List<FormBox> myInteractionForms;
     private TextField prototypeName;
+    private CheckBox isPlayer;
+    private BoundsBox myBounds;
 
     private GameManager myManager;
 
@@ -39,7 +48,7 @@ public class PrototypeForm extends VBox {
         myInteractionForms = new ArrayList<>();
         myManager = manager;
 
-        this.setMaxSize(SIZE, SIZE);
+        //this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
@@ -47,7 +56,7 @@ public class PrototypeForm extends VBox {
     /**
      * adds all necessary fields to form
      */
-    private void addAllFields() { //TODO: refactor and make more flexible (HBox with AddNewBtn, ex. from interactions)
+    private void addAllFields() {
         Label name = new Label(myResources.getString("name"));
         Label animations = new Label(myResources.getString("animations"));
         Label stats = new Label(myResources.getString("stats"));
@@ -57,12 +66,25 @@ public class PrototypeForm extends VBox {
         stats.setPadding(new Insets(PADDING));
         interactions.setPadding(new Insets(PADDING));
 
+        HBox saveBox = new HBox();
+        saveBox.setPrefWidth(SIZE);
+        saveBox.setPadding(new Insets(PADDING));
+        saveBox.setAlignment(Pos.CENTER);
         Button saveBtn = new Button(myResources.getString("Save")); // Save Button
+        saveBox.getChildren().add(saveBtn);
         saveBtn.setOnAction(e -> saveFunction());
 
         // Name
         prototypeName = new TextField();
         this.getChildren().addAll(name, prototypeName);
+
+        // isPlayer
+        HBox boolBox = new HBox();
+        isPlayer = new CheckBox();
+        isPlayer.setText(myResources.getString("isPlayer"));
+        boolBox.getChildren().add(isPlayer);
+        boolBox.setPadding(new Insets(PADDING));
+        this.getChildren().add(boolBox);
 
         // Animations
         AnimationBox idle = new AnimationBox("Idle");
@@ -75,37 +97,58 @@ public class PrototypeForm extends VBox {
         myAnimationForms.add(down);
         myAnimationForms.add(left);
         myAnimationForms.add(right);
+        for(FormBox box:myAnimationForms) {
+            box.setContent();
+        }
 
         this.getChildren().addAll(animations, idle, up, down, left, right);
 
-        // Statistics
-        TextBox health = new TextBox("Health");
-        myStatisticsForms.add(health);
+        // Bounds
+        myBounds = new BoundsBox(myResources.getString("bounds"));
+        myBounds.setContent();
+        this.getChildren().addAll(myBounds);
 
-        this.getChildren().addAll(stats, health);
+        // Statistics
+        Button addSBtn = new Button(myResources.getString("AddNew"));
+        VBox statisticsBox = new VBox();
+        statisticsBox.setPadding(new Insets(PADDING));
+        this.getChildren().addAll(stats, statisticsBox, addSBtn);
+
+        addSBtn.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle(myResources.getString("stats"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("stat"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("stat"));
+            Optional<String> result = dialog.showAndWait();
+            if(result.isPresent()){
+                TextBox temp = new TextBox(result.get());
+                temp.setContent();
+                myStatisticsForms.add(temp);
+                statisticsBox.getChildren().add(temp);
+            }
+        });
 
         // Interactions
         Button addIBtn = new Button(myResources.getString("AddNew"));
-        HBox interactionsBox = new HBox();
+        VBox interactionsBox = new VBox();
         interactionsBox.setPadding(new Insets(PADDING));
         this.getChildren().addAll(interactions, interactionsBox, addIBtn);
 
         addIBtn.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
-            dialog.setTitle("Interaction");
-            dialog.setHeaderText("Create New Interaction");
-            dialog.setContentText("Enter the name of the new interaction: ");
+            dialog.setTitle(myResources.getString("interactions"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("interaction"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("interaction"));
             Optional<String> result = dialog.showAndWait();
             if(result.isPresent()){
-                this.getChildren().remove(saveBtn);
                 InteractionBox temp = new InteractionBox(result.get());
+                temp.setContent();
                 myInteractionForms.add(temp);
                 interactionsBox.getChildren().add(temp);
-                this.getChildren().addAll(saveBtn);
             }
         });
 
-        this.getChildren().add(saveBtn);
+        this.getChildren().add(saveBox);
     }
 
     /**
@@ -124,18 +167,22 @@ public class PrototypeForm extends VBox {
         }
         myPrototype.put("animations", myAnimations);
 
+        myPrototype.put("bounds", myBounds.getContent());
+
         for(int i = 0; i < myStatisticsForms.size(); i++) {
             myStats.add(myStatisticsForms.get(i).getContent());
         }
         myPrototype.put("stats", myStats);
+
+        myPrototype.put("isPlayer", isPlayer.isSelected());
 
         for(int i = 0; i < myInteractionForms.size(); i++) {
             myInteractions.add(myInteractionForms.get(i).getContent());
         }
         myPrototype.put("interactions", myInteractions);
 
-        System.out.println(myPrototype);
-        //myManager.createActorPrototype(myPrototype); //TODO: uncomment to parse actual JSON
+        System.out.println(myPrototype); // TESTING
+        myManager.createActorPrototype(myPrototype);
 
     }
 }
