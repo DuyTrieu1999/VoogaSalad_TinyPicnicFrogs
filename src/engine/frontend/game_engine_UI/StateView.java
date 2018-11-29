@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,6 +48,15 @@ public class StateView {
         myStage.show();
     }
 
-    public void setAllCommand(List<Command> commands) { myBattleView.addCommandUI(commands); }
-    public List<Command> getActiveCommand () { return myBattleView.returnActiveCommands(); }
+    public void setAllCommand(List<Command> commands) {
+        if (myView instanceof BattleView) {
+            ((BattleView)myView).addCommandUI(commands);
+        }
+    }
+    public List<Command> getActiveCommand () {
+        if (myView instanceof BattleView) {
+            return ((BattleView)myView).returnActiveCommands();
+        }
+        return new ArrayList<>();
+    }
 }

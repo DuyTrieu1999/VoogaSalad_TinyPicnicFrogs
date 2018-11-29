@@ -41,7 +41,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
     }
 
     public void updateView () {
-        //super.updateView();
+
     }
     public void addCommandUI(List<Command> command) {menuView.addCommandUI(command);}
     public List<Command> returnActiveCommands() {return menuView.returnActiveCommands();}
