@@ -7,24 +7,37 @@ public class ActorManager {
     List<Actor> allActors;
     List<Actor> activeActors;
     List<Actor> inactiveActors;
-    PlayerActor myPlayerActor;
+    Actor myPlayerActor;
 
 
-    ActorManager(List<Actor> actorList){
+    public ActorManager(List<Actor> actorList){
+
         allActors = actorList;
-        inactiveActors = allActors;
-        activeActors = new ArrayList<>();
+      //  setPlayerActor();
+        inactiveActors = new ArrayList<>();
+        activeActors = allActors;
+        setPlayerActor();
     }
 
-    public PlayerActor getPlayerActor(){
+    public Actor getPlayerActor(){
         return myPlayerActor;
     }
-    public void setPlayerActor(PlayerActor player){
+
+    public void setPlayerActor(Actor player) {
         myPlayerActor = player;
     }
 
-
-
+    /**
+     * sets myPlayerActor
+     */
+    private void setPlayerActor(){
+        for(Actor actor : allActors){
+            if(actor.getIsPlayerActor()){
+                myPlayerActor = actor;
+                break;
+            }
+        }
+    }
 
     public List<Actor> getInactiveActors() { return inactiveActors;}
 
@@ -33,6 +46,7 @@ public class ActorManager {
      */
     public List<AnimationObject> getAnimationObjects() {
         List<AnimationObject> activeAnimationObjects = new ArrayList<>();
+//        System.out.println("ACTIVE ACTORS:"+activeActors.size());
         for(Actor actor : activeActors) {
             activeAnimationObjects.add(actor.getActiveAnimation());
         }
@@ -66,10 +80,7 @@ public class ActorManager {
         changeActorState(activeActors, inactiveActors, actor);
     }
 
-
-
     public List<Actor> getActiveActors() {
         return activeActors;
     }
-
 }

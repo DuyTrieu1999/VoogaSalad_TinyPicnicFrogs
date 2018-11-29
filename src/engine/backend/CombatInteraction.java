@@ -19,6 +19,10 @@ public class CombatInteraction extends Interaction{
 
     }
 
+    public AnimationObject getCombatIdleAnimation(){
+        return myCombatIdleAnimation;
+    }
+
     public List<Command> getCommandList(){
         return commandList;
     }

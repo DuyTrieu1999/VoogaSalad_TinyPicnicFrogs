@@ -17,15 +17,13 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Camera myCamera;
 
     private BorderPane displayPane;
-    private PlayerActor myPlayer;
+    private Actor myPlayer;
 
     public OverWorldView (Controller controller) {
         super(controller);
         myCamera = new Camera(myPlayer);
     }
-    public void setUpWorld () {
 
-    }
     @Override
     public void updateView () {
         super.updateView();

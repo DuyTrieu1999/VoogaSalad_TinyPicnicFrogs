@@ -1,71 +1,105 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * Menu for the actor that is displayed on the left side.
+ *
+ * @author Allen Qiu
+ */
 public class ActorMenu extends VBox {
     private GameManager myManager;
-    private ScrollPane tilePane = new ScrollPane();
+    private ScrollPane backgroundTilePane = new ScrollPane();
+    private ScrollPane actorTilePane = new ScrollPane();
     private BorderPane selectedPane = null;
+    private ActorManager actorManager;
     private String programName;
 
-    public ActorMenu(GameManager manager, String name) {
+    /**
+     * Constructor
+     * @param manager GameManager for this game.
+     * @param aManager ActorManager for this game.
+     * @param name Name of the program.
+     */
+    public ActorMenu(GameManager manager, ActorManager aManager, String name) {
         programName = name;
+        actorManager = aManager;
         myManager = manager;
         this.getChildren().add(new Label("menu"));
-        setupMenu();
+        setupTabs();
     }
 
-    public void setupMenu(){
-        //todo: sprite number detection
-        tilePane.setPrefViewportWidth(200);
-        tilePane.setPrefViewportHeight(400);
-        tilePane.setBorder(new Border(new BorderStroke(Color.BLACK,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+    /**
+     * Sets up the content of the two different tabs in the menu.
+     */
+    private void setupTabs(){
+        backgroundTilePane.setContent(setupTab(actorManager.getBackgroundActors()));
+        actorTilePane.setContent(setupTab(actorManager.getPlayableActors()));
+    }
+
+    /**
+     * Sets up a tab and loads the actors and sets the on click actions.
+     * @param actorList The list of actors to create a list from.
+     * @return A FlowPane with the images of the actors loaded.
+     */
+    private FlowPane setupTab(ArrayList<Actor> actorList){
+        backgroundTilePane.setPrefViewportWidth(200);
+        backgroundTilePane.setPrefViewportHeight(400);
+        backgroundTilePane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         ArrayList<BorderPane> tileImages = new ArrayList<>();
-            for(int i=1;i<43;i++) {
-                Actor thisActor = new Actor(new Image(i + ".png"));
-                BorderPane thisTileImage = new BorderPane(thisActor.getActorImage());
-                thisTileImage.setOnMouseClicked(event -> {
-                    Actor currentActiveActor = ActiveItem.getActiveItem(programName);
-                    if(currentActiveActor == null){
-                        //first tile clicked
-                        ActiveItem.setActiveItem(programName, thisActor);
-                        thisTileImage.setStyle("-fx-border-color: blue;");
-                        selectedPane = thisTileImage;
-                    }
-                    else if(currentActiveActor.equals(thisActor)){
-                        //deselect
-                        selectedPane.setStyle(null);
-                        selectedPane = null;
-                        ActiveItem.removeActiveItem(programName);
-                    }
-                    else {
-                        //replace old selection
-                        selectedPane.setStyle(null);
-                        ActiveItem.setActiveItem(programName, thisActor);
-                        selectedPane = thisTileImage;
-                        thisTileImage.setStyle("-fx-border-color: blue;");
-                    }
-                });
-                tileImages.add(thisTileImage);
-            }
+        for(Actor thisActor:actorList){
+            BorderPane thisTileImage = new BorderPane(thisActor.getActorImage());
+            thisTileImage.setOnMouseClicked(event -> {
+                Actor currentActiveActor = ActiveItem.getActiveItem(programName);
+                if(currentActiveActor == null){
+                    //first tile clicked
+                    ActiveItem.setActiveItem(programName, thisActor);
+                    thisTileImage.setStyle("-fx-border-color: blue;");
+                    selectedPane = thisTileImage;
+                }
+                else if(currentActiveActor.equals(thisActor)){
+                    //deselect
+                    selectedPane.setStyle(null);
+                    selectedPane = null;
+                    ActiveItem.removeActiveItem(programName);
+                }
+                else {
+                    //replace old selection
+                    selectedPane.setStyle(null);
+                    ActiveItem.setActiveItem(programName, thisActor);
+                    selectedPane = thisTileImage;
+                    thisTileImage.setStyle("-fx-border-color: blue;");
+                }
+            });
+            tileImages.add(thisTileImage);
+        }
         FlowPane tileHolder = new FlowPane();
         tileHolder.getChildren().addAll(tileImages);
         tileHolder.setPrefWrapLength(200);
-        tilePane.setContent(tileHolder);
+        return tileHolder;
     }
 
-    public ScrollPane getActorMenu(){
-        return tilePane;
+    /**
+     * Gets a tab pane of the actors.
+     * @return TabPane containing tabs of playable and non-playable actors.
+     */
+    public TabPane getActorMenu(){
+        TabPane allTabs = new TabPane();
+        Tab backgroundTab = new Tab();
+        backgroundTab.setContent(backgroundTilePane);
+        backgroundTab.setText("Backgrounds");
+        Tab actorTab = new Tab();
+        actorTab.setContent(actorTilePane);
+        actorTab.setText("Actors");
+        allTabs.getTabs().addAll(backgroundTab, actorTab);
+        return allTabs;
     }
 }

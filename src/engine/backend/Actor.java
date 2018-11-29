@@ -2,15 +2,12 @@ package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
 
-import engine.backend.Commands.Command;
-import engine.backend.AnimationObject;
 
 import java.util.HashMap;
 
 import java.util.Map;
 
 public class Actor {
-
 
     private Coordinate myCoordinate;
     private Map <String, Interaction> myInteractionMap;
@@ -25,21 +22,22 @@ public class Actor {
 
 
     public Actor(){}
+
     public Actor(ActorPrototype prototype, int x, int y, int z){
         myCoordinate= new Coordinate(x,y,z);
         myAnimationMap=parseAnimations(prototype.getAnimationMap());
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+//        System.out.println("HERE");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
-
-
     }
+
     public Map <String,AnimationObject>parseAnimations(Map<String,String>imagePaths){
         Map<String,AnimationObject> animations = new HashMap<>();
         for(String s: imagePaths.keySet()){
-            AnimationObject animation= new AnimationObject(s,imagePaths.get(s));
+            AnimationObject animation= new AnimationObject(s,imagePaths.get(s),myCoordinate);
             animations.put(s,animation);
         }
         return animations;
@@ -48,7 +46,6 @@ public class Actor {
     public Interaction getInteraction(String key) {
         return myInteractionMap.get(key);
     }
-
 
     /**
      *
@@ -63,12 +60,9 @@ public class Actor {
         return myBounds;
     }
 
-
-
     public AnimationObject getActiveAnimation() {
         return myActiveAnimation;
     }
-
 
     public Coordinate getCoordinate() {
         return myCoordinate;
@@ -76,15 +70,12 @@ public class Actor {
 
     public boolean getIsPlayerActor() {return isPlayerActor;}
 
-
-
-
-    /**
+	/**
      * Moves the Actor up
      */
     public void moveUp(int amt) {
         myCoordinate.setY(myCoordinate.getY()-amt);
-        myActiveAnimation = myAnimationMap.get("up");
+        myActiveAnimation = myAnimationMap.get("top");
     }
 
     /**
@@ -92,7 +83,7 @@ public class Actor {
      */
     public void moveDown(int amt) {
         myCoordinate.setY(myCoordinate.getY()+amt);
-        myActiveAnimation = myAnimationMap.get("down");
+        myActiveAnimation = myAnimationMap.get("bottom");
     }
 
     /**
@@ -142,7 +133,11 @@ public class Actor {
      * Used by authoring to serialize the actor
      */
     public void serialize(){
+//        System.out.println(getActiveAnimation().getName());
 
+    }
+    public void setImages(){
+        for(AnimationObject a:myAnimationMap.values()){a.setImage();}
     }
 
 }
