@@ -65,10 +65,14 @@ public abstract class WorldView {
         displayPane.getChildren().clear();
     }
     private void addActors () {
+        System.out.println("fired");
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
+            System.out.println(animationObject.getCoordinate().getX());
+            System.out.println(animationObject.getCoordinate().getY());
+
             animation.setX(animationObject.getCoordinate().getX());
             animation.setY(animationObject.getCoordinate().getY());
             animation.setLayoutY(100);
