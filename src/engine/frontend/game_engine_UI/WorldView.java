@@ -55,7 +55,7 @@ public abstract class WorldView {
         animation.play();
     }
     private void step(double elapsedTime) {
-
+        updateView();
     }
     public Scene getMyScene () {
         return myScene;
