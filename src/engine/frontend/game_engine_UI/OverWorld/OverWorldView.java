@@ -23,9 +23,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
         super(controller);
         myCamera = new Camera(myPlayer);
     }
-    public void setUpWorld () {
 
-    }
     @Override
     public void updateView () {
         super.updateView();

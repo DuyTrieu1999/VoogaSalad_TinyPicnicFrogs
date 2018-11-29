@@ -1,21 +1,15 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
 abstract class SplashScreen extends BorderPane {
 
-    double screen_width; //dummy
-    double screen_height; //dummy
-    String background_image;
+    static final double SCREEN_WIDTH = 1000;
+    static final double SCREEN_HEIGHT = 620;
 
-    SplashScreen(String imgfile) {
-        this.background_image = imgfile;
-        ImageView background = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(background_image)));
-        background.setFitHeight(screen_height);
-        background.setFitWidth(screen_width);
-        this.getChildren().add(background);
+    SplashScreen() {
+        this.setPrefHeight(SCREEN_HEIGHT);
+        this.setPrefWidth(SCREEN_WIDTH);
         this.addElements();
     }
 

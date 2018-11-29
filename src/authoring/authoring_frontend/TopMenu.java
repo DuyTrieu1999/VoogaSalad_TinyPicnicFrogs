@@ -36,16 +36,18 @@ public class TopMenu extends HBox {
     private PrototypeWindow myNewActor;
     private MapManager mapManager;
     private MessageWindow myNewMessage;
+    private ActorManager actorManager;
 
 
     /**
      * Constructor
      */
-    public TopMenu(GameManager manager, MapManager maps) {
+    public TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
         myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         mapManager = maps;
+        actorManager = actor;
 
         this.getChildren().add(myMenu);
         this.addAllMenus();
@@ -94,8 +96,11 @@ public class TopMenu extends HBox {
             System.out.println("Open FileChooser"); //TODO: replace this with code
         });
 
-        fileMenu.getItems().add(newSubmenu);
-        fileMenu.getItems().add(openItem);
+        MenuItem saveGame = new MenuItem("Save");
+
+        saveGame.setOnAction(event -> new Saver(actorManager, mapManager, myManager));
+
+        fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
 
         myMenu.getMenus().add(fileMenu);
     }

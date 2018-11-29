@@ -1,7 +1,6 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
-import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -9,14 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class MenuView {
+public class MenuView {
     private Scene menuScene;
-    private WorldView view;
     private BorderPane pane;
-    List<Command> commandList;
-    List<Command> activeCommands;
-    List<LayoutBox> layoutBoxes;
-    HashMap<LayoutBox, Command> map = new HashMap<>();
+    private List<Command> commandList;
+    private List<Command> activeCommands;
+    private List<LayoutBox> layoutBoxes;
+    private HashMap<LayoutBox, Command> map = new HashMap<>();
 
     public MenuView () {
         setUp();

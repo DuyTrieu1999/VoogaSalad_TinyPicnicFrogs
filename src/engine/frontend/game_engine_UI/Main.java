@@ -6,10 +6,8 @@ import engine.backend.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +37,7 @@ public class Main extends Application {
         Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get("./resources/demo/actors.xml").toFile());
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
+        for(Actor actor:actorList){actor.serialize();}
         return actorList;
     }
 }

@@ -13,6 +13,7 @@ public class Controller {
     private StateView myView;
 
     public Controller (StateView view) {
+        ServiceLocator.provideController(this);
         this.myView = view;
     }
 
@@ -33,4 +34,13 @@ public class Controller {
 
     private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
     public GameWorld getGameWorld () { return gameWorldSupplier.get(); }
+
+    private Supplier<List<AnimationObject>> battlePlayerAnimationSupplier = () -> ServiceLocator.getCombatManager().getAlliesIdleAnimation();
+    public List<AnimationObject> getBattlePlayerAnimation () { return battlePlayerAnimationSupplier.get(); }
+
+    private Supplier<List<AnimationObject>> battleEnemyAnimationSupplier = () -> ServiceLocator.getCombatManager().getEnemiesIdleAnimation();
+    public List<AnimationObject> getBattleEnemyAnimation () { return battleEnemyAnimationSupplier.get(); }
+
+    private Supplier<CombatManager> combatManagerSupplier = () -> ServiceLocator.getCombatManager();
+    public CombatManager getCombatManager () { return combatManagerSupplier.get(); }
 }

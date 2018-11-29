@@ -1,5 +1,7 @@
 package engine.backend;
 
+import engine.controller.Controller;
+
 /**
  * Follows the Service Locator design pattern. Used to locate global objects
  *
@@ -12,6 +14,7 @@ public class ServiceLocator {
     private static AI myAI;
     private static ActorManager myActorManager;
     private static CombatManager myCombatManager;
+    private static Controller myController;
     public static GameWorld getGameWorld(){
         if(myGameWorld == null){
             provideGameWorld(new GameWorld(0, 0));
@@ -44,10 +47,16 @@ public class ServiceLocator {
     }
 
     public static CombatManager getCombatManager(){
-        if(myCombatManager == null){
-            myCombatManager = new CombatManager(null, null, null);
-        }
+//        if(myCombatManager == null){
+//            //myCombatManager = new CombatManager(null, null, null);
+//            return null;
+//        }
         return myCombatManager;
+    }
+
+
+    public static Controller getController() {
+        return myController;
     }
 
     public static void provideCombatManager(CombatManager combatManager){
@@ -55,6 +64,8 @@ public class ServiceLocator {
     }
 
     public static void provideActorManager(ActorManager actorManager){myActorManager = actorManager;}
+
+    public static void provideController(Controller controller){myController = controller;}
 
     /**
      * TODO: set null default object
