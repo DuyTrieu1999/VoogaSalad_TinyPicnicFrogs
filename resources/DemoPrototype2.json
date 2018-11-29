@@ -11,11 +11,11 @@
     "width":50,
     "height":50
   },
-  "Interactions": [{
+  "interactions": [{
     "name":"fight",
     "type":"fight",
     "animations":[{"key":"default","path":"enemy_fight.png"}],
-    "Messages":[
+    "messages":[
       {"key":"prototypeVictory","messageKey":"onVictory"},
       {"key":"prototypeDefeat","messageKey":"onDefeat"}
     ],

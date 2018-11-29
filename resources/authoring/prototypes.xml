@@ -1,5 +1,51 @@
 <map>
   <entry>
+    <string>background</string>
+    <authoring.authoring__backend.ActorPrototype>
+      <animationMap>
+        <entry>
+          <string>idle</string>
+          <string>background.png</string>
+        </entry>
+      </animationMap>
+      <interractionMap>
+        <entry>
+          <string>background</string>
+          <engine.backend.BackgroundInteraction>
+            <animationMap>
+              <entry>
+                <string>default</string>
+                <engine.backend.AnimationObject>
+                  <animationName>default</animationName>
+                  <animationPath>background.png</animationPath>
+                </engine.backend.AnimationObject>
+              </entry>
+            </animationMap>
+            <messageMap>
+              <entry>
+                <string>backroundTouched</string>
+                <engine.backend.Message>
+                  <myMessageString>Player won</myMessageString>
+                </engine.backend.Message>
+              </entry>
+            </messageMap>
+            <myName>background</myName>
+            <canPassThrough>true</canPassThrough>
+          </engine.backend.BackgroundInteraction>
+        </entry>
+      </interractionMap>
+      <myStats/>
+      <name>background</name>
+      <myBound>
+        <width>500</width>
+        <height>500</height>
+        <relX>0</relX>
+        <relY>0</relY>
+      </myBound>
+      <isPlayer>false</isPlayer>
+    </authoring.authoring__backend.ActorPrototype>
+  </entry>
+  <entry>
     <string>enemy</string>
     <authoring.authoring__backend.ActorPrototype>
       <animationMap>
@@ -40,9 +86,7 @@
             <messageMap>
               <entry>
                 <string>prototypeVictory</string>
-                <engine.backend.Message>
-                  <myMessageString>Player won</myMessageString>
-                </engine.backend.Message>
+                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.BackgroundInteraction/messageMap/entry/engine.backend.Message"/>
               </entry>
               <entry>
                 <string>prototypeDefeat</string>
@@ -52,6 +96,7 @@
               </entry>
             </messageMap>
             <myName>fight</myName>
+            <myCombatIdleAnimation reference="../animationMap/entry/engine.backend.AnimationObject"/>
             <commandList>
               <engine.backend.Commands.CombatMove>
                 <myName>basic attack</myName>
@@ -132,14 +177,15 @@
             <messageMap>
               <entry>
                 <string>prototypeVictory</string>
-                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.CombatInteraction/messageMap/entry/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.BackgroundInteraction/messageMap/entry/engine.backend.Message"/>
               </entry>
               <entry>
                 <string>prototypeDefeat</string>
-                <engine.backend.Message reference="../../../../../../../../entry/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry[2]/authoring.authoring__backend.ActorPrototype/interractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
               </entry>
             </messageMap>
             <myName>fight</myName>
+            <myCombatIdleAnimation reference="../animationMap/entry/engine.backend.AnimationObject"/>
             <commandList>
               <engine.backend.Commands.CombatMove>
                 <myName>basic attack</myName>
