@@ -24,11 +24,13 @@ public class Main extends Application {
     private static void initialize(){
         ServiceLocator.provideAI(new RandomAI());
         //Values should be loaded from the file
-        var gameWorld = new GameWorld(10, 10);
-        ServiceLocator.provideGameWorld(gameWorld);
+
         var dummyActorList = loadActors();
         var actorMan = new ActorManager(dummyActorList);
+        System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
+        var gameWorld = new GameWorld(10, 10);
+        ServiceLocator.provideGameWorld(gameWorld);
     }
 
 
@@ -37,7 +39,10 @@ public class Main extends Application {
         Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get("./resources/demo/actors.xml").toFile());
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
-        for(Actor actor:actorList){actor.serialize();}
+        for(Actor a:actorList){
+            a.serialize();
+            a.setImages();
+        }
         return actorList;
     }
 }

@@ -28,6 +28,7 @@ public class Actor {
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+        System.out.println("HERE");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
     }
@@ -131,9 +132,11 @@ public class Actor {
      * Used by authoring to serialize the actor
      */
     public void serialize(){
-        for(AnimationObject obj:myAnimationMap.values()){
-            System.out.println(obj.getName());
-        }
+        System.out.println(getActiveAnimation().getName());
+
+    }
+    public void setImages(){
+        for(AnimationObject a:myAnimationMap.values()){a.setImage();}
     }
 
 }

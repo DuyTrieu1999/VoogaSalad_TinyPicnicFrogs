@@ -12,8 +12,8 @@ public class ActorManager {
 
     public ActorManager(List<Actor> actorList){
         allActors = actorList;
-        inactiveActors = allActors;
-        activeActors = new ArrayList<>();
+        inactiveActors = new ArrayList<>();
+        activeActors = allActors;
     }
 
     public PlayerActor getPlayerActor(){
@@ -45,6 +45,7 @@ public class ActorManager {
      */
     public List<AnimationObject> getAnimationObjects() {
         List<AnimationObject> activeAnimationObjects = new ArrayList<>();
+        System.out.println("ACTIVE ACTORS:"+activeActors.size());
         for(Actor actor : activeActors) {
             activeAnimationObjects.add(actor.getActiveAnimation());
         }
