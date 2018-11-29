@@ -75,6 +75,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             healthList.add(a.getHealth());
         }
+
         return healthList;
     }
 
@@ -91,6 +92,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             animationList.add(a.getCombatIdleAnimation());
         }
+        System.out.println(animationList.size());
         return animationList;
     }
 }

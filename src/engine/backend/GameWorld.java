@@ -88,13 +88,13 @@ public class GameWorld {
 
     private void launchCombatInteraction(CombatInteraction playerInteraction, CombatInteraction enemyInteraction){
         myGameState = GameState.Combat;
-        ServiceLocator.getController().setBattleView();
         var alliesList = new ArrayList<CombatInteraction>();
         alliesList.add(playerInteraction);
         var enemyList = new ArrayList<CombatInteraction>();
         enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
+        ServiceLocator.getController().setBattleView();
         System.out.println("combat started");
         combatMan.runCombat();
 

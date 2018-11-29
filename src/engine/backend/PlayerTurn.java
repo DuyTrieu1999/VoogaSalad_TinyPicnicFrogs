@@ -18,6 +18,7 @@ public class PlayerTurn extends Turn {
     @Override
     public void executeTurn() {
         var myController = ServiceLocator.getController();
+
         myController.setAllCommand(myInt.getCommandList());
         myController.getActiveCommands();
 
