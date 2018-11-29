@@ -12,16 +12,15 @@ public class MenuView extends HBox {
     private BorderPane pane;
     private List<Command> commandList;
     private List<Command> activeCommands;
-    private List<LayoutBox> layoutBoxes;
+    private List<LayoutBox> layoutBoxes = new ArrayList<>();;
     private HashMap<LayoutBox, Command> map = new HashMap<>();
 
-    public MenuView () {
+    public MenuView (List<Command> list) {
+        commandList = list;
         setUp();
     }
     private void setUp() {
         pane = new BorderPane();
-        commandList = new ArrayList<>();
-        layoutBoxes = new ArrayList<>();
         addLayout();
         addSelectedButton();
         pane.getChildren().addAll(layoutBoxes);
@@ -40,9 +39,6 @@ public class MenuView extends HBox {
                 activeCommands.add(map.get(box));
             }
         }
-    }
-    public void addCommandUI (List<Command> commands) {
-        commandList = commands;
     }
     public List<Command> returnActiveCommands () {
         return activeCommands;

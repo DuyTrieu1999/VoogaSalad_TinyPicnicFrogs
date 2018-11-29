@@ -12,8 +12,8 @@ public class LayoutBox extends HBox {
     private BooleanProperty buttonSelected;
 
     public LayoutBox (String command) {
-        buttonSelected = new SimpleBooleanProperty(button.isSelected());
         button = new ToggleButton(command);
+        buttonSelected = new SimpleBooleanProperty(button.isSelected());
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
         layout.getChildren().setAll(button);
