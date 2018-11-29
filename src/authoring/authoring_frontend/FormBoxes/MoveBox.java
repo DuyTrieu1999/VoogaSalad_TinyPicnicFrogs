@@ -12,6 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * MoveBox
+ *
+ * allows user to input all the information
+ * related to a Move under an Interaction
+ *
+ * @author brookekeene
+ */
 public class MoveBox extends FormBox {
     private TextBox targetStat;
     private TextBox actorNum;
@@ -25,6 +33,11 @@ public class MoveBox extends FormBox {
         myAnimations = new ArrayList<>();
     }
 
+    /**
+     * creates a VBox containing all the fields for a Move
+     * including its target statistic, actor number, actor type
+     * target value, target type, and animations
+     */
     @Override
     public void setContent() {
         VBox myContent = new VBox();
@@ -76,6 +89,11 @@ public class MoveBox extends FormBox {
         this.getChildren().add(myContent);
     }
 
+    /**
+     * @return JSONObject storing the keys: name, targetStat,
+     * targetActorNumber, targetActor type, targetValue, targetType,
+     * animations
+     */
     @Override
     public JSONObject getContent() {
         JSONObject myObject = new JSONObject();

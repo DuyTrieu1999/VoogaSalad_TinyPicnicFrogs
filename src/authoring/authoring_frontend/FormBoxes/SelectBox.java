@@ -19,12 +19,20 @@ public class SelectBox extends FormBox {
         super(label);
     }
 
+    /**
+     * creates a ChoiceBox with the options specified by the
+     * given List
+     * @param choices List of Strings as options
+     */
     public void setChoices(List choices) {
         myChoice = new ChoiceBox();
         myChoice.getItems().addAll(choices);
         this.getChildren().add(myChoice);
     }
 
+    /**
+     * @return String representing the option selected
+     */
     public String getChoice() {
         return myChoice.getValue();
     }

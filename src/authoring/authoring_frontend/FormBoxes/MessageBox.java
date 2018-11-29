@@ -6,6 +6,13 @@ import org.json.simple.JSONObject;
 
 import java.util.List;
 
+/**
+ * TextBox
+ *
+ * allows user to specify Messages for Interactions
+ *
+ * @author brookekeene
+ */
 public class MessageBox extends FormBox {
     private TextField myKey;
     private ChoiceBox myMessageKey;
@@ -19,6 +26,10 @@ public class MessageBox extends FormBox {
         myMessageKeys = keys;
     }
 
+    /**
+     * creates a TextField for user input message and
+     * a ChoiceBox containing the defined message types
+     */
     @Override
     public void setContent() {
         myKey = new TextField();
@@ -28,6 +39,10 @@ public class MessageBox extends FormBox {
         this.getChildren().addAll(myKey, myMessageKey);
     }
 
+    /**
+     * @return JSONObject storing the key, the user input,
+     * and the messageKey, the type of message chosen
+     */
     @Override
     public JSONObject getContent() {
         JSONObject myObject = new JSONObject();

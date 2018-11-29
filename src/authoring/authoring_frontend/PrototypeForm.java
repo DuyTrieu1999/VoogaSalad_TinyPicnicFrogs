@@ -3,6 +3,7 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.FormBoxes.*;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -40,7 +41,7 @@ public class PrototypeForm extends VBox {
         myInteractionForms = new ArrayList<>();
         myManager = manager;
 
-        this.setMaxSize(SIZE, SIZE);
+        //this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
@@ -48,7 +49,7 @@ public class PrototypeForm extends VBox {
     /**
      * adds all necessary fields to form
      */
-    private void addAllFields() { //TODO: refactor and make more flexible (HBox with AddNewBtn, ex. from interactions)
+    private void addAllFields() {
         Label name = new Label(myResources.getString("name"));
         Label animations = new Label(myResources.getString("animations"));
         Label stats = new Label(myResources.getString("stats"));
@@ -58,7 +59,12 @@ public class PrototypeForm extends VBox {
         stats.setPadding(new Insets(PADDING));
         interactions.setPadding(new Insets(PADDING));
 
+        HBox saveBox = new HBox();
+        saveBox.setPrefWidth(SIZE);
+        saveBox.setPadding(new Insets(PADDING));
+        saveBox.setAlignment(Pos.CENTER);
         Button saveBtn = new Button(myResources.getString("Save")); // Save Button
+        saveBox.getChildren().add(saveBtn);
         saveBtn.setOnAction(e -> saveFunction());
 
         // Name
@@ -102,9 +108,11 @@ public class PrototypeForm extends VBox {
             }
         });
 
+        //TODO: add isPlayer and bounds
+
         // Interactions
         Button addIBtn = new Button(myResources.getString("AddNew"));
-        HBox interactionsBox = new HBox();
+        VBox interactionsBox = new VBox();
         interactionsBox.setPadding(new Insets(PADDING));
         this.getChildren().addAll(interactions, interactionsBox, addIBtn);
 
@@ -122,7 +130,7 @@ public class PrototypeForm extends VBox {
             }
         });
 
-        this.getChildren().add(saveBtn);
+        this.getChildren().add(saveBox);
     }
 
     /**
