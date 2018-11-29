@@ -29,7 +29,7 @@ public abstract class FormBox extends HBox {
         myKey = label.toLowerCase();
         this.getChildren().add(myLabel);
         this.setPadding(new Insets(PADDING));
-        this.setWidth(WIDTH);
+        //this.setWidth(WIDTH);
     }
 
     /**

@@ -45,7 +45,6 @@ public class InteractionBox extends FormBox {
         VBox animationsBox = new VBox();
         animationsBox.setPadding(new Insets(PADDING));
         animationsBox.getChildren().addAll(animations, addAnimationBtn);
-        this.getChildren().add(animationsBox);
 
         addAnimationBtn.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog();
@@ -70,7 +69,6 @@ public class InteractionBox extends FormBox {
         VBox messagesBox = new VBox();
         messagesBox.setPadding(new Insets(PADDING));
         messagesBox.getChildren().addAll(messages, addMessageBtn);
-        this.getChildren().add(messagesBox);
 
         addMessageBtn.setOnAction(e -> {
             MessageBox temp = new MessageBox("");
@@ -81,9 +79,27 @@ public class InteractionBox extends FormBox {
         });
 
         // Moves
-        //TODO: Complete this
+        Label moves = new Label(myResources.getString("moves"));
+        Button addMoveBtn = new Button(myResources.getString("AddNew"));
+        VBox movesBox = new VBox();
+        movesBox.setPadding(new Insets(PADDING));
+        movesBox.getChildren().addAll(moves, addMoveBtn);
 
-        myContent.getChildren().addAll(animationsBox, messagesBox);
+        addMoveBtn.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle(myResources.getString("moves"));
+            dialog.setHeaderText(myResources.getString("CreateNew") + myResources.getString("move"));
+            dialog.setContentText(myResources.getString("EnterName") + myResources.getString("move"));
+            Optional<String> result = dialog.showAndWait();
+            if(result.isPresent()){
+                MoveBox temp = new MoveBox(result.get());
+                temp.setContent();
+                myMoves.add(temp);
+                movesBox.getChildren().add(temp);
+            }
+        });
+
+        myContent.getChildren().addAll(animationsBox, messagesBox, movesBox);
         this.getChildren().add(myContent);
     }
 
