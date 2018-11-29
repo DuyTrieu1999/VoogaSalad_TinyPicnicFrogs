@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 public class AnimationObject {
     private String animationName;
     private String animationPath;
-    ImageView animationView;
-    Coordinate coordinate;
+    private ImageView animationView;
+    private Coordinate coordinate;
 
     public AnimationObject (String name,String path) {
         this.animationName = name;

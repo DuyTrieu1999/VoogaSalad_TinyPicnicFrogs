@@ -1,8 +1,10 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
+import engine.backend.AnimationObject;
+
 public class OpponentSide extends SideView {
-    public OpponentSide() {
-        super("opponent's_current_pokemon.png"); //file does not exist (yet)
-        this.setLayoutX(400);
+    public OpponentSide(AnimationObject opponent) {
+        super(opponent);
+        this.setRotate(180);
     }
 }

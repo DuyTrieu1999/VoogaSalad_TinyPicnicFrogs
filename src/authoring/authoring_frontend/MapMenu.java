@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,11 +24,12 @@ public class MapMenu extends HBox {
     private HBox buttonView = new HBox();
     private String programName;
     private MapManager mapManager;
+    private GameManager gameManager;
 
     public MapMenu(String pName, MapManager manager) {
         this.getChildren().add(new Label("map"));
         programName = pName;
-        mapManager = manager;
+
     }
 
     public ListView<String> setupList(){
@@ -92,7 +95,22 @@ public class MapMenu extends HBox {
             mapView.getItems().removeAll(selectedMaps);
             mapManager.removeMap(selectedMaps);
         });
-        buttonView.getChildren().addAll(newMap, deleteMap);
+        Button connectMaps = new Button("Connect Maps");
+        connectMaps.setOnAction(event -> {
+            if(mapManager.getMapList().size() >= 1){
+                new MapConnector(mapManager);
+            }
+            else {
+                //error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("You have no maps to connect!");
+
+                alert.showAndWait();
+            }
+        });
+        buttonView.getChildren().addAll(newMap, deleteMap, connectMaps);
         return buttonView;
     }
 
@@ -102,6 +120,11 @@ public class MapMenu extends HBox {
         layerTab.setText("Maps");
         layerTab.setContent(mapList);
         return layerTab;
+    }
+
+    public VBox getMapPane(){
+        mapList.getChildren().addAll(setupButtons(), setupList());
+        return mapList;
     }
 
     public Map getCurrentMap(){

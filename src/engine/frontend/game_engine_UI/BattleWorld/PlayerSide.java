@@ -1,9 +1,11 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
+import engine.backend.AnimationObject;
+
 public class PlayerSide extends SideView {
 
-    public PlayerSide() {
-        super("current_player's_pokemon.png"); //file does not exist (yet)
+    public PlayerSide(AnimationObject player) {
+        super(player);
     }
 
 }

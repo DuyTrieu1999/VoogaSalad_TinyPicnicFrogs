@@ -1,6 +1,9 @@
 package engine.backend;
 
 /**
+ *
+ * Represents an abstract Coordinate
+ *
  * @Christopher Lin cl349
  */
 public class Coordinate {

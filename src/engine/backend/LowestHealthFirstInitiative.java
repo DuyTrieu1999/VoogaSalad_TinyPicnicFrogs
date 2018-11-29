@@ -3,7 +3,7 @@ package engine.backend;
 import java.util.Comparator;
 
 /**
- * a simple initiative order
+ * a simple initiative order where the player with the lowest health goes first
  * @author Christopher Lin cl349
  */
 

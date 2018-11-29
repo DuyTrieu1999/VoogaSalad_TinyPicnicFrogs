@@ -20,7 +20,9 @@ public class CombatMove extends Command {
     private enum targetType {CONSTANT,PERCENTAGE};
     private targetType myTargetType;
     private targetActor myTargetActor;
+
     private Map<String, AnimationObject> myAnimationMap;
+
 
     public CombatMove(JSONObject params){
         super((String)params.get("name"));
@@ -34,8 +36,10 @@ public class CombatMove extends Command {
 
     }
 
+
     public AnimationObject getAnimation(String key){
         return myAnimationMap.get(key);
+
     }
 
     @Override
