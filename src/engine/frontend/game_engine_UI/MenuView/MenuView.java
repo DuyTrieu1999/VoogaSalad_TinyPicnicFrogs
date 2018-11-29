@@ -1,15 +1,14 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MenuView {
-    private Scene menuScene;
+public class MenuView extends HBox {
     private BorderPane pane;
     private List<Command> commandList;
     private List<Command> activeCommands;
@@ -18,7 +17,6 @@ public class MenuView {
 
     public MenuView () {
         setUp();
-        menuScene = new Scene(pane);
     }
     private void setUp() {
         pane = new BorderPane();
@@ -27,6 +25,7 @@ public class MenuView {
         addLayout();
         addSelectedButton();
         pane.getChildren().addAll(layoutBoxes);
+        this.getChildren().add(pane);
     }
     private void addLayout() {
         for (Command command : commandList) {
@@ -48,5 +47,4 @@ public class MenuView {
     public List<Command> returnActiveCommands () {
         return activeCommands;
     }
-    public Scene getMenuScene () { return menuScene; }
 }
