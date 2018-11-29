@@ -54,7 +54,7 @@ public class GameWorld {
 
 
     /**
-     * Called by frontend on update cycle to detect collisions and tigger the
+     * Called by frontend on update cycle to detect collisions and trigger the
      * correct interactions
      */
     public void detectCollisions(){
@@ -62,7 +62,6 @@ public class GameWorld {
         var collisionList = new ArrayList<Actor>();
         var playerActor = ServiceLocator.getActorManager().getPlayerActor();
         for(Actor a : actorList){
-
             if(overlaps(playerActor, a)){
                 collisionList.add(a);
             }
@@ -137,8 +136,6 @@ public class GameWorld {
         int a1MinX = a1Coordinate.getX()+a1Bounds.getRelX();
         int a1MaxY = a1Coordinate.getY()+a1Bounds.getRelY()+a1Bounds.getHeight();
         int a1MinY = a1Coordinate.getY()+a1Bounds.getRelY();
-
-
         var a2Coordinate = a2.getCoordinate();
         var a2Bounds = a2.getBounds();
         int a2MaxX = a2Coordinate.getX()+a2Bounds.getRelX()+a2Bounds.getWidth();
@@ -148,8 +145,6 @@ public class GameWorld {
 
         boolean xIntersects = (a1MaxX > a2MinX && a1MaxX < a2MaxX) || (a2MaxX > a1MinX && a2MaxX < a1MaxX);
         boolean yIntersects = (a1MaxY > a2MinY && a1MaxY < a2MaxY) || (a2MaxY > a1MinY && a2MaxY < a1MaxY);
-//        System.out.println(xIntersects);
-//        System.out.println(yIntersects);
         return xIntersects && yIntersects;
     }
 

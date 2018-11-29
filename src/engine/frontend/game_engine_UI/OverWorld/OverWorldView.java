@@ -28,7 +28,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
 
     @Override
     public void updateView () {
-        super.updateView();
+       // super.updateView();
         myCamera.move();
         moveCamera();
     }
@@ -45,8 +45,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
         for (AnimationObject animationObject: myAnimations) {
             Coordinate coor = animationObject.getCoordinate();
             ImageView animationView = animationObject.getAnimationView();
-            animationView.setTranslateX(- myCamera.getTranslateX());
-            animationView.setTranslateY(- myCamera.getTranslateY());
+            animationView.setX(coor.getX() - myCamera.getxOffset());
+            animationView.setY(coor.getY() - myCamera.getyOffset());
 //            coor.setX((int)animationView.getX());
 //            coor.setY((int)animationView.getY());
         }
