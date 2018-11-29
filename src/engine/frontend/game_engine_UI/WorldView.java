@@ -47,7 +47,7 @@ public abstract class WorldView extends HBox {
     public void updateView () {
         clearView();
         addActors();
-        this.setViewByZ();
+        //this.setViewByZ();
     }
     private void init () {
         frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
@@ -69,13 +69,21 @@ public abstract class WorldView extends HBox {
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
-//            System.out.println(animationObject.getCoordinate().getX());
-//            System.out.println(animationObject.getCoordinate().getY());
+       // System.out.println(animationObject.getName());
             animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
             animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
-            animation.setLayoutY(100);
-            animation.setFitHeight(50);
-            animation.setFitWidth(50);
+            if(animationObject.getName().equals("idle: background.png")){
+                animation.setLayoutX(-300);
+                animation.setLayoutY(-300);
+//                animation.setFitHeight(2);
+//                animation.setFitWidth(50);
+            }
+            else{
+                animation.setLayoutY(100);
+                animation.setFitHeight(50);
+                animation.setFitWidth(50);
+            }
+
             displayPane.getChildren().add(animation);
         }
     }
