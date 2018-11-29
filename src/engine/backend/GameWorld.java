@@ -69,6 +69,9 @@ public class GameWorld {
         }
         for(Actor c : collisionList){
             launchInteraction(c.getInteraction());
+            //Delete actors you collide with
+            //TODO: fix this shit
+            ServiceLocator.getActorManager().inactivate(c);
         }
     }
 
@@ -92,7 +95,8 @@ public class GameWorld {
         enemyList.add(enemyInteraction);
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
-        //combatMan.runCombat();
+        System.out.println("combat started");
+        combatMan.runCombat();
 
     }
 
