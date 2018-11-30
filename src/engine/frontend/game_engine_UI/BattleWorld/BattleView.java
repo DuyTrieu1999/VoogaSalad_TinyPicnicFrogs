@@ -5,20 +5,19 @@ import engine.backend.Commands.Command;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
-import javafx.scene.layout.BorderPane;
 
 import java.util.List;
 
 public class BattleView extends WorldView implements BattleViewAPI {
     private PlayerSide playerSide;
     private OpponentSide opponentSide;
-    private BorderPane root;
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
     private MenuView menuView;
 
-    public BattleView(Controller controller) {
+    public BattleView(Controller controller, MenuView menu) {
         super(controller);
+        this.menuView = menu;
         this.myEnemy = controller.getBattleEnemyAnimation().get(0);
         this.myPlayer = controller.getBattlePlayerAnimation().get(0);
 //            this.playerSide.setHealth(controller.getalliesHealth().get(0));
@@ -29,18 +28,16 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private void setUp() {
         playerSide = new PlayerSide(myPlayer);
         opponentSide = new OpponentSide(myEnemy);
-        root = new BorderPane();
-        root.setLeft(playerSide);
-        root.setRight(opponentSide);
-        root.setBottom(menuView);
-        this.getChildren().add(root);
+        displayPane.getChildren().clear();
+        displayPane.setLeft(playerSide);
+        displayPane.setRight(opponentSide);
+        displayPane.setBottom(menuView);
+        System.out.println(playerSide);
+        System.out.println(menuView);
     }
 
     public void updateView () {
 
-    }
-    public void addCommandUI(List<Command> command) {
-        menuView = new MenuView(command);
     }
     public List<Command> returnActiveCommands() {return menuView.returnActiveCommands();}
 }

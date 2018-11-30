@@ -94,7 +94,6 @@ public class GameWorld {
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
         ServiceLocator.getController().setBattleView();
-        System.out.println("combat started");
         combatMan.runCombat();
 
     }

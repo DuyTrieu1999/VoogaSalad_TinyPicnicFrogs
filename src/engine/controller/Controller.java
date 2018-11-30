@@ -2,6 +2,7 @@ package engine.controller;
 
 import engine.backend.*;
 import engine.backend.Commands.Command;
+import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.StateView;
 
 import java.util.Collection;
@@ -28,9 +29,6 @@ public class Controller {
 
     private Consumer<List<Command>> allCommandConsumer = e -> myView.setAllCommand(e);
     public void setAllCommand(List<Command> commands) { allCommandConsumer.accept(commands); }
-
-    private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
-    public GameState getGameState () { return  gameStateSupplier.get(); }
 
     private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
     public GameWorld getGameWorld () { return gameWorldSupplier.get(); }

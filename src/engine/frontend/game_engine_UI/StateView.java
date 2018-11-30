@@ -30,27 +30,41 @@ public class StateView {
         setUpStage();
     }
     private void setUpView () {
-        setOverWorldView();
-        myScene = new Scene(myView, 750, 600, Color.BLACK);
-        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
+        myView = new OverWorldView(myController);
+//        myScene = new Scene(myView, 750, 600, Color.BLACK);
     }
     public void setOverWorldView () {
-        myView = new OverWorldView(myController);
+        if (myView instanceof BattleView) {
+            WorldView nextView = new OverWorldView(myController);
+            myView.setNextSceneHandler(()->{
+                myStage.setScene(nextView.getMyScene());
+            });
+            myView = nextView;
+        }
     }
     public void setBattleView () {
-        myView = new BattleView(myController);
+        if (myView instanceof OverWorldView) {
+            WorldView nextView = new BattleView(myController, myMenu);
+            myView.setNextSceneHandler(()->{
+                myStage.setScene(nextView.getMyScene());
+            });
+            myView = nextView;
+        }
+
+//        myView = new BattleView(myController, myMenu);
+//        myScene.setRoot(myView);
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
         myStage.setMinWidth(600);
         myStage.setMinHeight(300);
-        myStage.setScene(myScene);
+        myStage.setScene(myView.getMyScene());
         myStage.show();
     }
 
     public void setAllCommand(List<Command> commands) {
         if (myView instanceof BattleView) {
-            ((BattleView)myView).addCommandUI(commands);
+            myMenu = new MenuView(commands);
         }
     }
     public List<Command> getActiveCommand () {

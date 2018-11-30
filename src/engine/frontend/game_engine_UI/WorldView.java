@@ -11,16 +11,17 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class WorldView extends HBox {
-    protected Timeline animation = new Timeline();
+public abstract class WorldView {
+    protected Timeline animation;
     private KeyFrame frame;
     private Scene myScene;
-    private BorderPane displayPane = new BorderPane();
+    protected BorderPane displayPane;
 
     private double FRAMES_PER_SECOND = 60;
     private double MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
@@ -29,6 +30,11 @@ public abstract class WorldView extends HBox {
     private Collection<AnimationObject> myAnimations;
     private Actor myPlayer;
     private Controller myController;
+    private Runnable nextSceneHandler ;
+
+    public void setNextSceneHandler (Runnable handler) {
+        nextSceneHandler = handler;
+    }
 
     public WorldView (Controller controller) {
         this.myController = controller;
@@ -36,14 +42,16 @@ public abstract class WorldView extends HBox {
         myPlayer = controller.getPlayer();
         this.setUpDisplay();
         init();
-        this.getChildren().add(displayPane);
+        myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
+        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
     }
     public void updateView () {
         clearView();
         addActors();
         this.setViewByZ();
     }
-    private void init () {
+    protected void init () {
+        animation = new Timeline();
         frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
                 e -> this.step(SECOND_DELAY));
         animation.setCycleCount(Timeline.INDEFINITE);
@@ -94,5 +102,8 @@ public abstract class WorldView extends HBox {
             return Double.compare(a.getTranslateZ(), b.getTranslateZ());
         });
         displayPane.getChildren().setAll(sortedNodes);
+    }
+    protected Scene getMyScene () {
+        return myScene;
     }
 }
