@@ -41,6 +41,9 @@ public class AnimationBox extends FormBox {
             //TODO: error check
             if(file != null) {
                 fileName = file.toString();
+                String[]arr=fileName.split("\\\\");
+                fileName=arr[arr.length-1];
+                System.out.println(fileName);
                 fileIm.setImage(new Image(file.toURI().toString()));
 
             }

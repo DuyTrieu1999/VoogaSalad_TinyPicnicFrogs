@@ -9,7 +9,7 @@
       </myCoordinate>
       <myInteractionMap>
         <entry>
-          <string>fight</string>
+          <stringgi>fight</stringgi>
           <engine.backend.CombatInteraction>
             <animationMap>
               <entry>
