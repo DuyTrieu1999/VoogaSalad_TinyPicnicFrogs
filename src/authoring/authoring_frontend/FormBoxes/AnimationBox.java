@@ -7,6 +7,8 @@ import javafx.stage.FileChooser;
 import org.json.simple.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * AnimationBox
@@ -20,7 +22,7 @@ public class AnimationBox extends FormBox {
 
     public AnimationBox(String label) {
         super(label);
-        fileName = "";
+        fileName = null;
     }
 
     /**
@@ -37,7 +39,7 @@ public class AnimationBox extends FormBox {
         fileBtn.setOnAction(e -> {
             File file = myFC.showOpenDialog(getScene().getWindow());
             //TODO: error check
-            if(file.toString().contains(".png") || file.toString().contains(".jpeg")) {
+            if(file != null) {
                 fileName = file.toString();
                 fileIm.setImage(new Image(file.toURI().toString()));
 
