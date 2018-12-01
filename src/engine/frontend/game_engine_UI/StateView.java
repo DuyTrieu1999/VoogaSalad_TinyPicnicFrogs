@@ -1,26 +1,21 @@
 package engine.frontend.game_engine_UI;
 
 import engine.backend.Commands.Command;
-import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class StateView {
     private Controller myController;
     private WorldView myView;
-    private BattleView myBattleView;
     private MenuView myMenu;
     private Stage myStage;
-    private HashMap<GameState, Scene> sceneMap = new HashMap<>();
     private Scene myScene;
 
     public StateView(Stage stage) {
@@ -31,28 +26,31 @@ public class StateView {
     }
     private void setUpView () {
         myView = new OverWorldView(myController);
-//        myScene = new Scene(myView, 750, 600, Color.BLACK);
+        myView.init();
     }
     public void setOverWorldView () {
+        WorldView nextView = new OverWorldView(myController);
         if (myView instanceof BattleView) {
-            WorldView nextView = new OverWorldView(myController);
+            myView.setChangeScene(true);
             myView.setNextSceneHandler(()->{
                 myStage.setScene(nextView.getMyScene());
+                nextView.init();
             });
-            myView = nextView;
         }
+        myView = nextView;
     }
     public void setBattleView () {
+        WorldView nextView = new BattleView(myController, myMenu);
+        myView.setChangeScene(true);
         if (myView instanceof OverWorldView) {
-            WorldView nextView = new BattleView(myController, myMenu);
+            System.out.println(nextView.getMyScene());
             myView.setNextSceneHandler(()->{
+                System.out.println("please print out something..");
                 myStage.setScene(nextView.getMyScene());
+                nextView.init();
             });
-            myView = nextView;
         }
-
-//        myView = new BattleView(myController, myMenu);
-//        myScene.setRoot(myView);
+        myView = nextView;
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");

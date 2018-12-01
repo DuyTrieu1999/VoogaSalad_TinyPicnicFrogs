@@ -38,6 +38,8 @@ public class Controller {
         System.out.println(battlePlayerAnimationSupplier.get().size());
         return battlePlayerAnimationSupplier.get();
     }
+    private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
+    public GameState getGameState () { return  gameStateSupplier.get(); }
 
     private Supplier<List<AnimationObject>> battleEnemyAnimationSupplier = () -> ServiceLocator.getCombatManager().getEnemiesIdleAnimation();
     public List<AnimationObject> getBattleEnemyAnimation () {

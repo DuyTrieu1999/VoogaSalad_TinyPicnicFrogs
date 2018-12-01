@@ -22,7 +22,7 @@ public class MenuView extends HBox {
     private void setUp() {
         pane = new BorderPane();
         addLayout();
-        addSelectedButton();
+        //addSelectedButton();
         pane.getChildren().addAll(layoutBoxes);
         this.getChildren().add(pane);
     }
@@ -33,11 +33,14 @@ public class MenuView extends HBox {
             map.put(box, command);
         }
     }
-    private void addSelectedButton () {
+    public void addSelectedButton () {
         for (LayoutBox box: layoutBoxes) {
             if (box.activeProperty().get()) {
                 activeCommands.add(map.get(box));
             }
+        }
+        if (activeCommands.size() == 0 || activeCommands == null) {
+            activeCommands = new ArrayList<>();
         }
     }
     public List<Command> returnActiveCommands () {
