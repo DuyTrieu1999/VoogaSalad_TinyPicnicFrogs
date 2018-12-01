@@ -91,6 +91,7 @@ public class TopMenu extends HBox {
 
         newSubmenu.getItems().add(newGame);
         newSubmenu.getItems().add(newActor);
+        newSubmenu.getItems().add(newMessage);
 
         // Open
         MenuItem openItem = new MenuItem(myResources.getString("Open"));

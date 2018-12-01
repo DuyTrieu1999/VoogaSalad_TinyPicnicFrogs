@@ -17,6 +17,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * author: @Janice Liu
+ * This class handles information about a new Message the author would want to put in, to then save it
+ */
+
 public class MessageForm extends VBox {
     public static final String DEFAULT_RESOURCE = "English";
     public static int SIZE = 300;

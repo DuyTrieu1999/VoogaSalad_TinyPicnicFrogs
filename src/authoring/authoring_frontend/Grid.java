@@ -1,9 +1,18 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -58,6 +67,8 @@ public class Grid {
         StackPane thisCell = new StackPane();
         thisCell.setPrefSize(18, 18);
         thisCell.setStyle("-fx-border-color: black;");
+
+
         thisCell.setOnMouseClicked(event -> {
             Actor activeActor = ActiveItem.getActiveItem(programName);
             int x = mapGridPane.getColumnIndex(thisCell);
@@ -93,6 +104,48 @@ public class Grid {
      */
     public Cell[][] getCells(){
         return myCells;
+    }
+
+
+    /**
+     * when the user hovers over an actor in the Grid, ideally we could get info on that actor
+     * @param actorIV
+     */
+    public void hoverInfo(ImageView actorIV){
+
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "\n Actor ID, coordinates, name" //TODO: get the right info
+        );
+
+        //tooltip.setFont(new Font("Arial", 16));
+        Button actor = new Button("", actorIV);
+        actor.setTooltip(new Tooltip(tooltip.getText()));
+
+//        actor.setOnAction(event -> actorIV.selectHandler().onSelect());
+//        menu.getChildren().add(actor);
+
+        actor.setBackground(Background.EMPTY);
+
+        actor.setOnMouseEntered(new EventHandler<MouseEvent>
+                () {
+
+            @Override
+            public void handle(MouseEvent t) {
+                actor.setStyle("-fx-background-color:#dae7f3;");
+            }
+        });
+
+        actor.setOnMouseExited(new EventHandler<MouseEvent>
+                () {
+
+            @Override
+            public void handle(MouseEvent t) {
+                actor.setStyle("-fx-background-color:transparent;");
+            }
+        });
+
+
     }
 
 }
