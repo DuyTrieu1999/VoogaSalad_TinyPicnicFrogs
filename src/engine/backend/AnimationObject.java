@@ -11,18 +11,13 @@ public class AnimationObject {
     public AnimationObject (String name,String path) {
         this.animationName = name;
         animationPath=path;
-        //System.out.println("TESTP"+path);
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
-        //System.out.println("TEST: "+animationView.getImage().getUrl());
-        //coordinate=coordinateP;
     }
 
     public AnimationObject (String name,String path,Coordinate coordinateP) {
         this.animationName = name;
         animationPath=path;
-//        System.out.println("TESTP"+path);
-        animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
-//        System.out.println("TEST: "+animationView.getImage().getUrl());
+            animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationPath)));
         coordinate=coordinateP;
     }
     public ImageView getAnimationView () {
@@ -31,7 +26,6 @@ public class AnimationObject {
     public String getName(){return animationName+": "+animationPath;}
     public Coordinate getCoordinate(){return coordinate;}
     protected void setImage(){
-        //System.out.println(this.getClass().getResource("1.png").getPath());
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationPath)));
     }
 }
