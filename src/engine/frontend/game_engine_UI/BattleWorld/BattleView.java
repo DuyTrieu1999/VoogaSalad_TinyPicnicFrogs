@@ -1,48 +1,50 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
 import engine.backend.AnimationObject;
-import engine.backend.Commands.Command;
 import engine.controller.Controller;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 
-import java.util.List;
 
+/**
+ * View class extended from WordlView, is responsible for updating the battle view
+ * in the game
+ *
+ * @author Duy Trieu (dvt5)
+ */
 public class BattleView extends WorldView implements BattleViewAPI {
     private PlayerSide playerSide;
     private OpponentSide opponentSide;
-    private BorderPane root;
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
-    private MenuView menuView;
 
     public BattleView(Controller controller) {
         super(controller);
-        this.myEnemy = controller.getBattleEnemyAnimation().get(0);
-        this.myPlayer = controller.getBattlePlayerAnimation().get(0);
-//            this.playerSide.setHealth(controller.getalliesHealth().get(0));
-//            this.opponentSide.setHealth(controller.getEnemiesHealth().get(0));
-        setUp();
+        setUpDisplay();
+        init();
     }
 
-    private void setUp() {
+    private void setUpDisplay() {
+        clearView();
+        this.myEnemy = myController.getBattleEnemyAnimation().get(0);
+        this.myPlayer = myController.getBattlePlayerAnimation().get(0);
         playerSide = new PlayerSide(myPlayer);
         opponentSide = new OpponentSide(myEnemy);
-        root = new BorderPane();
-        root.setLeft(playerSide);
-        root.setRight(opponentSide);
-        //root.setBottom(menuView);
-        this.getChildren().add(root);
+        this.playerSide.setHealth(myController.getalliesHealth().get(0));
+        this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
+        displayPane.setLeft(playerSide);
+        displayPane.setRight(opponentSide);
     }
+    private void addButtonPane () {
 
+    }
+    @Override
     public void updateView () {
-
+        System.out.println("print something please...");
     }
-    public void addCommandUI(List<Command> command) {
-        menuView = new MenuView(command);
+    @Override
+    public Scene getMyScene () {
+        return myScene;
     }
-    public List<Command> returnActiveCommands() {return menuView.returnActiveCommands();}
 }

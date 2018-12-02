@@ -81,7 +81,7 @@ public class GameWorld {
      * @param interaction interaction of non-player actor
      */
     private void launchInteraction(Interaction interaction){
-        if(interaction instanceof  CombatInteraction){
+        if(interaction instanceof CombatInteraction){
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
             activateOverWorld();
         }
@@ -96,13 +96,7 @@ public class GameWorld {
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
         ServiceLocator.getController().setBattleView();
-        System.out.println("combat started");
-        //combatMan.runCombat();
-        try {
-            sleep(50000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        combatMan.runCombat();
 
     }
 

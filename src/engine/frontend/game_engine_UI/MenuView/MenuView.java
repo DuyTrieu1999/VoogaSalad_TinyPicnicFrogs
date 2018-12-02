@@ -1,52 +1,58 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MenuView extends HBox {
     private BorderPane pane;
     private List<Command> commandList;
     private List<Command> activeCommands;
-    private List<LayoutBox> layoutBoxes = new ArrayList<>();;
-    private HashMap<LayoutBox, Command> map = new HashMap<>();
+    private ListView<String> listView;
+    Map<String, Command> map = new HashMap<>();
 
-    public MenuView (List<Command> list) {
+    private boolean isClosed;
+    private BorderPane view;
+
+    public MenuView (List<Command> list, BorderPane view) {
+        this.view = view;
+        isClosed = false;
         commandList = list;
-        setUp();
-    }
-    private void setUp() {
-        pane = new BorderPane();
-<<<<<<< HEAD
-        commandList = new ArrayList<>();
-        layoutBoxes = new ArrayList<>();
         activeCommands = new ArrayList<>();
-=======
->>>>>>> d5d391061bc1ff132b7389f4eb4f85b5bb3f186c
-        addLayout();
-        addSelectedButton();
-        pane.getChildren().addAll(layoutBoxes);
-        this.getChildren().add(pane);
+        addListView();
     }
-    private void addLayout() {
-        for (Command command : commandList) {
-            LayoutBox box = new LayoutBox(command.getName());
-            layoutBoxes.add(box);
-            map.put(box, command);
+    private void addListView () {
+        List<String> nameList = new ArrayList<>();
+        for (Command command:commandList) {
+            nameList.add(command.getName());
+            map.put(command.getName(), command);
         }
+        ObservableList<String> items = FXCollections.observableArrayList (nameList);
+        listView = new ListView<>();
+        listView.setPrefSize(100, 50);
+        listView.setItems(items);
+        pane.setCenter(listView);
     }
-    private void addSelectedButton () {
-        for (LayoutBox box: layoutBoxes) {
-            if (box.activeProperty().get()) {
-                activeCommands.add(map.get(box));
+    private void setSellectedCommand () {
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
+                String command = listView.getSelectionModel().getSelectedItem();
+                activeCommands.add(map.get(command));
             }
-        }
+        });
     }
-    public List<Command> returnActiveCommands () {
-        return activeCommands;
-    }
+
 }
