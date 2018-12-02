@@ -33,10 +33,11 @@ public class Saver {
      * Saves the file
      */
     private void saveFile(){
-        File selectedDirectory =getFileChooser();
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Save Game");
+        File selectedDirectory = directoryChooser.showDialog(new Stage());
 
         if(selectedDirectory != null) {
-
             System.out.println(selectedDirectory.getPath());
             /*
             XStream serializer = new XStream(new DomDriver());
@@ -52,15 +53,5 @@ public class Saver {
             gameManager.saveGame("resources/", "resources/");
             System.out.println("Saved!");
         }
-    }
-
-    /**
-     * Gets the file chooser.
-     * @return Selected file.
-     */
-    private File getFileChooser(){
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Save Game");
-        return directoryChooser.showDialog(new Stage());
     }
 }
