@@ -58,7 +58,7 @@ public class MessageForm extends VBox {
         //save button stuff
         Button saveBtn = new Button(myResources.getString("Save")); // Save Button
         saveBtn.setOnAction(e -> saveFunction());
-
+        this.getChildren().add(saveBtn);
     }
     private void saveFunction() { //TODO: error check
         JSONObject myMessage = new JSONObject();
