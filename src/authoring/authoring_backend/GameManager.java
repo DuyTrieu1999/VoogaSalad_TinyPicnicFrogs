@@ -1,11 +1,17 @@
 package authoring.authoring_backend;
 
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
 import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -99,6 +105,10 @@ public class GameManager {
         actorManager.serializeAllActors(data.getPath());
         messageManager.serializeAllMessages(data.getPath());
         actorPrototypeManager.serializeAllPrototypes(data.getPath());
+        XStream serializer =  new XStream(new DomDriver());
+        String datastr=serializer.toXML(data);
+        try{
+            Files.write(Paths.get(data.getPath()+"gameData.xml"),datastr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
 
     /**
