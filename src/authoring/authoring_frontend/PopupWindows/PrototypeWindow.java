@@ -1,6 +1,7 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_frontend.PrototypeForm;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
