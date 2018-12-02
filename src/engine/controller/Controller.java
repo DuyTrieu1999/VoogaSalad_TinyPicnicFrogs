@@ -2,11 +2,11 @@ package engine.controller;
 
 import engine.backend.*;
 import engine.backend.Commands.Command;
+import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.frontend.game_engine_UI.StateView;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class Controller {
@@ -16,6 +16,8 @@ public class Controller {
         ServiceLocator.provideController(this);
         this.myView = view;
     }
+    private Supplier<OverWorldView> viewSupplier = () -> myView.getMyView();
+    public OverWorldView getOverWorldView () { return viewSupplier.get(); }
     /**
      * supplies the list of AnimationObjects to the front end to animate
      */
@@ -35,8 +37,8 @@ public class Controller {
     /**
      * receive the list of Commands
      */
-    private Consumer<List<Command>> allCommandConsumer = e -> myView.setAllCommand(e);
-    public void setAllCommand(List<Command> commands) { allCommandConsumer.accept(commands); }
+    private Supplier<List<Command>> allCommandSupplier = () -> ServiceLocator.getCombatManager().getAllyCommandList();
+    public List<Command> getAllCommand () { return allCommandSupplier.get(); }
 
     /**
      * supplies the active GameWorld

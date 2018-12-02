@@ -30,7 +30,6 @@ public abstract class WorldView {
     private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
     protected Runnable nextSceneHandler;
-    protected MenuView menu;
 
     public void setNextSceneHandler (Runnable handler) {
         nextSceneHandler = handler;
@@ -41,6 +40,7 @@ public abstract class WorldView {
 
     public WorldView (Controller controller) {
         animation = new Timeline();
+        animation.setCycleCount(Timeline.INDEFINITE);
         this.myController = controller;
         displayPane = new BorderPane();
         myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
@@ -82,8 +82,4 @@ public abstract class WorldView {
      * change the boolean. Currently in testing to change between views using Runnable
      */
 
-    public void setMenu(List<Command> commands) {
-        menu = new MenuView(commands, displayPane);
-        displayPane.setBottom(menu);
-    }
 }

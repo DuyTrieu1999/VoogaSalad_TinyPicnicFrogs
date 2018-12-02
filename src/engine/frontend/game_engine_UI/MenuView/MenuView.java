@@ -4,7 +4,6 @@ import engine.backend.Commands.Command;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -27,6 +26,7 @@ public class MenuView extends HBox {
 
     public MenuView (List<Command> list, BorderPane view) {
         this.view = view;
+        pane = new BorderPane();
         isClosed = false;
         commandList = list;
         activeCommands = new ArrayList<>();
@@ -44,7 +44,7 @@ public class MenuView extends HBox {
         listView.setItems(items);
         pane.setCenter(listView);
     }
-    private void setSellectedCommand () {
+    public void setSellectedCommand () {
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -54,5 +54,7 @@ public class MenuView extends HBox {
             }
         });
     }
-
+    public List<Command> getActiveCommands () {
+        return activeCommands;
+    }
 }

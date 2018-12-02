@@ -7,7 +7,6 @@ import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +18,7 @@ import java.util.List;
 public class StateView {
     private Controller myController;
     private OverWorldView myView;
+    private BattleView battleView;
     private MenuView myMenu;
     private Stage myStage;
 
@@ -42,8 +42,8 @@ public class StateView {
      * set the battle view as the main view
      */
     public void setBattleView () {
-        BattleView battle = new BattleView(myController);
-        myStage.setScene(battle.getMyScene());
+        battleView = new BattleView(myController);
+        myStage.setScene(battleView.getMyScene());
 //        myStage.show();
     }
     private void setUpStage () {
@@ -54,17 +54,15 @@ public class StateView {
         myStage.show();
     }
     /**
-     * this function is called by the back end to send the list of commands
-     * available for the Menu inside battle
-     */
-    public void setAllCommand(List<Command> commands) {
-        myView.setMenu(commands);
-    }
-    /**
      * this function is called by the back end to get the list of commands the user
      * is choosing
      */
     public List<Command> getActiveCommand () {
-        return new ArrayList<>();
+        System.out.println(battleView);
+        return battleView.getMenuView().getActiveCommands();
     }
+    public OverWorldView getMyView () {
+        return myView;
+    }
+
 }

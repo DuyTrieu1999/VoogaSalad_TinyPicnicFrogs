@@ -131,4 +131,11 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
         });
         displayPane.getChildren().setAll(sortedNodes);
     }
+
+    public void openMenu () {
+
+    }
+    public void closeMenu () {
+
+    }
 }
