@@ -1,22 +1,14 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_frontend.PopupWindows.MessageWindow;
+import authoring.authoring_frontend.PopupWindows.PrototypeWindow;
+import authoring.authoring_frontend.PopupWindows.SaveWindow;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import javafx.util.Pair;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -71,12 +63,12 @@ public class TopMenu extends HBox {
     private void addFileTab() {
         Menu fileMenu = new Menu(myResources.getString("File"));
 
+        // New Submenu
         Menu newSubmenu = new Menu(myResources.getString("New"));
         MenuItem newGame = new MenuItem(myResources.getString("Game"));
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
         MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
-        // New
         newGame.setOnAction(e -> {
             System.out.println("Open New AuthoringView"); //TODO: replace this with code
         });
@@ -86,23 +78,26 @@ public class TopMenu extends HBox {
         });
 
         newMessage.setOnAction(e -> {
-                    myNewMessage = new MessageWindow(myManager); //TODO: complete MessageWindow
-                });
+            myNewMessage = new MessageWindow(myManager, 300); //TODO: complete this MessageWindow
+        });
 
         newSubmenu.getItems().add(newGame);
         newSubmenu.getItems().add(newActor);
         newSubmenu.getItems().add(newMessage);
 
-        // Open
+        // Open Submenu
         MenuItem openItem = new MenuItem(myResources.getString("Open"));
 
         openItem.setOnAction(e -> {
             System.out.println("Open FileChooser"); //TODO: replace this with code
         });
 
-        MenuItem saveGame = new MenuItem("Save");
+        // Save Submenu
+        MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
-        saveGame.setOnAction(event -> new Saver(actorManager, mapManager, myManager));
+        saveGame.setOnAction(e -> { SaveWindow mySaver = new SaveWindow(myManager, 300); // TODO: handle magic numbers with WindowFactory
+            //Saver mySaver = new Saver(actorManager, mapManager, myManager); //TODO: save game on authoring frontend
+        });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
 
@@ -116,14 +111,14 @@ public class TopMenu extends HBox {
     private void addEditTab(){
         Menu editMenu = new Menu(myResources.getString("Edit"));
 
-        // Save
-        MenuItem saveItem = new MenuItem(myResources.getString("Save"));
-
-        saveItem.setOnAction(e -> {
-            System.out.println("Save current game"); //TODO: replace this with code
-        });
-
-        editMenu.getItems().add(saveItem);
+//        // Save
+//        MenuItem saveItem = new MenuItem(myResources.getString("Save"));
+//
+//        saveItem.setOnAction(e -> {
+//            System.out.println("Save current game"); //TODO: replace this with code
+//        });
+//
+//        editMenu.getItems().add(saveItem);
 
         myMenu.getMenus().add(editMenu);
     }
@@ -154,6 +149,9 @@ public class TopMenu extends HBox {
         myMenu.getMenus().add(viewMenu);
     }
 
+    /**
+     * creates new Game menu with the option for the user to Run their game
+     */
     private void addGameTab(){
         Menu gameMenu = new Menu(myResources.getString("Game"));
 
@@ -178,13 +176,4 @@ public class TopMenu extends HBox {
 
         myMenu.getMenus().add(gameMenu);
     }
-
-    //user creates a message: they enter a key, then a message body.
-    //they get stored in the messageMap using the gameManager
-    //when a user creates a new prototype, and they add a new interaction, there will be the option to put in a message
-    //the dropdown for the messages (such as onVictory, display 'yay') comes from these keys
-
-    //key is the message key
-    //value is the Message object
-
 }

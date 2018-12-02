@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class PrototypeWindow {
     public static final String DEFAULT_RESOURCE = "English";
     //    public static final String DEFAULT_STYLESHEET = "light.css";
-    public static int SIZE = 500;
+    public static int SIZE = 200;
     private ResourceBundle myResources;
     private Scene myWindow;
     private Group myRoot;
