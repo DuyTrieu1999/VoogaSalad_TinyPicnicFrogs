@@ -1,24 +1,15 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.Actor;
-import engine.backend.AnimationObject;
 import engine.backend.Commands.Command;
-import engine.backend.ServiceLocator;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
-import engine.frontend.game_engine_UI.OverWorld.Camera;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,7 +21,7 @@ import java.util.List;
  */
 public abstract class WorldView {
     protected Timeline animation;
-    private Scene myScene;
+    protected Scene myScene;
     protected BorderPane displayPane;
     protected Controller myController;
 

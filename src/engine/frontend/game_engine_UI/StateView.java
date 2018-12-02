@@ -25,6 +25,7 @@ public class StateView {
     public StateView(Stage stage) {
         this.myStage = stage;
         myController = new Controller(this);
+        myView = new OverWorldView(myController);
         setUpView();
         setUpStage();
     }
@@ -35,7 +36,6 @@ public class StateView {
      * set the world view as the main view
      */
     public void setOverWorldView () {
-        myView = new OverWorldView(myController);
         myStage.setScene(myView.getMyScene());
     }
     /**

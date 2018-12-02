@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI.BattleWorld;
 import engine.backend.AnimationObject;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 
@@ -26,19 +27,21 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     private void setUpDisplay() {
         clearView();
-        System.out.println("bla");
-//        this.myEnemy = myController.getBattleEnemyAnimation().get(0);
-//        this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-//        this.playerSide.setHealth(myController.getalliesHealth().get(0));
-//        this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
-//        playerSide = new PlayerSide(myPlayer);
-//        opponentSide = new OpponentSide(myEnemy);
-//        displayPane.setLeft(playerSide);
-//        displayPane.setRight(opponentSide);
-        displayPane.setCenter(new Button("bla"));
+        this.myEnemy = myController.getBattleEnemyAnimation().get(0);
+        this.myPlayer = myController.getBattlePlayerAnimation().get(0);
+        playerSide = new PlayerSide(myPlayer);
+        opponentSide = new OpponentSide(myEnemy);
+        this.playerSide.setHealth(myController.getalliesHealth().get(0));
+        this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
+        displayPane.setLeft(playerSide);
+        displayPane.setRight(opponentSide);
     }
     @Override
     public void updateView () {
         System.out.println("print something please...");
+    }
+    @Override
+    public Scene getMyScene () {
+        return myScene;
     }
 }
