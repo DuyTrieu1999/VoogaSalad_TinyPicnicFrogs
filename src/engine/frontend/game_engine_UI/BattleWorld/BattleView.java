@@ -36,6 +36,9 @@ public class BattleView extends WorldView implements BattleViewAPI {
         displayPane.setLeft(playerSide);
         displayPane.setRight(opponentSide);
     }
+    private void addButtonPane () {
+
+    }
     @Override
     public void updateView () {
         System.out.println("print something please...");
