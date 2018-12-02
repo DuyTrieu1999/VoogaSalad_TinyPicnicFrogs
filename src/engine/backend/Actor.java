@@ -6,6 +6,12 @@ import authoring.authoring_backend.ObservableActor;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines behavior for Actors
+ *
+ * @
+ */
+
 public class Actor {
 	private Coordinate myCoordinate;
 	private Map<String, Interaction> myInteractionMap;
