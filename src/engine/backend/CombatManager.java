@@ -1,5 +1,7 @@
 package engine.backend;
 
+import engine.backend.Commands.Command;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -33,6 +35,10 @@ public class CombatManager {
             turnList.add(new AITurn(e));
         }
         turnList.sort(initiativeComparator);
+    }
+
+    public List<Command> getAllyCommandList() {
+        return myAllies.get(0).getCommandList();
     }
 
     /**
