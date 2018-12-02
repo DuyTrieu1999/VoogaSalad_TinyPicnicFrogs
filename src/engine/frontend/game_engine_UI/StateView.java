@@ -6,6 +6,7 @@ import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -63,6 +64,15 @@ public class StateView {
             });
         }
         myView = nextView;
+
+//        var myBattleView = new BattleView(myController);
+//        Stage battleStage = new Stage();
+//        battleStage.setTitle("Battle");
+//        var battleScene = new Scene(myBattleView, 750, 600, Color.BLACK);
+//        battleStage.setScene(battleScene);
+//        battleStage.show();
+//
+//        System.out.println("root set");
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");

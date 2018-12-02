@@ -4,6 +4,7 @@ import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.ServiceLocator;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.OverWorld.Camera;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -40,6 +41,8 @@ public abstract class WorldView {
     protected Runnable nextSceneHandler;
     protected boolean changeScene;
 
+    protected Camera myCamera;
+
     public void setNextSceneHandler (Runnable handler) {
         nextSceneHandler = handler;
     }
@@ -48,6 +51,7 @@ public abstract class WorldView {
      */
 
     public WorldView (Controller controller) {
+        myCamera = new Camera(myPlayer);
         this.myController = controller;
         myAnimations = controller.getAnimation();
         myPlayer = controller.getPlayer();
@@ -101,16 +105,20 @@ public abstract class WorldView {
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
-            System.out.println(animationObject.getName());
-            if(!animationObject.getName().equals("idle: background.png")){
-                animation.setFitWidth(50);
-                animation.setFitHeight(50);
-                animation.setLayoutY(100);
+       // System.out.println(animationObject.getName());
+            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
+            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
+            if(animationObject.getName().equals("idle: background.png")){
+                animation.setLayoutX(-300);
+                animation.setLayoutY(-300);
+//                animation.setFitHeight(2);
+//                animation.setFitWidth(50);
             }
-            else{animation.setLayoutX(-300);
-                animation.setLayoutY(-300);}
-            animation.setX(animationObject.getCoordinate().getX());
-            animation.setY(animationObject.getCoordinate().getY());
+            else{
+                animation.setLayoutY(100);
+                animation.setFitHeight(50);
+                animation.setFitWidth(50);
+            }
 
             displayPane.getChildren().add(animation);
         }
