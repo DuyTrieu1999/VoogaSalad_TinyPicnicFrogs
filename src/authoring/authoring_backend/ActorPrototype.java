@@ -1,5 +1,7 @@
 package authoring.authoring_backend;
 import engine.backend.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -53,7 +55,7 @@ public class ActorPrototype {
         isPlayer = player;
         myBound=bounds;
     }
-    protected String getName(){return name;}
+    public String getName(){return name;}
 
     /**
      *
@@ -165,6 +167,10 @@ public class ActorPrototype {
      */
     public Bounds getBounds(){
         return myBound;
+    }
+
+    public ObservablePrototype getObservablePrototype(){
+        return new ObservablePrototype(getName(),new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle")))));
     }
 
 }

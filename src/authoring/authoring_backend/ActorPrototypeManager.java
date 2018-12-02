@@ -2,6 +2,7 @@ package authoring.authoring_backend;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
@@ -9,6 +10,7 @@ import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +21,10 @@ import java.util.Map;
  */
 public class ActorPrototypeManager {
     private Map<String,ActorPrototype>actorPrototypeMap;
+    private List<ObservablePrototype>prototypeList;
     protected ActorPrototypeManager(){
         actorPrototypeMap= new HashMap<>();
+        prototypeList= new ArrayList<>();
     }
 
     /**
@@ -28,12 +32,13 @@ public class ActorPrototypeManager {
      * @param data JSON representation of data entered by autjor
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
-    protected String createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
+    protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
 //      testMessageParsing(prototypeMessages);
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
       
       actorPrototypeMap.put(prototype.getName(),prototype);
-      return prototype.getName();
+      prototypeList.add(prototype.getObservablePrototype());
+
 
     }
 
@@ -95,6 +100,13 @@ public class ActorPrototypeManager {
         XStream serializer = new XStream(new DomDriver());
         ActorPrototype loadedActorPrototype=(ActorPrototype) serializer.fromXML(Paths.get(path).toFile());
         actorPrototypeMap.put(key,loadedActorPrototype);
+       prototypeList.add(loadedActorPrototype.getObservablePrototype());
+    }
+    protected void loadPrototypes(String path){
+        XStream serializer = new XStream(new DomDriver());
+        Map<String,ActorPrototype>loadedMap=(Map<String,ActorPrototype>)serializer.fromXML(path);
+        actorPrototypeMap.putAll(loadedMap);
+       for(ActorPrototype a:loadedMap.values()){prototypeList.add(a.getObservablePrototype());}
     }
 
     /**
@@ -103,6 +115,9 @@ public class ActorPrototypeManager {
      */
     protected void deletePrototype(String name){
         actorPrototypeMap.remove(name);
+    }
+    protected List<ObservablePrototype> getObservableList(){
+        return prototypeList;
     }
 
 
