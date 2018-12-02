@@ -11,6 +11,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class that manages the switching between different views. There are two functions setWorldView
+ * and setBattleView that will be called by the back end to change the scenes
+ *
+ * @author Duy Trieu (dvt5)
+ */
 public class StateView {
     private Controller myController;
     private WorldView myView;
@@ -28,6 +34,9 @@ public class StateView {
         myView = new OverWorldView(myController);
         myView.init();
     }
+    /**
+     * set the world view as the main view
+     */
     public void setOverWorldView () {
         WorldView nextView = new OverWorldView(myController);
         if (myView instanceof BattleView) {
@@ -39,6 +48,9 @@ public class StateView {
         }
         myView = nextView;
     }
+    /**
+     * set the battle view as the main view
+     */
     public void setBattleView () {
         WorldView nextView = new BattleView(myController, myMenu);
         myView.setChangeScene(true);
@@ -59,12 +71,19 @@ public class StateView {
         myStage.setScene(myView.getMyScene());
         myStage.show();
     }
-
+    /**
+     * this function is called by the back end to send the list of commands
+     * available for the Menu inside battle
+     */
     public void setAllCommand(List<Command> commands) {
         if (myView instanceof BattleView) {
             myMenu = new MenuView(commands);
         }
     }
+    /**
+     * this function is called by the back end to get the list of commands the user
+     * is choosing
+     */
     public List<Command> getActiveCommand () {
         if (myView instanceof BattleView) {
             return ((BattleView)myView).returnActiveCommands();

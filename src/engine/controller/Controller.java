@@ -2,7 +2,6 @@ package engine.controller;
 
 import engine.backend.*;
 import engine.backend.Commands.Command;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.StateView;
 
 import java.util.Collection;
@@ -17,44 +16,69 @@ public class Controller {
         ServiceLocator.provideController(this);
         this.myView = view;
     }
-
+    /**
+     * supplies the list of AnimationObjects to the front end to animate
+     */
     private Supplier<Collection<AnimationObject>> animationObjectSupplier = () -> ServiceLocator.getActorManager().getAnimationObjects();
     public Collection<AnimationObject> getAnimation () { return animationObjectSupplier.get(); }
-
+    /**
+     * supplies the the player to the front end
+     */
     private Supplier<Actor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
     public Actor getPlayer () { return playerActorSupplier.get(); }
-
+    /**
+     * supplies the list of active Commands
+     */
     private Supplier<List<Command>> activeCommandSupplier = () -> myView.getActiveCommand();
     public List<Command> getActiveCommands () { return activeCommandSupplier.get(); }
 
+    /**
+     * receive the list of Commands
+     */
     private Consumer<List<Command>> allCommandConsumer = e -> myView.setAllCommand(e);
     public void setAllCommand(List<Command> commands) { allCommandConsumer.accept(commands); }
 
+    /**
+     * supplies the active GameWorld
+     */
     private Supplier<GameWorld> gameWorldSupplier = () -> ServiceLocator.getGameWorld();
     public GameWorld getGameWorld () { return gameWorldSupplier.get(); }
-
+    /**
+     * supplies the list of battle animations for the player
+     */
     private Supplier<List<AnimationObject>> battlePlayerAnimationSupplier = () -> ServiceLocator.getCombatManager().getAlliesIdleAnimation();
-    public List<AnimationObject> getBattlePlayerAnimation () {
-        System.out.println(battlePlayerAnimationSupplier.get().size());
-        return battlePlayerAnimationSupplier.get();
-    }
+    public List<AnimationObject> getBattlePlayerAnimation () { return battlePlayerAnimationSupplier.get(); }
+
     private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
     public GameState getGameState () { return  gameStateSupplier.get(); }
 
+    /**
+     * supplies the list of battle animations for the enemy
+     */
     private Supplier<List<AnimationObject>> battleEnemyAnimationSupplier = () -> ServiceLocator.getCombatManager().getEnemiesIdleAnimation();
-    public List<AnimationObject> getBattleEnemyAnimation () {
-        System.out.println(battleEnemyAnimationSupplier.get());
-        return battleEnemyAnimationSupplier.get(); }
+    public List<AnimationObject> getBattleEnemyAnimation () { return battleEnemyAnimationSupplier.get(); }
 
+    /**
+     * supplies the list of health for the player during battle
+     */
     private Supplier<List<Integer>> alliesBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getAlliesHealth();
     public List<Integer> getalliesHealth () { return alliesBattleHealthSupplier.get(); }
 
+    /**
+     * supplies the list of health for the enemy during battle
+     */
     private Supplier<List<Integer>> enemyBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getEnemiesHealth();
     public List<Integer> getEnemiesHealth () { return alliesBattleHealthSupplier.get(); }
 
     private Supplier<CombatManager> combatManagerSupplier = () -> ServiceLocator.getCombatManager();
     public CombatManager getCombatManager () { return combatManagerSupplier.get(); }
 
+    /**
+     * set the WorldView in the front end
+     */
     public void setWorldView() { myView.setOverWorldView(); }
+    /**
+     * set the BattleView in the front end
+     */
     public void setBattleView() { myView.setBattleView(); }
 }

@@ -32,7 +32,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
     }
     @Override
     protected void setUpDisplay() {
-        displayPane = new BorderPane();
+        clearView();
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
         playerSide = new PlayerSide(myPlayer);

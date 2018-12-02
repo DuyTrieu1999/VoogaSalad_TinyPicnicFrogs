@@ -51,6 +51,7 @@ public abstract class WorldView {
         this.myController = controller;
         myAnimations = controller.getAnimation();
         myPlayer = controller.getPlayer();
+        displayPane = new BorderPane();
         changeScene = false;
         this.setUpDisplay();
         myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
@@ -118,7 +119,6 @@ public abstract class WorldView {
      * Set up the display
      */
     protected void setUpDisplay () {
-        displayPane = new BorderPane();
         displayPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         HBox.setHgrow(displayPane, Priority.ALWAYS);
         VBox.setVgrow(displayPane, Priority.ALWAYS);
