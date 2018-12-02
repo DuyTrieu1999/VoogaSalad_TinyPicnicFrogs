@@ -46,7 +46,7 @@ public class GameManager {
      * See JSON helper file for what data would look like
      */
 
-    public String createActorPrototype(JSONObject formData){
+    public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
         for(int i=0;i<interractionArr.size();i+=1)
@@ -61,8 +61,6 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
-
-        return actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
 
     }
 
@@ -117,6 +115,10 @@ public class GameManager {
         mapManager.divideMap(width, height, row, col);
     }
 
+    public void updateMessageMap(String key, String value){
+        messageManager.createMessage(key, value);
+        //TODO: fix this, then use the call in the front end
+    }
 
     /**
      * Loads the Actors from a pre-existing XML File
@@ -166,6 +168,9 @@ public class GameManager {
      * @param id id of the message corresponding to the key in the map
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
+
+    public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
+    public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 
 

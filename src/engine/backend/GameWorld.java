@@ -81,7 +81,7 @@ public class GameWorld {
      * @param interaction interaction of non-player actor
      */
     private void launchInteraction(Interaction interaction){
-        if(interaction instanceof  CombatInteraction){
+        if(interaction instanceof CombatInteraction){
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
             activateOverWorld();
         }

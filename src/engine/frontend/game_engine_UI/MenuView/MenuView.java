@@ -1,6 +1,7 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -14,15 +15,23 @@ public class MenuView extends HBox {
     private List<Command> activeCommands;
     private List<LayoutBox> layoutBoxes = new ArrayList<>();;
     private HashMap<LayoutBox, Command> map = new HashMap<>();
+    private boolean isClosed;
+    private BorderPane view;
 
-    public MenuView (List<Command> list) {
+    public MenuView (List<Command> list, BorderPane view) {
+        this.view = view;
+        isClosed = false;
         commandList = list;
         setUp();
     }
     private void setUp() {
         pane = new BorderPane();
         addLayout();
-        //addSelectedButton();
+        Button deleteButton = new Button("Closed");
+        pane.setLeft(deleteButton);
+        deleteButton.setOnAction(
+                event -> view.getChildren().remove(this)
+        );
         pane.getChildren().addAll(layoutBoxes);
         this.getChildren().add(pane);
     }
@@ -39,11 +48,9 @@ public class MenuView extends HBox {
                 activeCommands.add(map.get(box));
             }
         }
-        if (activeCommands.size() == 0 || activeCommands == null) {
-            activeCommands = new ArrayList<>();
-        }
     }
     public List<Command> returnActiveCommands () {
         return activeCommands;
     }
+    public boolean getIsClose () {return isClosed;}
 }
