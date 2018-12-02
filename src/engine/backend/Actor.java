@@ -1,6 +1,7 @@
 package engine.backend;
 
 import authoring.authoring_backend.ActorPrototype;
+import authoring.authoring_backend.ObservableActor;
 
 
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class Actor {
         myInteractionMap=prototype.getInteractionMap();
         myStatsMap= prototype.getMyStats();
         myActiveAnimation=myAnimationMap.get("idle");
+        myName=prototype.getName()+x+"-"+y+"-"+z;
 //        System.out.println("HERE");
         isPlayerActor = prototype.getIsPlayer();
         myBounds=prototype.getBounds();
@@ -139,5 +141,6 @@ public class Actor {
     public void setImages(){
         for(AnimationObject a:myAnimationMap.values()){a.setImage();}
     }
+    public ObservableActor getObservableActor(){return new ObservableActor(myName,myCoordinate.getX(),myCoordinate.getY(),myCoordinate.getZ(),myActiveAnimation.getAnimationView());}
 
 }

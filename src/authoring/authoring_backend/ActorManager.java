@@ -8,7 +8,9 @@ import engine.backend.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,8 +20,11 @@ import java.util.Map;
 
 public class ActorManager {
     Map<String, Actor> actorMap;
+    List <ObservableActor>observableActors;
     protected ActorManager(){
+
         actorMap = new HashMap<>();
+        observableActors=new ArrayList<>();
     }
 
     /**
@@ -30,6 +35,7 @@ public class ActorManager {
      */
     private String addActor(Actor actor, String id){
         actorMap.put(id,actor);
+        observableActors.add(actor.getObservableActor());
         return id;
     }
 
@@ -66,6 +72,7 @@ public class ActorManager {
     protected void createActor(ActorPrototype actorPrototype, int x, int y, int z){
         Actor actor= new Actor(actorPrototype,x,y,z);
         addActor(actor,actorPrototype.getName()+x+"-"+y+"-"+z);
+
     }
 
     /**
@@ -83,6 +90,8 @@ public class ActorManager {
         XStream serializer = new XStream(new DomDriver());
         Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get(path).toFile());
         actorMap.putAll(loadedMap);
+        for(Actor a:loadedMap.values()){observableActors.add(a.getObservableActor());}
+
     }
 
     /**
@@ -93,7 +102,9 @@ public class ActorManager {
         actorMap.remove(uniqueID);
     }
 
-
+    protected List<ObservableActor> getObservableList(){
+        return observableActors;
+    }
 
 
 }
