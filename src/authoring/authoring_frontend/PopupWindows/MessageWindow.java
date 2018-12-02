@@ -6,7 +6,7 @@ import authoring.authoring_frontend.MessageForm;
 /**
  * Message Window
  *
- * @author janiceliu
+ * @author janice
  * @author brookekeene
  */
 public class MessageWindow extends PopupWindow{

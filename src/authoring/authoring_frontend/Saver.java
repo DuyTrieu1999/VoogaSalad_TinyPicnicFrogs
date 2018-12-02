@@ -50,7 +50,7 @@ public class Saver {
                 e.printStackTrace();
             }
             */
-            gameManager.saveGame("resources/", "resources/");
+         //   gameManager.saveGame("resources/");
             System.out.println("Saved!");
         }
     }

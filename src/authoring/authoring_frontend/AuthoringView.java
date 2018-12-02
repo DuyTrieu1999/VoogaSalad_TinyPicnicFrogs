@@ -3,6 +3,8 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -76,6 +78,7 @@ public class AuthoringView {
         myMainView.setLeft(leftSide);
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);
+
     }
 
     private void initializeUI(int width, int height) {
