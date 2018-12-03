@@ -60,6 +60,12 @@ public class UserProfileManager {
         userData.put("bio",userBio);
         return userData;
    }
+   public void clear(){
+        userEmail=null;
+        userBio=null;
+        userPassword=null;
+        playerLoggedIn=false;
+   }
 
    public boolean isPlayerLoggedIn(){return playerLoggedIn;}
 

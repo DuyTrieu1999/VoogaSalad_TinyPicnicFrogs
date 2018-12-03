@@ -1,9 +1,9 @@
 package player;
 
+import engine.backend.Commands.Command;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -11,10 +11,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.json.simple.JSONObject;
 
 
-import java.io.IOException;
+
+
 
 public class SceneManager {
     private Stage myStage;
@@ -43,7 +43,8 @@ public class SceneManager {
 
     private void setUpLoginBox(VBox vbox) {
         TextField emailField = new TextField("email");
-        TextField passwordField = new TextField("password");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("password");
         Button loginButton = new Button("Login");
         Button registerButton = new Button("Create Account");
         registerButton.setOnAction(event->{myStage.setScene(setUpRegisterScene());});
@@ -68,7 +69,8 @@ public class SceneManager {
         vBox.setSpacing(8);
         vBox.setPadding(new Insets(15, 12, 15, 12));
         TextField emailField = new TextField("email");
-        TextField passwordField = new TextField("password");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("password");
         TextField bioField = new TextField("bio");
         TextField nameField= new TextField("name");
         Button registerButton = new Button("Create Account");
@@ -83,6 +85,9 @@ public class SceneManager {
         pane.setPrefSize(500,500);
         Scene mainScene= new Scene(pane);
         pane.setRight(setUpAccountBox());
+        HBox hBox= new HBox();
+        hBox.getChildren().addAll(setUpMenuBar());
+        pane.setTop(hBox);
         return mainScene;
     }
     private VBox setUpAccountBox(){
@@ -99,6 +104,31 @@ public class SceneManager {
            accountBox.getChildren().add(text);
        }
         return accountBox;
+    }
+
+    private MenuBar setUpMenuBar(){
+        MenuBar menuBar= new MenuBar();
+        menuBar.setPrefWidth(myStage.getWidth());
+        Menu fileMenu = new Menu("File");
+        setFileMenu(fileMenu);
+        Menu accountMenu = new Menu("Account");
+        setAccountMenu(accountMenu);
+        menuBar.getMenus().addAll(fileMenu,accountMenu);
+        return menuBar;
+    }
+    private void setFileMenu(Menu menu){
+        MenuItem exitItem = new MenuItem("Exit");
+        exitItem.setOnAction(event->{System.exit(0);});
+        menu.getItems().add(exitItem);
+    }
+    private void setAccountMenu(Menu menu){
+        MenuItem logOutItem = new MenuItem("Log Out");
+        logOutItem.setOnAction(event->{
+            userManager.clear();
+            myStage.setScene(getLoginScene());
+        });
+        MenuItem editAccountItem = new MenuItem("Edit Account Details");
+        menu.getItems().addAll(logOutItem,editAccountItem);
     }
 
 }
