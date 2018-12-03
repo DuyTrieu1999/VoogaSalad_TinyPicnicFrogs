@@ -1,11 +1,17 @@
 package authoring.authoring_backend;
 
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
 import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,16 +96,21 @@ public class GameManager {
     }
 
 
-
     /**
-     * Saves all created actors and messages
-     * @param gamePath: path of the folder to which the game data is saved
-     * @param authoringPath: path of the folder to which the authoring data is saved
+     *
+     * @param titleP game title
+     * @param descriptionP game description
+     * @param filePath file path to xml files
      */
-    public void saveGame(String gamePath, String authoringPath){
-        actorManager.serializeAllActors(gamePath);
-        messageManager.serializeAllMessages(gamePath);
-        actorPrototypeManager.serializeAllPrototypes(authoringPath);
+    public void saveGame(String titleP,String descriptionP, String filePath){
+        GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
+        actorManager.serializeAllActors(data.getPath());
+        messageManager.serializeAllMessages(data.getPath());
+        actorPrototypeManager.serializeAllPrototypes(data.getPath());
+        XStream serializer =  new XStream(new DomDriver());
+        String datastr=serializer.toXML(data);
+        try{
+            Files.write(Paths.get(data.getPath()+"gameData.xml"),datastr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
 
     /**
@@ -171,6 +182,7 @@ public class GameManager {
 
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
+
 
 
 

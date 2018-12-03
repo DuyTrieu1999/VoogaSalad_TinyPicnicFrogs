@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
@@ -43,4 +44,5 @@ public class Actor {
     public String getActorPrototypeID(){
         return actorPrototypeID;
     }
+
 }

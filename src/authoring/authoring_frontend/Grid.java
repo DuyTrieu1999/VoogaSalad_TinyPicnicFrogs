@@ -1,9 +1,19 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -58,6 +68,8 @@ public class Grid {
         StackPane thisCell = new StackPane();
         thisCell.setPrefSize(18, 18);
         thisCell.setStyle("-fx-border-color: black;");
+
+
         thisCell.setOnMouseClicked(event -> {
             Actor activeActor = ActiveItem.getActiveItem(programName);
             int x = mapGridPane.getColumnIndex(thisCell);
@@ -93,6 +105,31 @@ public class Grid {
      */
     public Cell[][] getCells(){
         return myCells;
+    }
+
+
+    /**
+     * Note: the method is probably in the wrong class
+     *
+     * when the user hovers over an actor in the Grid, ideally we could get info on that actor
+     * @param actorIV
+     */
+    public void hoverInfo(ImageView actorIV){
+        Group cell = new Group();
+
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "\n Actor ID, coordinates, name" //TODO: get the right info for the actors
+        );
+
+        //tooltip.setFont(new Font("Arial", 16));
+        Button actor = new Button("", actorIV);
+        actor.setTooltip(new Tooltip(tooltip.getText()));
+
+        cell.getChildren().add(actor);
+
+
+
     }
 
 }
