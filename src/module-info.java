@@ -28,3 +28,4 @@ module voogasalad_tinypicnicfrogs {
     exports authoring.authoring_frontend;
     exports authoring.authoring_frontend.FormBoxes;
 }
+
