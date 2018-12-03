@@ -96,12 +96,14 @@ public class GameManager {
     }
 
 
-
     /**
-     * Saves all created actors and messages
-     * @param data: path of the folder to which the game data is saved
+     *
+     * @param titleP game title
+     * @param descriptionP game description
+     * @param filePath file path to xml files
      */
-    public void saveGame(GameData data){
+    public void saveGame(String titleP,String descriptionP, String filePath){
+        GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
         actorManager.serializeAllActors(data.getPath());
         messageManager.serializeAllMessages(data.getPath());
         actorPrototypeManager.serializeAllPrototypes(data.getPath());
@@ -180,6 +182,7 @@ public class GameManager {
 
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
+
 
 
 
