@@ -19,6 +19,7 @@ public class PlayerMain extends Application {
     private Main engineMain;
     private UserProfileManager userProfileManager;
     private authoring.authoring_frontend.Main authoringMain;
+
  @Override
     public void start(Stage stage){
 
