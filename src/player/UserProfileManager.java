@@ -1,19 +1,13 @@
 package player;
 
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserProfileManager {
@@ -23,10 +17,18 @@ public class UserProfileManager {
     private String userEmail;
     private String userBio;
     private ServerManager myManager;
+    private List<String> followers;
+    private List<String>following;
+    private List<String>gamesCreated;
+    private List<String>gamesPlayed;
 
     public UserProfileManager(){
         myManager= new ServerManager();
         playerLoggedIn=false;
+        followers= new ArrayList<>();
+        following=new ArrayList<>();
+        gamesCreated=new ArrayList<>();
+        gamesPlayed=new ArrayList<>();
     }
 
 
@@ -38,6 +40,10 @@ public class UserProfileManager {
            userPassword=password;
            userBio=(String)response.get("bio");
            userName=(String)response.get("name");
+           parseArray((JSONArray) response.get("followers"),followers);
+           parseArray((JSONArray)response.get("following"),following);
+           parseArray((JSONArray) response.get("gamesCreated"),gamesCreated);
+           parseArray((JSONArray)response.get("gamesPlayed"),gamesPlayed);
            playerLoggedIn = true;
            System.out.println(userBio);
        }catch (IOException e){e.printStackTrace();}
@@ -66,7 +72,54 @@ public class UserProfileManager {
         userPassword=null;
         playerLoggedIn=false;
    }
-
+   public List<String>getFollowers(){return followers;}
+   public List<String>getFollowing(){return following;}
+   public List<String>getGamesCreated(){return gamesCreated;}
+   private List<String>getGamesPlayed(){return gamesPlayed;}
    public boolean isPlayerLoggedIn(){return playerLoggedIn;}
+   public void parseArray(JSONArray arr,List<String>list){
+        list.clear();
+        if(arr==null||arr.size()==0){return;}
+        for(int i=0;i<arr.size();i+=1){
+            list.add((String)arr.get(i));
+        }
+    }
+    public void updateInfo(String name, String bio){
+        try {
+            JSONObject data=myManager.updateUser(userEmail,userPassword,bio,name);
+            userBio=(String)data.get("bio");
+            userName=(String)data.get("name");
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public List<JSONObject>lookUpUsers(String name){
+        List<JSONObject>users= new ArrayList<>();
+        try {
+            JSONArray arr = myManager.lookUpUsers(name);
+            if(arr==null||arr.size()==0){return users;}
+            for(int i=0;i<arr.size();i+=1){
+                users.add((JSONObject)arr.get(i));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+    public void followUser(String targetEmail){
+        try {
+            JSONArray arr= myManager.followUser(targetEmail,userEmail);
+            parseArray(arr,following);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
    }
+
