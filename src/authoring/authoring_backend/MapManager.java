@@ -9,6 +9,8 @@ package authoring.authoring_backend;
 public class MapManager {
     int squareHeight;
     int squareWidth;
+    int mapWidth;
+    int mapHeight;
 
     protected MapManager() { //however the front end wants their map defined from user
     }
@@ -28,6 +30,8 @@ public class MapManager {
     public Integer divideMap(int width, int height, int rows, int cols) {
 
         int totalSquares = rows * cols;
+        mapHeight=height;
+        mapWidth=width;
         squareHeight = height / cols;
         squareWidth = width / rows;
         return totalSquares;
@@ -56,4 +60,6 @@ public class MapManager {
         return global;
     }
 
+    protected int getMapWidth(){return mapWidth;}
+    protected int getMapHeight(){return mapHeight;}
 }

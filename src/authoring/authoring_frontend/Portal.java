@@ -32,4 +32,18 @@ public class Portal {
         mapTo = toMap;
         mapManager = manager;
     }
+
+    public boolean withinWidth(int newWidth){
+        if(fromCoordinate.getKey() > newWidth || toCoordinate.getKey() > newWidth){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean withinHeight(int newHeight){
+        if(fromCoordinate.getValue() > newHeight || toCoordinate.getValue() > newHeight){
+            return true;
+        }
+        return false;
+    }
 }

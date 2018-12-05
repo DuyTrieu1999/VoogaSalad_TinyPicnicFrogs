@@ -53,4 +53,7 @@ public  abstract class Interaction {
             System.out.println(s+":"+messageMap.get(s).getMessageString());
         }
     }
+    public void setImages(){for(AnimationObject a:animationMap.values()){
+        //System.out.println("fired "+a.getName());
+        a.setImage();}}
 }

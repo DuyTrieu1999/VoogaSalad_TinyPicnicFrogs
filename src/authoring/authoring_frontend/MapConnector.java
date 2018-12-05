@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Pair;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,7 +94,29 @@ public class MapConnector {
     public void selectSquareDialog(Map selectFrom){
         //BorderPane
         GridPane selectOne = new GridPane();
-        Cell[][] myCells = selectFrom.getGrid().getCells();
+        ArrayList<ArrayList<Cell>> myCells = selectFrom.getGrid().getCells();
+       // Cell[][] myCells = selectFrom.getGrid().getCells();
+        for(int i=0;i<myCells.size();i++){
+            for(int j=0;j<myCells.get(i).size();j++){
+                StackPane thisCell = new StackPane();
+                thisCell.setPrefSize(18, 18);
+                thisCell.setStyle("-fx-border-color: black;");
+                for(Actor a:myCells.get(i).get(j).getActors()){
+                    thisCell.getChildren().add(a.getActorImage());
+                }
+                thisCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        thisCell.setStyle("-fx-border-color: blue;");
+                        int x = selectOne.getColumnIndex(thisCell);
+                        int y = selectOne.getRowIndex(thisCell);
+                        setCell(x, y, myCells);
+                    }
+                });
+                selectOne.add(thisCell, i, j);
+            }
+        }
+        /*
         for(int i=0;i<myCells.length;i++){
             for(int j=0;j<myCells[i].length;j++){
                 StackPane thisCell = new StackPane();
@@ -113,6 +137,7 @@ public class MapConnector {
                 selectOne.add(thisCell, i, j);
             }
         }
+        */
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Choose a square");
@@ -130,12 +155,14 @@ public class MapConnector {
      * @param y The y-coordinate.
      * @param myCells The matrix of cells.
      */
-    private void setCell(int x, int y, Cell[][] myCells){
+    private void setCell(int x, int y, ArrayList<ArrayList<Cell>> myCells){
         if(firstCell == null){
-            firstCell = myCells[x][y];
+            //firstCell = myCells[x][y];
+            firstCell = myCells.get(x).get(y);
         }
         else {
-            secondCell = myCells[x][y];
+            secondCell = myCells.get(x).get(y);
+            //secondCell = myCells[x][y];
         }
     }
 

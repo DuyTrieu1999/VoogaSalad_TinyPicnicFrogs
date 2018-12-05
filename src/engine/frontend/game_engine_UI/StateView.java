@@ -1,50 +1,68 @@
 package engine.frontend.game_engine_UI;
 
 import engine.backend.Commands.Command;
-import engine.backend.GameState;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
-import engine.frontend.game_engine_UI.MenuView.OverWorldMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
 import java.util.List;
 
+/**
+ * class that manages the switching between different views. There are two functions setWorldView
+ * and setBattleView that will be called by the back end to change the scenes
+ *
+ * @author Duy Trieu (dvt5)
+ */
 public class StateView {
     private Controller myController;
-    private WorldView myView;
+    private OverWorldView myView;
+    private BattleView battleView;
     private MenuView myMenu;
     private Stage myStage;
-    private HashMap<GameState, Scene> sceneMap = new HashMap<>();
-    private Scene myScene;
 
     public StateView(Stage stage) {
         this.myStage = stage;
         myController = new Controller(this);
+        myView = new OverWorldView(myController);
         setUpView();
         setUpStage();
     }
     private void setUpView () {
-        GameState state = myController.getGameState();
-        if (state == GameState.Overworld) {
-            myView = new OverWorldView(myController);
-        }
-        if (state == GameState.Combat) {
-            myView = new BattleView(myController);
-        }
-        myScene = myView.getMyScene();
-        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
+        setOverWorldView();
+    }
+    /**
+     * set the world view as the main view
+     */
+    public void setOverWorldView () {
+        myStage.setScene(myView.getMyScene());
+    }
+    /**
+     * set the battle view as the main view
+     */
+    public void setBattleView () {
+        battleView = new BattleView(myController);
+        myStage.setScene(battleView.getMyScene());
+//        myStage.show();
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
         myStage.setMinWidth(600);
         myStage.setMinHeight(300);
-        myStage.setScene(myScene);
+        myStage.setScene(myView.getMyScene());
         myStage.show();
     }
-    public void setAllCommand(List<Command> commands) { myMenu.addCommandUI(commands); }
-    public List<Command> getActiveCommand () { return myMenu.returnActiveCommands(); }
+    /**
+     * this function is called by the back end to get the list of commands the user
+     * is choosing
+     */
+    public List<Command> getActiveCommand () {
+        System.out.println(battleView);
+        return battleView.getMenuView().getActiveCommands();
+    }
+    public OverWorldView getMyView () {
+        return myView;
+    }
+
 }
