@@ -47,186 +47,165 @@
                   <entry>
                     <string>default</string>
                     <engine.backend.AnimationObject>
-                      <animationName>default</animationName>
-                      <animationPath>player_right.png</animationPath>
+                        <animationName>top</animationName>
+                        <animationPath>player_top.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
-                  </entry>
-                </myAnimationMap>
-              </engine.backend.Commands.CombatMove>
-            </commandList>
-            <myHealth>10</myHealth>
-          </engine.backend.CombatInteraction>
-        </entry>
-      </myInteractionMap>
-      <myStatsMap>
-        <entry>
-          <string>health</string>
-          <int>50</int>
-        </entry>
-      </myStatsMap>
-      <myAnimationMap>
-        <entry>
-          <string>top</string>
-          <engine.backend.AnimationObject>
-            <animationName>top</animationName>
-            <animationPath>player_top.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>player_idle.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>left</string>
-          <engine.backend.AnimationObject>
-            <animationName>left</animationName>
-            <animationPath>player_left.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <engine.backend.AnimationObject>
-            <animationName>bottom</animationName>
-            <animationPath>player_bot.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>right</string>
-          <engine.backend.AnimationObject>
-            <animationName>right</animationName>
-            <animationPath>player_right.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
-      <isPlayerActor>true</isPlayerActor>
-      <myBounds>
-        <width>50</width>
-        <height>50</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>enemy350-350-0</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>350</x>
-        <y>350</y>
-        <z>0</z>
-      </myCoordinate>
-      <myInteractionMap>
-        <entry>
-          <string>fight</string>
-          <engine.backend.CombatInteraction>
-            <animationMap>
-              <entry>
-                <string>default</string>
-                <engine.backend.AnimationObject>
-                  <animationName>default</animationName>
-                  <animationPath>enemy_fight.png</animationPath>
-                </engine.backend.AnimationObject>
-              </entry>
-            </animationMap>
-            <messageMap>
-              <entry>
-                <string>prototypeVictory</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry/engine.backend.Message"/>
-              </entry>
-              <entry>
-                <string>prototypeDefeat</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
-              </entry>
-            </messageMap>
-            <myName>fight</myName>
-            <commandList>
-              <engine.backend.Commands.CombatMove>
-                <myName>basic attack</myName>
-                <stat>HP</stat>
-                <targetActorNum>1</targetActorNum>
-                <targetValue>10</targetValue>
-                <myTargetType>CONSTANT</myTargetType>
-                <myTargetActor>ENEMY</myTargetActor>
-                <myAnimationMap>
-                  <entry>
-                    <string>default</string>
+                </entry>
+                <entry>
+                    <string>idle</string>
                     <engine.backend.AnimationObject>
-                      <animationName>default</animationName>
-                      <animationPath>enemy_left.png</animationPath>
+                        <animationName>idle</animationName>
+                        <animationPath>player_idle.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
-                  </entry>
-                </myAnimationMap>
-              </engine.backend.Commands.CombatMove>
-            </commandList>
-            <myHealth>10</myHealth>
-          </engine.backend.CombatInteraction>
-        </entry>
-      </myInteractionMap>
-      <myStatsMap>
-        <entry>
-          <string>health</string>
-          <int>50</int>
-        </entry>
-      </myStatsMap>
-      <myAnimationMap>
-        <entry>
-          <string>top</string>
-          <engine.backend.AnimationObject>
-            <animationName>top</animationName>
-            <animationPath>enemy_top.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>enemy_idle.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>left</string>
-          <engine.backend.AnimationObject>
-            <animationName>left</animationName>
-            <animationPath>enemy_left.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <engine.backend.AnimationObject>
-            <animationName>bottom</animationName>
-            <animationPath>enemy_bot.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>right</string>
-          <engine.backend.AnimationObject>
-            <animationName>right</animationName>
-            <animationPath>enemy_right.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
-      <isPlayerActor>true</isPlayerActor>
-      <myBounds>
-        <width>50</width>
-        <height>50</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
-  </entry>
+                </entry>
+                <entry>
+                    <string>left</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>left</animationName>
+                        <animationPath>player_left.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>bottom</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>bottom</animationName>
+                        <animationPath>player_bot.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>right</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>right</animationName>
+                        <animationPath>player_right.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+            </myAnimationMap>
+            <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
+            <isPlayerActor>true</isPlayerActor>
+            <myBounds>
+                <width>50</width>
+                <height>50</height>
+                <relX>0</relX>
+                <relY>0</relY>
+            </myBounds>
+        </engine.backend.Actor>
+    </entry>
+    <entry>
+        <string>enemy350-350-0</string>
+        <engine.backend.Actor>
+            <myCoordinate>
+                <x>350</x>
+                <y>350</y>
+                <z>0</z>
+            </myCoordinate>
+            <myInteractionMap>
+                <entry>
+                    <string>fight</string>
+                    <engine.backend.CombatInteraction>
+                        <animationMap>
+                            <entry>
+                                <string>default</string>
+                                <engine.backend.AnimationObject>
+                                    <animationName>default</animationName>
+                                    <animationPath>enemy_fight.png</animationPath>
+                                </engine.backend.AnimationObject>
+                            </entry>
+                        </animationMap>
+                        <messageMap>
+                            <entry>
+                                <string>prototypeVictory</string>
+                                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry/engine.backend.Message"/>
+                            </entry>
+                            <entry>
+                                <string>prototypeDefeat</string>
+                                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
+                            </entry>
+                        </messageMap>
+                        <myName>fight</myName>
+                        <commandList>
+                            <engine.backend.Commands.CombatMove>
+                                <myName>basic attack</myName>
+                                <stat>HP</stat>
+                                <targetActorNum>1</targetActorNum>
+                                <targetValue>10</targetValue>
+                                <myTargetType>CONSTANT</myTargetType>
+                                <myTargetActor>ENEMY</myTargetActor>
+                                <myAnimationMap>
+                                    <entry>
+                                        <string>default</string>
+                                        <engine.backend.AnimationObject>
+                                            <animationName>default</animationName>
+                                            <animationPath>enemy_left.png</animationPath>
+                                        </engine.backend.AnimationObject>
+                                    </entry>
+                                </myAnimationMap>
+                            </engine.backend.Commands.CombatMove>
+                        </commandList>
+                        <myHealth>10</myHealth>
+                    </engine.backend.CombatInteraction>
+                </entry>
+            </myInteractionMap>
+            <myStatsMap>
+                <entry>
+                    <string>health</string>
+                    <int>50</int>
+                </entry>
+            </myStatsMap>
+            <myAnimationMap>
+                <entry>
+                    <string>top</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>top</animationName>
+                        <animationPath>enemy_top.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>idle</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>idle</animationName>
+                        <animationPath>enemy_idle.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>left</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>left</animationName>
+                        <animationPath>enemy_left.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>bottom</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>bottom</animationName>
+                        <animationPath>enemy_bot.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+                <entry>
+                    <string>right</string>
+                    <engine.backend.AnimationObject>
+                        <animationName>right</animationName>
+                        <animationPath>enemy_right.png</animationPath>
+                        <coordinate reference="../../../../myCoordinate"/>
+                    </engine.backend.AnimationObject>
+                </entry>
+            </myAnimationMap>
+            <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
+            <isPlayerActor>true</isPlayerActor>
+            <myBounds>
+                <width>50</width>
+                <height>50</height>
+                <relX>0</relX>
+                <relY>0</relY>
+            </myBounds>
+        </engine.backend.Actor>
+    </entry>
 </map>

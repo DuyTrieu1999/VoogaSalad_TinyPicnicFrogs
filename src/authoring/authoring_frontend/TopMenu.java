@@ -69,9 +69,45 @@ public class TopMenu extends HBox {
         MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
         newGame.setOnAction(e -> {
-            System.out.println("Open New AuthoringView"); //TODO: replace this with code
-            AuthoringView newView = new AuthoringView();
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("New Game");
+            dialog.setHeaderText("Enter the dimensions of the map:");
+            ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+            TextField xSize = new TextField();
+            xSize.setPromptText("Width");
+            TextField ySize = new TextField();
+            ySize.setPromptText("Height");
+
+            grid.add(new Label("Width:"), 0, 0);
+            grid.add(xSize, 1, 0);
+            grid.add(new Label("Height:"), 0, 1);
+            grid.add(ySize, 1, 1);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == loginButtonType) {
+                    return new Pair<>(xSize.getText(), ySize.getText());
+                }
+                return null;
+            });
+
+            Optional<Pair<String, String>> result = dialog.showAndWait();
+
+            result.ifPresent(widthHeight -> {
+                Stage newAuthoringView = new Stage();
+                AuthoringView environment = new AuthoringView(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
+                newAuthoringView.setTitle(environment.getProjectName());
+                newAuthoringView.setScene(environment.getScene());
+                newAuthoringView.show();
+            });
         });
+
 
         newActor.setOnAction(e -> {
             PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager);
@@ -111,14 +147,68 @@ public class TopMenu extends HBox {
     private void addEditTab(){
         Menu editMenu = new Menu(myResources.getString("Edit"));
 
-//        // Save
-//        MenuItem saveItem = new MenuItem(myResources.getString("Save"));
-//
-//        saveItem.setOnAction(e -> {
-//            System.out.println("Save current game"); //TODO: replace this with code
-//        });
-//
-//        editMenu.getItems().add(saveItem);
+        // Save
+        MenuItem mapItem = new MenuItem(myResources.getString("Map"));
+        MenuItem actorItem = new MenuItem(myResources.getString("Prototype"));
+
+        mapItem.setOnAction(e -> {
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("Edit Map");
+            dialog.setHeaderText("Enter the new dimensions of the map:");
+            ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+            TextField xSize = new TextField();
+            xSize.setPromptText("Width");
+            TextField ySize = new TextField();
+            ySize.setPromptText("Height");
+
+            grid.add(new Label("Width:"), 0, 0);
+            grid.add(xSize, 1, 0);
+            grid.add(new Label("Height:"), 0, 1);
+            grid.add(ySize, 1, 1);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == loginButtonType) {
+                    return new Pair<>(xSize.getText(), ySize.getText());
+                }
+                return null;
+            });
+
+            Optional<Pair<String, String>> result = dialog.showAndWait();
+
+            result.ifPresent(widthHeight -> {
+                int newWidth = Integer.parseInt(widthHeight.getKey());
+                int newHeight = Integer.parseInt(widthHeight.getValue());
+                Map currentMap = mapManager.getMap(mapManager.getActiveMapName());
+                System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
+                if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirm Data Loss");
+                    alert.setHeaderText("The new map width or height has decreased: some clipping will occur.");
+                    alert.setContentText("Are you ok with this?");
+
+                    Optional<ButtonType> clippingResult = alert.showAndWait();
+                    if (clippingResult.get() == ButtonType.OK){
+                        // ... user chose OK
+                        System.out.println("hahaha");
+                        mapManager.changeMapDimensions(newWidth, newHeight);
+                    }
+                }
+                else {
+                    mapManager.changeMapDimensions(newWidth, newHeight);
+                }
+            });
+        });
+
+        actorItem.setOnAction(event -> System.out.print("Edit actors"));
+
+        editMenu.getItems().add(mapItem);
 
         myMenu.getMenus().add(editMenu);
     }
@@ -163,12 +253,14 @@ public class TopMenu extends HBox {
             for(String mapName:mapManager.getMapList()){
                 Map thisMap = mapManager.getMap(mapName);
                 Grid thisGrid = thisMap.getGrid();
+                /*
                 Cell[][] theseCells = thisGrid.getCells();
                 for(int i=0;i<theseCells.length;i++){
                     for(int j=0;j<theseCells[i].length;j++){
                         System.out.println("This cell at (" + i + ", " + j + ") has " + theseCells[i][j].getActors().size() + " actors!");
                     }
                 }
+                */
             }
         });
 

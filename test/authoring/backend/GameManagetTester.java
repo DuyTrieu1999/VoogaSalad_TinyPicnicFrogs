@@ -54,14 +54,18 @@ public class GameManagetTester {
         manager.saveGame("./resources/","./resources/authoring/");
         JSONObject data = loadJSON("./resources/DemoPrototype1.json");
         JSONObject data2 =loadJSON("./resources/DemoPrototype2.json");
-        JSONObject backgroundData=loadJSON("./resources/BackgroundObjectTemplate.json");
+        JSONObject backgroundData=loadJSON("./resources/DemoBackground.json");
         if(data!=null){
             manager.createActorPrototype(data);
             manager.createActorPrototype(data2);
-         //   manager.createActorPrototype(backgroundData);
+<<<<<<< HEAD
+           manager.createActorPrototype(backgroundData);
+=======
+            manager.createActorPrototype(backgroundData);
+>>>>>>> d5d391061bc1ff132b7389f4eb4f85b5bb3f186c
             manager.createActor("player",0,0,0,0,0);
             manager.createActor("enemy",350,350,0,0,0);
-           // manager.createActor("grass",0,0,0,0,0);
+            manager.createActor("background",0,0,0,0,0);
             manager.saveGame("./resources/demo/","./resources/authoring/");
         }
     }

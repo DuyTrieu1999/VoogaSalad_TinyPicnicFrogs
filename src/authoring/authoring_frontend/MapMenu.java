@@ -34,16 +34,15 @@ public class MapMenu extends HBox {
         programName = pName;
         mapManager = manager;
         gameManager = gm;
-
     }
 
     /**
      * Initializes the list for the first time.
      * @return ListView of map names.
      */
-    public ListView<String> setupList(){
+    public ListView<String> setupList(int width, int height){
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        String newMap = mapManager.createMap(30, 20);
+        String newMap = mapManager.createMap(width, height);
         gameManager.setUpMap(30, 20, 1, 1);
         mapView.getItems().add(newMap);
         mapManager.setActiveMap(newMap);
@@ -102,6 +101,9 @@ public class MapMenu extends HBox {
         Button deleteMap = new Button("Delete Map");
         deleteMap.setOnAction(event -> {
             ObservableList<String> selectedMaps = mapView.getSelectionModel().getSelectedItems();
+            if(selectedMaps.contains(mapManager.getActiveMapName())){
+                mapManager.findNewActiveMap(selectedMaps);
+            }
             mapView.getItems().removeAll(selectedMaps);
             mapManager.removeMap(selectedMaps);
         });
@@ -113,6 +115,7 @@ public class MapMenu extends HBox {
             else {
                 //error
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                StringBuilder lol = new StringBuilder();
                 alert.setTitle("Error");
                 alert.setHeaderText("Error");
                 alert.setContentText("You have no maps to connect!");
@@ -125,23 +128,11 @@ public class MapMenu extends HBox {
     }
 
     /**
-     * Gets a list of maps.
-     * @return Tab with a list of maps.
-     */
-    public Tab getMapList(){
-        mapList.getChildren().addAll(setupButtons(), setupList());
-        Tab layerTab = new Tab();
-        layerTab.setText("Maps");
-        layerTab.setContent(mapList);
-        return layerTab;
-    }
-
-    /**
      * Gets pane with all the tabs.
      * @return VBox with all the tabs.
      */
-    public VBox getMapPane(){
-        mapList.getChildren().addAll(setupButtons(), setupList());
+    public VBox getMapPane(int width, int height){
+        mapList.getChildren().addAll(setupButtons(), setupList(width, height));
         return mapList;
     }
 
