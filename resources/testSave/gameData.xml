@@ -1,0 +1,9 @@
+<authoring.authoring__backend.GameData>
+  <title>test</title>
+  <description>testP</description>
+  <path>C:\Users\Michael\Documents\CS308\Vooga\vooga\voogasalad_tinypicnicfrogs\resources\testSave/</path>
+  <mapWidth>20</mapWidth>
+  <mapHeight>30</mapHeight>
+  <squareWidth>30</squareWidth>
+  <squareHeight>20</squareHeight>
+</authoring.authoring__backend.GameData>
