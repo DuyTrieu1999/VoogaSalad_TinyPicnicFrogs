@@ -67,7 +67,7 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
-
+         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
     }
 
     /**
@@ -103,7 +103,9 @@ public class GameManager {
      * @param filePath file path to xml files
      */
     public void saveGame(String titleP,String descriptionP, String filePath){
-        GameData data = new GameData(titleP,descriptionP,filePath);//,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
+        filePath+="/";
+        System.out.println("fired");
+        GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
         actorManager.serializeAllActors(data.getPath());
         messageManager.serializeAllMessages(data.getPath());
         actorPrototypeManager.serializeAllPrototypes(data.getPath());
@@ -141,20 +143,18 @@ public class GameManager {
 
     /**
      * Loads the message from a pre-existing XML File
-     * @param key where to put the message in the message map
      * @param path path to the XML file
      */
-    public void loadMessage(String key, String path){
-        messageManager.loadMessage(key, path);
+    public void loadMessages(String path){
+        messageManager.loadMessages(path);
     }
 
     /**
      * Loads the prototype from a pre-existing XML File
-     * @param key: where to put the prototype in the prototype map
      * @param path path to the XML file
      */
-    public void loadPrototype(String key, String path){
-        actorPrototypeManager.loadPrototype(key, path);
+    public void loadPrototypes(String path){
+        actorPrototypeManager.loadPrototypes(path);
     }
 
     /**

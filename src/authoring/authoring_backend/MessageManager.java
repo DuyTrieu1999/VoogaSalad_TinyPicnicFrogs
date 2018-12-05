@@ -55,6 +55,11 @@ public class MessageManager {
 
 
   }
+  protected void loadMessages(String path){
+      XStream serializer = new XStream(new DomDriver());
+      Map<String,Message>loadedMap=(Map<String, Message>) serializer.fromXML(Paths.get(path).toFile());
+      messageMap.putAll(loadedMap);
+  }
 
     /**
      * Loads message from an XML file

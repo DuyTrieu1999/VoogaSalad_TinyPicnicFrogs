@@ -86,11 +86,10 @@ public class SaveForm extends VBox {
      * creates a GameData object and calls the GameManager.saveGame method
      */
     private void saveFunction () { //TODO: error check
+        System.out.println("fired frontend");
         String title = gameName.getText();
         String description = gameDescript.getText();
         // TODO: do we need height and width of map?
-
-        GameData data = new GameData(title, description, gamePath);
-        myManager.saveGame(title, description, gamePath);
+        myManager.saveGame(title,description,gamePath);
     }
 }
