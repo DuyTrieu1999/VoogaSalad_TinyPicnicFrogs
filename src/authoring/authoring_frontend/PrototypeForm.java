@@ -143,7 +143,7 @@ public class PrototypeForm extends VBox {
             dialog.setContentText(myResources.getString("EnterName") + myResources.getString("interaction"));
             Optional<String> result = dialog.showAndWait();
             if(result.isPresent()){
-                InteractionBox temp = new InteractionBox(result.get());
+                InteractionBox temp = new InteractionBox(result.get(), myManager);
                 temp.setContent();
                 myInteractionForms.add(temp);
                 interactionsBox.getChildren().add(temp);
