@@ -1,5 +1,6 @@
 package authoring.authoring_frontend.FormBoxes;
 
+import authoring.authoring_backend.GameManager;
 import engine.backend.Message;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -24,12 +25,13 @@ public class InteractionBox extends FormBox {
     private List<MoveBox> myMoves;
     private List<String> typeChoices;
     private List<String> messageChoices;
+    private GameManager myManager;
 
-
-    public InteractionBox(String label) {
+    public InteractionBox(String label, GameManager manager) {
         super(label);
+        myManager = manager;
         typeChoices = new ArrayList<>(List.of("fight"));;
-        messageChoices = new ArrayList<>(List.of("onVictory", "onDefeat"));
+        messageChoices = myManager.getMessageIds();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class InteractionBox extends FormBox {
 
         // Type
         myType = new SelectBox(myResources.getString("type"));
-        myType.setChoices(typeChoices);
+        myType.setChoices(typeChoices );
         myContent.getChildren().addAll(myType);
 
         // Animations

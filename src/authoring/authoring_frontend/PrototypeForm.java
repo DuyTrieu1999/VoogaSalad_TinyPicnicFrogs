@@ -28,6 +28,7 @@ public class PrototypeForm extends VBox {
     public static final String DEFAULT_RESOURCE = "English";
     public static int SIZE = 500;
     public static int PADDING = 10;
+    public static int FIELD_SIZE = 150;
     private ResourceBundle myResources;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
@@ -76,6 +77,7 @@ public class PrototypeForm extends VBox {
 
         // Name
         prototypeName = new TextField();
+        prototypeName.setMaxWidth(FIELD_SIZE);
         this.getChildren().addAll(name, prototypeName);
 
         // isPlayer
@@ -141,7 +143,7 @@ public class PrototypeForm extends VBox {
             dialog.setContentText(myResources.getString("EnterName") + myResources.getString("interaction"));
             Optional<String> result = dialog.showAndWait();
             if(result.isPresent()){
-                InteractionBox temp = new InteractionBox(result.get());
+                InteractionBox temp = new InteractionBox(result.get(), myManager);
                 temp.setContent();
                 myInteractionForms.add(temp);
                 interactionsBox.getChildren().add(temp);
