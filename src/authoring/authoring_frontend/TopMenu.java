@@ -188,8 +188,9 @@ public class TopMenu extends HBox {
             result.ifPresent(widthHeight -> {
                 int newWidth = Integer.parseInt(widthHeight.getKey());
                 int newHeight = Integer.parseInt(widthHeight.getValue());
+                //System.out.println(newWidth + " " + newHeight);
                 Map currentMap = mapManager.getMap(mapManager.getActiveMapName());
-                System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
+                //System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
                 if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirm Data Loss");
@@ -199,7 +200,7 @@ public class TopMenu extends HBox {
                     Optional<ButtonType> clippingResult = alert.showAndWait();
                     if (clippingResult.get() == ButtonType.OK){
                         // ... user chose OK
-                        System.out.println("hahaha");
+                        //System.out.println("hahaha");
                         mapManager.changeMapDimensions(newWidth, newHeight);
                     }
                 }
