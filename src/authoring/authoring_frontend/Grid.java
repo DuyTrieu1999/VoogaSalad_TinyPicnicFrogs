@@ -57,12 +57,13 @@ public class Grid {
         mapGridPane = new GridPane();
         //myCells = new Cell[width][height];
         myCells = new ArrayList<>();
-        for(int i=0;i<width;i++){
+        for(int i=0;i<height;i++){
             myCells.add(new ArrayList<>());
-            for(int j=0;j<height;j++){
-                myCells.get(i).add(new Cell(i, j));
+            for(int j=0;j<width;j++){
+                System.out.println("Initializing a cell at (" + j + ", " + i + ")");
+                myCells.get(i).add(new Cell(j, i));
                 //myCells[i][j] = new Cell(i, j);
-                mapGridPane.add(createCell(), i, j);
+                mapGridPane.add(createCell(), j, i);
             }
         }
     }
@@ -143,44 +144,53 @@ public class Grid {
     }
 
     public void changeDimensions(int newWidth, int newHeight){
+        //System.out.println("Before we start, myCells has a height of " + myCells.size() + " and the first row of myCells has a width of " + myCells.get(0).size());
         if(newWidth < gridWidth){
             for(int i=0;i<myCells.size();i++){
-                myCells.get(i).subList(newWidth, myCells.get(i).size()-1).clear();
+                myCells.get(i).subList(newWidth-1, myCells.get(i).size()-1).clear();
             }
         }
         else if(newWidth > gridWidth){
             for(int i=0;i<myCells.size();i++){
                 for(int j=0;j<newWidth-gridWidth;j++){
-                    myCells.get(i).add(new Cell(i, myCells.get(i).size()-1));
-                    mapGridPane.add(createCell(), i, myCells.get(i).size()-1);
+                    //System.out.println("Just added a new cell to (" + myCells.get(i).size() + ", " + i + ")!");
+                    myCells.get(i).add(new Cell(myCells.get(i).size()-1, i));
+                    mapGridPane.add(createCell(), myCells.get(i).size()-1, i);
                 }
             }
         }
+
         if(newHeight < gridHeight){
-            myCells.subList(newHeight, myCells.size()-1).clear();
+            myCells.subList(newHeight-1, myCells.size()-1).clear();
         }
         else if(newHeight > gridHeight){
             for(int i=0;i<newHeight-gridHeight;i++){
                 myCells.add(new ArrayList<>());
                 for(int j=0;j<newWidth;j++){
-                    myCells.get(myCells.size()-1).add(new Cell(myCells.size()-1, j));
-                    mapGridPane.add(createCell(), myCells.size()-1, j);
+                    //System.out.println("There are " + myCells.size() + " rows so the next row will be added at row " + (myCells.size()-1));
+                    myCells.get(myCells.size()-1).add(new Cell(j, myCells.size()-1));
+                    mapGridPane.add(createCell(), j, myCells.size()-1);
                 }
             }
         }
+        //System.out.println("After height adjustments, myCells has a height of " + myCells.size() + " and the first row of myCells has a width of " + myCells.get(0).size());
+
+        //System.out.println("After all adjustments, myCells has a height of " + myCells.size() + " and the first row of myCells has a width of " + myCells.get(0).size());
         gridWidth = newWidth;
         gridHeight = newHeight;
         ObservableList<Node> children = mapGridPane.getChildren();
         //System.out.println(children.size());
+
         ArrayList<Node> toRemove = new ArrayList<>();
         for(Iterator<Node> iter = children.iterator();iter.hasNext();){
             Node n = iter.next();
-            if(mapGridPane.getRowIndex(n) > newWidth-1 || mapGridPane.getColumnIndex(n) > newHeight-1){
+            if(mapGridPane.getColumnIndex(n) > newWidth-1 || mapGridPane.getRowIndex(n) > newHeight-1){
                 toRemove.add(n);
                 iter.remove();
             }
         }
         mapGridPane.getChildren().removeAll(toRemove);
+
     }
 
 }

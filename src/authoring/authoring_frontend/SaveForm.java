@@ -91,6 +91,6 @@ public class SaveForm extends VBox {
         // TODO: do we need height and width of map?
 
         GameData data = new GameData(title, description, gamePath);
-        myManager.saveGame(data);
+        myManager.saveGame(title, description, gamePath);
     }
 }
