@@ -39,6 +39,13 @@ public class AuthoringView {
         projectName = "Project " + numberUnsavedProjects;
         numberUnsavedProjects++;
         this.initializeUI();
+}
+
+    public AuthoringView(int width, int height){
+        myManager = new GameManager();
+        projectName = "Project " + numberUnsavedProjects;
+        numberUnsavedProjects++;
+        this.initializeUI(width, height);
     }
 
     /**
@@ -71,7 +78,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(30, 20));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
@@ -99,7 +106,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(width, height));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setLeft(leftSide);
