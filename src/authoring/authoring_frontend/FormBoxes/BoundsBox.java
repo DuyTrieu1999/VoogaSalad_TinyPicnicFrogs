@@ -3,6 +3,9 @@ package authoring.authoring_frontend.FormBoxes;
 import javafx.scene.layout.VBox;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * BoundsBox
  *
@@ -46,15 +49,29 @@ public class BoundsBox extends FormBox {
     @Override
     public JSONObject getContent() {
         JSONObject myObject = new JSONObject();
-        myObject.put("relX", relX.getContent().get("value"));
-        myObject.put("relY", relY.getContent().get("value"));
-        myObject.put("width", width.getContent().get("value"));
-        myObject.put("height", height.getContent().get("value"));
+        myObject.put("relX", relX.getField());
+        myObject.put("relY", relY.getField());
+        myObject.put("width", width.getField());
+        myObject.put("height", height.getField());
         return myObject;
     }
 
+    /**
+     * error checking for valid integer entries in all fields
+     * @return true if user has input valid integers
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() {
+        ArrayList<TextBox> iterable = new ArrayList(List.of(relX, relY, width, height));
+        for(TextBox box: iterable) {
+            try {
+                Integer.parseInt(box.getField());
+            } catch(NumberFormatException e) {
+                return false;
+            } catch(NullPointerException e) {
+                return false;
+            }
+        }
+        return true;
     }
 }

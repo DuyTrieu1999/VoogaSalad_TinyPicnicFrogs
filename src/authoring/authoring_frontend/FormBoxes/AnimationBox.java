@@ -64,11 +64,11 @@ public class AnimationBox extends FormBox {
     }
 
     /**
-     * error checking
-     * @return
+     * error checking for a valid file format
+     * @return true if user has selected a valid file
      */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() { //TODO: figure out how to check file formats
+        return fileName != null;
     }
 }

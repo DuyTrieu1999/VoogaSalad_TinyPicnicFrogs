@@ -37,6 +37,15 @@ public class SelectBox extends FormBox {
         return myChoice.getValue();
     }
 
+    /**
+     * error checking for a valid user selection
+     * @return true if the user has selected an option
+     */
+    @Override
+    public boolean hasValidEntry() {
+        return (myChoice.getValue() != null);
+    }
+
     @Override
     public void setContent() {
 
@@ -45,10 +54,5 @@ public class SelectBox extends FormBox {
     @Override
     public JSONObject getContent() {
         return null;
-    }
-
-    @Override
-    public boolean invalidEntry() {
-        return false;
     }
 }

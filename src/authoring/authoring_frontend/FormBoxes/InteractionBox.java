@@ -139,9 +139,12 @@ public class InteractionBox extends FormBox {
         return myObject;
     }
 
-
+    /**
+     * error checking
+     * @return true if
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() { // TODO: finish
+        return true;
     }
 }

@@ -45,7 +45,7 @@ public abstract class FormBox extends HBox {
     /**
      * @return true if the information is valid, false otherwise
      */
-    public abstract boolean invalidEntry();
+    public abstract boolean hasValidEntry();
 
 
 }

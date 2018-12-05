@@ -156,22 +156,38 @@ public class PrototypeForm extends VBox {
     /**
      * saves all information as a JSON object
      */
-    private void saveFunction() { //TODO: error check
+    private void saveFunction() { //TODO: make error checking more efficient
         JSONObject myPrototype = new JSONObject();
         JSONArray myAnimations = new JSONArray();
         JSONArray myStats = new JSONArray();
         JSONArray myInteractions = new JSONArray();
 
+        if(prototypeName.getText().isEmpty()) {
+            invalidDataAlert("name");
+            return;
+        }
         myPrototype.put("name", prototypeName.getText());
 
         for(int i = 0; i < myAnimationForms.size(); i++) {
+            if(!myAnimationForms.get(i).hasValidEntry()) {
+                invalidDataAlert("animations");
+                return;
+            }
             myAnimations.add(myAnimationForms.get(i).getContent());
         }
         myPrototype.put("animations", myAnimations);
 
+        if(!myBounds.hasValidEntry()) {
+            invalidDataAlert("bounds");
+            return;
+        }
         myPrototype.put("bounds", myBounds.getContent());
 
         for(int i = 0; i < myStatisticsForms.size(); i++) {
+            if(!myStatisticsForms.get(i).hasValidEntry()) {
+                invalidDataAlert("statistics");
+                return;
+            }
             myStats.add(myStatisticsForms.get(i).getContent());
         }
         myPrototype.put("stats", myStats);
@@ -179,6 +195,10 @@ public class PrototypeForm extends VBox {
         myPrototype.put("isPlayer", isPlayer.isSelected());
 
         for(int i = 0; i < myInteractionForms.size(); i++) {
+            if(!myInteractionForms.get(i).hasValidEntry()) {
+                invalidDataAlert("interactions");
+                return;
+            }
             myInteractions.add(myInteractionForms.get(i).getContent());
         }
         myPrototype.put("interactions", myInteractions);
@@ -186,5 +206,15 @@ public class PrototypeForm extends VBox {
         System.out.println(myPrototype); // TESTING
         myManager.createActorPrototype(myPrototype);
 
+    }
+
+    /**
+     * creates an AlertBox with the appropriate message when the user inputs data incorrectly
+     */
+    private void invalidDataAlert(String issue) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText(myResources.getString("error"));
+        errorAlert.setContentText(myResources.getString("errorMessage") + issue);
+        errorAlert.showAndWait();
     }
 }

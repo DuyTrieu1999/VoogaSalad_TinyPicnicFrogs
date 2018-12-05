@@ -39,7 +39,7 @@ public class MoveBox extends FormBox {
      * target value, target type, and animations
      */
     @Override
-    public void setContent() {
+    public void setContent() { //TODO: remove hardcoded strings
         VBox myContent = new VBox();
 
         // Target Statistic
@@ -114,8 +114,12 @@ public class MoveBox extends FormBox {
         return myObject;
     }
 
+    /**
+     * error checking for all fields of a move
+     * @return true if user has input all necessary data
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() { // TODO: Finish
+        return true;
     }
 }

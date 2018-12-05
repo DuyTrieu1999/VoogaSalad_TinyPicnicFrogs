@@ -51,8 +51,12 @@ public class MessageBox extends FormBox {
         return myObject;
     }
 
+    /**
+     * error checking for a all fields of a key and messageKey pair
+     * @return true if user has input a key and selected a message
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() {
+        return !(myKey.getText().isEmpty()) && (myMessageKey.getValue() != null);
     }
 }
