@@ -2,6 +2,7 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.PopupWindows.MessageWindow;
+import authoring.authoring_frontend.PopupWindows.PopupWindow;
 import authoring.authoring_frontend.PopupWindows.PrototypeWindow;
 import authoring.authoring_frontend.PopupWindows.SaveWindow;
 import javafx.scene.control.Menu;
@@ -25,9 +26,7 @@ public class TopMenu extends HBox {
     private GameManager myManager;
     private MenuBar myMenu;
     private ResourceBundle myResources;
-    private PrototypeWindow myNewActor;
     private MapManager mapManager;
-    private MessageWindow myNewMessage;
     private ActorManager actorManager;
 
 
@@ -71,14 +70,15 @@ public class TopMenu extends HBox {
 
         newGame.setOnAction(e -> {
             System.out.println("Open New AuthoringView"); //TODO: replace this with code
+            AuthoringView newView = new AuthoringView();
         });
 
         newActor.setOnAction(e -> {
-            myNewActor = new PrototypeWindow(myManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager);
         });
 
         newMessage.setOnAction(e -> {
-            myNewMessage = new MessageWindow(myManager, 300); //TODO: complete this MessageWindow
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager);
         });
 
         newSubmenu.getItems().add(newGame);
@@ -95,8 +95,8 @@ public class TopMenu extends HBox {
         // Save Submenu
         MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
-        saveGame.setOnAction(e -> { SaveWindow mySaver = new SaveWindow(myManager, 300); // TODO: handle magic numbers with WindowFactory
-            //Saver mySaver = new Saver(actorManager, mapManager, myManager); //TODO: save game on authoring frontend
+        saveGame.setOnAction(e -> {
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager);
         });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
