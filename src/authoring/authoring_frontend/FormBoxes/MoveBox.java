@@ -99,18 +99,17 @@ public class MoveBox extends FormBox {
         JSONObject myObject = new JSONObject();
         JSONArray moveAnimations = new JSONArray();
 
-        for(AnimationBox box:myAnimations) {
+        for (AnimationBox box : myAnimations) {
             moveAnimations.add(box.getContent());
         }
 
         myObject.put("name", myKey);
-        myObject.put("targetStat", targetStat.getContent().get("value"));
-        myObject.put("targetActorNumber", actorNum.getContent().get("value"));
+        myObject.put("targetStat", targetStat.getField());
+        myObject.put("targetActorNumber", actorNum.getField());
         myObject.put("targetActorType", actorType.getChoice());
-        myObject.put("targetValue", targetVal.getContent().get("value"));
+        myObject.put("targetValue", targetVal.getField());
         myObject.put("targetType", targetType.getChoice());
         myObject.put("animations", moveAnimations);
-
         return myObject;
     }
 
@@ -119,7 +118,21 @@ public class MoveBox extends FormBox {
      * @return true if user has input all necessary data
      */
     @Override
-    public boolean hasValidEntry() { // TODO: Finish
+    public boolean hasValidEntry() {
+        return targetStat.hasValidEntry() &&
+                actorNum.hasValidEntry() &&
+                actorType.hasValidEntry() &&
+                targetVal.hasValidEntry() &&
+                targetType.hasValidEntry() &&
+                validAnimations();
+    }
+
+    private boolean validAnimations() {
+        for (AnimationBox box : myAnimations) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
         return true;
     }
 }

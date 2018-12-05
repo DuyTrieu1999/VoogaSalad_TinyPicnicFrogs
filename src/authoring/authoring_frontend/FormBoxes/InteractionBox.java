@@ -18,6 +18,11 @@ import org.json.simple.JSONObject;
 import java.io.File;
 import java.util.*;
 
+/**
+ * InteractionBox
+ *
+ * @author brookekeene
+ */
 public class InteractionBox extends FormBox {
     private SelectBox myType;
     private List<AnimationBox> myAnimations;
@@ -27,6 +32,9 @@ public class InteractionBox extends FormBox {
     private List<String> messageChoices;
     private GameManager myManager;
 
+    /**
+     * Constructor
+     */
     public InteractionBox(String label, GameManager manager) {
         super(label);
         myManager = manager;
@@ -34,6 +42,9 @@ public class InteractionBox extends FormBox {
         messageChoices = myManager.getMessageIds();
     }
 
+    /**
+     *
+     */
     @Override
     public void setContent() {
         myMessages = new ArrayList<>();
@@ -107,6 +118,10 @@ public class InteractionBox extends FormBox {
         this.getChildren().add(myContent);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public JSONObject getContent() {
         JSONObject myObject = new JSONObject();
@@ -120,8 +135,6 @@ public class InteractionBox extends FormBox {
         }
 
         // Messages
-        // TODO: createMessage(String key, String messageBody) will save message to messageMap in GameManager
-
         for(MessageBox box:myMessages) {
             myMessageJSON.add(box.getContent());
         }
@@ -129,6 +142,7 @@ public class InteractionBox extends FormBox {
         // Moves
         for(MoveBox box:myMoves) {
             myMoveJSON.add(box.getContent());
+
         }
 
         myObject.put("name", myKey);
@@ -140,11 +154,40 @@ public class InteractionBox extends FormBox {
     }
 
     /**
-     * error checking
-     * @return true if
+     * error checking for all fields of an interaction
+     * @return true if user has input all necessary data
      */
     @Override
     public boolean hasValidEntry() { // TODO: finish
+        if(!myType.hasValidEntry()) {
+            return false;
+        } else if (!validEntries()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validEntries() {
+        // Animations
+        for(AnimationBox box: myAnimations) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+
+        // Messages
+        for(MessageBox box:myMessages) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+
+        // Moves
+        for(MoveBox box:myMoves) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
         return true;
     }
 }
