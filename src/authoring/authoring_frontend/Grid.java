@@ -3,8 +3,10 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -15,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Grid class to store the total grid in a map.
@@ -23,7 +26,8 @@ import java.util.ArrayList;
  */
 public class Grid {
     private GridPane mapGridPane;
-    private Cell[][] myCells;
+    //private Cell[][] myCells;
+    private ArrayList<ArrayList<Cell>> myCells;
     private int gridWidth;
     private int gridHeight;
     private String programName;
@@ -51,10 +55,13 @@ public class Grid {
         programName = name;
         gameManager = myManager;
         mapGridPane = new GridPane();
-        myCells = new Cell[width][height];
+        //myCells = new Cell[width][height];
+        myCells = new ArrayList<>();
         for(int i=0;i<width;i++){
+            myCells.add(new ArrayList<>());
             for(int j=0;j<height;j++){
-                myCells[i][j] = new Cell(i, j);
+                myCells.get(i).add(new Cell(i, j));
+                //myCells[i][j] = new Cell(i, j);
                 mapGridPane.add(createCell(), i, j);
             }
         }
@@ -76,15 +83,18 @@ public class Grid {
             int y = mapGridPane.getRowIndex(thisCell);
             if(activeActor != null){
                 thisCell.getChildren().add(activeActor.getActorImage());
-                myCells[x][y].addActor(activeActor);
+                //myCells[x][y].addActor(activeActor);
+                myCells.get(x).get(y).addActor(activeActor);
                 gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
             }
             else {
                 if(thisCell.getChildren().size() > 0){
                     thisCell.getChildren().remove(thisCell.getChildren().size()-1);
-                    ArrayList<Actor> actorsOfCell = myCells[x][y].getActors();
+                    ArrayList<Actor> actorsOfCell = myCells.get(x).get(y).getActors();
+                    //ArrayList<Actor> actorsOfCell = myCells[x][y].getActors();
                     gameManager.deleteActor(actorsOfCell.get(actorsOfCell.size()-1).getActorPrototypeID()+x+"-"+y+"-"+(thisCell.getChildren().size()-1));
-                    myCells[x][y].removeActor();
+                    myCells.get(x).remove(y);
+                    //myCells[x][y].removeActor();
                 }
             }
         });
@@ -103,7 +113,7 @@ public class Grid {
      * Gets matrix of cells in this grid.
      * @return Matrix of cells contained in this grid.
      */
-    public Cell[][] getCells(){
+    public ArrayList<ArrayList<Cell>> getCells(){
         return myCells;
     }
 
@@ -130,6 +140,47 @@ public class Grid {
 
 
 
+    }
+
+    public void changeDimensions(int newWidth, int newHeight){
+        if(newWidth < gridWidth){
+            for(int i=0;i<myCells.size();i++){
+                myCells.get(i).subList(newWidth, myCells.get(i).size()-1).clear();
+            }
+        }
+        else if(newWidth > gridWidth){
+            for(int i=0;i<myCells.size();i++){
+                for(int j=0;j<newWidth-gridWidth;j++){
+                    myCells.get(i).add(new Cell(i, myCells.get(i).size()-1));
+                    mapGridPane.add(createCell(), i, myCells.get(i).size()-1);
+                }
+            }
+        }
+        if(newHeight < gridHeight){
+            myCells.subList(newHeight, myCells.size()-1).clear();
+        }
+        else if(newHeight > gridHeight){
+            for(int i=0;i<newHeight-gridHeight;i++){
+                myCells.add(new ArrayList<>());
+                for(int j=0;j<newWidth;j++){
+                    myCells.get(myCells.size()-1).add(new Cell(myCells.size()-1, j));
+                    mapGridPane.add(createCell(), myCells.size()-1, j);
+                }
+            }
+        }
+        gridWidth = newWidth;
+        gridHeight = newHeight;
+        ObservableList<Node> children = mapGridPane.getChildren();
+        //System.out.println(children.size());
+        ArrayList<Node> toRemove = new ArrayList<>();
+        for(Iterator<Node> iter = children.iterator();iter.hasNext();){
+            Node n = iter.next();
+            if(mapGridPane.getRowIndex(n) > newWidth-1 || mapGridPane.getColumnIndex(n) > newHeight-1){
+                toRemove.add(n);
+                iter.remove();
+            }
+        }
+        mapGridPane.getChildren().removeAll(toRemove);
     }
 
 }

@@ -16,7 +16,7 @@ public class Map {
     private int width;
     private int height;
     private String programName;
-    private HashMap<Pair<Integer, Integer>, String> connectedPoints;
+    //private HashMap<Pair<Integer, Integer>, String> connectedPoints;
 
     /**
      * Default constructor that starts ordering at ID 1.
@@ -43,7 +43,7 @@ public class Map {
         height = mapHeight;
         programName = pName;
         myGrid = new Grid(width, height, programName, myManager);
-        connectedPoints = new HashMap<>();
+        //connectedPoints = new HashMap<>();
     }
 
     /**
@@ -76,5 +76,21 @@ public class Map {
      */
     public Grid getGrid(){
         return myGrid;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+    public void changeWidth(int newWidth){
+        width = newWidth;
+    }
+
+    public void changeHeight(int newHeight){
+        height = newHeight;
     }
 }
