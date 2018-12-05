@@ -43,7 +43,7 @@ public class MapMenu extends HBox {
     public ListView<String> setupList(int width, int height){
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String newMap = mapManager.createMap(width, height);
-        gameManager.setUpMap(30, 20, 1, 1);
+        gameManager.setUpMap(16*width, 16*height, width, height);
         mapView.getItems().add(newMap);
         mapManager.setActiveMap(newMap);
         mapView.setPrefHeight(200);
