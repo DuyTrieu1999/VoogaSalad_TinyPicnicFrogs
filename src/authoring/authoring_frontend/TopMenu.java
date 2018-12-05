@@ -1,15 +1,15 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.PopupWindows.MessageWindow;
 import authoring.authoring_frontend.PopupWindows.PopupWindow;
-import authoring.authoring_frontend.PopupWindows.PrototypeWindow;
-import authoring.authoring_frontend.PopupWindows.SaveWindow;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
+import javafx.stage.Stage;
+import javafx.util.Pair;
 
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
