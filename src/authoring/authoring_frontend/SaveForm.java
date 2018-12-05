@@ -1,5 +1,6 @@
 package authoring.authoring_frontend;
 
+import authoring.authoring_backend.GameData;
 import authoring.authoring_backend.GameManager;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -8,9 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.util.ResourceBundle;
@@ -87,10 +86,11 @@ public class SaveForm extends VBox {
      * creates a GameData object and calls the GameManager.saveGame method
      */
     private void saveFunction () { //TODO: error check
-        System.out.println(gameName.getText());
-        System.out.println(gameDescript.getText());
-        System.out.println(gamePath);
-            // create GameData object - needs title, description, path, height and width
-            // call GameManager.saveGame - needs GameData object}
+        String title = gameName.getText();
+        String description = gameDescript.getText();
+        // TODO: do we need height and width of map?
+
+        GameData data = new GameData(title, description, gamePath);
+        myManager.saveGame(data);
     }
 }
