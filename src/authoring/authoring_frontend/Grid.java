@@ -60,7 +60,7 @@ public class Grid {
         for(int i=0;i<height;i++){
             myCells.add(new ArrayList<>());
             for(int j=0;j<width;j++){
-                System.out.println("Initializing a cell at (" + j + ", " + i + ")");
+                //System.out.println("Initializing a cell at (" + j + ", " + i + ")");
                 myCells.get(i).add(new Cell(j, i));
                 //myCells[i][j] = new Cell(i, j);
                 mapGridPane.add(createCell(), j, i);
