@@ -65,9 +65,9 @@ public class AuthoringView {
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
         myMainView = new BorderPane();
         mapManager = new MapManager(projectName, myManager);
-        actorManager = new ActorManager(myManager);
+        actorManager = new ActorManager(myManager, projectName);
 
-        ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
+        //ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
         LayerMenu myLayers = new LayerMenu();
         MapMenu myMaps = new MapMenu(projectName, mapManager, myManager);
         VBox leftSide = new VBox();
@@ -78,7 +78,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(30, 20));
+        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(30, 20));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
@@ -93,9 +93,9 @@ public class AuthoringView {
         myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
         myMainView = new BorderPane();
         mapManager = new MapManager(projectName, myManager);
-        actorManager = new ActorManager(myManager);
+        actorManager = new ActorManager(myManager, projectName);
 
-        ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
+        //ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
         LayerMenu myLayers = new LayerMenu();
         MapMenu myMaps = new MapMenu(projectName, mapManager, myManager);
         VBox leftSide = new VBox();
@@ -106,7 +106,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(width, height));
+        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(width, height));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setLeft(leftSide);

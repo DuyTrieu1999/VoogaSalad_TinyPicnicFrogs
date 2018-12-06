@@ -113,11 +113,11 @@ public class TopMenu extends HBox {
 
 
         newActor.setOnAction(e -> {
-            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager);
         });
 
         newMessage.setOnAction(e -> {
-            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager);
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager);
         });
 
         newSubmenu.getItems().add(newGame);
@@ -135,7 +135,7 @@ public class TopMenu extends HBox {
         MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
         saveGame.setOnAction(e -> {
-            PopupWindow mySaver = PopupFactory.getPopup("save", myManager);
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager);
         });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);

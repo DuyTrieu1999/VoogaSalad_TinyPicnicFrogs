@@ -38,16 +38,18 @@ public class PrototypeForm extends VBox {
     private BoundsBox myBounds;
 
     private GameManager myManager;
+    private ActorManager actorManager;
 
     /**
      * Constructor
      */
-    public PrototypeForm(GameManager manager) {
+    public PrototypeForm(GameManager manager, ActorManager a) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
         myManager = manager;
+        actorManager = a;
 
         //this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
@@ -185,6 +187,7 @@ public class PrototypeForm extends VBox {
 
         System.out.println(myPrototype); // TESTING
         myManager.createActorPrototype(myPrototype);
-
+        actorManager.addActor(new Actor(myPrototype), (boolean)myPrototype.get("isPlayer"));
+        actorManager.setupTabs();
     }
 }
