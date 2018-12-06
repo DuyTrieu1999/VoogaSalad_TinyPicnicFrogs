@@ -25,10 +25,10 @@ import java.util.ResourceBundle;
  * @author brookekeene
  */
 public class PrototypeForm extends VBox {
-    public static final String DEFAULT_RESOURCE = "English";
-    public static int SIZE = 500;
-    public static int PADDING = 10;
-    public static int FIELD_SIZE = 150;
+    private static final String DEFAULT_RESOURCE = "English";
+    private static int SIZE = 500;
+    private static int PADDING = 10;
+    private static int FIELD_SIZE = 150;
     private ResourceBundle myResources;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
