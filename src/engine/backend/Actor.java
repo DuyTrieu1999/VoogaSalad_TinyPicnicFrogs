@@ -183,9 +183,12 @@ public class Actor {
 	/**
 	 * Sets the appropriate image for the actor
 	 */
-	public void setImages() {
+	public void setImages(int width, int height) {
 		for (AnimationObject a : myAnimationMap.values()) {
-			a.setImage();
+			a.setImage(width, height);
+		}
+		for(Interaction i:myInteractionMap.values()){
+			i.setImages(width, height);
 		}
 	}
 }

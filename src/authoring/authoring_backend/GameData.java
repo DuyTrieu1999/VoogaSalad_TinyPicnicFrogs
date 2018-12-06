@@ -5,7 +5,7 @@ public class GameData {
     private String description;
     private String path;
     private int mapWidth,mapHeight, squareWidth, squareHeight;
-    public GameData(String titleP,String descriptionP, String filePath,int mapH,int mapW,int squareWidthP, int squateHeightP) {//, int mapH,int mapW){
+    public GameData(String titleP,String descriptionP, String filePath,int mapW,int mapH,int squareWidthP, int squateHeightP) {//, int mapH,int mapW){
         title=titleP;
         description=descriptionP;
         path=filePath;

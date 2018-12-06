@@ -6,9 +6,11 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
 import engine.backend.Message;
+import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -110,9 +112,21 @@ public class GameManager {
         messageManager.serializeAllMessages(data.getPath());
         actorPrototypeManager.serializeAllPrototypes(data.getPath());
         XStream serializer =  new XStream(new DomDriver());
-        String datastr=serializer.toXML(data);
+        String dataStr;
         try{
-            Files.write(Paths.get(data.getPath()+"gameData.xml"),datastr.getBytes());}catch (IOException e){e.printStackTrace();}
+            File gameMap= new File("./resources/games.xml");
+            if(gameMap.exists()){
+                System.out.println("exists");
+                List<GameData>gameList=(List<GameData>)serializer.fromXML(gameMap);
+                gameList.add(data);
+                dataStr=serializer.toXML(gameList);
+            }
+            else{
+                List<GameData>gameList= new ArrayList<>();
+                gameList.add(data);
+                 dataStr=serializer.toXML(gameList);
+            }
+            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
 
     /**
