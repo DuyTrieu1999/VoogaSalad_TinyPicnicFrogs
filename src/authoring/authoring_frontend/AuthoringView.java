@@ -3,6 +3,8 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -37,6 +39,13 @@ public class AuthoringView {
         projectName = "Project " + numberUnsavedProjects;
         numberUnsavedProjects++;
         this.initializeUI();
+}
+
+    public AuthoringView(int width, int height){
+        myManager = new GameManager();
+        projectName = "Project " + numberUnsavedProjects;
+        numberUnsavedProjects++;
+        this.initializeUI(width, height);
     }
 
     /**
@@ -69,13 +78,14 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(30, 20));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
         myMainView.setLeft(leftSide);
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);
+
     }
 
     private void initializeUI(int width, int height) {
@@ -96,7 +106,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane());
+        leftSide.getChildren().addAll(selectActors.getActorMenu(), myMaps.getMapPane(width, height));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setLeft(leftSide);

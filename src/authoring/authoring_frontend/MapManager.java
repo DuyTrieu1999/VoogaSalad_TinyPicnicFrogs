@@ -4,6 +4,7 @@ import authoring.authoring_backend.GameManager;
 import javafx.scene.layout.BorderPane;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class MapManager {
     private HashMap<String, Map> gameMaps = new HashMap<>();
     private int numMaps = 0;
     private String programName;
+    private String activeMapName;
     private BorderPane activeMap = new BorderPane();
     private ArrayList<Portal> portals = new ArrayList<>();
     private GameManager gameManager;
@@ -103,6 +105,7 @@ public class MapManager {
      */
     public void setActiveMap(String name){
         if(gameMaps.containsKey(name)){
+            activeMapName = name;
             activeMap.setCenter(gameMaps.get(name).getGridPane());
         }
     }
@@ -137,5 +140,57 @@ public class MapManager {
      */
     public void removePortal(Portal toRemove){
         portals.remove(toRemove);
+    }
+
+    public String getActiveMapName(){
+        return activeMapName;
+    }
+
+    public void findNewActiveMap(List<String> deletedMaps){
+        for(String mapName:gameMaps.keySet()){
+            if(!deletedMaps.contains(mapName)){
+                setActiveMap(mapName);
+            }
+        }
+    }
+
+    public void changeMapDimensions(int newWidth, int newHeight){
+        if(newWidth < getMap(activeMapName).getWidth() || newHeight < getMap(activeMapName).getHeight()){
+            //clipping
+            for(Iterator<Portal> iter = portals.iterator(); iter.hasNext();){
+                Portal p = iter.next();
+                if(p.withinWidth(newWidth) || p.withinHeight(newHeight)){
+                    //delete portal
+                    iter.remove();
+                }
+            }
+
+            //delete actors on map
+            Grid thisGrid = getMap(activeMapName).getGrid();
+            for(int i=0;i<thisGrid.getCells().size();i++){
+                for(int j=0;j<thisGrid.getCells().get(i).size();j++){
+                    if((j+1 > newWidth || i+1 > newHeight) && thisGrid.getCells().get(i).get(j).getActors().size() > 0){
+                        //delete all these actors
+                        for(Actor thisActor:thisGrid.getCells().get(i).get(j).getActors()){
+                            gameManager.deleteActor(thisActor.getActorPrototypeID()+i+"-"+j+"-"+(thisGrid.getCells().get(i).get(j).getActors().size()-1));
+                        }
+                    }
+                }
+            }
+        }
+        getMap(activeMapName).changeWidth(newWidth);
+        getMap(activeMapName).changeHeight(newHeight);
+
+        //System.out.println("Calling changedimensions");
+        getMap(activeMapName).getGrid().changeDimensions(newWidth, newHeight);
+
+        //change map size in map object
+
+        //change view
+        setActiveMap(activeMapName);
+    }
+
+    public void changeHeight(int newHeight){
+
     }
 }

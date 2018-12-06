@@ -79,8 +79,6 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
      * to fit the screen
      */
     private void addActors () {
-        ImageView backgroundView=new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("background.png")));
-        displayPane.getChildren().add(backgroundView);
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
             ImageView animation = animationObject.getAnimationView();
@@ -130,5 +128,12 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
             return Double.compare(a.getTranslateZ(), b.getTranslateZ());
         });
         displayPane.getChildren().setAll(sortedNodes);
+    }
+
+    public void openMenu () {
+
+    }
+    public void closeMenu () {
+
     }
 }

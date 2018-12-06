@@ -8,6 +8,9 @@ module voogasalad_tinypicnicfrogs {
     requires json.simple;
     requires xstream;
     requires java.desktop;
+    requires jdk.incubator.httpclient;
+
+
     opens authoring.authoring_backend to xstream;
     opens authoring.authoring_frontend to xstream;
     opens engine.backend to xstream;
@@ -16,6 +19,7 @@ module voogasalad_tinypicnicfrogs {
     exports engine.backend;
     exports engine.controller;
     exports engine.frontend.game_engine_UI;
+    exports player;
     opens engine.frontend.game_engine_UI.AnimationProcesser to xstream;
     opens engine.frontend.game_engine_UI.BattleWorld to xstream;
     opens engine.frontend.game_engine_UI.MenuView to xstream;

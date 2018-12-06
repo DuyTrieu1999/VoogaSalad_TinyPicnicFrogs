@@ -9,6 +9,8 @@ package authoring.authoring_backend;
 public class MapManager {
     int squareHeight;
     int squareWidth;
+    int mapWidth;
+    int mapHeight;
 
     protected MapManager() { //however the front end wants their map defined from user
     }
@@ -28,6 +30,8 @@ public class MapManager {
     public Integer divideMap(int width, int height, int rows, int cols) {
 
         int totalSquares = rows * cols;
+        mapHeight=height;
+        mapWidth=width;
         squareHeight = height / cols;
         squareWidth = width / rows;
         return totalSquares;
@@ -42,16 +46,13 @@ public class MapManager {
      */
 
     //everything initiated wrt the the top left corner
-    //ask Michael: assumes that the x, y, z coords are all wrt to the square itself
-    //The actor has not been created yet
+    //this is for the game engine, which does everything by pixels
 
-    public int[] calculateGlobal(int squareX, int squareY,int squareRow, int SquareCol) {
-//        int row = squareNum / square;
-//        int col = squareNum % square; this was assuming square labeling 1, 2, 3...
+    public int[] calculateGlobal(int X, int Y,int row, int col) {
 
         int[] global = new int[2];
-        int globalX = squareX + squareX * squareWidth;
-        int globalY = squareY + squareY * squareHeight;
+        int globalX = X + X * squareWidth;
+        int globalY = Y + Y * squareHeight;
 
         global[0] = globalX;
         global[1] = globalY;
@@ -59,4 +60,6 @@ public class MapManager {
         return global;
     }
 
+    protected int getMapWidth(){return mapWidth;}
+    protected int getMapHeight(){return mapHeight;}
 }

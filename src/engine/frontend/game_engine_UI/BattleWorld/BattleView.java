@@ -1,10 +1,14 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
 import engine.backend.AnimationObject;
+import engine.backend.Commands.Command;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+
+import java.util.List;
 
 
 /**
@@ -18,11 +22,12 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private OpponentSide opponentSide;
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
+    private MenuView menuView;
 
     public BattleView(Controller controller) {
         super(controller);
         setUpDisplay();
-        init();
+        addButtonPane();
     }
 
     private void setUpDisplay() {
@@ -37,14 +42,19 @@ public class BattleView extends WorldView implements BattleViewAPI {
         displayPane.setRight(opponentSide);
     }
     private void addButtonPane () {
+        HBox buttonBox = new HBox();
+        Button combatButton = new Button("Battle!");
+        buttonBox.getChildren().add(combatButton);
+        displayPane.setCenter(buttonBox);
+        combatButton.setOnAction((event -> {
+            List<Command> commandList = myController.getAllCommand();
+            menuView = new MenuView(commandList, displayPane);
+            displayPane.setBottom(menuView);
+            menuView.setSellectedCommand();
+        }));
+    }
+    public MenuView getMenuView () {
+        return menuView;
+    }
 
-    }
-    @Override
-    public void updateView () {
-        System.out.println("print something please...");
-    }
-    @Override
-    public Scene getMyScene () {
-        return myScene;
-    }
 }

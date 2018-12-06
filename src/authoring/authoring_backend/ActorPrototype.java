@@ -170,7 +170,9 @@ public class ActorPrototype {
     }
 
     public ObservablePrototype getObservablePrototype(){
-        return new ObservablePrototype(getName(),new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle")))));
+        System.out.println(animationMap.get("idle"));
+        Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
+        return new ObservablePrototype(getName(),new ImageView(img));
     }
 
 }
