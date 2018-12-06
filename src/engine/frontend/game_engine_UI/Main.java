@@ -15,7 +15,7 @@ public class Main extends Application {
     /**
      * path to game Files to be loaded
      */
-    private static String gameFilePath="./resources/testSave/";//"./resources/demo/";
+    private static String gameFilePath="./resources/demo/";
     public static void main(String[] args) {
         initialize();
         launch(args);

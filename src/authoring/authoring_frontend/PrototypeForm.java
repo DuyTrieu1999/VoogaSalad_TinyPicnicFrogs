@@ -38,16 +38,18 @@ public class PrototypeForm extends VBox {
     private BoundsBox myBounds;
 
     private GameManager myManager;
+    private ActorManager actorManager;
 
     /**
      * Constructor
      */
-    public PrototypeForm(GameManager manager) {
+    public PrototypeForm(GameManager manager, ActorManager a) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
         myManager = manager;
+        actorManager = a;
 
         //this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
@@ -90,8 +92,8 @@ public class PrototypeForm extends VBox {
 
         // Animations
         AnimationBox idle = new AnimationBox("Idle");
-        AnimationBox up = new AnimationBox("Up");
-        AnimationBox down = new AnimationBox("Down");
+        AnimationBox up = new AnimationBox("Top");
+        AnimationBox down = new AnimationBox("Bottom");
         AnimationBox left = new AnimationBox("Left");
         AnimationBox right = new AnimationBox("Right");
         myAnimationForms.add(idle);
@@ -165,6 +167,7 @@ public class PrototypeForm extends VBox {
         myPrototype.put("name", prototypeName.getText());
 
         for(int i = 0; i < myAnimationForms.size(); i++) {
+            System.out.println(myAnimationForms.get(i).getContent());
             myAnimations.add(myAnimationForms.get(i).getContent());
         }
         myPrototype.put("animations", myAnimations);
@@ -185,6 +188,6 @@ public class PrototypeForm extends VBox {
 
         System.out.println(myPrototype); // TESTING
         myManager.createActorPrototype(myPrototype);
-
-    }
+        actorManager.addActor(new Actor(myPrototype), (boolean)myPrototype.get("isPlayer"));
+        actorManager.setupTabs();   }
 }

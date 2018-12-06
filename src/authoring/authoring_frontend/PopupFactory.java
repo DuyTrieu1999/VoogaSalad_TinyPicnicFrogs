@@ -8,9 +8,9 @@ public class PopupFactory {
     public static int MESSAGE_SIZE = 300;
     public static int SAVE_SIZE = 200;
 
-    public static PopupWindow getPopup(String type, GameManager manager) {
+    public static PopupWindow getPopup(String type, GameManager manager, ActorManager actorManager) {
         if("prototype".equalsIgnoreCase(type)) {
-            return new PrototypeWindow(manager, PROTOTYPE_SIZE);
+            return new PrototypeWindow(manager, PROTOTYPE_SIZE, actorManager);
         }
         else if("message".equalsIgnoreCase(type)) {
             return new MessageWindow(manager, MESSAGE_SIZE);
