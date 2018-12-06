@@ -54,9 +54,9 @@ public  abstract class Interaction {
             System.out.println(s+":"+messageMap.get(s).getMessageString());
         }
     }
-    public void setImages(int width, int height){
+    public void setImages(){
         for(AnimationObject a:animationMap.values()){
-        a.setImage(width, height);
+        a.setImage();
         }
     }
 }

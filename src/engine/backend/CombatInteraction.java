@@ -57,14 +57,14 @@ public class CombatInteraction extends Interaction{
         for(Command c:commandList){c.serialize();}
     }
     @Override
-    public void setImages(int width, int height){
-        super.setImages(width,height);
+    public void setImages(){
+        super.setImages();
         for(Command c:commandList){
             if(c.getClass().isInstance(CombatMove.class)){
                 CombatMove combatMove=(CombatMove)c;
-                combatMove.setImages(width,height);
+                combatMove.setImages();
             }}
         myCombatIdleAnimation=super.animationMap.get("idle");
-        System.out.println(myCombatIdleAnimation.getName());
+//       System.out.println(myCombatIdleAnimation.getName());
     }
 }

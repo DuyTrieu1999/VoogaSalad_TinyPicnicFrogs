@@ -81,6 +81,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private void addActors () {
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
+            System.out.println(animationObject.getName());
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
             animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
@@ -91,8 +92,6 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
             }
             else{
                 animation.setLayoutY(100);
-                animation.setFitHeight(50);
-                animation.setFitWidth(50);
             }
 
             displayPane.getChildren().add(animation);
