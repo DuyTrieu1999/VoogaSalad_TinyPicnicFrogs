@@ -20,11 +20,13 @@ public class SceneManager {
     private UserProfileManager userManager;
     private UserPaneManager userPaneManager;
     private BorderPane mainPane;
+    private GamePaneManager gamePaneManager;
     public SceneManager(UserProfileManager manager, Stage stage){
         userManager=manager;
         myStage=stage;
         userPaneManager= new UserPaneManager(userManager);
         myStage.setScene(getLoginScene());
+        gamePaneManager= new GamePaneManager();
     }
 
     private Scene getLoginScene(){
@@ -90,6 +92,7 @@ public class SceneManager {
         HBox hBox= new HBox();
         hBox.getChildren().addAll(setUpMenuBar());
         mainPane.setTop(hBox);
+        mainPane.setCenter(gamePaneManager.getGamesPane());
         return mainScene;
     }
     private MenuBar setUpMenuBar(){
