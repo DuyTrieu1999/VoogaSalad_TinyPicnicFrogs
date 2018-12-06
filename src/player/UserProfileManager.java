@@ -84,19 +84,18 @@ public class UserProfileManager {
             list.add((String)arr.get(i));
         }
     }
-    public void updateInfo(String name, String bio){
+    public void updateInfo(String name, String bio) throws ServerException {
         try {
             JSONObject data=myManager.updateUser(userEmail,userPassword,bio,name);
             userBio=(String)data.get("bio");
             userName=(String)data.get("name");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new ServerException(e);
         }
+
     }
-    public List<JSONObject>lookUpUsers(String name){
+    public List<JSONObject>lookUpUsers(String name) throws ServerException {
         List<JSONObject>users= new ArrayList<>();
         try {
             JSONArray arr = myManager.lookUpUsers(name);
@@ -104,21 +103,17 @@ public class UserProfileManager {
             for(int i=0;i<arr.size();i+=1){
                 users.add((JSONObject)arr.get(i));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new ServerException(e);
         }
         return users;
     }
-    public void followUser(String targetEmail){
+    public void followUser(String targetEmail) throws ServerException {
         try {
             JSONArray arr= myManager.followUser(targetEmail,userEmail);
             parseArray(arr,following);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new ServerException(e);
         }
     }
    }
