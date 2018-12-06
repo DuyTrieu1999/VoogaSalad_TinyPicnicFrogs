@@ -20,10 +20,10 @@ import java.util.ResourceBundle;
  * @author brookekeene
  */
 public class SaveForm extends VBox {
-    public static final String DEFAULT_RESOURCE = "English";
-    public static int SIZE = 300;
-    public static int FIELD_SIZE = 250;
-    public static int PADDING = 10;
+    private static final String DEFAULT_RESOURCE = "English";
+    private static final int SIZE = 300;
+    private static final int FIELD_SIZE = 250;
+    private static final int PADDING = 10;
     private ResourceBundle myResources;
     private GameManager myManager;
     private TextField gameName;
