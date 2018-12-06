@@ -73,4 +73,9 @@ public class CombatMove extends Command {
     public void serialize(){
         System.out.println(super.myName+": "+"stat:"+stat+", value: "+targetValue+","+", number:"+targetActorNum+ ", type: "+myTargetType.toString()+", actor: "+myTargetActor.toString());
     }
+    public void setImages(int width, int height){
+        for(AnimationObject a:myAnimationMap.values()){
+            a.setImage(width, height);
+        }
+    }
 }

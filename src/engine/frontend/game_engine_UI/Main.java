@@ -15,7 +15,7 @@ public class Main extends Application {
     /**
      * path to game Files to be loaded
      */
-    private static String gameFilePath="./resources/demo/";
+    private static String gameFilePath="./resources/testSave/";//"./resources/demo/";
     public static void main(String[] args) {
         initialize();
         launch(args);
@@ -51,7 +51,7 @@ public class Main extends Application {
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
             a.serialize();
-            a.setImages();
+            a.setImages(50,50);
         }
         return actorList;
     }

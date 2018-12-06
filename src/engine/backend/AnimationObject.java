@@ -25,7 +25,9 @@ public class AnimationObject {
     }
     public String getName(){return animationName+": "+animationPath;}
     public Coordinate getCoordinate(){return coordinate;}
-    protected void setImage(){
+    public void setImage(int width, int height){
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationPath)));
+        animationView.setFitWidth(width);
+        animationView.setFitHeight(height);
     }
 }

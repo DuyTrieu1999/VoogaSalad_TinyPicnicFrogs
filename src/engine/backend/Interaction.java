@@ -1,4 +1,5 @@
 package engine.backend;
+import engine.backend.Commands.Command;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.HashMap;
@@ -53,7 +54,9 @@ public  abstract class Interaction {
             System.out.println(s+":"+messageMap.get(s).getMessageString());
         }
     }
-    public void setImages(){for(AnimationObject a:animationMap.values()){
-        //System.out.println("fired "+a.getName());
-        a.setImage();}}
+    public void setImages(int width, int height){
+        for(AnimationObject a:animationMap.values()){
+        a.setImage(width, height);
+        }
+    }
 }
