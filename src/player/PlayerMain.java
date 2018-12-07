@@ -18,6 +18,7 @@ public class PlayerMain extends Application {
     private SceneManager myManager;
     private Main engineMain;
     private UserProfileManager userProfileManager;
+    public static final int SCREEN_SIZE=500;
     private authoring.authoring_frontend.Main authoringMain;
 
  @Override

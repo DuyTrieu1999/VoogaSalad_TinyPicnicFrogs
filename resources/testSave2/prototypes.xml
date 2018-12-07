@@ -924,62 +924,6 @@
     </authoring.authoring__backend.ActorPrototype>
   </entry>
   <entry>
-    <string>player</string>
-    <authoring.authoring__backend.ActorPrototype>
-      <animationMap>
-        <entry>
-          <string>idle</string>
-          <string>enemy_idle.png</string>
-        </entry>
-        <entry>
-          <string>left</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>up</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>right</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>down</string>
-          <null/>
-        </entry>
-      </animationMap>
-      <interractionMap>
-        <entry>
-          <string>test</string>
-          <engine.backend.CombatInteraction>
-            <animationMap>
-              <entry>
-                <string>idle</string>
-                <engine.backend.AnimationObject>
-                  <animationName>idle</animationName>
-                  <animationPath>player_left.png</animationPath>
-                </engine.backend.AnimationObject>
-              </entry>
-            </animationMap>
-            <messageMap/>
-            <myName>test</myName>
-            <commandList/>
-            <myHealth>10</myHealth>
-          </engine.backend.CombatInteraction>
-        </entry>
-      </interractionMap>
-      <myStats/>
-      <name>player</name>
-      <myBound>
-        <width>0</width>
-        <height>0</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBound>
-      <isPlayer>true</isPlayer>
-    </authoring.authoring__backend.ActorPrototype>
-  </entry>
-  <entry>
     <string>boulderbottomright</string>
     <authoring.authoring__backend.ActorPrototype>
       <animationMap>
