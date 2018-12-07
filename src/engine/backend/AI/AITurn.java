@@ -1,4 +1,8 @@
-package engine.backend;
+package engine.backend.AI;
+
+import engine.backend.CombatInteraction;
+import engine.backend.ServiceLocator;
+import engine.backend.Turn;
 
 /**
  * Runs the turn for an AI controlled opponent
@@ -7,7 +11,7 @@ package engine.backend;
  */
 public class AITurn extends Turn {
 
-    AITurn(CombatInteraction controlledEnemy){
+    public AITurn(CombatInteraction controlledEnemy){
         myInt = controlledEnemy;
     }
 
