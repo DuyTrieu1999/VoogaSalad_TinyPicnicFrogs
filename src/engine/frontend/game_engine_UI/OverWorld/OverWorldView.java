@@ -92,8 +92,9 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
             }
             else{
                 animation.setLayoutY(100);
+                animation.setFitWidth(100);
+                animation.setFitHeight(100);
             }
-
             displayPane.getChildren().add(animation);
         }
 
