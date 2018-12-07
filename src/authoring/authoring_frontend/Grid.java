@@ -1,21 +1,14 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -27,6 +20,10 @@ import java.util.Iterator;
 public class Grid {
     private GridPane mapGridPane;
     //private Cell[][] myCells;
+    private static final int DEFAULT_WIDTH  = 30;
+    private static final int DEFAULT_HEIGHT = 20;
+    private int cellWidth = 18;
+    private int cellHeight = 18;
     private ArrayList<ArrayList<Cell>> myCells;
     private int gridWidth;
     private int gridHeight;
@@ -39,7 +36,7 @@ public class Grid {
      * @param myManager GameManager of current game.
      */
     Grid(String name, GameManager myManager){
-        this(30, 20, name, myManager);
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, name, myManager);
     }
 
     /**
@@ -74,14 +71,14 @@ public class Grid {
      */
     private StackPane createCell(){
         StackPane thisCell = new StackPane();
-        thisCell.setPrefSize(18, 18);
+        thisCell.setPrefSize(cellWidth, cellHeight);
         thisCell.setStyle("-fx-border-color: black;");
 
 
         thisCell.setOnMouseClicked(event -> {
             Actor activeActor = ActiveItem.getActiveItem(programName);
-            int x = mapGridPane.getColumnIndex(thisCell);
-            int y = mapGridPane.getRowIndex(thisCell);
+            int x = GridPane.getColumnIndex(thisCell);
+            int y = GridPane.getRowIndex(thisCell);
             if(activeActor != null){
                 thisCell.getChildren().add(activeActor.getActorImage());
                 //myCells[x][y].addActor(activeActor);
@@ -106,7 +103,7 @@ public class Grid {
      * Gets the GridPane of this grid.
      * @return GridPane
      */
-    public GridPane getGridPane(){
+    GridPane getGridPane(){
         return mapGridPane;
     }
 
@@ -114,7 +111,7 @@ public class Grid {
      * Gets matrix of cells in this grid.
      * @return Matrix of cells contained in this grid.
      */
-    public ArrayList<ArrayList<Cell>> getCells(){
+    ArrayList<ArrayList<Cell>> getCells(){
         return myCells;
     }
 
@@ -143,11 +140,11 @@ public class Grid {
 
     }
 
-    public void changeDimensions(int newWidth, int newHeight){
+    void changeDimensions(int newWidth, int newHeight){
         //System.out.println("Before we start, myCells has a height of " + myCells.size() + " and the first row of myCells has a width of " + myCells.get(0).size());
         if(newWidth < gridWidth){
-            for(int i=0;i<myCells.size();i++){
-                myCells.get(i).subList(newWidth-1, myCells.get(i).size()-1).clear();
+            for (ArrayList<Cell> myCell : myCells) {
+                myCell.subList(newWidth - 1, myCell.size() - 1).clear();
             }
         }
         else if(newWidth > gridWidth){
@@ -184,7 +181,7 @@ public class Grid {
         ArrayList<Node> toRemove = new ArrayList<>();
         for(Iterator<Node> iter = children.iterator();iter.hasNext();){
             Node n = iter.next();
-            if(mapGridPane.getColumnIndex(n) > newWidth-1 || mapGridPane.getRowIndex(n) > newHeight-1){
+            if(GridPane.getColumnIndex(n) > newWidth-1 || mapGridPane.getRowIndex(n) > newHeight-1){
                 toRemove.add(n);
                 iter.remove();
             }
