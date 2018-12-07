@@ -2,6 +2,8 @@ package engine.backend;
 
 
 import engine.backend.Commands.*;
+import engine.backend.gameevent.GameEvent;
+import engine.backend.gameevent.GameKeyEvent;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -112,18 +114,18 @@ public class GameWorld {
      * Called by the front end when any event pertaining to the backend is triggered
      * @param e The event
      */
-    public void handleInput(Event e){
-        if(e instanceof  KeyEvent){
-            handleKeyEvent((KeyEvent) e);
+    public void handleInput(GameEvent e){
+        if(e instanceof GameKeyEvent){
+            handleKeyEvent((GameKeyEvent) e);
         }
     }
 
-    private void handleKeyEvent(KeyEvent e){
+    private void handleKeyEvent(GameKeyEvent e){
         final int DEFAULT_MOVE_AMOUNT = 20;
         var defaultParams = new ArrayList<>();
         defaultParams.add(DEFAULT_MOVE_AMOUNT);
-        if(keyMap.containsKey(e.getCode())){
-            keyMap.get(e.getCode()).execute(defaultParams);
+        if(keyMap.containsKey(((KeyEvent) e.getEvent()).getCode())){
+            keyMap.get(((KeyEvent) e.getEvent()).getCode()) .execute(defaultParams);
         }
     }
 
