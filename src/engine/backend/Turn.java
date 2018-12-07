@@ -2,7 +2,7 @@ package engine.backend;
 
 /**
  * Represents a single turn in combat
- * @author Christopher Lin (cl349)
+ * @Christopher Lin cl349
  */
 
 public abstract class Turn {
