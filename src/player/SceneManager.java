@@ -123,12 +123,17 @@ public class SceneManager {
         menu.getItems().addAll(logOutItem,editAccountItem,socialItem);
     }
     private void setEditAccountDialog(){
+
         TextField nameField=new TextField(userManager.getUserAttributes().get("name"));
         TextField bioField= new TextField(userManager.getUserAttributes().get("bio"));
         Button saveButton = new Button("Save");
         saveButton.setOnAction(event->{
-            userManager.updateInfo(nameField.getText(),bioField.getText());
-            mainPane.setRight(userPaneManager.setUpAccountBox());
+            try {
+                userManager.updateInfo(nameField.getText(), bioField.getText());
+                mainPane.setRight(userPaneManager.setUpAccountBox());
+            }catch(ServerException e){
+                launchErrorDialog(e.getException());
+            }
         });
         VBox vBox= new VBox();
         vBox.getChildren().addAll(new Text("name"),nameField,new Text("bio"),bioField,saveButton);
@@ -146,7 +151,11 @@ public class SceneManager {
         Optional <String>result=dialog.showAndWait();
         result.ifPresent(name->{
                 if(!name.equals("name")){
-                    setUpUserListDialog("Social Portal","Users",userManager.lookUpUsers(name));
+                    try{
+                    setUpUserListDialog("Social Portal","Users",userManager.lookUpUsers(name));}
+                    catch(ServerException e){
+                        launchErrorDialog(e.getException());
+                    }
                 }
         });
     }
@@ -174,8 +183,13 @@ public class SceneManager {
         Button followButton= new Button("Follow");
         if(userManager.getFollowers().contains((String)user.get("name"))){followButton.setText("Following");}
         else{
-            followButton.setOnAction(event->{userManager.followUser((String)user.get("email"));
-            mainPane.setRight(userPaneManager.setUpAccountBox());
+            followButton.setOnAction(event->{
+                try {
+                    userManager.followUser((String) user.get("email"));
+                    mainPane.setRight(userPaneManager.setUpAccountBox());
+                }catch(ServerException e){
+                    launchErrorDialog(e.getException());
+                }
             });
 
         }
@@ -186,5 +200,10 @@ public class SceneManager {
         alert.getDialogPane().setContent(vBox);
         alert.showAndWait();
     }
-
+    private void launchErrorDialog(Exception e){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Error");
+        alert.getDialogPane().setContent(new VBox(new Text(e.getMessage())));
+        alert.showAndWait();
+    }
 }
