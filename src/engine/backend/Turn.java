@@ -17,5 +17,5 @@ public abstract class Turn {
      * combatManager in order for the combat to advance
      */
     public abstract void getInput();
-    public abstract void executeTurn();
+    public abstract void initializeTurn();
 }

@@ -1,5 +1,6 @@
 package engine.backend;
 
+import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
 
 import java.util.ArrayList;
@@ -17,8 +18,10 @@ public class CombatManager {
     List<CombatInteraction> myEnemies;
     AI myAI;
     private List<Turn> turnList;
-    Turn currentTurn;
     boolean turnLock;
+    CombatMove nextMove;
+
+
     /**
      *
      * @param allies List of CombatInteractions representing allies
@@ -36,6 +39,8 @@ public class CombatManager {
             turnList.add(new AITurn(e));
         }
         turnList.sort(initiativeComparator);
+
+        nextMove = null;
     }
 
     public List<Command> getAllyCommandList() {
@@ -45,8 +50,11 @@ public class CombatManager {
     /**
      * Call this method every cycle during combat. This will advance the combat state when it is ready
      */
-    public void runCombatStep(){
-        currentTurn.executeTurn();
+    public void combatTick(){
+        if(!turnLock){
+            nextMove.execute(null);
+            nextTurn();
+        }
     }
 
     /**
@@ -56,12 +64,14 @@ public class CombatManager {
         turnLock = false;
     }
 
+
     /**
      * Runs the next turn of the combat
      */
     public void nextTurn(){
+            turnLock = true;
             //run the current turn and put it on the end of the queue
-            currentTurn = turnList.get(0);
+            turnList.get(0).initializeTurn();
             turnList.add(turnList.remove(0));
             //remove dead
             List<CombatInteraction> deadList = new ArrayList<>();

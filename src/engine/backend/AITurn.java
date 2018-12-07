@@ -17,9 +17,8 @@ public class AITurn extends Turn {
     }
 
     @Override
-    public void executeTurn() {
-        var ai = ServiceLocator.getAI();
-        ai.setOptions(myInt.getCommandList());
-        ai.getOption().execute(null);
+    public void initializeTurn() {
+
     }
+
 }

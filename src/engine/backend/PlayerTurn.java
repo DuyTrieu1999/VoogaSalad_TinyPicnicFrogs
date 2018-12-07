@@ -1,5 +1,6 @@
 package engine.backend;
 
+import engine.frontend.game_engine_UI.MenuView.MenuView;
 import menu.CommandLineMenu;
 import menu.Menu;
 
@@ -13,20 +14,17 @@ public class PlayerTurn extends Turn {
 
     PlayerTurn(CombatInteraction controlledAlly){
         myInt = controlledAlly;
+
     }
 
     @Override
     public void getInput() {
-
+        ServiceLocator.getCombatManager().inputRecieved();
     }
 
     @Override
-    public void executeTurn() {
-        var myController = ServiceLocator.getController();
-        myController.getActiveCommands();
-
-        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
-        myMenu.getChoices().get(0).execute(null);
+    public void initializeTurn() {
+        System.out.println("menu created");
     }
 
 
