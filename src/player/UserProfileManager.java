@@ -5,10 +5,9 @@ import org.json.simple.JSONObject;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static player.SceneManager.DEFAULT_RESOURCE;
 
 public class UserProfileManager {
     private boolean playerLoggedIn;
@@ -21,8 +20,10 @@ public class UserProfileManager {
     private List<String>following;
     private List<String>gamesCreated;
     private List<String>gamesPlayed;
+    private ResourceBundle myResources;
 
     public UserProfileManager(){
+        myResources= ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myManager= new ServerManager();
         playerLoggedIn=false;
         followers= new ArrayList<>();
@@ -61,9 +62,9 @@ public class UserProfileManager {
    }
    public Map<String,String> getUserAttributes(){
         Map<String,String>userData=new HashMap<>();
-        userData.put("email",userEmail);
-        userData.put("name",userName);
-        userData.put("bio",userBio);
+        userData.put(myResources.getString("email"),userEmail);
+        userData.put(myResources.getString("name"),userName);
+        userData.put(myResources.getString("bio"),userBio);
         return userData;
    }
    public void clear(){

@@ -1,10 +1,10 @@
 <map>
   <entry>
-    <string>boulder2bottomleft85-68-1</string>
+    <string>bigholebottomleft51-34-1</string>
     <engine.backend.Actor>
       <myCoordinate>
-        <x>85</x>
-        <y>68</y>
+        <x>51</x>
+        <y>34</y>
         <z>1</z>
       </myCoordinate>
       <myInteractionMap>
@@ -16,7 +16,7 @@
                 <string>idle</string>
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
-                  <animationPath>11.png</animationPath>
+                  <animationPath>21.png</animationPath>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -37,12 +37,12 @@
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>11.png</animationPath>
+            <animationPath>21.png</animationPath>
             <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
-      <myName>boulder2bottomleft85-68-1</myName>
+      <myName>bigholebottomleft51-34-1</myName>
       <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
       <isPlayerActor>false</isPlayerActor>
       <myBounds>
@@ -54,37 +54,11 @@
     </engine.backend.Actor>
   </entry>
   <entry>
-    <string>boulder2bottomleft102-102-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>102</x>
-        <y>102</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>11.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>boulder2bottomleft102-102-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>boulder2bottomleft34-102-1</string>
+    <string>bigholebottomleft34-34-1</string>
     <engine.backend.Actor>
       <myCoordinate>
         <x>34</x>
-        <y>102</y>
+        <y>34</y>
         <z>1</z>
       </myCoordinate>
       <myInteractionMap reference="../../../entry/engine.backend.Actor/myInteractionMap"/>
@@ -94,290 +68,12 @@
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>11.png</animationPath>
+            <animationPath>21.png</animationPath>
             <coordinate reference="../../../../myCoordinate"/>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
-      <myName>boulder2bottomleft34-102-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>player68-102-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>68</x>
-        <y>102</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap/>
-      <myStatsMap>
-        <entry>
-          <string>health</string>
-          <int>10</int>
-        </entry>
-      </myStatsMap>
-      <myAnimationMap>
-        <entry>
-          <string>top</string>
-          <engine.backend.AnimationObject>
-            <animationName>top</animationName>
-            <animationPath>player_top.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>player_bot.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>left</string>
-          <engine.backend.AnimationObject>
-            <animationName>left</animationName>
-            <animationPath>player_left.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <engine.backend.AnimationObject>
-            <animationName>bottom</animationName>
-            <animationPath>player_bot.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-        <entry>
-          <string>right</string>
-          <engine.backend.AnimationObject>
-            <animationName>right</animationName>
-            <animationPath>player_right.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>player68-102-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry[2]/engine.backend.AnimationObject"/>
-      <isPlayerActor>true</isPlayerActor>
-      <myBounds>
-        <width>0</width>
-        <height>0</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>grass51-102-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>51</x>
-        <y>102</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap>
-        <entry>
-          <string>background</string>
-          <engine.backend.BackgroundInteraction>
-            <animationMap>
-              <entry>
-                <string>idle</string>
-                <engine.backend.AnimationObject>
-                  <animationName>idle</animationName>
-                  <animationPath>1.png</animationPath>
-                </engine.backend.AnimationObject>
-              </entry>
-            </animationMap>
-            <messageMap>
-              <entry>
-                <string>backroundTouched</string>
-                <null/>
-              </entry>
-            </messageMap>
-            <myName>background</myName>
-            <canPassThrough>true</canPassThrough>
-          </engine.backend.BackgroundInteraction>
-        </entry>
-      </myInteractionMap>
-      <myStatsMap/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>1.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>grass51-102-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds>
-        <width>5</width>
-        <height>5</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBounds>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>grass68-85-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>68</x>
-        <y>85</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry[5]/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry[5]/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>1.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>grass68-85-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry[5]/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>grass85-102-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>85</x>
-        <y>102</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry[5]/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry[5]/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>1.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>grass85-102-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry[5]/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>grass68-85-2</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>68</x>
-        <y>85</y>
-        <z>2</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry[5]/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry[5]/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>1.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>grass68-85-2</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry[5]/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>grass51-85-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>51</x>
-        <y>85</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry[5]/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry[5]/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>1.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>grass51-85-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry[5]/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>boulder2bottomleft34-85-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>34</x>
-        <y>85</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>11.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>boulder2bottomleft34-85-1</myName>
-      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
-      <isPlayerActor>false</isPlayerActor>
-      <myBounds reference="../../../entry/engine.backend.Actor/myBounds"/>
-    </engine.backend.Actor>
-  </entry>
-  <entry>
-    <string>boulder2bottomleft68-68-1</string>
-    <engine.backend.Actor>
-      <myCoordinate>
-        <x>68</x>
-        <y>68</y>
-        <z>1</z>
-      </myCoordinate>
-      <myInteractionMap reference="../../../entry/engine.backend.Actor/myInteractionMap"/>
-      <myStatsMap reference="../../../entry/engine.backend.Actor/myStatsMap"/>
-      <myAnimationMap>
-        <entry>
-          <string>idle</string>
-          <engine.backend.AnimationObject>
-            <animationName>idle</animationName>
-            <animationPath>11.png</animationPath>
-            <coordinate reference="../../../../myCoordinate"/>
-          </engine.backend.AnimationObject>
-        </entry>
-      </myAnimationMap>
-      <myName>boulder2bottomleft68-68-1</myName>
+      <myName>bigholebottomleft34-34-1</myName>
       <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
       <isPlayerActor>false</isPlayerActor>
       <myBounds reference="../../../entry/engine.backend.Actor/myBounds"/>
