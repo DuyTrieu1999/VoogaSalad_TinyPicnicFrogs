@@ -3,6 +3,11 @@ package engine.backend;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * Represents an AnimationObject
+ * @author
+ */
+
 public class AnimationObject {
     private String animationName;
     private String animationPath;

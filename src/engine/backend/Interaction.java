@@ -1,11 +1,65 @@
 package engine.backend;
-import engine.backend.Commands.Command;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 
+public abstract class Interaction {
+	Map<String, AnimationObject> animationMap;
+	Map<String, Message> messageMap;
+	String myName;
+
+	//TODO: fill out defaults
+
+	/**
+	 * default constructor
+	 */
+	public Interaction() {
+
+	}
+
+	/**
+	 * @param data:     JSON representation of data relevant to interaction
+	 * @param messages: Map of messages called by interaction
+	 */
+	public Interaction(JSONObject data, Map<String, Message> messages) {
+		animationMap = new HashMap<>();
+		messageMap = messages;
+		myName = (String) data.get("name");
+		loadAnimationMap((JSONArray) data.get("animations"));
+	}
+
+	/**
+	 * @return myName
+	 */
+	public String getName() {
+		return myName;
+	}
+
+	/**
+	 * sets images in animationMap
+	 */
+	public void setImages() {
+		for (AnimationObject a : animationMap.values()) {
+			a.setImage();
+		}
+	}
+
+	/**
+	 * Loads animations into animationMap
+	 *
+	 * @param data Assume animations look like this:
+	 *             animations:[key:default, path:"/resource/charizard3.png"]
+	 */
+	private void loadAnimationMap(JSONArray data) {
+		for (int i = 0; i < data.size(); i += 1) {
+			JSONObject animation = (JSONObject) data.get(i);
+			animationMap.put((String) animation.get("key"), new AnimationObject((String) animation.get("key"), (String) animation.get("path")));
+		}
+	}
 
 public  abstract class Interaction {
     Map<String,AnimationObject> animationMap;
