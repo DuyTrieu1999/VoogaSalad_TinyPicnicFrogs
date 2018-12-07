@@ -16,7 +16,6 @@ import java.util.Map;
  */
 public class ActorPrototype {
     private Map<String,String>animationMap;
-    private Map<String,int[]>spriteDimensionsMap;
     private Map<String, Interaction>interractionMap;
     private Map<String, Integer>myStats;
     private String name;
@@ -31,7 +30,6 @@ public class ActorPrototype {
 
     protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
         name=(String)data.get("name");
-        spriteDimensionsMap=new HashMap<>();
         animationMap=parseAnimations(data);
         myStats=parseStats((JSONArray) data.get("stats"));
         interractionMap= new HashMap<>();
@@ -49,14 +47,13 @@ public class ActorPrototype {
      * @param statsMap
      * @param nameP
      */
-    protected ActorPrototype(Map<String,String>animationMapP,Map<String, Interaction>interractionMapP,Map<String, Integer>statsMap, String nameP, boolean player, Bounds bounds,Map<String,int[]>dimensionMap){
+    protected ActorPrototype(Map<String,String>animationMapP,Map<String, Interaction>interractionMapP,Map<String, Integer>statsMap, String nameP, boolean player, Bounds bounds){
         animationMap=animationMapP;
         interractionMap=interractionMapP;
         myStats=statsMap;
         name=nameP;
         isPlayer = player;
         myBound=bounds;
-        spriteDimensionsMap=dimensionMap;
     }
     public String getName(){return name;}
 
@@ -71,11 +68,6 @@ public class ActorPrototype {
         for(int i=0;i<animations.size();i+=1){
             JSONObject animation=(JSONObject) animations.get(i);
             map.put((String)animation.get("key"),(String)animation.get("path"));
-            int []dimensions= new int[2];
-            System.out.println(animation.toJSONString());
-            dimensions[0]=Integer.parseInt(String.valueOf(animation.get("spriteRows")));
-            dimensions[1]=Integer.parseInt(String.valueOf(animation.get("spriteCols")));
-            spriteDimensionsMap.put((String)animation.get("key"),dimensions);
         }
         return map;
     }
@@ -146,7 +138,7 @@ public class ActorPrototype {
      * @return the new instance of the actor prototype
      */
     protected ActorPrototype clone(){
-        return new ActorPrototype(animationMap,interractionMap,myStats,name, isPlayer, myBound, spriteDimensionsMap);
+        return new ActorPrototype(animationMap,interractionMap,myStats,name, isPlayer, myBound);
     }
 
     /**
@@ -182,6 +174,5 @@ public class ActorPrototype {
         Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
         return new ObservablePrototype(getName(),new ImageView(img));
     }
-    public Map<String,int[]>getSpriteDimensionsMap(){return spriteDimensionsMap;}
 
 }

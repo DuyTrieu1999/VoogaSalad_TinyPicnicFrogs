@@ -6,12 +6,6 @@ import authoring.authoring_backend.ObservableActor;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Defines behavior for Actors
- *
- * @author Max Bartlett (mmb70)
- */
-
 public class Actor {
 	private Coordinate myCoordinate;
 	private Map<String, Interaction> myInteractionMap;
@@ -36,11 +30,12 @@ public class Actor {
 	 */
 	public Actor(ActorPrototype prototype, int x, int y, int z) {
 		myCoordinate = new Coordinate(x, y, z);
-		myAnimationMap = parseAnimations(prototype.getAnimationMap(),prototype.getSpriteDimensionsMap());
+		myAnimationMap = parseAnimations(prototype.getAnimationMap());
 		myInteractionMap = prototype.getInteractionMap();
 		myStatsMap = prototype.getMyStats();
 		myActiveAnimation = myAnimationMap.get("idle");
 		myName = prototype.getName() + x + "-" + y + "-" + z;
+		//System.out.println("HERE");
 		isPlayerActor = prototype.getIsPlayer();
 		myBounds = prototype.getBounds();
 	}
@@ -49,10 +44,10 @@ public class Actor {
 	 * @param imagePaths imagePaths for each animation object
 	 * @return map of strings and their associated AnimationObjects
 	 */
-	public Map<String, AnimationObject> parseAnimations(Map<String, String> imagePaths,Map<String,int[]>spriteMap) {
+	public Map<String, AnimationObject> parseAnimations(Map<String, String> imagePaths) {
 		Map<String, AnimationObject> animations = new HashMap<>();
 		for (String s : imagePaths.keySet()) {
-			AnimationObject animation = new AnimationObject(s, imagePaths.get(s), myCoordinate,spriteMap.get(s)[0],spriteMap.get(s)[1]);
+			AnimationObject animation = new AnimationObject(s, imagePaths.get(s), myCoordinate);
 			animations.put(s, animation);
 		}
 		return animations;
@@ -187,7 +182,10 @@ public class Actor {
 	 * Sets the appropriate image for the actor
 	 */
 	public void setImages() {
-		for(Interaction i : myInteractionMap.values()){
+		for (AnimationObject a : myAnimationMap.values()) {
+			a.setImage();
+		}
+		for(Interaction i:myInteractionMap.values()){
 			i.setImages();
 		}
 	}

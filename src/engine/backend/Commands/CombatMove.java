@@ -61,7 +61,7 @@ public class CombatMove extends Command {
         Map<String,AnimationObject>animationMap=new HashMap<>();
         for(int i=0;i<arr.size();i+=1){
             JSONObject animation=(JSONObject)arr.get(i);
-            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path"),Integer.parseInt(String.valueOf(animation.get("spriteRows"))),Integer.parseInt(String.valueOf(animation.get("spriteCols")))));
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
         }
         return animationMap;
     }

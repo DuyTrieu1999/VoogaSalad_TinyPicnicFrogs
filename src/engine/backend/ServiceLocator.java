@@ -1,7 +1,5 @@
 package engine.backend;
 
-import engine.backend.AI.AI;
-import engine.backend.AI.RandomAI;
 import engine.controller.Controller;
 
 /**
