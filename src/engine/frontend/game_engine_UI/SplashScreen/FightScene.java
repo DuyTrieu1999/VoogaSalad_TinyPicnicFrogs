@@ -12,27 +12,28 @@ public class FightScene extends SplashScreen {
     @Override
     void addElements() {
         ImageView vs_screen =  new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VS_screen.png")));
-        this.getChildren().add(vs_screen);
+        pane.getChildren().add(vs_screen);
         vs_screen.setFitHeight(SPRITE_HEIGHT);
         vs_screen.setY(SCREEN_HEIGHT/2-SPRITE_HEIGHT);
 
         ImageView player = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("player_challenge.png")));
         //change to whichever player is chosen by the user
-        this.getChildren().add(player);
+        pane.getChildren().add(player);
         player.setX(SCREEN_WIDTH/4-CENTERED);
         player.setY(SCREEN_HEIGHT/2-SPRITE_HEIGHT);
 
         ImageView opponent = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VSBlue.png")));
         //change to current opponent
-        this.getChildren().add(opponent);
+        pane.getChildren().add(opponent);
         opponent.setX(player.getX()+SCREEN_WIDTH/2);
         opponent.setY(SCREEN_HEIGHT/2-SPRITE_HEIGHT);
 
 
     }
 
-    FightScene() {
+    public FightScene() {
         super(); //sample file, will be changed to fit screen dimensions and look nicer
+
     }
 
 

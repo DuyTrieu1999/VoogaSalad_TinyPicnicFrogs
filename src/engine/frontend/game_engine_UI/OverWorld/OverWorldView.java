@@ -4,7 +4,6 @@ import engine.backend.*;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
@@ -81,7 +80,6 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private void addActors () {
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
-            //System.out.println(animationObject.getName());
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
             animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
@@ -134,6 +132,9 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
 
     }
     public void closeMenu () {
+
+    }
+    public void addDialouge (Message m) {
 
     }
 }

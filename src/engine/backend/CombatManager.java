@@ -72,7 +72,6 @@ public class CombatManager {
         var healthList = new ArrayList<Integer>();
         for(CombatInteraction a : myAllies){
             healthList.add(a.getHealth());
-            System.out.println("health is: " +a.getHealth());
         }
         return healthList;
     }
@@ -90,7 +89,6 @@ public class CombatManager {
         var animationList = new ArrayList<AnimationObject>();
         for(CombatInteraction a : myAllies){
             animationList.add(a.getCombatIdleAnimation());
-            System.out.println("battle animation is: " + a);
         }
         return animationList;
     }
@@ -99,7 +97,6 @@ public class CombatManager {
         var animationList = new ArrayList<AnimationObject>();
         for(CombatInteraction a : myEnemies){
             animationList.add(a.getCombatIdleAnimation());
-            System.out.println("enemy battle animation is: " + a.getCombatIdleAnimation());
         }
         //System.out.println(animationList.size());
         return animationList;

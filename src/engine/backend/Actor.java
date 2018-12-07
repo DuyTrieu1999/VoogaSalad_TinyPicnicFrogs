@@ -137,9 +137,7 @@ public class Actor {
 	 *
 	 * @param amt
 	 */
-	public void moveLeft(int amt) {
-		move(amt, "left");
-	}
+	public void moveLeft(int amt) { move(amt, "left"); }
 
 	/**
 	 * Moves Actor right

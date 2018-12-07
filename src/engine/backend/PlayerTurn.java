@@ -20,7 +20,7 @@ public class PlayerTurn extends Turn {
         var myController = ServiceLocator.getController();
         myController.getActiveCommands();
 
-        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
-        myMenu.getChoices().get(0).execute(null);
+//        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
+//        myMenu.getChoices().get(0).execute(null);
     }
 }
