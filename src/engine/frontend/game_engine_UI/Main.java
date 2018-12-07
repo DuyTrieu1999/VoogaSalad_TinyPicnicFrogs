@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.*;
+import engine.backend.AI.RandomAI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
