@@ -36,7 +36,7 @@ public class Actor {
 	 */
 	public Actor(ActorPrototype prototype, int x, int y, int z) {
 		myCoordinate = new Coordinate(x, y, z);
-		myAnimationMap = parseAnimations(prototype.getAnimationMap());
+		myAnimationMap = parseAnimations(prototype.getAnimationMap(),prototype.getSpriteDimensionsMap());
 		myInteractionMap = prototype.getInteractionMap();
 		myStatsMap = prototype.getMyStats();
 		myActiveAnimation = myAnimationMap.get("idle");
@@ -49,10 +49,10 @@ public class Actor {
 	 * @param imagePaths imagePaths for each animation object
 	 * @return map of strings and their associated AnimationObjects
 	 */
-	public Map<String, AnimationObject> parseAnimations(Map<String, String> imagePaths) {
+	public Map<String, AnimationObject> parseAnimations(Map<String, String> imagePaths,Map<String,int[]>spriteMap) {
 		Map<String, AnimationObject> animations = new HashMap<>();
 		for (String s : imagePaths.keySet()) {
-			AnimationObject animation = new AnimationObject(s, imagePaths.get(s), myCoordinate);
+			AnimationObject animation = new AnimationObject(s, imagePaths.get(s), myCoordinate,spriteMap.get(s)[0],spriteMap.get(s)[1]);
 			animations.put(s, animation);
 		}
 		return animations;

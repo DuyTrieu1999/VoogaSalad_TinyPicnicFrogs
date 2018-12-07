@@ -61,15 +61,56 @@ public abstract class Interaction {
 		}
 	}
 
-	/**
-	 * for testing purposes
-	 */
-	public void serialize() {
-		for (String s : animationMap.keySet()) {
-			System.out.println(s + ": " + animationMap.get(s));
-		}
-		for (String s : messageMap.keySet()) {
-			System.out.println(s + ":" + messageMap.get(s).getMessageString());
-		}
-	}
+public  abstract class Interaction {
+    Map<String,AnimationObject> animationMap;
+    Map <String, Message> messageMap;
+    String myName;
+
+    //TODO: fill out defaults
+    public Interaction(){
+
+    }
+
+
+    /**
+     * @param data: JSON representation of data relevant to interaction
+     * @param messages: Map of messages called by interaction
+     */
+    public Interaction(JSONObject data, Map<String, Message>messages){
+        animationMap= new HashMap<>();
+        messageMap= messages;
+        myName=(String)data.get("name");
+        loadAnimationMap((JSONArray) data.get("animations"));
+    }
+
+
+    /**
+     * @param data
+     * Assume animations look like this:
+     * animations:[key:default, path:"/resource/charizard3.png"]
+     */
+    private void loadAnimationMap(JSONArray data){
+        for(int i=0;i<data.size();i+=1){
+            JSONObject animation=(JSONObject)data.get(i);
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path"),Integer.parseInt(String.valueOf(animation.get("spriteRows"))),Integer.parseInt(String.valueOf(animation.get("spriteCols")))));
+        }
+    }
+
+    public String getName(){return myName;}
+
+    /**
+     * for testing purposes
+     */
+    public void serialize(){
+//        System.out.println(myName);
+        for(String s:animationMap.keySet()){System.out.println(s+": "+animationMap.get(s));}
+        for(String s:messageMap.keySet()){
+            System.out.println(s+":"+messageMap.get(s).getMessageString());
+        }
+    }
+    public void setImages(){
+        for(AnimationObject a:animationMap.values()){
+        a.setImage();
+        }
+    }
 }
