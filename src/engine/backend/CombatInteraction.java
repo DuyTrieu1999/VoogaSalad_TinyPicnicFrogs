@@ -20,6 +20,7 @@ public class CombatInteraction extends Interaction{
     }
 
     public AnimationObject getCombatIdleAnimation(){
+        System.out.println(myCombatIdleAnimation);
         return myCombatIdleAnimation;
     }
 
@@ -33,6 +34,7 @@ public class CombatInteraction extends Interaction{
         commandList= new ArrayList<>();
         parseMoves((JSONArray)data.get("moves"));
         myCombatIdleAnimation=animationMap.get("default");
+        System.out.println(myCombatIdleAnimation);
         //TODO: Test value
         myHealth = 10;
     }
@@ -65,6 +67,6 @@ public class CombatInteraction extends Interaction{
                 combatMove.setImages();
             }}
         myCombatIdleAnimation=super.animationMap.get("idle");
-//       System.out.println(myCombatIdleAnimation.getName());
+//        System.out.println(myCombatIdleAnimation.getName());
     }
 }
