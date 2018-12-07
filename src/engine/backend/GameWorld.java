@@ -4,6 +4,7 @@ package engine.backend;
 import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
+import engine.backend.gameevent.GameMenuEvent;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -107,7 +108,7 @@ public class GameWorld {
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
         ServiceLocator.getController().setBattleView();
-        combatMan.nextTurn();
+        //combatMan.nextTurn();
     }
 
     /**
@@ -118,6 +119,13 @@ public class GameWorld {
         if(e instanceof GameKeyEvent){
             handleKeyEvent((GameKeyEvent) e);
         }
+        if(e instanceof GameMenuEvent){
+            handleMenuEvent((GameMenuEvent) e);
+        }
+    }
+
+    private void handleMenuEvent(GameMenuEvent e){
+        System.out.println("menu event triggered");
     }
 
     private void handleKeyEvent(GameKeyEvent e){
