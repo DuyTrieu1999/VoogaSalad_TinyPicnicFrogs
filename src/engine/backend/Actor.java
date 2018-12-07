@@ -6,6 +6,12 @@ import authoring.authoring_backend.ObservableActor;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines behavior for Actors
+ *
+ * @author Max Bartlett (mmb70)
+ */
+
 public class Actor {
 	private Coordinate myCoordinate;
 	private Map<String, Interaction> myInteractionMap;
@@ -35,7 +41,6 @@ public class Actor {
 		myStatsMap = prototype.getMyStats();
 		myActiveAnimation = myAnimationMap.get("idle");
 		myName = prototype.getName() + x + "-" + y + "-" + z;
-		//System.out.println("HERE");
 		isPlayerActor = prototype.getIsPlayer();
 		myBounds = prototype.getBounds();
 	}
@@ -184,10 +189,7 @@ public class Actor {
 	 * Sets the appropriate image for the actor
 	 */
 	public void setImages() {
-		for (AnimationObject a : myAnimationMap.values()) {
-			a.setImage();
-		}
-		for(Interaction i:myInteractionMap.values()){
+		for(Interaction i : myInteractionMap.values()){
 			i.setImages();
 		}
 	}
