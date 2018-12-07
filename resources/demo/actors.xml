@@ -68,9 +68,9 @@
                     <engine.backend.CombatInteraction>
                         <animationMap>
                             <entry>
-                                <string>default</string>
+                                <string>idle</string>
                                 <engine.backend.AnimationObject>
-                                    <animationName>default</animationName>
+                                    <animationName>idle</animationName>
                                     <animationPath>player_fight.png</animationPath>
                                 </engine.backend.AnimationObject>
                             </entry>
@@ -99,9 +99,9 @@
                                 <myTargetActor>ENEMY</myTargetActor>
                                 <myAnimationMap>
                                     <entry>
-                                        <string>default</string>
+                                        <string>idle</string>
                                         <engine.backend.AnimationObject>
-                                            <animationName>default</animationName>
+                                            <animationName>idle</animationName>
                                             <animationPath>player_right.png</animationPath>
                                         </engine.backend.AnimationObject>
                                     </entry>
@@ -184,9 +184,9 @@
                     <engine.backend.CombatInteraction>
                         <animationMap>
                             <entry>
-                                <string>default</string>
+                                <string>idle</string>
                                 <engine.backend.AnimationObject>
-                                    <animationName>default</animationName>
+                                    <animationName>idle</animationName>
                                     <animationPath>enemy_fight.png</animationPath>
                                 </engine.backend.AnimationObject>
                             </entry>
@@ -213,9 +213,9 @@
                                 <myTargetActor>ENEMY</myTargetActor>
                                 <myAnimationMap>
                                     <entry>
-                                        <string>default</string>
+                                        <string>idle</string>
                                         <engine.backend.AnimationObject>
-                                            <animationName>default</animationName>
+                                            <animationName>idle</animationName>
                                             <animationPath>enemy_left.png</animationPath>
                                         </engine.backend.AnimationObject>
                                     </entry>

@@ -83,7 +83,11 @@ public class SceneManager {
         registerButton.setOnAction(event->{myStage.setScene(setUpRegisterScene());});
         vbox.getChildren().addAll(emailField, passwordField, loginButton,registerButton);
         loginButton.setOnAction(event -> {
-            userManager.login(emailField.getText(),passwordField.getText());
+            try {
+                userManager.login(emailField.getText(),passwordField.getText());
+            } catch (ServerException e) {
+                launchErrorDialog(e.getException());
+            }
             if(userManager.isPlayerLoggedIn()){
                myStage.setScene(setUpMainScene());}
         });
@@ -119,7 +123,11 @@ public class SceneManager {
         Button registerButton = new Button(myResources.getString("registerBTN"));
         vBox.getChildren().addAll(emailField,passwordField,bioField,nameField,registerButton);
         registerButton.setOnAction(event->{
-            userManager.register(emailField.getText(),passwordField.getText(),bioField.getText(),nameField.getText());
+            try {
+                userManager.register(emailField.getText(),passwordField.getText(),bioField.getText(),nameField.getText());
+            } catch (ServerException e) {
+                launchErrorDialog(e.getException());
+            }
             if(userManager.isPlayerLoggedIn()){myStage.setScene(setUpMainScene());}
         });
     }
