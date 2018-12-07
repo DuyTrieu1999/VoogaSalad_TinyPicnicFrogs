@@ -98,7 +98,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             animationList.add(a.getCombatIdleAnimation());
         }
-        System.out.println(animationList.size());
+        //System.out.println(animationList.size());
         return animationList;
     }
 }
