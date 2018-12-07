@@ -1,5 +1,10 @@
 package authoring.authoring_backend;
-
+/**
+ * @author Michael Glushakov
+ * Purpose: Stores high-level game data needed to load the game file
+ * Dependencies: None
+ * Usages: When game is saved the object is created, serialized and stored in games.xml file, which contains the map of all local games
+ */
 public class GameData {
     private String title;
     private String description;

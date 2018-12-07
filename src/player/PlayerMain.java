@@ -12,7 +12,10 @@ import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 
 /**
- * There is a main method that can run the game engine
+ * @author Michael Glushakov
+ * Purpose: Main Class in player package
+ * Dependencies: SceneManager, UserProfile manager
+ * Usages: Runs player
  */
 public class PlayerMain extends Application {
     private SceneManager myManager;

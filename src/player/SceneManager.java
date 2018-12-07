@@ -15,7 +15,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
+/**
+ * @author Michael Glushakov
+ * Purpose: Manages different scenes and UI components
+ * Dependencies: UserPaneManager UserProfileManager,GamePaneManager
+ * Usages: called by PlayerMain to return an initial scene, aftet that manages all scene changes
+ */
 public class SceneManager {
     private Stage myStage;
     public static final int BOX_SPACING=8;
@@ -29,6 +34,11 @@ public class SceneManager {
     private GamePaneManager gamePaneManager;
     public static final String DEFAULT_RESOURCE = "English";
     private ResourceBundle myResources;
+
+    /**
+     * @param manager: user profile manager
+     * @param stage: stage to put scenes on
+     */
     public SceneManager(UserProfileManager manager, Stage stage){
         userManager=manager;
         myStage=stage;
@@ -38,6 +48,9 @@ public class SceneManager {
         gamePaneManager= new GamePaneManager();
     }
 
+    /**
+     * @return Login scene
+     */
     private Scene getLoginScene(){
         BorderPane borderPane= new BorderPane();
         borderPane.setPrefSize(500,100);
@@ -46,6 +59,10 @@ public class SceneManager {
         return loginScene;
     }
 
+    /**
+     *
+     * @param pane border pne that will be set up to contain the login fields
+     */
     private void getLoginScreen(BorderPane pane){
         VBox vBox=new VBox();
         pane.setCenter(vBox);
@@ -54,6 +71,9 @@ public class SceneManager {
         setUpLoginBox(vBox);
     }
 
+    /**
+     * @param vbox vBox to be set up with login fields
+     */
     private void setUpLoginBox(VBox vbox) {
         TextField emailField = new TextField(myResources.getString("email"));
         PasswordField passwordField = new PasswordField();
@@ -68,6 +88,11 @@ public class SceneManager {
                myStage.setScene(setUpMainScene());}
         });
     }
+
+    /**
+     *
+     * @return account creation scene
+     */
     private Scene setUpRegisterScene(){
         BorderPane borderPane= new BorderPane();
         Scene registerScene = new Scene(borderPane);
@@ -77,6 +102,11 @@ public class SceneManager {
         borderPane.setCenter(vbox);
         return registerScene;
     }
+
+    /**
+     *
+     * @param vBox Box to be set up with all register UI components
+     */
     private void setUpRegisterBox(VBox vBox){
         vBox.setSpacing(BOX_SPACING);
         vBox.setPadding(new Insets(INCEST_TP, INCEST_RL
@@ -93,6 +123,11 @@ public class SceneManager {
             if(userManager.isPlayerLoggedIn()){myStage.setScene(setUpMainScene());}
         });
     }
+
+    /**
+     *
+     * @return Main Scene
+     */
     private Scene setUpMainScene(){
         mainPane= new BorderPane();
         mainPane.setPrefSize(PlayerMain.SCREEN_SIZE,PlayerMain.SCREEN_SIZE);
@@ -104,6 +139,11 @@ public class SceneManager {
         mainPane.setCenter(gamePaneManager.getGamesPane());
         return mainScene;
     }
+
+    /**
+     *
+     * @return Menu bar for main scene
+     */
     private MenuBar setUpMenuBar(){
         MenuBar menuBar= new MenuBar();
         menuBar.prefWidthProperty().bind(myStage.widthProperty());
@@ -114,11 +154,21 @@ public class SceneManager {
         menuBar.getMenus().addAll(fileMenu,accountMenu);
         return menuBar;
     }
+
+    /**
+     *
+     * @param menu menu that will be set up with file menu items
+     */
     private void setFileMenu(Menu menu){
         MenuItem exitItem = new MenuItem(myResources.getString("exitMI"));
         exitItem.setOnAction(event->{System.exit(0);});
         menu.getItems().add(exitItem);
     }
+
+    /**
+     *
+     * @param menu menu that will be set up with account menu items
+     */
     private void setAccountMenu(Menu menu){
         MenuItem logOutItem = new MenuItem(myResources.getString("logOutMI"));
         logOutItem.setOnAction(event->{
@@ -131,6 +181,10 @@ public class SceneManager {
         editAccountItem.setOnAction(event->{setEditAccountDialog();});
         menu.getItems().addAll(logOutItem,editAccountItem,socialItem);
     }
+
+    /**
+     * Launches edit account dialog
+     */
     private void setEditAccountDialog(){
 
         TextField nameField=new TextField(userManager.getUserAttributes().get(myResources.getString("name")));
@@ -152,6 +206,10 @@ public class SceneManager {
         alert.showAndWait();
 
     }
+
+    /**
+     * launches user lookup dialog
+     */
     private void setUserLookupDialog(){
         TextInputDialog dialog= new TextInputDialog(myResources.getString("name"));
         dialog.setHeaderText(myResources.getString("socialPortal"));
@@ -168,6 +226,14 @@ public class SceneManager {
                 }
         });
     }
+
+    /**
+     *
+     * @param title title
+     * @param header header
+     * @param entries JSON representation of entries
+     *  launches list dialog of users found
+     */
     private void setUpUserListDialog(String title, String header, List<JSONObject>entries){
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(header);
@@ -181,6 +247,11 @@ public class SceneManager {
         alert.getDialogPane().setContent(vBox);
         alert.showAndWait();
     }
+
+    /**
+     * Sets up dialog for a single user
+     * @param user JSONObject with that user's information
+     */
     private void setUpUserDialog(JSONObject user){
         VBox vBox= new VBox();
         vBox.setSpacing(BOX_SPACING);
@@ -209,6 +280,11 @@ public class SceneManager {
         alert.getDialogPane().setContent(vBox);
         alert.showAndWait();
     }
+
+    /**
+     * launches error dialog
+     * @param e exception thrown
+     */
     private void launchErrorDialog(Exception e){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(myResources.getString("error"));
