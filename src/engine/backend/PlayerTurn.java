@@ -16,6 +16,11 @@ public class PlayerTurn extends Turn {
     }
 
     @Override
+    public void getInput() {
+
+    }
+
+    @Override
     public void executeTurn() {
         var myController = ServiceLocator.getController();
         myController.getActiveCommands();
@@ -23,4 +28,6 @@ public class PlayerTurn extends Turn {
         Menu myMenu = new CommandLineMenu(myInt.getCommandList());
         myMenu.getChoices().get(0).execute(null);
     }
+
+
 }

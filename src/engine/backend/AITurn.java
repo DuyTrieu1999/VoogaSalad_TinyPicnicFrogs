@@ -12,6 +12,11 @@ public class AITurn extends Turn {
     }
 
     @Override
+    public void getInput() {
+
+    }
+
+    @Override
     public void executeTurn() {
         var ai = ServiceLocator.getAI();
         ai.setOptions(myInt.getCommandList());

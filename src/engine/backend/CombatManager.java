@@ -17,7 +17,8 @@ public class CombatManager {
     List<CombatInteraction> myEnemies;
     AI myAI;
     private List<Turn> turnList;
-
+    Turn currentTurn;
+    boolean turnLock;
     /**
      *
      * @param allies List of CombatInteractions representing allies
@@ -42,13 +43,25 @@ public class CombatManager {
     }
 
     /**
-     * Runs the combat interaction until one side is completely dead
+     * Call this method every cycle during combat. This will advance the combat state when it is ready
      */
-    public void runCombat(){
-        while(myAllies.size() > 0 || myEnemies.size() > 0){
+    public void runCombatStep(){
+        currentTurn.executeTurn();
+    }
+
+    /**
+     * This releases the lock and allows combat to move on
+     */
+    public void inputRecieved(){
+        turnLock = false;
+    }
+
+    /**
+     * Runs the next turn of the combat
+     */
+    public void nextTurn(){
             //run the current turn and put it on the end of the queue
-            var currentTurn = turnList.get(0);
-            currentTurn.executeTurn();
+            currentTurn = turnList.get(0);
             turnList.add(turnList.remove(0));
             //remove dead
             List<CombatInteraction> deadList = new ArrayList<>();
@@ -65,7 +78,6 @@ public class CombatManager {
                 }
             }
             myEnemies.removeAll(deadList);
-        }
     }
 
     public List<Integer> getAlliesHealth(){
