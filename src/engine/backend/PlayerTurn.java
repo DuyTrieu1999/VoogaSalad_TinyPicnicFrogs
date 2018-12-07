@@ -22,9 +22,11 @@ public class PlayerTurn extends Turn {
         ServiceLocator.getCombatManager().inputRecieved();
     }
 
+
     @Override
     public void initializeTurn() {
         System.out.println("menu created");
+
     }
 
 

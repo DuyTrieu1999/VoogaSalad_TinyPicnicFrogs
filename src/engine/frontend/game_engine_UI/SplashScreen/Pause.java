@@ -8,7 +8,7 @@ public class Pause extends SplashScreen {
     @Override
     void addElements() {
         ImageView paused_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("paused_screen.png")));
-        this.setCenter(paused_screen);
+        pane.setCenter(paused_screen);
     }
 
     Pause() {

@@ -8,7 +8,7 @@ public class Victory extends SplashScreen {
     @Override
     void addElements() {
         ImageView you_win = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("you_win.png")));
-        this.setCenter(you_win);
+        pane.setCenter(you_win);
     }
 
     Victory() {
