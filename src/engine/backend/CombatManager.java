@@ -1,8 +1,11 @@
 package engine.backend;
 
+import engine.backend.Commands.Command;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.spi.LocaleServiceProvider;
 
 /**
  * Manages the combat state (taking turns, etc).
@@ -32,6 +35,10 @@ public class CombatManager {
             turnList.add(new AITurn(e));
         }
         turnList.sort(initiativeComparator);
+    }
+
+    public List<Command> getAllyCommandList() {
+        return myAllies.get(0).getCommandList();
     }
 
     /**
@@ -74,6 +81,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             healthList.add(a.getHealth());
         }
+
         return healthList;
     }
 
@@ -90,6 +98,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             animationList.add(a.getCombatIdleAnimation());
         }
+        System.out.println(animationList.size());
         return animationList;
     }
 }

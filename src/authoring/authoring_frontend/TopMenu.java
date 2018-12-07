@@ -1,21 +1,14 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.HBox;
-import javafx.collections.ObservableList;
+import authoring.authoring_frontend.PopupWindows.PopupWindow;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -27,22 +20,23 @@ import java.util.ResourceBundle;
  *
  * @author brookekeene
  */
-public class TopMenu extends HBox {
-    public static final String DEFAULT_RESOURCE = "English";
+class TopMenu extends HBox {
+    private static final String DEFAULT_RESOURCE = "English";
+    private static final int PADDING_TEN = 10;
+    private static final int PADDING_TWENTY = 20;
+    private static final int PADDING_ONEFIFTY = 150;
 
     private GameManager myManager;
     private MenuBar myMenu;
     private ResourceBundle myResources;
-    private PrototypeWindow myNewActor;
     private MapManager mapManager;
-    private MessageWindow myNewMessage;
     private ActorManager actorManager;
 
 
     /**
      * Constructor
      */
-    public TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
+    TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
         myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
@@ -71,38 +65,76 @@ public class TopMenu extends HBox {
     private void addFileTab() {
         Menu fileMenu = new Menu(myResources.getString("File"));
 
+        // New Submenu
         Menu newSubmenu = new Menu(myResources.getString("New"));
         MenuItem newGame = new MenuItem(myResources.getString("Game"));
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
         MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
-        // New
+        newSubmenu.getItems().addAll(newGame, newActor, newMessage);
+
         newGame.setOnAction(e -> {
-            System.out.println("Open New AuthoringView"); //TODO: replace this with code
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("New Game");
+            dialog.setHeaderText("Enter the dimensions of the map:");
+            ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+            GridPane grid = new GridPane();
+            grid.setHgap(PADDING_TEN);
+            grid.setVgap(PADDING_TEN);
+            grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
+            TextField xSize = new TextField();
+            xSize.setPromptText("Width");
+            TextField ySize = new TextField();
+            ySize.setPromptText("Height");
+
+            grid.add(new Label("Width:"), 0, 0);
+            grid.add(xSize, 1, 0);
+            grid.add(new Label("Height:"), 0, 1);
+            grid.add(ySize, 1, 1);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == loginButtonType) {
+                    return new Pair<>(xSize.getText(), ySize.getText());
+                }
+                return null;
+            });
+
+            Optional<Pair<String, String>> result = dialog.showAndWait();
+
+            result.ifPresent(widthHeight -> {
+                Stage newAuthoringView = new Stage();
+                AuthoringView environment = new AuthoringView(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
+                newAuthoringView.setTitle(environment.getProjectName());
+                newAuthoringView.setScene(environment.getScene());
+                newAuthoringView.show();
+            });
         });
 
+
         newActor.setOnAction(e -> {
-            myNewActor = new PrototypeWindow(myManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager);
         });
 
         newMessage.setOnAction(e -> {
-                    myNewMessage = new MessageWindow(myManager); //TODO: complete MessageWindow
-                });
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager);
+        });
 
-        newSubmenu.getItems().add(newGame);
-        newSubmenu.getItems().add(newActor);
-        newSubmenu.getItems().add(newMessage);
-
-        // Open
+        // Open Submenu
         MenuItem openItem = new MenuItem(myResources.getString("Open"));
 
         openItem.setOnAction(e -> {
             System.out.println("Open FileChooser"); //TODO: replace this with code
         });
 
-        MenuItem saveGame = new MenuItem("Save");
+        // Save Submenu
+        MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
-        saveGame.setOnAction(event -> new Saver(actorManager, mapManager, myManager));
+        saveGame.setOnAction(e -> {
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager);
+        });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
 
@@ -117,13 +149,67 @@ public class TopMenu extends HBox {
         Menu editMenu = new Menu(myResources.getString("Edit"));
 
         // Save
-        MenuItem saveItem = new MenuItem(myResources.getString("Save"));
+        MenuItem mapItem = new MenuItem(myResources.getString("Map"));
+        MenuItem actorItem = new MenuItem(myResources.getString("Prototype"));
 
-        saveItem.setOnAction(e -> {
-            System.out.println("Save current game"); //TODO: replace this with code
+        mapItem.setOnAction(e -> {
+            Dialog<Pair<String, String>> dialog = new Dialog<>();
+            dialog.setTitle("Edit Map");
+            dialog.setHeaderText("Enter the new dimensions of the map:");
+            ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+            GridPane grid = new GridPane();
+            grid.setHgap(PADDING_TEN);
+            grid.setVgap(PADDING_TEN);
+            grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
+            TextField xSize = new TextField();
+            xSize.setPromptText("Width");
+            TextField ySize = new TextField();
+            ySize.setPromptText("Height");
+
+            grid.add(new Label("Width:"), 0, 0);
+            grid.add(xSize, 1, 0);
+            grid.add(new Label("Height:"), 0, 1);
+            grid.add(ySize, 1, 1);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == loginButtonType) {
+                    return new Pair<>(xSize.getText(), ySize.getText());
+                }
+                return null;
+            });
+
+            Optional<Pair<String, String>> result = dialog.showAndWait();
+
+            result.ifPresent(widthHeight -> {
+                int newWidth = Integer.parseInt(widthHeight.getKey());
+                int newHeight = Integer.parseInt(widthHeight.getValue());
+                //System.out.println(newWidth + " " + newHeight);
+                Map currentMap = mapManager.getMap(mapManager.getActiveMapName());
+                //System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
+                if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirm Data Loss");
+                    alert.setHeaderText("The new map width or height has decreased: some clipping will occur.");
+                    alert.setContentText("Are you ok with this?");
+
+                    Optional<ButtonType> clippingResult = alert.showAndWait();
+                    if (clippingResult.isPresent() && clippingResult.get() == ButtonType.OK){
+                        // ... user chose OK
+                        mapManager.changeMapDimensions(newWidth, newHeight);
+                    }
+                }
+                else {
+                    mapManager.changeMapDimensions(newWidth, newHeight);
+                }
+            });
         });
 
-        editMenu.getItems().add(saveItem);
+        actorItem.setOnAction(event -> System.out.print("Edit actors"));
+
+        editMenu.getItems().add(mapItem);
 
         myMenu.getMenus().add(editMenu);
     }
@@ -154,6 +240,9 @@ public class TopMenu extends HBox {
         myMenu.getMenus().add(viewMenu);
     }
 
+    /**
+     * creates new Game menu with the option for the user to Run their game
+     */
     private void addGameTab(){
         Menu gameMenu = new Menu(myResources.getString("Game"));
 
@@ -164,13 +253,15 @@ public class TopMenu extends HBox {
 
             for(String mapName:mapManager.getMapList()){
                 Map thisMap = mapManager.getMap(mapName);
-                Grid thisGrid = thisMap.getGrid();
+                //Grid thisGrid = thisMap.getGrid();
+                /*
                 Cell[][] theseCells = thisGrid.getCells();
                 for(int i=0;i<theseCells.length;i++){
                     for(int j=0;j<theseCells[i].length;j++){
                         System.out.println("This cell at (" + i + ", " + j + ") has " + theseCells[i][j].getActors().size() + " actors!");
                     }
                 }
+                */
             }
         });
 
@@ -178,13 +269,4 @@ public class TopMenu extends HBox {
 
         myMenu.getMenus().add(gameMenu);
     }
-
-    //user creates a message: they enter a key, then a message body.
-    //they get stored in the messageMap using the gameManager
-    //when a user creates a new prototype, and they add a new interaction, there will be the option to put in a message
-    //the dropdown for the messages (such as onVictory, display 'yay') comes from these keys
-
-    //key is the message key
-    //value is the Message object
-
 }

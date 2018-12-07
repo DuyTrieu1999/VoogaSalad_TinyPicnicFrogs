@@ -12,10 +12,22 @@ import java.util.List;
 import java.util.Map;
 
 public class Main extends Application {
+    /**
+     * path to game Files to be loaded
+     */
+
+    private static String gameFilePath="./resources/testSave/";
+
     public static void main(String[] args) {
         initialize();
         launch(args);
     }
+
+    /**
+     *
+     * @param filePath filepath to the folder where actos and messages xml files are
+     */
+    public void setFilePath(String filePath){gameFilePath=filePath;}
 
     public void start(Stage stage) {
         new StateView(stage);
@@ -25,7 +37,7 @@ public class Main extends Application {
         ServiceLocator.provideAI(new RandomAI());
         //Values should be loaded from the file
 
-        var dummyActorList = loadActors();
+        var dummyActorList = loadActors(gameFilePath);
         var actorMan = new ActorManager(dummyActorList);
         System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
@@ -34,15 +46,24 @@ public class Main extends Application {
     }
 
 
-    private static List<Actor> loadActors(){
+    private static List<Actor> loadActors(String path){
         XStream serializer = new XStream(new DomDriver());
-        Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get("./resources/demo/actors.xml").toFile());
+        Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get(path+"actors.xml").toFile());
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
+            System.out.println("Fired");
             a.serialize();
             a.setImages();
+
         }
         return actorList;
+    }
+    private static List<Message>loadMessages(String path){
+        XStream serializer = new XStream(new DomDriver());
+        Map<String,Message>loadedMap=(Map<String, Message>) serializer.fromXML(Paths.get(path+"messages.xml").toFile());
+        List<Message>messageList= new ArrayList<>();
+        messageList.addAll(loadedMap.values());
+        return messageList;
     }
 }

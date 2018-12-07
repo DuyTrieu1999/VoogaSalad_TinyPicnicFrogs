@@ -25,9 +25,10 @@ import java.util.ResourceBundle;
  * @author brookekeene
  */
 public class PrototypeForm extends VBox {
-    public static final String DEFAULT_RESOURCE = "English";
-    public static int SIZE = 500;
-    public static int PADDING = 10;
+    private static final String DEFAULT_RESOURCE = "English";
+    private static int SIZE = 500;
+    private static int PADDING = 10;
+    private static int FIELD_SIZE = 150;
     private ResourceBundle myResources;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
@@ -37,16 +38,18 @@ public class PrototypeForm extends VBox {
     private BoundsBox myBounds;
 
     private GameManager myManager;
+    private ActorManager actorManager;
 
     /**
      * Constructor
      */
-    public PrototypeForm(GameManager manager) {
+    public PrototypeForm(GameManager manager, ActorManager a) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
         myManager = manager;
+        actorManager = a;
 
         //this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
@@ -76,6 +79,7 @@ public class PrototypeForm extends VBox {
 
         // Name
         prototypeName = new TextField();
+        prototypeName.setMaxWidth(FIELD_SIZE);
         this.getChildren().addAll(name, prototypeName);
 
         // isPlayer
@@ -88,8 +92,8 @@ public class PrototypeForm extends VBox {
 
         // Animations
         AnimationBox idle = new AnimationBox("Idle");
-        AnimationBox up = new AnimationBox("Up");
-        AnimationBox down = new AnimationBox("Down");
+        AnimationBox up = new AnimationBox("Top");
+        AnimationBox down = new AnimationBox("Bottom");
         AnimationBox left = new AnimationBox("Left");
         AnimationBox right = new AnimationBox("Right");
         myAnimationForms.add(idle);
@@ -141,7 +145,7 @@ public class PrototypeForm extends VBox {
             dialog.setContentText(myResources.getString("EnterName") + myResources.getString("interaction"));
             Optional<String> result = dialog.showAndWait();
             if(result.isPresent()){
-                InteractionBox temp = new InteractionBox(result.get());
+                InteractionBox temp = new InteractionBox(result.get(), myManager);
                 temp.setContent();
                 myInteractionForms.add(temp);
                 interactionsBox.getChildren().add(temp);
@@ -163,6 +167,7 @@ public class PrototypeForm extends VBox {
         myPrototype.put("name", prototypeName.getText());
 
         for(int i = 0; i < myAnimationForms.size(); i++) {
+            System.out.println(myAnimationForms.get(i).getContent());
             myAnimations.add(myAnimationForms.get(i).getContent());
         }
         myPrototype.put("animations", myAnimations);
@@ -183,6 +188,6 @@ public class PrototypeForm extends VBox {
 
         System.out.println(myPrototype); // TESTING
         myManager.createActorPrototype(myPrototype);
-
-    }
+        actorManager.addActor(new Actor(myPrototype), (boolean)myPrototype.get("isPlayer"));
+        actorManager.setupTabs();   }
 }

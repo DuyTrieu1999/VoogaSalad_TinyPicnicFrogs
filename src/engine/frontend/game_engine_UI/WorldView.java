@@ -1,106 +1,85 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.Actor;
-import engine.backend.AnimationObject;
-import engine.backend.PlayerActor;
-import engine.backend.ServiceLocator;
+import engine.backend.Commands.Command;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.MenuView.MenuView;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.Node;
+
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
-
-import java.util.Collection;
 import java.util.List;
 
+/**
+ * Super class that manages the view in the game. This class is extended by OverWorldView
+ * and BattleWorldView. Main functionality includes adding all AnimationObjects to the
+ * Pane, updating the game loop, and switch between two world views.
+ *
+ * @author Duy Trieu (dvt5)
+ */
 public abstract class WorldView {
-    protected Timeline animation = new Timeline();
-    private KeyFrame frame;
-    private Scene myScene;
-    private BorderPane displayPane = new BorderPane();
+    protected Timeline animation;
+    protected Scene myScene;
+    protected BorderPane displayPane;
+    protected Controller myController;
 
-    private double FRAMES_PER_SECOND = 60;
-    private double MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
-    private double SECOND_DELAY = 100.0/ FRAMES_PER_SECOND;
+    private static final int FRAMES_PER_SECOND = 60;
+    private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
+    private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
-    private Collection<AnimationObject> myAnimations;
-    private Actor myPlayer;
-    private Controller myController;
+    protected Runnable nextSceneHandler;
+
+    public void setNextSceneHandler (Runnable handler) {
+        nextSceneHandler = handler;
+    }
+    /**
+     * @param controller Controller that will send information from the back end to be updated in the front end
+     */
 
     public WorldView (Controller controller) {
+        animation = new Timeline();
+        animation.setCycleCount(Timeline.INDEFINITE);
         this.myController = controller;
-        myAnimations = controller.getAnimation();
-       // System.out.println("SIZE2 "+myAnimations.size());
-        myPlayer = controller.getPlayer();
-        this.setUpDisplay();
-        init();
-        myScene = new Scene(displayPane, Color.BLACK);
+        displayPane = new BorderPane();
+        myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
+        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
+    }
+    /**
+     * Add the animations, and update the view in each frame of the game
+     */
+    public void updateView () {
 
     }
-    public void updateView () {
-        clearView();
-        addActors();
-        this.setViewByZ();
-    }
-    private void init () {
-        frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-                e -> this.step(SECOND_DELAY));
+
+    public void init () {
+        var frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> {this.step(SECOND_DELAY);});
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(frame);
         animation.play();
     }
+    /**
+     * step function that updates the view and detect collisions in each frame
+     */
     private void step(double elapsedTime) {
-        ServiceLocator.getGameWorld().detectCollisions();
         updateView();
     }
+    /**
+     * Clear the view
+     */
+    public void clearView () {
+        displayPane.getChildren().clear();
+    }
+
+    /**
+     * return myScene
+     */
     public Scene getMyScene () {
         return myScene;
     }
-    public void clearView () {
-        this.myAnimations.clear();
-        displayPane.getChildren().clear();
-    }
-    private void addActors () {
-//        System.out.println("fired");
-        myAnimations = myController.getAnimation();
-        for (AnimationObject animationObject: myAnimations) {
-            ImageView animation = animationObject.getAnimationView();
-            animation.setLayoutX(100);
-//            System.out.println(animationObject.getCoordinate().getX());
-//            System.out.println(animationObject.getCoordinate().getY());
+    /**
+     * change the boolean. Currently in testing to change between views using Runnable
+     */
 
-            animation.setX(animationObject.getCoordinate().getX());
-            animation.setY(animationObject.getCoordinate().getY());
-            animation.setLayoutY(100);
-            animation.setFitHeight(50);
-            animation.setFitWidth(50);
-            displayPane.getChildren().add(animation);
-        }
-    }
-    private void setUpDisplay () {
-        displayPane = new BorderPane();
-        displayPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        HBox.setHgrow(displayPane, Priority.ALWAYS);
-        VBox.setVgrow(displayPane, Priority.ALWAYS);
-        clipBound(displayPane);
-        this.updateView();
-    }
-    private void clipBound(Pane pane) {
-        Rectangle clipBoundaries = new Rectangle();
-        clipBoundaries.widthProperty().bind(pane.widthProperty());
-        clipBoundaries.heightProperty().bind(pane.heightProperty());
-        pane.setClip(clipBoundaries);
-    }
-    private void setViewByZ() {
-        List<Node> sortedNodes = displayPane.getChildren().sorted((a, b) -> {
-            return Double.compare(a.getTranslateZ(), b.getTranslateZ());
-        });
-        displayPane.getChildren().setAll(sortedNodes);
-    }
 }
