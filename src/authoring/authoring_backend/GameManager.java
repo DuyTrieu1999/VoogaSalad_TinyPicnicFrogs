@@ -193,7 +193,13 @@ public class GameManager {
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
 
+    /**
+     * @return Observable actors for front-end use
+     */
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
+    /**
+     * @return Observable prototypes for front-end use
+     */
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 
