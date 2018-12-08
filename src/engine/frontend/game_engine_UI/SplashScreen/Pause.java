@@ -2,6 +2,7 @@ package engine.frontend.game_engine_UI.SplashScreen;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
 public class Pause extends SplashScreen {
 
@@ -13,5 +14,9 @@ public class Pause extends SplashScreen {
 
     Pause() {
         super();
+    }
+
+    protected void interpolate(double d) {
+
     }
 }

@@ -1,5 +1,6 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -29,7 +30,6 @@ abstract class SplashScreen {
     }
 
     abstract void addElements();
-
     void clear() {
         pane.getChildren().clear();
     }

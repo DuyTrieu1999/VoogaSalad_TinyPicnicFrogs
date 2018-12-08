@@ -6,6 +6,8 @@ import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
@@ -33,10 +35,12 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     private void setUpDisplay() {
         clearView();
+        ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
+        displayPane.getChildren().add(vs_screen);
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-        AnimationObject testPlayer = new AnimationObject("player battle", pathWay+"enemy_idle.png");
-        AnimationObject testEnemy = new AnimationObject("enemy batlte", pathWay+"player_right.png");
+        AnimationObject testEnemy = new AnimationObject("player battle", pathWay+"enemy_idle.png");
+        AnimationObject testPlayer = new AnimationObject("enemy batlte", pathWay+"player_right.png");
         playerSide = new PlayerSide(testPlayer);
         opponentSide = new OpponentSide(testEnemy);
         this.playerSide.setHealth(myController.getalliesHealth().get(0));
@@ -50,10 +54,9 @@ public class BattleView extends WorldView implements BattleViewAPI {
         buttonBox.getChildren().add(combatButton);
         displayPane.setCenter(buttonBox);
         combatButton.setOnMouseClicked((event -> {
-            System.out.println("something");
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
-            displayPane.setCenter(menuView.getPane());
+            displayPane.setCenter(menuView);
             menuView.setSelectedCommand();
             System.out.println(menuView);
         }));
