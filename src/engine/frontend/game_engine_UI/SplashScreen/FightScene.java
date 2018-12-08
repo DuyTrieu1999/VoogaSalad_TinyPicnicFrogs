@@ -13,8 +13,8 @@ public class FightScene extends SplashScreen {
     void addElements() {
         ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VS_screen.png")));
         pane.getChildren().add(vs_screen);
-        vs_screen.setFitHeight(SPRITE_HEIGHT);
-        vs_screen.setY(SCREEN_HEIGHT / 2 - SPRITE_HEIGHT);
+        vs_screen.setFitHeight(SCREEN_HEIGHT);
+        vs_screen.setFitWidth(SCREEN_WIDTH);
 
         Actor playerActor = ServiceLocator.getActorManager().getPlayerActor();
 
@@ -31,7 +31,7 @@ public class FightScene extends SplashScreen {
 
 
     }
-    FightScene() {
+    public FightScene() {
         super();
     }
 }

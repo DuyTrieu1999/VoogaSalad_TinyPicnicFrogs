@@ -15,7 +15,7 @@ abstract class SplashScreen {
     static final double SCREEN_HEIGHT = 600;
 
     SplashScreen() {
-        myScene = new Scene(pane, 750, 600, Color.BLACK);
+        myScene = new Scene(pane, SCREEN_WIDTH, SCREEN_HEIGHT, Color.BLACK);
         pane.setPrefHeight(SCREEN_HEIGHT);
         pane.setPrefWidth(SCREEN_WIDTH);
         this.addElements();
