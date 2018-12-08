@@ -1,11 +1,12 @@
 package engine.backend;
 
+import engine.backend.AI.AI;
+import engine.backend.AI.AITurn;
 import engine.backend.Commands.Command;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.spi.LocaleServiceProvider;
 
 /**
  * Manages the combat state (taking turns, etc).

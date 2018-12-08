@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.*;
+import engine.backend.AI.RandomAI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +16,9 @@ public class Main extends Application {
     /**
      * path to game Files to be loaded
      */
+
     private static String gameFilePath="./resources/demo/";
+
     public static void main(String[] args) {
         initialize();
         launch(args);
@@ -50,8 +53,10 @@ public class Main extends Application {
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
+            System.out.println("Fired");
             a.serialize();
-            a.setImages(50,50);
+            a.setImages();
+
         }
         return actorList;
     }

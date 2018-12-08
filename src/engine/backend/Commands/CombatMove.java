@@ -61,7 +61,7 @@ public class CombatMove extends Command {
         Map<String,AnimationObject>animationMap=new HashMap<>();
         for(int i=0;i<arr.size();i+=1){
             JSONObject animation=(JSONObject)arr.get(i);
-            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path"),Integer.parseInt(String.valueOf(animation.get("spriteRows"))),Integer.parseInt(String.valueOf(animation.get("spriteCols")))));
         }
         return animationMap;
     }
@@ -73,9 +73,9 @@ public class CombatMove extends Command {
     public void serialize(){
         System.out.println(super.myName+": "+"stat:"+stat+", value: "+targetValue+","+", number:"+targetActorNum+ ", type: "+myTargetType.toString()+", actor: "+myTargetActor.toString());
     }
-    public void setImages(int width, int height){
+    public void setImages(){
         for(AnimationObject a:myAnimationMap.values()){
-            a.setImage(width, height);
+            a.setImage();
         }
     }
 }

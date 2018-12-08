@@ -14,8 +14,8 @@ import org.json.simple.parser.ParseException;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class to manage the different actors in the frontend.
@@ -30,6 +30,8 @@ public class ActorManager {
     private ScrollPane actorTilePane;
     private BorderPane selectedPane;
     private String programName;
+    private static final int WINDOW_WIDTH = 200;
+    private static final int WINDOW_HEIGHT = 400;
 
     /**
      * Constructor for the actor manager.
@@ -45,9 +47,7 @@ public class ActorManager {
         programName = name;
         try {
             loadDefaultActors();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
@@ -57,7 +57,7 @@ public class ActorManager {
      * @param newActor The actor to add.
      * @param isPlayable Whether or not this actor is playable.
      */
-    public void addActor(Actor newActor, boolean isPlayable){
+    void addActor(Actor newActor, boolean isPlayable){
         if(isPlayable){
             playableActors.add(newActor);
         }
@@ -70,7 +70,7 @@ public class ActorManager {
      * Gets a list of actors that are not playable.
      * @return List of non-playable actors.
      */
-    public ArrayList<Actor> getBackgroundActors(){
+    private List<Actor> getBackgroundActors(){
         return backgroundActors;
     }
 
@@ -78,7 +78,7 @@ public class ActorManager {
      * Gets a list of actors that are playable.
      * @return List of playable actors.
      */
-    public ArrayList<Actor> getPlayableActors(){
+    private List<Actor> getPlayableActors(){
         return playableActors;
     }
 
@@ -87,12 +87,12 @@ public class ActorManager {
      * @throws IOException
      * @throws ParseException
      */
-    public void loadDefaultActors() throws IOException, ParseException {
+    private void loadDefaultActors() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(new FileReader(new File("./resources/default.json")));
         JSONArray defaultActors = (JSONArray)obj;
-        for(int i=0;i<defaultActors.size();i++){
-            JSONObject thisActor = (JSONObject)defaultActors.get(i);
+        for (Object defaultActor : defaultActors) {
+            JSONObject thisActor = (JSONObject) defaultActor;
             gameManager.createActorPrototype(thisActor);
             addActor(new Actor(thisActor), (boolean) thisActor.get("isPlayer"));
         }
@@ -103,9 +103,9 @@ public class ActorManager {
      * @param actorList The list of actors to create a list from.
      * @return A FlowPane with the images of the actors loaded.
      */
-    private FlowPane setupTab(ArrayList<Actor> actorList){
-        backgroundTilePane.setPrefViewportWidth(200);
-        backgroundTilePane.setPrefViewportHeight(400);
+    private FlowPane setupTab(List<Actor> actorList){
+        backgroundTilePane.setPrefViewportWidth(WINDOW_WIDTH);
+        backgroundTilePane.setPrefViewportHeight(WINDOW_HEIGHT);
         backgroundTilePane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         ArrayList<BorderPane> tileImages = new ArrayList<>();
         for(Actor thisActor:actorList){
@@ -143,13 +143,13 @@ public class ActorManager {
     /**
      * Sets up the content of the two different tabs in the menu.
      */
-    public void setupTabs(){
+    void setupTabs(){
         backgroundTilePane.setContent(setupTab(getBackgroundActors()));
         //System.out.println("Background actor size is " + getBackgroundActors().size());
         actorTilePane.setContent(setupTab(getPlayableActors()));
     }
 
-    public TabPane getActorMenu(){
+    TabPane getActorMenu(){
         setupTabs();
         TabPane allTabs = new TabPane();
         Tab backgroundTab = new Tab();

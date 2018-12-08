@@ -1,62 +1,71 @@
 package engine.backend;
-import engine.backend.Commands.Command;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Interaction
+ * @author Michael Glushakov (mg367)
+ * @author Max Bartlett (mmb70)
+ */
+public abstract class Interaction {
+	Map<String, AnimationObject> animationMap;
+	Map<String, Message> messageMap;
+	String myName;
 
+	//TODO: fill out defaults
 
-public  abstract class Interaction {
-    Map<String,AnimationObject> animationMap;
-    Map <String, Message> messageMap;
-    String myName;
+	/**
+	 * default constructor
+	 */
+	public Interaction() {
 
-    //TODO: fill out defaults
-    public Interaction(){
+	}
 
-    }
+	/**
+	 * @param data:     JSON representation of data relevant to interaction
+	 * @param messages: Map of messages called by interaction
+	 */
+	public Interaction(JSONObject data, Map<String, Message> messages) {
+		animationMap = new HashMap<>();
+		messageMap = messages;
+		myName = (String) data.get("name");
+		loadAnimationMap((JSONArray) data.get("animations"));
+	}
 
+	/**
+	 * @return myName
+	 */
+	public String getName() {
+		return myName;
+	}
 
-    /**
-     * @param data: JSON representation of data relevant to interaction
-     * @param messages: Map of messages called by interaction
-     */
-    public Interaction(JSONObject data, Map<String, Message>messages){
-        animationMap= new HashMap<>();
-        messageMap= messages;
-        myName=(String)data.get("name");
-        loadAnimationMap((JSONArray) data.get("animations"));
-    }
+	/**
+	 * sets images in animationMap
+	 */
+	public void setImages() {
+		for (AnimationObject a : animationMap.values()) {
+			a.setImage();
+		}
+	}
 
-
-    /**
-     * @param data
-     * Assume animations look like this:
-     * animations:[key:default, path:"/resource/charizard3.png"]
-     */
-    private void loadAnimationMap(JSONArray data){
-        for(int i=0;i<data.size();i+=1){
-            JSONObject animation=(JSONObject)data.get(i);
-            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
-        }
-    }
-
-    public String getName(){return myName;}
-
-    /**
-     * for testing purposes
-     */
-    public void serialize(){
-//        System.out.println(myName);
-        for(String s:animationMap.keySet()){System.out.println(s+": "+animationMap.get(s));}
-        for(String s:messageMap.keySet()){
-            System.out.println(s+":"+messageMap.get(s).getMessageString());
-        }
-    }
-    public void setImages(int width, int height){
-        for(AnimationObject a:animationMap.values()){
-        a.setImage(width, height);
-        }
-    }
+	/**
+	 * Loads animations into animationMap
+	 *
+	 * @param data Assume animations look like this:
+	 *             animations:[key:default, path:"/resource/charizard3.png"]
+	 */
+	private void loadAnimationMap(JSONArray data) {
+		final String KEY = "key";
+		final String PATH = "path";
+		final String SPRITE_ROWS = "spriteRows";
+		final String SPRITE_COLS = "spriteCols";
+		for (int i = 0; i < data.size(); i += 1) {
+			JSONObject animation = (JSONObject) data.get(i);
+			animationMap.put((String) animation.get(KEY), new AnimationObject((String) animation.get(KEY), (String) animation.get(PATH), Integer.parseInt(String.valueOf(animation.get(SPRITE_ROWS))), Integer.parseInt(String.valueOf(animation.get(SPRITE_COLS)))));
+		}
+	}
 }

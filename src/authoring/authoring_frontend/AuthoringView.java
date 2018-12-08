@@ -3,8 +3,6 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -21,6 +19,8 @@ public class AuthoringView {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 620;
     public static final Color DEFAULT_BACKGROUND = Color.WHITE;
+    public static final int GRID_WIDTH  = 30;
+    public static final int GRID_HEIGHT = 20;
     private Group myRoot;
     private Scene myScene;
     private BorderPane myMainView;
@@ -78,7 +78,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(30, 20));
+        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(GRID_WIDTH, GRID_HEIGHT));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(mapManager.getActiveMap());
@@ -116,25 +116,18 @@ public class AuthoringView {
     }
 
     /**
-     *
-     */
     private void makeTopMenu() {
 
     }
 
-    /**
-     *
-     */
     private void makeActorMenu() {
 
     }
 
-    /**
-     *
-     */
     private void makeGameMap() {
 
     }
+    */
 
     public String getProjectName(){
         return projectName;
