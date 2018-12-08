@@ -1,4 +1,4 @@
-package engine.backend.AI;
+package engine.backend;
 
 import engine.backend.CombatInteraction;
 import engine.backend.ServiceLocator;
