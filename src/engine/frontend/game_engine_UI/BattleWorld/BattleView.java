@@ -6,6 +6,8 @@ import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     private void setUpDisplay() {
         clearView();
+        ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
+        displayPane.getChildren().add(vs_screen);
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
         AnimationObject testEnemy = new AnimationObject("player battle", pathWay+"enemy_idle.png");

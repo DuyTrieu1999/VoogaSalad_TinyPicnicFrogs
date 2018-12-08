@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI.SplashScreen;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
 public class GameOver extends SplashScreen {
 
