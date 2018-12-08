@@ -1,11 +1,8 @@
 package engine.backend;
-
 import authoring.authoring_backend.ActorPrototype;
 import authoring.authoring_backend.ObservableActor;
-
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  * Defines behavior for Actors
  *
@@ -21,13 +18,11 @@ public class Actor {
 	private AnimationObject myActiveAnimation;
 	private boolean isPlayerActor;
 	private Bounds myBounds;
-
 	/**
 	 * Default constructor
 	 */
 	public Actor() {
 	}
-
 	/**
 	 * @param prototype ActorPrototype
 	 * @param x x coordinate
@@ -44,7 +39,6 @@ public class Actor {
 		isPlayerActor = prototype.getIsPlayer();
 		myBounds = prototype.getBounds();
 	}
-
 	/**
 	 * @param imagePaths imagePaths for each animation object
 	 * @return map of strings and their associated AnimationObjects
@@ -57,7 +51,6 @@ public class Actor {
 		}
 		return animations;
 	}
-
 	/**
 	 * @return interaction object associated with the first key in the keyset
 	 */
@@ -65,42 +58,36 @@ public class Actor {
 		String key = (String) myInteractionMap.keySet().toArray()[0];
 		return myInteractionMap.get(key);
 	}
-
 	/**
 	 * @return myBounds
 	 */
 	public Bounds getBounds() {
 		return myBounds;
 	}
-
 	/**
 	 * @return myActiveAnimation
 	 */
 	public AnimationObject getActiveAnimation() {
 		return myActiveAnimation;
 	}
-
 	/**
 	 * @return myCoordinate
 	 */
 	public Coordinate getCoordinate() {
 		return myCoordinate;
 	}
-
 	/**
 	 * @return isPlayerActor
 	 */
 	public boolean getIsPlayerActor() {
 		return isPlayerActor;
 	}
-
 	/**
 	 * @return ObservableActor with appropriate parameters
 	 */
 	public ObservableActor getObservableActor() {
 		return new ObservableActor(myName, myCoordinate.getX(), myCoordinate.getY(), myCoordinate.getZ(), myActiveAnimation.getAnimationView());
 	}
-
 	/**
 	 * Moves the Actor in the given direction by the given amount
 	 *
@@ -118,7 +105,6 @@ public class Actor {
 		}
 		myActiveAnimation = myAnimationMap.get(dir);
 	}
-
 	/**
 	 * Moves the Actor up
 	 *
@@ -127,7 +113,6 @@ public class Actor {
 	public void moveUp(int amt) {
 		move(amt, "top");
 	}
-
 	/**
 	 * Moves Actor down
 	 *
@@ -136,7 +121,6 @@ public class Actor {
 	public void moveDown(int amt) {
 		move(amt, "bottom");
 	}
-
 	/**
 	 * Moves Actor left
 	 *
@@ -145,46 +129,38 @@ public class Actor {
 	public void moveLeft(int amt) {
 		move(amt, "left");
 	}
-
 	/**
 	 * Moves Actor right
 	 */
 	public void moveRight(int amt) {
 		move(amt, "right");
 	}
-
 	/**
 	 * Sets the Actor to the idle position
 	 */
 	public void idle() {
 		myActiveAnimation = myAnimationMap.get("idle");
 	}
-
 	/**
 	 * Listens for messages and responds to ones that this actor cares about
 	 *
 	 * @param m The message sent to the Actor
 	 */
 	public void receiveMessage(Message m) {
-
 	}
-
 	/**
 	 * Handles messages that are not common between all Actors.
 	 *
 	 * @param m the message
 	 */
 	protected void receiveCustomMessage(Message m) {
-
 	}
-
 	/**
 	 * Used by authoring to serialize the actor
 	 */
 	public void serialize() {
 		//System.out.println(getActiveAnimation().getName());
 	}
-
 	/**
 	 * Sets the appropriate image for the actor
 	 */

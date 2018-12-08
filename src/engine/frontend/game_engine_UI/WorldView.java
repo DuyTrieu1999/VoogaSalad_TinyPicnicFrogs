@@ -45,7 +45,7 @@ public abstract class WorldView {
         this.myController = controller;
         displayPane = new BorderPane();
         myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
-        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(e.getCode()));
+        myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(new GameKeyEvent(e)));
     }
     /**
      * Add the animations, and update the view in each frame of the game
