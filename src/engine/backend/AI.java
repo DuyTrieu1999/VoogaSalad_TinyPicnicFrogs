@@ -12,7 +12,7 @@ public abstract class AI {
     protected List<Command> myOptions;
 
     /**
-     * Provide a list of Commands for the AI to choose from
+     * Provide a list of Commands for the Ai to choose from
      * @param options List of possible commands to choose
      */
     public void setOptions(List<Command> options){

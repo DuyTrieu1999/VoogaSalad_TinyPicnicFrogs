@@ -83,4 +83,6 @@ public class Controller {
      * set the BattleView in the front end
      */
     public void setBattleView() { myView.setBattleView(); }
+
+    public void addDialogue(Message m) { myView.getMyView().addDialouge(m); }
 }

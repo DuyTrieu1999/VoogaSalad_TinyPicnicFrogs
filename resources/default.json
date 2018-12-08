@@ -2,7 +2,7 @@
   {
     "name":"grass",
     "animations":[
-      {"key":"idle","path":"1.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"1.png"}
     ],
     "stats":[],
     "bounds":{
@@ -20,12 +20,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"1.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"1.png"}]}]
   },
   {
     "name":"treebottom",
     "animations":[
-      {"key":"idle","path":"2.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"2.png"}
     ],
     "stats":[],
     "bounds":{
@@ -43,12 +43,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"2.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"2.png"}]}]
   },
   {
     "name":"treemiddle",
     "animations":[
-      {"key":"idle","path":"3.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"3.png"}
     ],
     "stats":[],
     "bounds":{
@@ -66,12 +66,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"3.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"3.png"}]}]
   },
   {
     "name":"treetop",
     "animations":[
-      {"key":"idle","path":"4.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"4.png"}
     ],
     "stats":[],
     "bounds":{
@@ -89,12 +89,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"4.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"4.png"}]}]
   },
   {
     "name":"bouldertopleft",
     "animations":[
-      {"key":"idle","path":"5.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"5.png"}
     ],
     "stats":[],
     "bounds":{
@@ -112,12 +112,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"5.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"5.png"}]}]
   },
   {
     "name":"bouldertopright",
     "animations":[
-      {"key":"idle","path":"6.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"6.png"}
     ],
     "stats":[],
     "bounds":{
@@ -135,12 +135,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"6.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"6.png"}]}]
   },
   {
     "name":"boulderbottomleft",
     "animations":[
-      {"key":"idle","path":"7.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"7.png"}
     ],
     "stats":[],
     "bounds":{
@@ -158,12 +158,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"7.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"7.png"}]}]
   },
   {
     "name":"boulderbottomright",
     "animations":[
-      {"key":"idle","path":"8.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"8.png"}
     ],
     "stats":[],
     "bounds":{
@@ -181,12 +181,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"8.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"8.png"}]}]
   },
   {
     "name":"boulder2topleft",
     "animations":[
-      {"key":"idle","path":"9.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"9.png"}
     ],
     "stats":[],
     "bounds":{
@@ -204,12 +204,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"9.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"9.png"}]}]
   },
   {
     "name":"boulder2topright",
     "animations":[
-      {"key":"idle","path":"10.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"10.png"}
     ],
     "stats":[],
     "bounds":{
@@ -227,12 +227,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"10.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"10.png"}]}]
   },
   {
     "name":"boulder2bottomleft",
     "animations":[
-      {"key":"idle","path":"11.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"11.png"}
     ],
     "stats":[],
     "bounds":{
@@ -250,12 +250,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"11.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"11.png"}]}]
   },
   {
     "name":"boulder2bottomright",
     "animations":[
-      {"key":"idle","path":"12.png","spriteRows":1,"spriteCols":1,"spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"12.png"}
     ],
     "stats":[],
     "bounds":{
@@ -273,12 +273,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"12.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"12.png"}]}]
   },
   {
     "name":"boulder3",
     "animations":[
-      {"key":"idle","path":"13.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"13.png"}
     ],
     "stats":[],
     "bounds":{
@@ -296,12 +296,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"13.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"13.png"}]}]
   },
   {
     "name":"boulder4",
     "animations":[
-      {"key":"idle","path":"14.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"14.png"}
     ],
     "stats":[],
     "bounds":{
@@ -319,12 +319,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"14.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"14.png"}]}]
   },
   {
     "name":"boulder5top",
     "animations":[
-      {"key":"idle","path":"15.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"15.png"}
     ],
     "stats":[],
     "bounds":{
@@ -342,12 +342,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"15.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"15.png"}]}]
   },
   {
     "name":"boulder5bottom",
     "animations":[
-      {"key":"idle","path":"16.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"16.png"}
     ],
     "stats":[],
     "bounds":{
@@ -365,12 +365,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"16.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"16.png"}]}]
   },
   {
     "name":"boulder6top",
     "animations":[
-      {"key":"idle","path":"17.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"17.png"}
     ],
     "stats":[],
     "bounds":{
@@ -388,12 +388,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"17.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"17.png"}]}]
   },
   {
     "name":"boulder6bottom",
     "animations":[
-      {"key":"idle","path":"18.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"18.png"}
     ],
     "stats":[],
     "bounds":{
@@ -411,12 +411,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"18.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"18.png"}]}]
   },
   {
     "name":"bigholetopleft",
     "animations":[
-      {"key":"idle","path":"19.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"19.png"}
     ],
     "stats":[],
     "bounds":{
@@ -434,12 +434,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"19.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"19.png"}]}]
   },
   {
     "name":"bigholetopright",
     "animations":[
-      {"key":"idle","path":"20.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"20.png"}
     ],
     "stats":[],
     "bounds":{
@@ -457,12 +457,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"20.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"20.png"}]}]
   },
   {
     "name":"bigholebottomleft",
     "animations":[
-      {"key":"idle","path":"21.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"21.png"}
     ],
     "stats":[],
     "bounds":{
@@ -480,12 +480,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"21.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"21.png"}]}]
   },
   {
     "name":"bigholebottomright",
     "animations":[
-      {"key":"idle","path":"22.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"22.png"}
     ],
     "stats":[],
     "bounds":{
@@ -503,12 +503,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"22.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"22.png"}]}]
   },
   {
     "name":"smallholeleft",
     "animations":[
-      {"key":"idle","path":"23.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"23.png"}
     ],
     "stats":[],
     "bounds":{
@@ -526,12 +526,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"23.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"23.png"}]}]
   },
   {
     "name":"smallholeright",
     "animations":[
-      {"key":"idle","path":"24.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"24.png"}
     ],
     "stats":[],
     "bounds":{
@@ -549,12 +549,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"24.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"24.png"}]}]
   },
   {
     "name":"dirtpatch",
     "animations":[
-      {"key":"idle","path":"25.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"25.png"}
     ],
     "stats":[],
     "bounds":{
@@ -572,12 +572,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"25.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"25.png"}]}]
   },
   {
     "name":"hilltopleft",
     "animations":[
-      {"key":"idle","path":"26.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"26.png"}
     ],
     "stats":[],
     "bounds":{
@@ -595,12 +595,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"26.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"26.png"}]}]
   },
   {
     "name":"hilltopmiddle",
     "animations":[
-      {"key":"idle","path":"27.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"27.png"}
     ],
     "stats":[],
     "bounds":{
@@ -618,12 +618,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"27.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"27.png"}]}]
   },
   {
     "name":"hilltopright",
     "animations":[
-      {"key":"idle","path":"28.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"28.png"}
     ],
     "stats":[],
     "bounds":{
@@ -641,12 +641,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"28.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"28.png"}]}]
   },
   {
     "name":"hillmiddleleft",
     "animations":[
-      {"key":"idle","path":"29.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"29.png"}
     ],
     "stats":[],
     "bounds":{
@@ -664,12 +664,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"29.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"29.png"}]}]
   },
   {
     "name":"hillmiddlemiddle",
     "animations":[
-      {"key":"idle","path":"30.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"30.png"}
     ],
     "stats":[],
     "bounds":{
@@ -687,12 +687,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"30.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"30.png"}]}]
   },
   {
     "name":"hillmiddleright",
     "animations":[
-      {"key":"idle","path":"31.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"31.png"}
     ],
     "stats":[],
     "bounds":{
@@ -710,12 +710,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"31.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"31.png"}]}]
   },
   {
     "name":"hillbottomleft",
     "animations":[
-      {"key":"idle","path":"32.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"32.png"}
     ],
     "isPlayer":false,
     "stats":[],
@@ -734,12 +734,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"32.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"32.png"}]}]
   },
   {
     "name":"hillbottommiddle",
     "animations":[
-      {"key":"idle","path":"33.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"33.png"}
     ],
     "stats":[],
     "bounds":{
@@ -757,12 +757,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"33.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"33.png"}]}]
   },
   {
     "name":"hillbottomright",
     "animations":[
-      {"key":"idle","path":"34.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"34.png"}
     ],
     "stats":[],
     "bounds":{
@@ -780,12 +780,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"34.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"34.png"}]}]
   },
   {
     "name":"tree2topleft",
     "animations":[
-      {"key":"idle","path":"35.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"35.png"}
     ],
     "stats":[],
     "bounds":{
@@ -803,12 +803,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"35.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"35.png"}]}]
   },
   {
     "name":"tree2topright",
     "animations":[
-      {"key":"idle","path":"36.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"36.png"}
     ],
     "stats":[],
     "bounds":{
@@ -826,12 +826,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"36.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"36.png"}]}]
   },
   {
     "name":"tree2farleft",
     "animations":[
-      {"key":"idle","path":"37.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"37.png"}
     ],
     "stats":[],
     "bounds":{
@@ -849,12 +849,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"37.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"37.png"}]}]
   },
   {
     "name":"tree2left",
     "animations":[
-      {"key":"idle","path":"38.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"38.png"}
     ],
     "stats":[],
     "bounds":{
@@ -872,12 +872,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"38.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"38.png"}]}]
   },
   {
     "name":"tree2right",
     "animations":[
-      {"key":"idle","path":"39.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"39.png"}
     ],
     "stats":[],
     "bounds":{
@@ -895,12 +895,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"39.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"39.png"}]}]
   },
   {
     "name":"tree2farright",
     "animations":[
-      {"key":"idle","path":"40.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"40.png"}
     ],
     "stats":[],
     "bounds":{
@@ -918,12 +918,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"40.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"40.png"}]}]
   },
   {
     "name":"tree2bottomleft",
     "animations":[
-      {"key":"idle","path":"41.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"41.png"}
     ],
     "stats":[],
     "bounds":{
@@ -941,12 +941,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"41.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"41.png"}]}]
   },
   {
     "name":"tree2bottomright",
     "animations":[
-      {"key":"idle","path":"42.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"42.png"}
     ],
     "stats":[],
     "bounds":{
@@ -964,12 +964,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"42.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"42.png"}]}]
   },
   {
     "name":"orangeplayer",
     "animations":[
-      {"key":"idle","path":"43.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"43.png"}
     ],
     "stats":[],
     "bounds":{
@@ -987,12 +987,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"43.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"43.png"}]}]
   },
   {
     "name":"brownplayer",
     "animations":[
-      {"key":"idle","path":"44.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"44.png"}
     ],
     "stats":[],
     "bounds":{
@@ -1010,12 +1010,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"44.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"44.png"}]}]
   },
   {
     "name":"grayplayer",
     "animations":[
-      {"key":"idle","path":"45.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"45.png"}
     ],
     "stats":[],
     "bounds":{
@@ -1033,12 +1033,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"45.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"45.png"}]}]
   },
   {
     "name":"greenplayer",
     "animations":[
-      {"key":"idle","path":"46.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"46.png"}
     ],
     "stats":[],
     "bounds":{
@@ -1056,12 +1056,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"46.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"46.png"}]}]
   },
   {
     "name":"pinkplayer",
     "animations":[
-      {"key":"idle","path":"47.png","spriteRows":1,"spriteCols":1}
+      {"key":"idle","path":"47.png"}
     ],
     "stats":[],
     "bounds":{
@@ -1079,6 +1079,6 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"idle","path":"47.png","spriteRows":1,"spriteCols":1}]}]
+      "animations":[{"key":"idle","path":"47.png"}]}]
   }
 ]

@@ -10,12 +10,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.net.URI;
 
-/**
- * @author Michael Glushakov
- * Purpose: Contains methods for making HTTP requests to the server
- * Dependencies: Java's HTTP Client
- * Usages: Used by UserProfileManager to return server responses
- */
 public class ServerManager {
     private static final String URL_LOCAL = "https://vooga-server.herokuapp.com";
     private static final String LOGIN_PATH="/login";
@@ -29,15 +23,13 @@ public class ServerManager {
         parser = new JSONParser();
     }
 
-    /**
-     * @param email
-     * @param password
-     * @return JSON of user data
-     * @throws IOException handled by userProfileManager
-     * @throws InterruptedException handled by userProfileManager
-     */
+    public void testConnection() throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL)).GET().version(HttpClient.Version.HTTP_1_1).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+    }
 
-    public JSONObject login(String email, String password) throws IOException, InterruptedException, ParseException {
+    public JSONObject login(String email, String password) throws IOException, InterruptedException {
         String body="{\n" +
                 "\t\"user\":{\n" +
                 "\t\t\"email\":\""+email+"\",\n" +
@@ -47,21 +39,13 @@ public class ServerManager {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+LOGIN_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body)).version(HttpClient.Version.HTTP_1_1).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
-
+        try {
             return(JSONObject)parser.parse(response.body());
-
+        } catch (ParseException e) {
+            return null;
+        }
 
     }
-
-    /**
-     *
-     * @param email
-     * @param password
-     * @param bio
-     * @param name
-     * @throws IOException handled by userProfileManager
-     * @throws InterruptedException handled by userProfileManager
-     */
 
     public void register(String email, String password, String bio,String name ) throws IOException, InterruptedException {
         String body = "{\n" +
@@ -76,18 +60,7 @@ public class ServerManager {
         HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+REGISTER_PATH)) .header("Content-Type", "application/json").POST(HttpRequest.BodyPublisher.fromString(body)).version(HttpClient.Version.HTTP_1_1).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
     }
-
-    /**
-     *
-     * @param email
-     * @param password
-     * @param bio
-     * @param name
-     * @return JSON of user data
-     * @throws IOException handled by userProfileManager
-     * @throws InterruptedException handled by userProfileManager
-     */
-    public JSONObject updateUser(String email, String password, String bio,String name ) throws IOException, InterruptedException {
+public JSONObject updateUser(String email, String password, String bio,String name ) throws IOException, InterruptedException {
     String body = "{\n" +
             "\t\"user\":{\n" +
             "\t\t\"email\":\""+email+"\",\n" +
@@ -105,15 +78,7 @@ public class ServerManager {
         return null;
     }
 }
-
-    /**
-     *
-     * @param name
-     * @return JSON of user data
-     * @throws IOException handled by userProfileManager
-     * @throws InterruptedException handled by userProfileManager
-     */
-    public JSONArray lookUpUsers(String name) throws IOException, InterruptedException {
+public JSONArray lookUpUsers(String name) throws IOException, InterruptedException {
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+LOOKUP_PATH)) .header("Content-Type", "application/json").header("name",name).GET().version(HttpClient.Version.HTTP_1_1).build();
     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
@@ -124,16 +89,7 @@ public class ServerManager {
         return null;
     }
 }
-
-    /**
-     *
-     * @param targetEmail
-     * @param followerEmail
-     * @return new following array
-     * @throws IOException handled by userProfileManager
-     * @throws InterruptedException handled by userProfileManager
-     */
-    public JSONArray followUser(String targetEmail, String followerEmail) throws IOException, InterruptedException {
+public JSONArray followUser(String targetEmail, String followerEmail) throws IOException, InterruptedException {
     JSONObject body = new JSONObject();
     body.put("target",targetEmail);
     body.put("follower",followerEmail);

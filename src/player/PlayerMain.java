@@ -12,16 +12,12 @@ import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 
 /**
- * @author Michael Glushakov
- * Purpose: Main Class in player package
- * Dependencies: SceneManager, UserProfile manager
- * Usages: Runs player
+ * There is a main method that can run the game engine
  */
 public class PlayerMain extends Application {
     private SceneManager myManager;
     private Main engineMain;
     private UserProfileManager userProfileManager;
-    public static final int SCREEN_SIZE=500;
     private authoring.authoring_frontend.Main authoringMain;
 
  @Override
