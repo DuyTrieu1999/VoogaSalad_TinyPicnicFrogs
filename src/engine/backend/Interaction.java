@@ -7,6 +7,7 @@ import java.util.Map;
 
 
 
+
 public  abstract class Interaction {
     Map<String,AnimationObject> animationMap;
     Map <String, Message> messageMap;

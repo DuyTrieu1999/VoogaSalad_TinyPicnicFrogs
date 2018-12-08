@@ -8,11 +8,24 @@ public class AnimationObject {
     private String animationPath;
     private ImageView animationView;
     private Coordinate coordinate;
+
+    private int spriteRows;
+    private int spiteCols;
+
     public AnimationObject (String name,String path) {
         this.animationName = name;
         animationPath=path;
         animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
     }
+
+    public AnimationObject (String name,String path,int sriteR,int spriteC) {
+        this.animationName = name;
+        animationPath=path;
+        animationView= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(path)));
+        spriteRows=sriteR;
+        spiteCols=spriteC;
+    }
+
 
     public AnimationObject (String name,String path,Coordinate coordinateP) {
         this.animationName = name;
