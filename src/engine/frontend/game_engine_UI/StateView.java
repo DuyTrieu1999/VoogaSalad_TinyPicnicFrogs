@@ -1,6 +1,8 @@
 package engine.frontend.game_engine_UI;
 
+import engine.backend.ActorManager;
 import engine.backend.Commands.Command;
+import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
@@ -24,6 +26,7 @@ public class StateView {
 
     public StateView(Stage stage) {
         this.myStage = stage;
+       // ActorManager a=ServiceLocator.getActorManager();
         myController = new Controller(this);
         myView = new OverWorldView(myController);
         setUpView();
