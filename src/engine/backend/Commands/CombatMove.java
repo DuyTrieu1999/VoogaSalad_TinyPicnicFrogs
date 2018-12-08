@@ -44,6 +44,19 @@ public class CombatMove extends Command {
 
     @Override
     public void execute(List<Object> params) {
+        if(myTarget.getClass() == CombatInteraction.class){
+            int currentHealth = ((CombatInteraction) myTarget).getHealth();
+            ((CombatInteraction) myTarget).setHealth(calculateHealth(currentHealth));
+        }
+    }
+    private int calculateHealth(int health){
+        if(myTargetType==targetType.CONSTANT){
+            health-=targetValue;
+        }
+        else if (myTargetType==targetType.PERCENTAGE){
+         health=(int)((100-targetValue)*health/100);
+        }
+        return health;
     }
     private targetType parseTargetType(String value){
         if(value.equals("constant"))return targetType.CONSTANT;

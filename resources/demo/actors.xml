@@ -13,9 +13,9 @@
                     <engine.backend.BackgroundInteraction>
                         <animationMap>
                             <entry>
-                                <string>default</string>
+                                <string>idle</string>
                                 <engine.backend.AnimationObject>
-                                    <animationName>default</animationName>
+                                    <animationName>idle</animationName>
                                     <animationPath>background.png</animationPath>
                                 </engine.backend.AnimationObject>
                             </entry>
