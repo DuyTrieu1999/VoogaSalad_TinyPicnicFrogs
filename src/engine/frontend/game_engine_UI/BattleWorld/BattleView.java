@@ -5,6 +5,7 @@ import engine.backend.Commands.Command;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,10 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private AnimationObject myEnemy;
     private MenuView menuView;
     private String pathWay = "";
+    private ImageView battle_background;
+
+    private static final double SCREEN_WIDTH = 750;
+    private static final double SCREEN_HEIGHT = 600;
 
     public BattleView(Controller controller) {
         super(controller);
@@ -35,16 +40,18 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     private void setUpDisplay() {
         clearView();
-        ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
-        displayPane.getChildren().add(vs_screen);
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-        AnimationObject testEnemy = new AnimationObject("player battle", pathWay+"enemy_idle.png");
-        AnimationObject testPlayer = new AnimationObject("enemy batlte", pathWay+"player_right.png");
-        playerSide = new PlayerSide(testPlayer);
-        opponentSide = new OpponentSide(testEnemy);
+        AnimationObject testPlayer = new AnimationObject("player battle", pathWay+"player_right.png");
+        AnimationObject testEnemy = new AnimationObject("enemy battle", pathWay+"player_left.png");
+        playerSide = new PlayerSide(myPlayer);
+        opponentSide = new OpponentSide(myEnemy);
         this.playerSide.setHealth(myController.getalliesHealth().get(0));
         this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
+        battle_background = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
+        battle_background.setFitWidth(SCREEN_WIDTH);
+        battle_background.setFitHeight(SCREEN_WIDTH/2);
+        displayPane.getChildren().add(battle_background);
         displayPane.setLeft(playerSide);
         displayPane.setRight(opponentSide);
     }
@@ -52,11 +59,16 @@ public class BattleView extends WorldView implements BattleViewAPI {
         HBox buttonBox = new HBox();
         Button combatButton = new Button("Battle!");
         buttonBox.getChildren().add(combatButton);
-        displayPane.setCenter(buttonBox);
+        displayPane.getChildren().add(buttonBox);
+        buttonBox.setTranslateY(battle_background.getFitHeight());
         combatButton.setOnMouseClicked((event -> {
+            System.out.println("something");
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
+            menuView.setPrefHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
+            menuView.setMaxHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
             displayPane.setCenter(menuView);
+            displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
             menuView.setSelectedCommand();
             System.out.println(menuView);
         }));

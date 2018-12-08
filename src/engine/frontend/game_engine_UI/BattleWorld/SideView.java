@@ -13,7 +13,7 @@ abstract class SideView extends HBox {
     private AnimationObject myAnimation;
     private int myHealth;
     private double maxHealth = myHealth;
-    private BorderPane view;
+    BorderPane view;
 
     public SideView(AnimationObject actorAnimation) {
         this.myAnimation = actorAnimation;
@@ -30,6 +30,8 @@ abstract class SideView extends HBox {
         box.getChildren().add(image);
         box.getChildren().add(hpBar);
         view.setCenter(box);
+        view.setTranslateX(75);
+        view.setTranslateY(80);
         this.getChildren().add(view);
     }
 
