@@ -22,6 +22,7 @@ public class FightScene extends SplashScreen {
         pane.getChildren().add(playerActorImageView);
         playerActorImageView.setX(SCREEN_WIDTH / 4 - playerActorImageView.getFitWidth() / 2);
         playerActorImageView.setY(SCREEN_HEIGHT / 2 - playerActorImageView.getFitHeight() / 2);
+        
 
         ImageView opponent = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VSBlue.png")));
         //change to current opponent
