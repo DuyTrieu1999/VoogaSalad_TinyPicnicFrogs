@@ -9,11 +9,7 @@ public class Victory extends SplashScreen {
     @Override
     void addElements() {
         ImageView you_win = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("you_win.png")));
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(you_win);
-    }
-    protected void interpolate(double d) {
-
+        pane.setCenter(you_win);
     }
 
     Victory() {

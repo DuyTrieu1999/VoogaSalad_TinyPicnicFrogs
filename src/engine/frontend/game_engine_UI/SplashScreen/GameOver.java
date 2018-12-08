@@ -10,13 +10,7 @@ public class GameOver extends SplashScreen {
 
     @Override
     void addElements() {
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("game_over.png"))));
-        root.getChildren().add(borderPane);
-    }
-
-    protected void interpolate(double d) {
-
+        pane.setCenter(new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("game_over.png"))));
     }
 
     GameOver() {

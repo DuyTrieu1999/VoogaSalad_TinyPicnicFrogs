@@ -23,6 +23,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
     private MenuView menuView;
+    private String pathWay = "";
 
     public BattleView(Controller controller) {
         super(controller);
@@ -34,8 +35,10 @@ public class BattleView extends WorldView implements BattleViewAPI {
         clearView();
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-        playerSide = new PlayerSide(myPlayer);
-        opponentSide = new OpponentSide(myEnemy);
+        AnimationObject testPlayer = new AnimationObject("player battle", pathWay+"enemy_idle.png");
+        AnimationObject testEnemy = new AnimationObject("enemy batlte", pathWay+"player_right.png");
+        playerSide = new PlayerSide(testPlayer);
+        opponentSide = new OpponentSide(testEnemy);
         this.playerSide.setHealth(myController.getalliesHealth().get(0));
         this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
         displayPane.setLeft(playerSide);
@@ -46,11 +49,13 @@ public class BattleView extends WorldView implements BattleViewAPI {
         Button combatButton = new Button("Battle!");
         buttonBox.getChildren().add(combatButton);
         displayPane.setCenter(buttonBox);
-        combatButton.setOnAction((event -> {
+        combatButton.setOnMouseClicked((event -> {
+            System.out.println("something");
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
-            displayPane.setBottom(menuView);
-            menuView.setSellectedCommand();
+            displayPane.setCenter(menuView.getPane());
+            menuView.setSelectedCommand();
+            System.out.println(menuView);
         }));
     }
     public MenuView getMenuView () {

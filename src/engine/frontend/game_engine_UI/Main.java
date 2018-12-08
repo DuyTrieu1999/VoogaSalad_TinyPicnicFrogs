@@ -3,7 +3,6 @@ package engine.frontend.game_engine_UI;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.*;
-import engine.backend.AI.RandomAI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -17,7 +16,7 @@ public class Main extends Application {
      * path to game Files to be loaded
      */
 
-    private static String gameFilePath="./resources/demo/";
+    private static String gameFilePath="voogasalad_tinypicnicfrogs/resources/demo/";
 
     public static void main(String[] args) {
         initialize();
@@ -40,7 +39,7 @@ public class Main extends Application {
 
         var dummyActorList = loadActors(gameFilePath);
         var actorMan = new ActorManager(dummyActorList);
-        System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
+        //System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
         var gameWorld = new GameWorld(1000, 1000);
         ServiceLocator.provideGameWorld(gameWorld);

@@ -3,52 +3,35 @@ package engine.backend;
 
 /**
  * Represents the bounding box
- * The top left of bounding box is expressed relative
- * to the top of the Actor's coordinates
  */
 public class Bounds {
-	private int width;
-	private int height;
-	private int relX;
-	private int relY;
+   private int width;
+   private int height;
 
-	/**
-	 * Constructs a bounding box with given parameters
-	 * @param width width
-	 * @param height height
-	 * @param relX x relative to top left of Actor's coordinates
-	 * @param relY y relative to top left of Actor's coordinates
-	 */
-	public Bounds(int width, int height, int relX, int relY) {
-		this.width = width;
-		this.height = height;
-		this.relX = relX;
-		this.relY = relY;
-	}
+    public int getHeight() {
+        return height;
+    }
 
-	/**
-	 * @return height
-	 */
-	public int getHeight() {
-		return height;
-	}
+    public int getRelX() {
+        return relX;
+    }
 
-	/**
-	 * @return width
-	 */
-	public int getWidth() { return width; }
+    public int getRelY() {
+        return relY;
+    }
 
-	/**
-	 * @return relX
-	 */
-	public int getRelX() {
-		return relX;
-	}
+    //the top left of bounding box expressed relative to the top of the Actor's coordinates
+   private int relX;
+    private int relY;
 
-	/**
-	 * @return relY
-	 */
-	public int getRelY() {
-		return relY;
-	}
+    public int getWidth() {
+        return width;
+    }
+
+    public Bounds(int width, int height, int relX, int relY){
+        this.width = width;
+        this.height = height;
+        this.relX = relX;
+        this.relY = relY;
+    }
 }
