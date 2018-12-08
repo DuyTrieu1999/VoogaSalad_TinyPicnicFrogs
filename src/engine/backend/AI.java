@@ -1,4 +1,4 @@
-package engine.backend.AI;
+package engine.backend;
 
 import engine.backend.Commands.Command;
 

@@ -1,6 +1,5 @@
-package engine.backend.AI;
+package engine.backend;
 
-import engine.backend.AI.AI;
 import engine.backend.Commands.Command;
 
 import java.util.Random;

@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * Interaction
+ *
  * @author Michael Glushakov (mg367)
  * @author Max Bartlett (mmb70)
  */
@@ -67,5 +68,12 @@ public abstract class Interaction {
 			JSONObject animation = (JSONObject) data.get(i);
 			animationMap.put((String) animation.get(KEY), new AnimationObject((String) animation.get(KEY), (String) animation.get(PATH), Integer.parseInt(String.valueOf(animation.get(SPRITE_ROWS))), Integer.parseInt(String.valueOf(animation.get(SPRITE_COLS)))));
 		}
+	}
+
+	/**
+	 * placeholder
+	 */
+	public void serialize() {
+
 	}
 }
