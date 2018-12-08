@@ -52,6 +52,10 @@ public class ServiceLocator {
 //            //myCombatManager = new CombatManager(null, null, null);
 //            return null;
 //        }
+        if(myCombatManager == null){
+            System.out.println("FMLFMLFMLFML");
+        }
+
         return myCombatManager;
     }
 
@@ -61,6 +65,7 @@ public class ServiceLocator {
     }
 
     public static void provideCombatManager(CombatManager combatManager){
+        System.out.println("providing: " + combatManager);
         myCombatManager = combatManager;
     }
 

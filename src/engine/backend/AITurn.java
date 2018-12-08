@@ -1,5 +1,8 @@
 package engine.backend;
 
+import engine.backend.gameevent.GameMenuEvent;
+import engine.backend.gameevent.InputSource;
+
 /**
  * Runs the turn for an AI controlled opponent
  *
@@ -8,17 +11,15 @@ package engine.backend;
 public class AITurn extends Turn {
 
     AITurn(CombatInteraction controlledEnemy){
+        mySource = InputSource.AI;
         myInt = controlledEnemy;
     }
 
     @Override
-    public void getInput() {
-
-    }
-
-    @Override
     public void initializeTurn() {
-
+        System.out.println("AI Turn");
+        ServiceLocator.getAI().setOptions(myInt.getCommandList());
+        var nextMove = ServiceLocator.getAI().getOption();
+        ServiceLocator.getCombatManager().receiveInput(new GameMenuEvent(nextMove, InputSource.AI));
     }
-
 }
