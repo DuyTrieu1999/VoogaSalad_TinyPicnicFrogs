@@ -30,7 +30,6 @@ public class GameManager {
     private ActorPrototypeManager actorPrototypeManager;
     private MessageManager messageManager;
     private MapManager mapManager;
-    private final String GAME_SAVE_PATH="./resources/games.xml";
 
     public GameManager(){
         actorManager=new ActorManager();
@@ -107,6 +106,7 @@ public class GameManager {
      */
     public void saveGame(String titleP,String descriptionP, String filePath){
         filePath+="/";
+        System.out.println("fired");
         GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
         actorManager.serializeAllActors(data.getPath());
         messageManager.serializeAllMessages(data.getPath());
@@ -114,18 +114,19 @@ public class GameManager {
         XStream serializer =  new XStream(new DomDriver());
         String dataStr;
         try{
-            File gameMap= new File(GAME_SAVE_PATH);
+            File gameMap= new File("./resources/games.xml");
             if(gameMap.exists()){
-                Map<String,GameData>gameList=(Map<String,GameData>)serializer.fromXML(gameMap);
-                gameList.put(data.getPath(),data);
+                System.out.println("exists");
+                List<GameData>gameList=(List<GameData>)serializer.fromXML(gameMap);
+                gameList.add(data);
                 dataStr=serializer.toXML(gameList);
             }
             else{
-                Map<String,GameData>gameList= new HashMap<>();
-                gameList.put(data.getPath(),data);
+                List<GameData>gameList= new ArrayList<>();
+                gameList.add(data);
                  dataStr=serializer.toXML(gameList);
             }
-            Files.write(Paths.get(GAME_SAVE_PATH),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
+            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
 
     /**
@@ -193,13 +194,7 @@ public class GameManager {
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
 
-    /**
-     * @return Observable actors for front-end use
-     */
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
-    /**
-     * @return Observable prototypes for front-end use
-     */
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 

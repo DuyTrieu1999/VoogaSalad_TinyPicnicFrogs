@@ -1,10 +1,17 @@
 package engine.backend;
 
-import engine.backend.Commands.Command;
+import engine.backend.Commands.CombatMove;
 
+import engine.backend.Commands.Command;
+import engine.backend.gameevent.GameEvent;
+import engine.backend.gameevent.GameMenuEvent;
+import engine.backend.gameevent.InputSource;
+
+import javax.swing.event.MenuEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.spi.LocaleServiceProvider;
 
 /**
  * Manages the combat state (taking turns, etc).
@@ -16,6 +23,10 @@ public class CombatManager {
     List<CombatInteraction> myEnemies;
     AI myAI;
     private List<Turn> turnList;
+    boolean turnLock;
+    CombatMove nextMove;
+    InputSource nextSource;
+
 
     /**
      *
@@ -27,6 +38,7 @@ public class CombatManager {
         myAllies = allies;
         myEnemies = enemies;
         turnList = new ArrayList<>();
+        turnLock = true;
         for(CombatInteraction a : myAllies){
             turnList.add(new PlayerTurn(a));
         }
@@ -34,20 +46,43 @@ public class CombatManager {
             turnList.add(new AITurn(e));
         }
         turnList.sort(initiativeComparator);
+        nextMove = null;
+
     }
 
     public List<Command> getAllyCommandList() {
         return myAllies.get(0).getCommandList();
     }
 
+
     /**
-     * Runs the combat interaction until one side is completely dead
+     * Call this method every cycle during combat. This will advance the combat state when it is ready
      */
-    public void runCombat(){
-        while(myAllies.size() > 0 || myEnemies.size() > 0){
+    public void combatTick(){
+        if(!turnLock){
+            //nextMove.execute(null);
+            nextTurn();
+        }
+    }
+
+    /**
+     * This releases the lock and allows combat to move on
+     */
+    public void receiveInput(GameMenuEvent e){
+        if(e.getSource() == nextSource){
+            e.getOption().execute(null);
+            turnLock = false;
+        }
+    }
+
+
+    /**
+     * Runs the next turn of the combat
+     */
+    public void nextTurn(){
+        System.out.println("next turnss");
+            turnLock = true;
             //run the current turn and put it on the end of the queue
-            var currentTurn = turnList.get(0);
-            currentTurn.executeTurn();
             turnList.add(turnList.remove(0));
             //remove dead
             List<CombatInteraction> deadList = new ArrayList<>();
@@ -64,7 +99,24 @@ public class CombatManager {
                 }
             }
             myEnemies.removeAll(deadList);
-        }
+            if(myAllies.size() < 1){
+                playerDefeat();
+            }
+            if(myEnemies.size()< 1){
+                playerVictory();
+            }
+
+            nextSource = turnList.get(0).getExpectedSource();
+            turnList.get(0).initializeTurn();
+    }
+
+
+    private void playerDefeat() {
+    
+    }
+
+    private void playerVictory(){
+
     }
 
     public List<Integer> getAlliesHealth(){
@@ -97,7 +149,7 @@ public class CombatManager {
         for(CombatInteraction a : myEnemies){
             animationList.add(a.getCombatIdleAnimation());
         }
-        System.out.println(animationList.size());
+        //System.out.println(animationList.size());
         return animationList;
     }
 }

@@ -39,7 +39,7 @@ public class Main extends Application {
 
         var dummyActorList = loadActors(filePath);
         var actorMan = new ActorManager(dummyActorList);
-        System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
+        //System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
         var gameWorld = new GameWorld(1000, 1000);
         ServiceLocator.provideGameWorld(gameWorld);

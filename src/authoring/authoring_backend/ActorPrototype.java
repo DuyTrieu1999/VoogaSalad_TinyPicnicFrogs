@@ -16,6 +16,7 @@ import java.util.Map;
  * Dependencies: Interaction
  */
 public class ActorPrototype {
+
 	private Map<String, String> animationMap;
 	private Map<String, int[]> spriteDimensionsMap;
 	private Map<String, Interaction> interactionMap;

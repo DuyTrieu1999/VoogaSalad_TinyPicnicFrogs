@@ -1,5 +1,7 @@
 package engine.backend;
 
+import engine.backend.gameevent.InputSource;
+import engine.frontend.game_engine_UI.MenuView.MenuView;
 import menu.CommandLineMenu;
 import menu.Menu;
 
@@ -12,15 +14,18 @@ import static java.lang.Thread.sleep;
 public class PlayerTurn extends Turn {
 
     PlayerTurn(CombatInteraction controlledAlly){
+        mySource = InputSource.PLAYER;
         myInt = controlledAlly;
     }
 
-    @Override
-    public void executeTurn() {
-        var myController = ServiceLocator.getController();
-        myController.getActiveCommands();
 
-        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
-        myMenu.getChoices().get(0).execute(null);
+
+
+    @Override
+    public void initializeTurn() {
+        System.out.println("Player Turn");
+
     }
+
+
 }
