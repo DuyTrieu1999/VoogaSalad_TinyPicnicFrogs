@@ -52,7 +52,7 @@ public class Actor {
 	public Map<String, AnimationObject> parseAnimations(Map<String, String> imagePaths,Map<String,int[]>spriteMap) {
 		Map<String, AnimationObject> animations = new HashMap<>();
 		for (String s : imagePaths.keySet()) {
-			AnimationObject animation = new AnimationObject(s, imagePaths.get(s), myCoordinate,spriteMap.get(s)[0],spriteMap.get(s)[1]);
+			AnimationObject animation = new AnimationObject(s, imagePaths.get(s),spriteMap.get(s)[0],spriteMap.get(s)[1], myCoordinate);
 			animations.put(s, animation);
 		}
 		return animations;
