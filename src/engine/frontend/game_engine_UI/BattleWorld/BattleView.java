@@ -6,8 +6,6 @@ import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.util.List;
@@ -25,7 +23,6 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
     private MenuView menuView;
-    private String pathWay = "";
 
     public BattleView(Controller controller) {
         super(controller);
@@ -35,14 +32,10 @@ public class BattleView extends WorldView implements BattleViewAPI {
 
     private void setUpDisplay() {
         clearView();
-        ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
-        displayPane.getChildren().add(vs_screen);
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-        AnimationObject testEnemy = new AnimationObject("player battle", pathWay+"enemy_idle.png");
-        AnimationObject testPlayer = new AnimationObject("enemy batlte", pathWay+"player_right.png");
-        playerSide = new PlayerSide(testPlayer);
-        opponentSide = new OpponentSide(testEnemy);
+        playerSide = new PlayerSide(myPlayer);
+        opponentSide = new OpponentSide(myEnemy);
         this.playerSide.setHealth(myController.getalliesHealth().get(0));
         this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
         displayPane.setLeft(playerSide);
@@ -53,12 +46,11 @@ public class BattleView extends WorldView implements BattleViewAPI {
         Button combatButton = new Button("Battle!");
         buttonBox.getChildren().add(combatButton);
         displayPane.setCenter(buttonBox);
-        combatButton.setOnMouseClicked((event -> {
+        combatButton.setOnAction((event -> {
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
-            displayPane.setCenter(menuView);
-            menuView.setSelectedCommand();
-            System.out.println(menuView);
+            displayPane.setBottom(menuView);
+            menuView.setSellectedCommand();
         }));
     }
     public MenuView getMenuView () {
