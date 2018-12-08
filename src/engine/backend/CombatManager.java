@@ -98,8 +98,24 @@ public class CombatManager {
                 }
             }
             myEnemies.removeAll(deadList);
+            if(myAllies.size() < 1){
+                playerDefeat();
+            }
+            if(myEnemies.size()< 1){
+                playerVictory();
+            }
+
             nextSource = turnList.get(0).getExpectedSource();
             turnList.get(0).initializeTurn();
+    }
+
+
+    private void playerDefeat() {
+    
+    }
+
+    private void playerVictory(){
+
     }
 
     public List<Integer> getAlliesHealth(){
