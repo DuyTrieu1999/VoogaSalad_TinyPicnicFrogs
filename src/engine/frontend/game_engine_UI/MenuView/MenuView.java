@@ -6,6 +6,7 @@ import engine.backend.gameevent.GameMenuEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -45,6 +46,7 @@ public class MenuView extends HBox {
         listView.setPrefSize(100, 50);
         listView.setItems(items);
         pane.setCenter(listView);
+        pane.setPadding(new Insets(10));
     }
     public void setSelectedCommand() {
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -60,4 +62,5 @@ public class MenuView extends HBox {
     public List<Command> getActiveCommands () {
         return activeCommands;
     }
+    public BorderPane getPane () { return pane; }
 }

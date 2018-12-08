@@ -49,11 +49,13 @@ public class BattleView extends WorldView implements BattleViewAPI {
         Button combatButton = new Button("Battle!");
         buttonBox.getChildren().add(combatButton);
         displayPane.setCenter(buttonBox);
-        combatButton.setOnAction((event -> {
+        combatButton.setOnMouseClicked((event -> {
+            System.out.println("something");
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
-            displayPane.setBottom(menuView);
+            displayPane.setCenter(menuView.getPane());
             menuView.setSelectedCommand();
+            System.out.println(menuView);
         }));
     }
     public MenuView getMenuView () {
