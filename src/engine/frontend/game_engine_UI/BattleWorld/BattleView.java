@@ -42,8 +42,6 @@ public class BattleView extends WorldView implements BattleViewAPI {
         clearView();
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
-        AnimationObject testPlayer = new AnimationObject("player battle", pathWay+"player_right.png");
-        AnimationObject testEnemy = new AnimationObject("enemy battle", pathWay+"player_left.png");
         playerSide = new PlayerSide(myPlayer);
         opponentSide = new OpponentSide(myEnemy);
         this.playerSide.setHealth(myController.getalliesHealth().get(0));

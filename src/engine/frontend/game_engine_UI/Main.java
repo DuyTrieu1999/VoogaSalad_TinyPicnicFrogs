@@ -55,6 +55,7 @@ public class Main extends Application {
             System.out.println("Fired");
             a.serialize();
             a.setImages();
+            System.out.println(a.getActiveAnimation().getAnimationView()==null);
 
         }
         return actorList;
