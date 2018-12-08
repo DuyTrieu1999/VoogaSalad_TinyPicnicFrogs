@@ -32,6 +32,7 @@ public class CombatManager {
         myAllies = allies;
         myEnemies = enemies;
         turnList = new ArrayList<>();
+        turnLock = true;
         for(CombatInteraction a : myAllies){
             turnList.add(new PlayerTurn(a));
         }
@@ -41,6 +42,8 @@ public class CombatManager {
         turnList.sort(initiativeComparator);
 
         nextMove = null;
+
+        nextTurn();
     }
 
     public List<Command> getAllyCommandList() {

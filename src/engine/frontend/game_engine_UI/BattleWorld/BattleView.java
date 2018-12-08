@@ -53,7 +53,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
             displayPane.setBottom(menuView);
-            menuView.setSellectedCommand();
+            menuView.setSelectedCommand();
         }));
     }
     public MenuView getMenuView () {

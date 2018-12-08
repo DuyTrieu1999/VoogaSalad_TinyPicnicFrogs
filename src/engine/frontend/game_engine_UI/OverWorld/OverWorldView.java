@@ -40,7 +40,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
      */
     @Override
     public void updateView () {
-        ServiceLocator.getGameWorld().detectCollisions();
+        ServiceLocator.getGameWorld().onTick();
         clearView();
         addActors();
         setViewByZ();

@@ -46,7 +46,7 @@ public class MenuView extends HBox {
         listView.setItems(items);
         pane.setCenter(listView);
     }
-    public void setSellectedCommand () {
+    public void setSelectedCommand() {
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

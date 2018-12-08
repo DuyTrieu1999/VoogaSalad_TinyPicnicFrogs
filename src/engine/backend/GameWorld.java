@@ -66,6 +66,12 @@ public class GameWorld {
         return myMapWidth;
     }
 
+    public void onTick(){
+        detectCollisions();
+        if(myGameState == GameState.Combat){
+            ServiceLocator.getCombatManager().combatTick();
+        }
+    }
 
     /**
      * Called by frontend on update cycle to detect collisions and trigger the
@@ -95,7 +101,6 @@ public class GameWorld {
     private void launchInteraction(Interaction interaction){
         if(interaction instanceof CombatInteraction){
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
-            activateOverWorld();
         }
     }
 
