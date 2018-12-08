@@ -1,10 +1,10 @@
 <map>
   <entry>
-    <string>C:\Users\Michael\Documents\CS308\Vooga\vooga\voogasalad_tinypicnicfrogs\resources\testSave/</string>
+    <string>./resources/testSave/</string>
     <authoring.authoring__backend.GameData>
-      <title>testSave</title>
-      <description>test saving game</description>
-      <path>C:\Users\Michael\Documents\CS308\Vooga\vooga\voogasalad_tinypicnicfrogs\resources\testSave/</path>
+      <title>testGame</title>
+      <description>test game</description>
+      <path>./resources/testSave/</path>
       <mapWidth>480</mapWidth>
       <mapHeight>320</mapHeight>
       <squareWidth>16</squareWidth>
@@ -12,11 +12,11 @@
     </authoring.authoring__backend.GameData>
   </entry>
   <entry>
-    <string>C:\Users\Michael\Documents\CS308\Vooga\vooga\voogasalad_tinypicnicfrogs\resources\testSave2/</string>
+    <string>./resources/testSave2/</string>
     <authoring.authoring__backend.GameData>
-      <title>test</title>
-      <description>test</description>
-      <path>C:\Users\Michael\Documents\CS308\Vooga\vooga\voogasalad_tinypicnicfrogs\resources\testSave2/</path>
+      <title>testGame2</title>
+      <description>testDescription</description>
+      <path>./resources/testSave2/</path>
       <mapWidth>480</mapWidth>
       <mapHeight>320</mapHeight>
       <squareWidth>16</squareWidth>

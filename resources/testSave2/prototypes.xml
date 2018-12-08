@@ -17,7 +17,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -42,137 +42,12 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2bottomleft</name>
       <myBound>
         <width>5</width>
         <height>5</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBound>
-      <isPlayer>false</isPlayer>
-    </authoring.authoring__backend.ActorPrototype>
-  </entry>
-  <entry>
-    <string></string>
-    <authoring.authoring__backend.ActorPrototype>
-      <animationMap>
-        <entry>
-          <string>top</string>
-          <string>1.png</string>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <string>1.png</string>
-        </entry>
-        <entry>
-          <string>left</string>
-          <string>1.png</string>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <string>1.png</string>
-        </entry>
-        <entry>
-          <string>right</string>
-          <string>1.png</string>
-        </entry>
-      </animationMap>
-      <spriteDimensionsMap>
-        <entry>
-          <string>top</string>
-          <int-array>
-            <int>1</int>
-            <int>1</int>
-          </int-array>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <int-array>
-            <int>1</int>
-            <int>1</int>
-          </int-array>
-        </entry>
-        <entry>
-          <string>left</string>
-          <int-array>
-            <int>1</int>
-            <int>1</int>
-          </int-array>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <int-array>
-            <int>1</int>
-            <int>1</int>
-          </int-array>
-        </entry>
-        <entry>
-          <string>right</string>
-          <int-array>
-            <int>1</int>
-            <int>1</int>
-          </int-array>
-        </entry>
-      </spriteDimensionsMap>
-      <interractionMap>
-        <entry>
-          <string>fight</string>
-          <engine.backend.CombatInteraction>
-            <animationMap>
-              <entry>
-                <string>idle</string>
-                <engine.backend.AnimationObject>
-                  <animationName>idle</animationName>
-                  <animationPath>2.png</animationPath>
-                  <spriteRows>1</spriteRows>
-                  <spiteCols>1</spiteCols>
-                </engine.backend.AnimationObject>
-              </entry>
-            </animationMap>
-            <messageMap>
-              <entry>
-                <string></string>
-                <null/>
-              </entry>
-            </messageMap>
-            <myName>fight</myName>
-            <commandList>
-              <engine.backend.Commands.CombatMove>
-                <myName>hit</myName>
-                <stat>health</stat>
-                <targetActorNum>1</targetActorNum>
-                <targetValue>1</targetValue>
-                <myTargetType>CONSTANT</myTargetType>
-                <myTargetActor>ENEMY</myTargetActor>
-                <myAnimationMap>
-                  <entry>
-                    <string>idle</string>
-                    <engine.backend.AnimationObject>
-                      <animationName>idle</animationName>
-                      <animationPath>1.png</animationPath>
-                      <spriteRows>1</spriteRows>
-                      <spiteCols>1</spiteCols>
-                    </engine.backend.AnimationObject>
-                  </entry>
-                </myAnimationMap>
-              </engine.backend.Commands.CombatMove>
-            </commandList>
-            <myHealth>10</myHealth>
-          </engine.backend.CombatInteraction>
-        </entry>
-      </interractionMap>
-      <myStats>
-        <entry>
-          <string>health</string>
-          <int>10</int>
-        </entry>
-      </myStats>
-      <name></name>
-      <myBound>
-        <width>0</width>
-        <height>0</height>
         <relX>0</relX>
         <relY>0</relY>
       </myBound>
@@ -197,7 +72,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -222,7 +97,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder5bottom</name>
       <myBound>
@@ -252,7 +127,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -277,7 +152,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopleft</name>
       <myBound>
@@ -307,7 +182,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -332,7 +207,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2topright</name>
       <myBound>
@@ -362,7 +237,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -387,7 +262,7 @@
             <canPassThrough>true</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>dirtpatch</name>
       <myBound>
@@ -417,7 +292,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -442,7 +317,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>orangeplayer</name>
       <myBound>
@@ -472,7 +347,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -497,7 +372,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholebottomleft</name>
       <myBound>
@@ -527,7 +402,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -552,7 +427,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholebottomright</name>
       <myBound>
@@ -582,7 +457,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -607,7 +482,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2topleft</name>
       <myBound>
@@ -637,7 +512,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -662,7 +537,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2topright</name>
       <myBound>
@@ -692,7 +567,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -717,7 +592,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2farleft</name>
       <myBound>
@@ -747,7 +622,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -772,7 +647,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treemiddle</name>
       <myBound>
@@ -802,7 +677,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -827,7 +702,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddleleft</name>
       <myBound>
@@ -857,7 +732,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -882,7 +757,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2bottomright</name>
       <myBound>
@@ -912,7 +787,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -937,7 +812,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>smallholeleft</name>
       <myBound>
@@ -967,7 +842,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -992,7 +867,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>brownplayer</name>
       <myBound>
@@ -1022,7 +897,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1047,7 +922,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddlemiddle</name>
       <myBound>
@@ -1077,7 +952,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1102,7 +977,7 @@
             <canPassThrough>true</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>grass</name>
       <myBound>
@@ -1132,7 +1007,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1157,7 +1032,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholetopright</name>
       <myBound>
@@ -1187,7 +1062,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1212,7 +1087,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>greenplayer</name>
       <myBound>
@@ -1242,7 +1117,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1267,7 +1142,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder6top</name>
       <myBound>
@@ -1297,7 +1172,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1322,7 +1197,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulderbottomright</name>
       <myBound>
@@ -1352,7 +1227,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1377,7 +1252,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulderbottomleft</name>
       <myBound>
@@ -1407,7 +1282,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1432,7 +1307,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder6bottom</name>
       <myBound>
@@ -1462,7 +1337,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1487,7 +1362,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2bottomleft</name>
       <myBound>
@@ -1517,7 +1392,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1542,7 +1417,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>smallholeright</name>
       <myBound>
@@ -1572,7 +1447,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1597,7 +1472,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder3</name>
       <myBound>
@@ -1627,7 +1502,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1652,7 +1527,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder4</name>
       <myBound>
@@ -1682,7 +1557,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1707,7 +1582,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bouldertopright</name>
       <myBound>
@@ -1737,7 +1612,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1762,7 +1637,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottommiddle</name>
       <myBound>
@@ -1792,7 +1667,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1817,7 +1692,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2topleft</name>
       <myBound>
@@ -1847,7 +1722,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1872,7 +1747,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>grayplayer</name>
       <myBound>
@@ -1902,7 +1777,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1927,7 +1802,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treetop</name>
       <myBound>
@@ -1957,7 +1832,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1982,7 +1857,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopmiddle</name>
       <myBound>
@@ -2012,7 +1887,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2037,7 +1912,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopright</name>
       <myBound>
@@ -2067,7 +1942,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2092,7 +1967,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2bottomright</name>
       <myBound>
@@ -2122,7 +1997,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2147,7 +2022,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2left</name>
       <myBound>
@@ -2177,7 +2052,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2202,7 +2077,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholetopleft</name>
       <myBound>
@@ -2232,7 +2107,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2257,7 +2132,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treebottom</name>
       <myBound>
@@ -2287,7 +2162,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2312,7 +2187,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddleright</name>
       <myBound>
@@ -2342,7 +2217,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2367,7 +2242,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottomleft</name>
       <myBound>
@@ -2397,7 +2272,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2422,7 +2297,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2farright</name>
       <myBound>
@@ -2452,7 +2327,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2477,7 +2352,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>pinkplayer</name>
       <myBound>
@@ -2507,7 +2382,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2532,7 +2407,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bouldertopleft</name>
       <myBound>
@@ -2562,7 +2437,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2587,7 +2462,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder5top</name>
       <myBound>
@@ -2617,7 +2492,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2642,7 +2517,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottomright</name>
       <myBound>
@@ -2672,7 +2547,7 @@
           </int-array>
         </entry>
       </spriteDimensionsMap>
-      <interractionMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2697,7 +2572,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2right</name>
       <myBound>
