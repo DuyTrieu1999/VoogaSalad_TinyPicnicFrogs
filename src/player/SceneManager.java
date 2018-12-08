@@ -1,5 +1,6 @@
 package player;
 
+import authoring.authoring_frontend.Main;
 import engine.frontend.game_engine_UI.BattleWorld.OpponentSide;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -31,7 +32,7 @@ public class SceneManager {
 
     private Scene getLoginScene(){
         BorderPane borderPane= new BorderPane();
-        borderPane.setPrefSize(500,100);
+        borderPane.setPrefSize(REGISTER_BOX_WIDTH,REGISTER_BOX_HEIGHT);
         Scene loginScene = new Scene(borderPane);
         getLoginScreen(borderPane);
         return loginScene;
@@ -40,8 +41,8 @@ public class SceneManager {
     private void getLoginScreen(BorderPane pane){
         VBox vBox=new VBox();
         pane.setCenter(vBox);
-        vBox.setPadding(new Insets(10));
-        vBox.setSpacing(8);
+        vBox.setPadding(new Insets(INCEST_RL));
+        vBox.setSpacing(BOX_SPACING);
         setUpLoginBox(vBox);
     }
 
@@ -108,7 +109,12 @@ public class SceneManager {
     private void setFileMenu(Menu menu){
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.setOnAction(event->{System.exit(0);});
-        menu.getItems().add(exitItem);
+        MenuItem newGameItem= new MenuItem(myResources.getString("launchAuthoringItem"));
+        newGameItem.setOnAction(event->{
+            Main authoring= new Main();
+            authoring.start(new Stage());
+        });
+        menu.getItems().addAll(exitItem,newGameItem);
     }
     private void setAccountMenu(Menu menu){
         MenuItem logOutItem = new MenuItem("Log Out");
