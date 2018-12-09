@@ -21,6 +21,7 @@ public class AuthoringView {
     public static final Color DEFAULT_BACKGROUND = Color.WHITE;
     public static final int GRID_WIDTH  = 30;
     public static final int GRID_HEIGHT = 20;
+    public static final String STYLESHEET = "default.css";
     private Group myRoot;
     private Scene myScene;
     private BorderPane myMainView;
@@ -66,6 +67,7 @@ public class AuthoringView {
         myMainView = new BorderPane();
         mapManager = new MapManager(projectName, myManager);
         actorManager = new ActorManager(myManager, projectName);
+        myScene.getStylesheets().add(STYLESHEET);
 
         //ActorMenu selectActors = new ActorMenu(myManager, actorManager, projectName);
         LayerMenu myLayers = new LayerMenu();
