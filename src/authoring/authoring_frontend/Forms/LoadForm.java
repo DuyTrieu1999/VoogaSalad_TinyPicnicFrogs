@@ -2,6 +2,7 @@ package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_backend.ObservableActor;
+import authoring.authoring_backend.ObservablePrototype;
 import authoring.authoring_backend.SaveException;
 import authoring.authoring_frontend.Actor;
 import authoring.authoring_frontend.ActorManager;
@@ -103,6 +104,8 @@ public class LoadForm extends Form {
             myManager.loadActors(gamePath + "actors.xml");
             myManager.loadMessages(gamePath + "messages.xml");
             myManager.loadPrototypes(gamePath + "prototypes.xml");
+            parseActors(myManager.getObservableActors());
+            parsePrototypes(myManager.getObservablePrototypes());
         } catch (SaveException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(myResources.getString("error"));
@@ -111,16 +114,16 @@ public class LoadForm extends Form {
         }
     }
 
-    private void parseActors(ObservableList<ObservableActor> actors){
+    private void parseActors(List<ObservableActor> actors){
         Grid currentGrid = mapManager.getMap(mapManager.getActiveMapName()).getGrid();
         for(ObservableActor thisActor:actors){
             currentGrid.addActorFrontendOnly(new Actor(thisActor.myId, thisActor.myView), thisActor.x, thisActor.y);
         }
     }
 
-    private void parsePrototypes(ObservableList<ObservableActor> prototypes){
-        for(ObservableActor thisActor:prototypes){
-            actorManager.addActor(new Actor(thisActor.myId, thisActor.myView), true);
+    private void parsePrototypes(List<ObservablePrototype> prototypes){
+        for(ObservablePrototype thisPrototype:prototypes){
+            actorManager.addActor(new Actor(thisPrototype.myId, thisPrototype.myView), !thisPrototype.isBackground);
         }
     }
 }
