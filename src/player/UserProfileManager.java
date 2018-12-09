@@ -2,6 +2,7 @@ package player;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -33,24 +34,26 @@ public class UserProfileManager {
 
 
 
-   public void login(String email, String password){
-       try {
-           JSONObject response = myManager.login(email,password);
-           userEmail=(String)response.get("email");
-           userPassword=password;
-           userBio=(String)response.get("bio");
-           userName=(String)response.get("name");
-           parseArray((JSONArray) response.get("followers"),followers);
-           parseArray((JSONArray)response.get("following"),following);
-           parseArray((JSONArray) response.get("gamesCreated"),gamesCreated);
-           parseArray((JSONArray)response.get("gamesPlayed"),gamesPlayed);
-           playerLoggedIn = true;
-           System.out.println(userBio);
-       }catch (IOException e){e.printStackTrace();}
-       catch (InterruptedException e){e.printStackTrace();}
-   }
+    public void login(String email, String password) throws ServerException {
+        try {
+            JSONObject response = myManager.login(email,password);
+            userEmail=(String)response.get("email");
+            userPassword=password;
+            userBio=(String)response.get("bio");
+            userName=(String)response.get("name");
+            parseArray((JSONArray) response.get("followers"),followers);
+            parseArray((JSONArray)response.get("following"),following);
+            parseArray((JSONArray) response.get("gamesCreated"),gamesCreated);
+            parseArray((JSONArray)response.get("gamesPlayed"),gamesPlayed);
+            playerLoggedIn = true;
+            System.out.println(userBio);
+        }catch (IOException e){e.printStackTrace();}
+        catch (InterruptedException e){throw new ServerException(e);} catch (ParseException e) {
+            throw new ServerException(e);
+        }
+    }
 
-   public void register(String email,String password, String bio, String name){
+    public void register(String email,String password, String bio, String name) throws ServerException {
         try{
             myManager.register(email, password, bio, name);
             login(email,password);
@@ -58,26 +61,26 @@ public class UserProfileManager {
         }catch (InterruptedException e){e.printStackTrace();} catch (IOException e) {
             e.printStackTrace();
         }
-   }
-   public Map<String,String> getUserAttributes(){
+    }
+    public Map<String,String> getUserAttributes(){
         Map<String,String>userData=new HashMap<>();
         userData.put("email",userEmail);
         userData.put("name",userName);
         userData.put("bio",userBio);
         return userData;
-   }
-   public void clear(){
+    }
+    public void clear(){
         userEmail=null;
         userBio=null;
         userPassword=null;
         playerLoggedIn=false;
-   }
-   public List<String>getFollowers(){return followers;}
-   public List<String>getFollowing(){return following;}
-   public List<String>getGamesCreated(){return gamesCreated;}
-   private List<String>getGamesPlayed(){return gamesPlayed;}
-   public boolean isPlayerLoggedIn(){return playerLoggedIn;}
-   public void parseArray(JSONArray arr,List<String>list){
+    }
+    public List<String>getFollowers(){return followers;}
+    public List<String>getFollowing(){return following;}
+    public List<String>getGamesCreated(){return gamesCreated;}
+    private List<String>getGamesPlayed(){return gamesPlayed;}
+    public boolean isPlayerLoggedIn(){return playerLoggedIn;}
+    public void parseArray(JSONArray arr,List<String>list){
         list.clear();
         if(arr==null||arr.size()==0){return;}
         for(int i=0;i<arr.size();i+=1){
@@ -116,5 +119,5 @@ public class UserProfileManager {
             throw new ServerException(e);
         }
     }
-   }
+}
 

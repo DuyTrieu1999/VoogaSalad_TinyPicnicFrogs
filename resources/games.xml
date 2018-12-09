@@ -2,8 +2,8 @@
   <entry>
     <string>./resources/testSave/</string>
     <authoring.authoring__backend.GameData>
-      <title>testGame</title>
-      <description>test game</description>
+      <title>test</title>
+      <description>tesst</description>
       <path>./resources/testSave/</path>
       <mapWidth>480</mapWidth>
       <mapHeight>320</mapHeight>

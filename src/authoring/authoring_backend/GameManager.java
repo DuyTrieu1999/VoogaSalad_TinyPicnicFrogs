@@ -69,7 +69,7 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
-         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
     }
 
     /**
@@ -117,14 +117,14 @@ public class GameManager {
             File gameMap= new File("./resources/games.xml");
             if(gameMap.exists()){
                 System.out.println("exists");
-                List<GameData>gameList=(List<GameData>)serializer.fromXML(gameMap);
-                gameList.add(data);
+                Map<String,GameData>gameList=(Map<String,GameData>)serializer.fromXML(gameMap);
+                gameList.put(data.getPath(),data);
                 dataStr=serializer.toXML(gameList);
             }
             else{
-                List<GameData>gameList= new ArrayList<>();
-                gameList.add(data);
-                 dataStr=serializer.toXML(gameList);
+                Map<String,GameData>gameList= new HashMap<>();
+                gameList.put(data.getPath(),data);
+                dataStr=serializer.toXML(gameList);
             }
             Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
@@ -193,8 +193,15 @@ public class GameManager {
      * @param id id of the message corresponding to the key in the map
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
+    /**
+     * @return Observable actors for front-end use
+     */
 
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
+    /**
+     * @return Observable prototypes for front-end use
+     */
+
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 

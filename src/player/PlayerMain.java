@@ -12,21 +12,24 @@ import javafx.stage.Stage;
 import static javafx.application.Application.launch;
 
 /**
- * There is a main method that can run the game engine
+ * @author Michael Glushakov
+ * Purpose: Main Class in player package
+ * Dependencies: SceneManager, UserProfile manager
+ * Usages: Runs player
  */
 public class PlayerMain extends Application {
     private SceneManager myManager;
     private Main engineMain;
     private UserProfileManager userProfileManager;
-    public static final int SCREEN_SIZE=700;
+    public static final int SCREEN_SIZE=500;
     private authoring.authoring_frontend.Main authoringMain;
 
- @Override
+    @Override
     public void start(Stage stage){
 
-     stage.setTitle("Game Portal");
-     userProfileManager= new UserProfileManager();
-     myManager=new SceneManager(userProfileManager, stage);
+        stage.setTitle("Game Portal");
+        userProfileManager= new UserProfileManager();
+        myManager=new SceneManager(userProfileManager, stage);
         stage.show();
 
     }
