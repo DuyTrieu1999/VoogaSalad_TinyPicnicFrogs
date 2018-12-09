@@ -67,7 +67,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
             menuView.setMaxHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
-            menuView.setSellectedCommand();
+            menuView.setSelectedCommand();
             System.out.println(menuView);
         }));
     }
