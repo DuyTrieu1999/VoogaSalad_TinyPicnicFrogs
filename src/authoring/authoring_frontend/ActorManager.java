@@ -46,11 +46,11 @@ public class ActorManager {
         gameManager = gm;
         programName = name;
 
-        /*try {
+        try {
             loadDefaultActors();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 
@@ -85,18 +85,45 @@ public class ActorManager {
     }
 
     /**
+     * Rewritten by Michael Glushakov to not rely on the JSON file because making changes to structure was a pain
      * Loads the default 40 or so actors.
      * @throws IOException
      * @throws ParseException
      */
     private void loadDefaultActors() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader(new File("./resources/default.json")));
-        JSONArray defaultActors = (JSONArray)obj;
-        for (Object defaultActor : defaultActors) {
-            JSONObject thisActor = (JSONObject) defaultActor;
-            gameManager.createActorPrototype(thisActor);
-            addActor(new Actor(thisActor), (boolean) thisActor.get("isPlayer"));
+        JSONArray defaults= new JSONArray();
+        for(int i=1;i<=42;i+=1){
+            JSONObject defalutObject=new JSONObject();
+            defalutObject.put("name","default"+i);
+            JSONArray animations= new JSONArray();
+            JSONObject animation=new JSONObject();
+            animation.put("key","idle");
+            animation.put("path",i+".png");
+            animation.put("spriteRows",1);
+            animation.put("spriteCols",1);
+            animations.add(animation);
+            defalutObject.put("animations",animations);
+            defalutObject.put("stats",new JSONArray());
+            JSONObject bounds = new JSONObject();
+            bounds.put("relX",0);
+            bounds.put("relY",0);
+            bounds.put("width",5);
+            bounds.put("height",5);
+            defalutObject.put("bounds",bounds);
+            defalutObject.put("isPlayer",false);
+            JSONArray interractions= new JSONArray();
+            JSONObject backgroundInterraction=new JSONObject();
+            backgroundInterraction.put("name","background");
+            backgroundInterraction.put("type","background");
+            backgroundInterraction.put("canPassThrough",true);
+            backgroundInterraction.put("messages",new JSONArray());
+            backgroundInterraction.put("animations",animations);
+            interractions.add(backgroundInterraction);
+            defalutObject.put("interactions",interractions);
+            defalutObject.put("ActivateMessages",new JSONArray());
+            defalutObject.put("DeactivateMessages",new JSONArray());
+            gameManager.createActorPrototype(defalutObject);
+            addActor(new Actor(defalutObject), (boolean) defalutObject.get("isPlayer"));
         }
     }
 

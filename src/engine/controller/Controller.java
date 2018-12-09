@@ -2,6 +2,7 @@ package engine.controller;
 
 import engine.backend.*;
 import engine.backend.Commands.Command;
+import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.frontend.game_engine_UI.StateView;
 
@@ -28,11 +29,6 @@ public class Controller {
      */
     private Supplier<Actor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
     public Actor getPlayer () { return playerActorSupplier.get(); }
-    /**
-     * supplies the list of active Commands
-     */
-    private Supplier<List<Command>> activeCommandSupplier = () -> myView.getActiveCommand();
-    public List<Command> getActiveCommands () { return activeCommandSupplier.get(); }
 
     /**
      * receive the list of Commands
@@ -50,9 +46,6 @@ public class Controller {
      */
     private Supplier<List<AnimationObject>> battlePlayerAnimationSupplier = () -> ServiceLocator.getCombatManager().getAlliesIdleAnimation();
     public List<AnimationObject> getBattlePlayerAnimation () { return battlePlayerAnimationSupplier.get(); }
-
-    private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
-    public GameState getGameState () { return  gameStateSupplier.get(); }
 
     /**
      * supplies the list of battle animations for the enemy
@@ -75,6 +68,9 @@ public class Controller {
     private Supplier<CombatManager> combatManagerSupplier = () -> ServiceLocator.getCombatManager();
     public CombatManager getCombatManager () { return combatManagerSupplier.get(); }
 
+    private Supplier<DialogueMenu> dialogueMenuSupplier = () -> myView.getMyView().getDialogueMenu();
+    public DialogueMenu getDialogueMenu () { return  dialogueMenuSupplier.get(); }
+
     /**
      * set the WorldView in the front end
      */
@@ -84,5 +80,7 @@ public class Controller {
      */
     public void setBattleView() { myView.setBattleView(); }
 
-    public void addDialogue(Message m) { myView.getMyView().addDialogue(m); }
+    public void addDialogue(String m) { myView.getMyView().addDialogue(m); }
+
+    public void closeDialogue () { myView.getMyView().closeMenu(); }
 }

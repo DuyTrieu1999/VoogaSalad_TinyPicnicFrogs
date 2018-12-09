@@ -59,14 +59,7 @@ public class StateView {
         myStage.setScene(myView.getMyScene());
         myStage.show();
     }
-    /**
-     * this function is called by the back end to get the list of commands the user
-     * is choosing
-     */
-    public List<Command> getActiveCommand () {
-        System.out.println("battle view is: " + battleView);
-        return battleView.getMenuView().getActiveCommands();
-    }
+
     public OverWorldView getMyView () {
         return myView;
     }
