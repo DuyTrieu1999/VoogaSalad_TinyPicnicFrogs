@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
 public class AuthoringView {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 620;
-    public static final Color DEFAULT_BACKGROUND = Color.WHITE;
     public static final int GRID_WIDTH  = 30;
     public static final int GRID_HEIGHT = 20;
     public static final String STYLESHEET = "default.css";
@@ -63,7 +62,7 @@ public class AuthoringView {
      */
     private void initializeUI() {
         myRoot = new Group();
-        myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
+        myScene = new Scene(myRoot, WIDTH, HEIGHT);
         myMainView = new BorderPane();
         mapManager = new MapManager(projectName, myManager);
         actorManager = new ActorManager(myManager, projectName);
@@ -92,7 +91,7 @@ public class AuthoringView {
 
     private void initializeUI(int width, int height) {
         myRoot = new Group();
-        myScene = new Scene(myRoot, WIDTH, HEIGHT, DEFAULT_BACKGROUND);
+        myScene = new Scene(myRoot, WIDTH, HEIGHT);
         myMainView = new BorderPane();
         mapManager = new MapManager(projectName, myManager);
         actorManager = new ActorManager(myManager, projectName);
