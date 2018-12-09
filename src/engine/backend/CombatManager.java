@@ -72,7 +72,6 @@ public class CombatManager {
         if(e.getSource() == nextSource){
             System.out.println(e.getSource());
             if(e.getSource() == InputSource.PLAYER){
-
                 e.getOption().bind(myEnemies.get(0));
             }
             else if(e.getSource() == InputSource.AI){
