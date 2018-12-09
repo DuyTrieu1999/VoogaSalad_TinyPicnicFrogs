@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,13 +27,15 @@ public class ActorPrototype {
 	private String name;
 	private Bounds myBound;
 	private boolean isPlayer;
+	private Map<String, Dialog> dialogMap;
 
 	/**
 	 * @param data              JSON representation of the prototype
 	 * @param prototypeMessages List that maps interactions to messages it sends
 	 */
 
-	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages) { //add messages
+	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
+							 Map<String, Dialog> stringDialogMap) { //add messages
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
@@ -43,6 +46,9 @@ public class ActorPrototype {
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
+		dialogMap = stringDialogMap;
+
+		//add constructor for dialogue interaction
 
 
 	}
@@ -126,6 +132,9 @@ public class ActorPrototype {
 		} else if (((String) ineractionJSON.get("type")).equals("background")) {
 			myInteraction = new BackgroundInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
+		}
+		else if(((String) ineractionJSON.get("type")).equals("dialog"){
+			myInteraction = new Dialog
 		}
 
 	}
