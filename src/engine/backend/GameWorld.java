@@ -84,11 +84,21 @@ public class GameWorld {
         var collisionList = new ArrayList<Actor>();
         var playerActor = ServiceLocator.getActorManager().getPlayerActor();
         for(Actor a : actorList){
-            int[] overlap = overlaps(playerActor, a);
-            if(overlap[0] != 0 && overlap[1] != 0){
+            if(overlaps(a, playerActor)){
+                //TODO: get rid of magic values
                 collisionList.add(a);
-                a.getCoordinate().setX(a.getCoordinate().getX()+overlap[0]);
-                a.getCoordinate().setY(a.getCoordinate().getY()+overlap[1]);
+                if(playerActor.getHeading() == Heading.LEFT){
+                    playerActor.getCoordinate().setX(playerActor.getCoordinate().getX()+10);
+                }
+                else if(playerActor.getHeading() == Heading.RIGHT){
+                    playerActor.getCoordinate().setX(playerActor.getCoordinate().getX()-10);
+                }
+                else if(playerActor.getHeading() == Heading.UP){
+                    playerActor.getCoordinate().setY(playerActor.getCoordinate().getY()+10);
+                }
+                else if(playerActor.getHeading() == Heading.DOWN){
+                    playerActor.getCoordinate().setY(playerActor.getCoordinate().getY()-10);
+                }
             }
         }
         for(Actor c : collisionList){
@@ -172,7 +182,7 @@ public class GameWorld {
         return myGameState;
     }
 
-    private int[] overlaps(Actor a1, Actor a2){
+    private boolean overlaps(Actor a1, Actor a2){
         var a1Coordinate = a1.getCoordinate();
         var a1Bounds = a1.getBounds();
         int a1MaxX = a1Coordinate.getX()+a1Bounds.getRelX()+a1Bounds.getWidth();
@@ -187,32 +197,10 @@ public class GameWorld {
         int a2MinY = a2Coordinate.getY()+a2Bounds.getRelY();
 
         boolean xIntersects = (a1MaxX > a2MinX && a1MaxX < a2MaxX) || (a2MaxX > a1MinX && a2MaxX < a1MaxX);
-        int xOverlap = 0;
-        if(a1MaxX > a2MinX){
-            xOverlap = a2MinX - a1MaxX;
-        }
-        else if(a2MaxX > a1MinX){
-            xOverlap = a2MaxX - a1MinX;
-        }
-
-
-        int yOverlap = 0;
         boolean yIntersects = (a1MaxY > a2MinY && a1MaxY < a2MaxY) || (a2MaxY > a1MinY && a2MaxY < a1MaxY);
-        if(a1MaxY > a2MinY){
-            yOverlap = a2MinY - a1MaxY;
-        }
-        else if(a2MaxY > a1MinY){
-            yOverlap = a2MaxY - a1MinY;
-        }
+        // check for hit on the upper edge
 
-        int[] overlaps = {xOverlap, yOverlap};
-        if(xIntersects && yIntersects){
-            return overlaps;
-        }
-        else{
-            int[] nullOverlaps = {0,0};
-            return nullOverlaps;
-        }
+        return(xIntersects && yIntersects);
     }
 
 

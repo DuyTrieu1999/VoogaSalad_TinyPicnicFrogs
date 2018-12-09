@@ -18,6 +18,9 @@ public class Actor {
 	private AnimationObject myActiveAnimation;
 	private boolean isPlayerActor;
 	private Bounds myBounds;
+	private Heading myHeading;
+
+
 	/**
 	 * Default constructor
 	 */
@@ -111,7 +114,8 @@ public class Actor {
 	 * @param amt
 	 */
 	public void moveUp(int amt) {
-		move(amt, "top");
+		myHeading = Heading.UP;
+	    move(amt, "top");
 	}
 	/**
 	 * Moves Actor down
@@ -119,6 +123,7 @@ public class Actor {
 	 * @param amt
 	 */
 	public void moveDown(int amt) {
+	    myHeading = Heading.DOWN;
 		move(amt, "bottom");
 	}
 	/**
@@ -127,19 +132,22 @@ public class Actor {
 	 * @param amt
 	 */
 	public void moveLeft(int amt) {
-		move(amt, "left");
+		myHeading = Heading.LEFT;
+	    move(amt, "left");
 	}
 	/**
 	 * Moves Actor right
 	 */
 	public void moveRight(int amt) {
+	    myHeading = Heading.RIGHT;
 		move(amt, "right");
 	}
 	/**
 	 * Sets the Actor to the idle position
 	 */
 	public void idle() {
-		myActiveAnimation = myAnimationMap.get("idle");
+		myHeading = Heading.NEUTRAL;
+	    myActiveAnimation = myAnimationMap.get("idle");
 	}
 	/**
 	 * Listens for messages and responds to ones that this actor cares about
@@ -170,4 +178,8 @@ public class Actor {
 			i.setImages();
 		}
 	}
+
+	public Heading getHeading(){
+	    return myHeading;
+    }
 }
