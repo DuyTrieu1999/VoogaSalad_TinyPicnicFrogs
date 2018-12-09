@@ -29,7 +29,7 @@ public class Actor {
 
     }
 
-    Actor(String id, ImageView image){
+    public Actor(String id, ImageView image){
         actorPrototypeID = id;
         actorImage = image;
     }

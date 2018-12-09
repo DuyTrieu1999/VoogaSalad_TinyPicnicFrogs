@@ -1,34 +1,31 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.Forms;
 
-import authoring.authoring_backend.GameData;
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_backend.ObservableActor;
+import authoring.authoring_backend.SaveException;
+import authoring.authoring_frontend.Actor;
+import authoring.authoring_frontend.ActorManager;
+import authoring.authoring_frontend.Grid;
+import authoring.authoring_frontend.MapManager;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ResourceBundle;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * SaveForm
  *
  * @author brookekeene
  */
-public class LoadForm extends VBox {
-    private static final String DEFAULT_RESOURCE = "English";
+public class LoadForm extends Form {
     private static final int SIZE = 300;
     private static final int FIELD_SIZE = 250;
-    private static final int PADDING = 10;
-    private ResourceBundle myResources;
-    private GameManager myManager;
     private TextField gameName;
     private TextArea gameDescript;
     private String gamePath;
@@ -39,21 +36,20 @@ public class LoadForm extends VBox {
      * Constructor
      */
     public LoadForm(GameManager manager, ActorManager a, MapManager m) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
-        myManager = manager;
+        super(manager);
         gamePath = "";
         actorManager = a;
         mapManager = m;
 
         this.setMaxSize(SIZE, SIZE);
-        this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
 
     /**
      * add UI elements for user to input game information
      */
-    private void addAllFields() {
+    @Override
+    public void addAllFields() {
         // Labels
         Label name = new Label(myResources.getString("name"));
         Label description = new Label(myResources.getString("description"));
@@ -66,6 +62,7 @@ public class LoadForm extends VBox {
 
         // Description
         gameDescript = new TextArea();
+        gameDescript.setWrapText(true);
         gameDescript.setPrefSize(FIELD_SIZE, FIELD_SIZE);
         this.getChildren().addAll(description, gameDescript);
 
@@ -92,15 +89,26 @@ public class LoadForm extends VBox {
     /**
      * creates a GameData object and calls the GameManager.saveGame method
      */
-    private void saveFunction () { //TODO: error check
-        //System.out.println("fired frontend");
+    @Override
+    public void saveFunction () { //TODO: error check
         String title = gameName.getText();
         String description = gameDescript.getText();
-        // TODO: do we need height and width of map?
-        //myManager.saveGame(title,description,gamePath);
-        myManager.loadActors(gamePath + "actors.xml");
-        myManager.loadMessages(gamePath + "messages.xml");
-        myManager.loadPrototypes(gamePath + "prototypes.xml");
+
+        List<String> arr= Arrays.asList(gamePath.split("/")); // Regex for non-Mac "\\\\"));
+        int index=arr.indexOf("resources");
+        String path=".";
+        for(int i=index;i<arr.size();i+=1){path+="/"+arr.get(i);}
+
+        try {
+            myManager.loadActors(gamePath + "actors.xml");
+            myManager.loadMessages(gamePath + "messages.xml");
+            myManager.loadPrototypes(gamePath + "prototypes.xml");
+        } catch (SaveException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(myResources.getString("error"));
+            alert.getDialogPane().setContent(new VBox(new Text(e.getMessage())));
+            alert.showAndWait();
+        }
     }
 
     private void parseActors(ObservableList<ObservableActor> actors){

@@ -45,13 +45,13 @@ public class ActorManager {
         selectedPane = null;
         gameManager = gm;
         programName = name;
-        /*
-        try {
+
+        /*try {
             loadDefaultActors();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
-        }
-        */
+        }*/
+
     }
 
     /**
