@@ -3,6 +3,7 @@ package authoring.authoring_frontend;
 import authoring.authoring_backend.GameManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -81,7 +82,7 @@ public class AuthoringView {
         leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(GRID_WIDTH, GRID_HEIGHT));
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
-        myMainView.setCenter(mapManager.getActiveMap());
+        myMainView.setCenter(new ScrollPane(mapManager.getActiveMap()));
         myMainView.setLeft(leftSide);
         myMainView.setTop(topBar);
         myRoot.getChildren().add(myMainView);

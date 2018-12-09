@@ -99,9 +99,19 @@ public class MapMenu extends HBox {
             Optional<Pair<String, String>> result = dialog.showAndWait();
 
             result.ifPresent(widthHeight -> {
-                String thisNewMap = mapManager.createMap(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
-                mapView.getItems().add(0, thisNewMap);
-                mapManager.setActiveMap(thisNewMap);
+                if(Integer.parseInt(widthHeight.getKey()) <= 0 || Integer.parseInt(widthHeight.getValue()) <= 0){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Incorrect Dimensions");
+                    alert.setContentText("Width or height must be above 0!");
+
+                    alert.showAndWait();
+                }
+                else {
+                    String thisNewMap = mapManager.createMap(Integer.parseInt(widthHeight.getKey()), Integer.parseInt(widthHeight.getValue()));
+                    mapView.getItems().add(0, thisNewMap);
+                    mapManager.setActiveMap(thisNewMap);
+                }
             });
         });
         Button deleteMap = new Button("Delete Map");
