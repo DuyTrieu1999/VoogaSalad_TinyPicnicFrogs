@@ -2,7 +2,7 @@ package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.ActorManager;
-import authoring.authoring_frontend.PrototypeForm;
+import authoring.authoring_frontend.Forms.PrototypeForm;
 import javafx.scene.control.ScrollPane;
 
 /**

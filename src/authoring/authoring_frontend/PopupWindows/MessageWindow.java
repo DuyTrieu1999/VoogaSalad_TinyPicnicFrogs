@@ -1,7 +1,7 @@
 package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.MessageForm;
+import authoring.authoring_frontend.Forms.MessageForm;
 
 /**
  * Message Window
