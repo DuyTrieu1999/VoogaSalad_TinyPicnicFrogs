@@ -124,6 +124,8 @@
                     <engine.backend.AnimationObject>
                         <animationName>top</animationName>
                         <animationPath>player_top.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spriteCols>4</spriteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -132,6 +134,8 @@
                     <engine.backend.AnimationObject>
                         <animationName>idle</animationName>
                         <animationPath>player_idle.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spriteCols>4</spriteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -140,6 +144,8 @@
                     <engine.backend.AnimationObject>
                         <animationName>left</animationName>
                         <animationPath>player_left.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spriteCols>4</spriteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -148,6 +154,8 @@
                     <engine.backend.AnimationObject>
                         <animationName>bottom</animationName>
                         <animationPath>player_bot.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spriteCols>4</spriteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -156,6 +164,8 @@
                     <engine.backend.AnimationObject>
                         <animationName>right</animationName>
                         <animationPath>player_right.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spriteCols>4</spriteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>

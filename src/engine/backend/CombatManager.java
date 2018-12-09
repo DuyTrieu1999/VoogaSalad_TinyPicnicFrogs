@@ -70,12 +70,6 @@ public class CombatManager {
      */
     public void receiveInput(GameMenuEvent e){
         if(e.getSource() == nextSource){
-            if(e.getSource() == InputSource.PLAYER){
-                e.getOption().bind(myEnemies.get(0));
-            }
-            else if(e.getSource() == InputSource.AI){
-                e.getOption().bind(myAllies.get(0));
-            }
             e.getOption().execute(null);
             turnLock = false;
         }
@@ -118,11 +112,11 @@ public class CombatManager {
 
 
     private void playerDefeat() {
-        System.out.println("PLAYER LOST");
+
     }
 
     private void playerVictory(){
-        System.out.println("PLAYER WON");
+
     }
 
     public List<Integer> getAlliesHealth(){

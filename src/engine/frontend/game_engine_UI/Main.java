@@ -52,11 +52,8 @@ public class Main extends Application {
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
-            System.out.println("Fired");
             a.serialize();
             a.setImages();
-            System.out.println(a.getActiveAnimation().getAnimationView()==null);
-
         }
         return actorList;
     }
