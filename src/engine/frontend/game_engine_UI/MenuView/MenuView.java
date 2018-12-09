@@ -34,6 +34,7 @@ public class MenuView extends HBox {
         commandList = list;
         activeCommands = new ArrayList<>();
         addListView();
+
     }
     private void addListView () {
         List<String> nameList = new ArrayList<>();
@@ -48,7 +49,7 @@ public class MenuView extends HBox {
         pane.setCenter(listView);
         this.getChildren().add(pane);
     }
-    public void setSellectedCommand () {
+    public void setSelectedCommand() {
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
