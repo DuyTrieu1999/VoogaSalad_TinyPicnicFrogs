@@ -52,13 +52,13 @@ public class ActorManager {
      * Saves all actors
      * @param path: path of the folder where to store actors
      */
-    protected void serializeAllActors(String path){
+    protected void serializeAllActors(String path)throws SaveException{
         XStream serializer = new XStream(new DomDriver());
         serializer.omitField(AnimationObject.class,"animationView");
         String serialized= serializer.toXML(actorMap);
 
         try{
-            Files.write(Paths.get(path+"actors.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+            Files.write(Paths.get(path+"actors.xml"),serialized.getBytes());}catch (IOException e){throw new SaveException();}
 
     }
 

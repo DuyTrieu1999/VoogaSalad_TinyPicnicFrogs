@@ -1,9 +1,9 @@
 <map>
   <entry>
-    <string>treemiddle68-34-1</string>
+    <string>bigholebottomleft0-34-1</string>
     <engine.backend.Actor>
       <myCoordinate>
-        <x>68</x>
+        <x>0</x>
         <y>34</y>
         <z>1</z>
       </myCoordinate>
@@ -16,7 +16,7 @@
                 <string>idle</string>
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
-                  <animationPath>3.png</animationPath>
+                  <animationPath>21.png</animationPath>
                   <spriteRows>1</spriteRows>
                   <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
@@ -39,14 +39,14 @@
           <string>idle</string>
           <engine.backend.AnimationObject>
             <animationName>idle</animationName>
-            <animationPath>3.png</animationPath>
+            <animationPath>21.png</animationPath>
             <coordinate reference="../../../../myCoordinate"/>
             <spriteRows>1</spriteRows>
             <spiteCols>1</spiteCols>
           </engine.backend.AnimationObject>
         </entry>
       </myAnimationMap>
-      <myName>treemiddle68-34-1</myName>
+      <myName>bigholebottomleft0-34-1</myName>
       <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
       <isPlayerActor>false</isPlayerActor>
       <myBounds>

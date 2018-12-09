@@ -79,7 +79,7 @@ public class ActorPrototypeManager {
      * Serializes all existion prototypes
      * @param path: ath to folder where to save all prototypes
      */
-    protected void serializeAllPrototypes(String path){
+    protected void serializeAllPrototypes(String path)throws SaveException{
         System.out.println("Prototypes:"+actorPrototypeMap.size());
         XStream serializer = new XStream(new DomDriver());
         serializer.omitField(AnimationObject.class,"animationView");
@@ -87,7 +87,7 @@ public class ActorPrototypeManager {
 
             try{
 
-                Files.write(Paths.get(path+"prototypes.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+                Files.write(Paths.get(path+"prototypes.xml"),serialized.getBytes());}catch (IOException e){throw new SaveException();}
         }
 
 

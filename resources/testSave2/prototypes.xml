@@ -27,6 +27,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>11.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -80,6 +82,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>16.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -133,6 +137,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>26.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -186,6 +192,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>36.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -239,6 +247,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>25.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -292,6 +302,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>43.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -345,6 +357,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>21.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -398,6 +412,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>22.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -451,6 +467,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>9.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -504,6 +522,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>10.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -557,6 +577,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>37.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -610,6 +632,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>3.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -663,6 +687,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>29.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -716,6 +742,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>42.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -769,6 +797,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>23.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -822,6 +852,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>44.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -875,6 +907,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>30.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -928,6 +962,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>1.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -981,6 +1017,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>20.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1034,6 +1072,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>46.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1087,6 +1127,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>17.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1113,68 +1155,21 @@
     </authoring.authoring__backend.ActorPrototype>
   </entry>
   <entry>
-    <string>player</string>
-    <authoring.authoring__backend.ActorPrototype>
-      <animationMap>
-        <entry>
-          <string>idle</string>
-          <string>enemy_idle.png</string>
-        </entry>
-        <entry>
-          <string>left</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>up</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>right</string>
-          <null/>
-        </entry>
-        <entry>
-          <string>down</string>
-          <null/>
-        </entry>
-      </animationMap>
-      <interractionMap>
-        <entry>
-          <string>test</string>
-          <engine.backend.CombatInteraction>
-            <animationMap>
-              <entry>
-                <string>idle</string>
-                <engine.backend.AnimationObject>
-                  <animationName>idle</animationName>
-                  <animationPath>player_left.png</animationPath>
-                </engine.backend.AnimationObject>
-              </entry>
-            </animationMap>
-            <messageMap/>
-            <myName>test</myName>
-            <commandList/>
-            <myHealth>10</myHealth>
-          </engine.backend.CombatInteraction>
-        </entry>
-      </interractionMap>
-      <myStats/>
-      <name>player</name>
-      <myBound>
-        <width>0</width>
-        <height>0</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBound>
-      <isPlayer>true</isPlayer>
-    </authoring.authoring__backend.ActorPrototype>
-  </entry>
-  <entry>
     <string>boulderbottomright</string>
     <authoring.authoring__backend.ActorPrototype>
       <animationMap>
         <entry>
           <string>idle</string>
           <string>8.png</string>
+        </entry>
+      </animationMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
         </entry>
       </spriteDimensionsMap>
       <interactionMap>
@@ -1187,6 +1182,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>8.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1240,6 +1237,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>7.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1293,6 +1292,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>18.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1346,6 +1347,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>41.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1399,6 +1402,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>24.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1452,6 +1457,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>13.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1505,6 +1512,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>14.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1558,6 +1567,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>6.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1611,6 +1622,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>33.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1664,6 +1677,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>35.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1717,6 +1732,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>45.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1770,6 +1787,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>4.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1823,6 +1842,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>27.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1876,6 +1897,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>28.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1929,6 +1952,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>12.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1982,6 +2007,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>38.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2035,6 +2062,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>19.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2088,6 +2117,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>2.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2141,6 +2172,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>31.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2194,6 +2227,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>32.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2247,6 +2282,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>40.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2300,6 +2337,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>47.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2353,6 +2392,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>5.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2406,6 +2447,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>15.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2459,6 +2502,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>34.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2512,6 +2557,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>39.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
