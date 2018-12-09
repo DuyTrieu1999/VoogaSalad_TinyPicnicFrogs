@@ -4,9 +4,11 @@ import engine.backend.*;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.util.Collection;
 import java.util.List;
@@ -135,6 +137,12 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
 
     }
     public void addDialouge (Message m) {
+        ScrollPane scrollPane = new ScrollPane();
+        Text messageText = new Text(m.getMessageString());
+        scrollPane.setContent(messageText);
+        scrollPane.setPrefViewportHeight(50);
+        scrollPane.setPrefViewportWidth(1000);
+        
 
     }
 }
