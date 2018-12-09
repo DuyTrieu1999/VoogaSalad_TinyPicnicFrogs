@@ -44,7 +44,7 @@ public class MessageBox extends FormBox {
      * and the messageKey, the type of message chosen
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("key", myKey.getText());
         myObject.put("messageKey", myMessageKey.getValue());

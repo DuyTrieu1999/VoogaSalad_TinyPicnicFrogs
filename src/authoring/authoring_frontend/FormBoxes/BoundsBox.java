@@ -47,7 +47,7 @@ public class BoundsBox extends FormBox {
      * @return JSONObject containing the user input information
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("relX", relX.getField());
         myObject.put("relY", relY.getField());

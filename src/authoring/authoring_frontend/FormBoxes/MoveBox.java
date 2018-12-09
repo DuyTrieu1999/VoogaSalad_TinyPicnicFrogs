@@ -95,12 +95,12 @@ public class MoveBox extends FormBox {
      * animations
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         JSONArray moveAnimations = new JSONArray();
 
         for (AnimationBox box : myAnimations) {
-            moveAnimations.add(box.getContent());
+            moveAnimations.add(box.getJSONContent());
         }
 
         myObject.put("name", myKey);

@@ -1,21 +1,14 @@
 package authoring.authoring_frontend.FormBoxes;
 
 import authoring.authoring_backend.GameManager;
-import engine.backend.Message;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.File;
 import java.util.*;
 
 /**
@@ -38,7 +31,7 @@ public class InteractionBox extends FormBox {
     public InteractionBox(String label, GameManager manager) {
         super(label);
         myManager = manager;
-        typeChoices = new ArrayList<>(List.of("fight"));;
+        typeChoices = new ArrayList<>(List.of("Combat", "Dialogue", "Background"));;
         messageChoices = myManager.getMessageIds();
     }
 
@@ -123,7 +116,7 @@ public class InteractionBox extends FormBox {
      * @return
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         JSONArray myAnimationJSON = new JSONArray();
         JSONArray myMessageJSON = new JSONArray();
@@ -131,17 +124,17 @@ public class InteractionBox extends FormBox {
 
         // Animations
         for(AnimationBox box: myAnimations) {
-            myAnimationJSON.add(box.getContent());
+            myAnimationJSON.add(box.getJSONContent());
         }
 
         // Messages
         for(MessageBox box:myMessages) {
-            myMessageJSON.add(box.getContent());
+            myMessageJSON.add(box.getJSONContent());
         }
 
         // Moves
         for(MoveBox box:myMoves) {
-            myMoveJSON.add(box.getContent());
+            myMoveJSON.add(box.getJSONContent());
 
         }
 

@@ -52,7 +52,7 @@ public class SelectBox extends FormBox {
     }
 
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         return null;
     }
 }

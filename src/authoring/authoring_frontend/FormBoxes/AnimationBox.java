@@ -69,7 +69,7 @@ public class AnimationBox extends FormBox {
      * @return JSONObject storing the key and value of the user input
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("path", fileName);
         myObject.put("key", myKey);

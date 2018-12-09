@@ -30,7 +30,7 @@ public class TextBox extends FormBox {
      * @return JSONObject storing the key and value of the user input
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("value", myText.getText());
         myObject.put("key", myKey);

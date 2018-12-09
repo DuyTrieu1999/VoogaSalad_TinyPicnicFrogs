@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import java.util.ResourceBundle;
 
@@ -40,7 +41,7 @@ public abstract class FormBox extends HBox {
     /**
      * @return JSONObject representing the information given by the user
      */
-    public abstract JSONObject getContent();
+    public abstract JSONObject getJSONContent();
 
     /**
      * @return true if the information is valid, false otherwise
