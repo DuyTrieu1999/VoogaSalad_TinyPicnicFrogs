@@ -59,7 +59,7 @@ public class ActorManager {
      * @param newActor The actor to add.
      * @param isPlayable Whether or not this actor is playable.
      */
-    void addActor(Actor newActor, boolean isPlayable){
+    public void addActor(Actor newActor, boolean isPlayable){
         if(isPlayable){
             playableActors.add(newActor);
         }
@@ -145,7 +145,7 @@ public class ActorManager {
     /**
      * Sets up the content of the two different tabs in the menu.
      */
-    void setupTabs(){
+    public void setupTabs(){
         backgroundTilePane.setContent(setupTab(getBackgroundActors()));
         //System.out.println("Background actor size is " + getBackgroundActors().size());
         actorTilePane.setContent(setupTab(getPlayableActors()));

@@ -1,20 +1,14 @@
 package authoring.authoring_frontend.FormBoxes;
 
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.json.simple.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.util.Optional;
 
 /**
  * AnimationBox
@@ -24,51 +18,64 @@ import java.io.FileNotFoundException;
  * @author brookekeene
  */
 public class AnimationBox extends FormBox {
+    public static int DEFAULT_SIZE = 100;
     private String fileName;
     private int myRows;
     private int myCols;
+    private boolean btnClicked;
 
+    /**
+     * Constructor
+     */
     public AnimationBox(String label) {
         super(label);
         fileName = null;
+        btnClicked = false;
     }
 
     /**
-     * creates FileChooser and Button for user to select an image
+     * creates FileChooser and Buttons for user to select an image
+     * and to set its dimensions
      */
     @Override
     public void setContent() {
+        VBox myContent = new VBox();
+
         FileChooser myFC = new FileChooser();
+        FileChooser.ExtensionFilter filter =new FileChooser.ExtensionFilter("Image Files","*.bmp", "*.gif", "*.jpeg", "*.png");
+        myFC.getExtensionFilters().add(filter);
         myFC.setTitle(myResources.getString("NewFile"));
+
         ImageView fileIm = new ImageView();
 
         Button fileBtn = new Button(myResources.getString("NewFile"));
-
         fileBtn.setOnAction(e -> {
             File file = myFC.showOpenDialog(getScene().getWindow());
-            //TODO: error check
             if(file != null) {
                 fileName = file.toString();
-                String[]arr=fileName.split("\\\\");
+                String[]arr=fileName.split("/"); // Regex for non-Mac "\\\\"));
                 fileName=arr[arr.length-1];
                 System.out.println(fileName);
-                fileIm.setImage(new Image(file.toURI().toString()));
+                fileIm.setImage(new Image(file.toURI().toString(), DEFAULT_SIZE, DEFAULT_SIZE, true, false));
 
             }
         });
-        Button spritButn= new Button(myResources.getString("setBtn"));
-        spritButn.setOnAction(event -> {
+
+        Button spriteBtn= new Button(myResources.getString("setBtn"));
+        spriteBtn.setOnAction(event -> {
+            btnClicked = true;
             launchDialog();
         });
 
-        this.getChildren().addAll(fileBtn, fileIm,spritButn);
+        myContent.getChildren().addAll(fileBtn, fileIm, spriteBtn);
+        this.getChildren().add(myContent);
     }
 
     /**
      * @return JSONObject storing the key and value of the user input
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("path", fileName);
         myObject.put("key", myKey);
@@ -78,33 +85,39 @@ public class AnimationBox extends FormBox {
     }
 
     /**
-     * error checking
-     * @return
+     * error checking for a valid file format and sprite dimensions set
+     * @return true if user has selected a file and set dimensions
      */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() {
+        return fileName != null && btnClicked;
     }
+
+    /**
+     * opens an alert that allows user to input the animation dimensions
+     */
     private void launchDialog(){
-        Alert alert= new Alert(Alert.AlertType.INFORMATION);
-        TextField rowText=new TextField(myResources.getString("spriteRows"));
-        TextField colText=new TextField(myResources.getString("spriteCols"));
-        Button setBtn= new Button(myResources.getString("setBtn"));
-        setBtn.setOnAction(event -> {
-            try{
-                myRows=Integer.parseInt(rowText.getText());
-                myCols=Integer.parseInt(colText.getText());}
-            catch (NumberFormatException e){
-                Alert alert1= new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(myResources.getString("setBtn"));
+        TextField rowText = new TextField(myResources.getString("spriteRows"));
+        TextField colText = new TextField(myResources.getString("spriteCols"));
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(rowText, colText);
+        alert.getDialogPane().setContent(vBox);
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if (option.get() == ButtonType.OK) {
+            try {
+                myRows = Integer.parseInt(rowText.getText());
+                myCols = Integer.parseInt(colText.getText());
+            } catch (NumberFormatException e) {
+                Alert alert1 = new Alert(Alert.AlertType.ERROR);
                 alert1.setHeaderText(myResources.getString("numErrorHeader"));
                 alert1.setContentText(myResources.getString("numErrorBody"));
                 alert1.showAndWait();
             }
-        });
-        VBox vBox= new VBox();
-        vBox.getChildren().addAll(rowText,colText,setBtn);
-        alert.getDialogPane().setContent(vBox);
-        alert.showAndWait();
-
+        }
     }
 }

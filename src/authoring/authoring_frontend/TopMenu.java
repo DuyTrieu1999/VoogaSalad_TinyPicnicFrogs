@@ -2,10 +2,10 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.PopupWindows.PopupWindow;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 

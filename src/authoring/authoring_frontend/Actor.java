@@ -19,7 +19,7 @@ public class Actor {
      * Constructor for the actor.
      * @param actor JSON object of the actor.
      */
-    Actor(JSONObject actor){
+    public Actor(JSONObject actor){
         actorPrototypeID = (String)actor.get("name");
         JSONArray animations = (JSONArray)actor.get("animations");
         JSONObject defaultSprite = (JSONObject)animations.get(0);
