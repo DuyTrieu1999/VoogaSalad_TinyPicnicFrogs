@@ -13,6 +13,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,8 @@ import java.util.Optional;
  */
 public class PrototypeForm extends Form {
     private static int SIZE = 500;
-    private static int FIELD_SIZE = 150;
+    private static int SMALL_FIELD = 150;
+    private HashMap<String, List> myForms;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
     private List<FormBox> myInteractionForms;
@@ -43,13 +45,12 @@ public class PrototypeForm extends Form {
      */
     public PrototypeForm(GameManager manager, ActorManager a) {
         super(manager);
+        actorManager = a;
 
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
-        actorManager = a;
 
-        //this.setMaxSize(SIZE, SIZE);
         this.addAllFields();
     }
 
@@ -77,7 +78,7 @@ public class PrototypeForm extends Form {
 
         // Name
         prototypeName = new TextField();
-        prototypeName.setMaxWidth(FIELD_SIZE);
+        prototypeName.setMaxWidth(SMALL_FIELD);
         this.getChildren().addAll(name, prototypeName);
 
         // isPlayer

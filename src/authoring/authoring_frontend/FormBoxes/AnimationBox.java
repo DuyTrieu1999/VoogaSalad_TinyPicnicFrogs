@@ -1,8 +1,6 @@
 package authoring.authoring_frontend.FormBoxes;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -10,6 +8,7 @@ import javafx.stage.FileChooser;
 import org.json.simple.JSONObject;
 
 import java.io.File;
+import java.util.Optional;
 
 /**
  * AnimationBox
@@ -19,11 +18,15 @@ import java.io.File;
  * @author brookekeene
  */
 public class AnimationBox extends FormBox {
+    public static int DEFAULT_SIZE = 100;
     private String fileName;
     private int myRows;
     private int myCols;
     private boolean btnClicked;
 
+    /**
+     * Constructor
+     */
     public AnimationBox(String label) {
         super(label);
         fileName = null;
@@ -31,15 +34,17 @@ public class AnimationBox extends FormBox {
     }
 
     /**
-     * creates FileChooser and Button for user to select an image
+     * creates FileChooser and Buttons for user to select an image
+     * and to set its dimensions
      */
     @Override
     public void setContent() {
+        VBox myContent = new VBox();
+
         FileChooser myFC = new FileChooser();
         FileChooser.ExtensionFilter filter =new FileChooser.ExtensionFilter("Image Files","*.bmp", "*.gif", "*.jpeg", "*.png");
-
-        myFC.setTitle(myResources.getString("NewFile"));
         myFC.getExtensionFilters().add(filter);
+        myFC.setTitle(myResources.getString("NewFile"));
 
         ImageView fileIm = new ImageView();
 
@@ -51,18 +56,19 @@ public class AnimationBox extends FormBox {
                 String[]arr=fileName.split("/"); // Regex for non-Mac "\\\\"));
                 fileName=arr[arr.length-1];
                 System.out.println(fileName);
-                fileIm.setImage(new Image(file.toURI().toString()));
+                fileIm.setImage(new Image(file.toURI().toString(), DEFAULT_SIZE, DEFAULT_SIZE, true, false));
 
             }
         });
 
-        Button spritButn= new Button(myResources.getString("setBtn"));
-        spritButn.setOnAction(event -> {
+        Button spriteBtn= new Button(myResources.getString("setBtn"));
+        spriteBtn.setOnAction(event -> {
             btnClicked = true;
             launchDialog();
         });
 
-        this.getChildren().addAll(fileBtn, fileIm,spritButn);
+        myContent.getChildren().addAll(fileBtn, fileIm, spriteBtn);
+        this.getChildren().add(myContent);
     }
 
     /**
@@ -87,26 +93,31 @@ public class AnimationBox extends FormBox {
         return fileName != null && btnClicked;
     }
 
+    /**
+     * opens an alert that allows user to input the animation dimensions
+     */
     private void launchDialog(){
-        Alert alert= new Alert(Alert.AlertType.INFORMATION);
-        TextField rowText=new TextField(myResources.getString("spriteRows"));
-        TextField colText=new TextField(myResources.getString("spriteCols"));
-        Button setBtn= new Button(myResources.getString("setBtn"));
-        setBtn.setOnAction(event -> {
-            try{
-                myRows=Integer.parseInt(rowText.getText());
-                myCols=Integer.parseInt(colText.getText());}
-            catch (NumberFormatException e){
-                Alert alert1= new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(myResources.getString("setBtn"));
+        TextField rowText = new TextField(myResources.getString("spriteRows"));
+        TextField colText = new TextField(myResources.getString("spriteCols"));
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(rowText, colText);
+        alert.getDialogPane().setContent(vBox);
+
+        Optional<ButtonType> option = alert.showAndWait();
+
+        if (option.get() == ButtonType.OK) {
+            try {
+                myRows = Integer.parseInt(rowText.getText());
+                myCols = Integer.parseInt(colText.getText());
+            } catch (NumberFormatException e) {
+                Alert alert1 = new Alert(Alert.AlertType.ERROR);
                 alert1.setHeaderText(myResources.getString("numErrorHeader"));
                 alert1.setContentText(myResources.getString("numErrorBody"));
                 alert1.showAndWait();
             }
-        });
-        VBox vBox= new VBox();
-        vBox.getChildren().addAll(rowText,colText,setBtn);
-        alert.getDialogPane().setContent(vBox);
-        alert.showAndWait();
-
+        }
     }
 }

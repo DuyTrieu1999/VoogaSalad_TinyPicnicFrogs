@@ -4,7 +4,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 import java.util.ResourceBundle;
 
@@ -18,7 +17,6 @@ import java.util.ResourceBundle;
  */
 public abstract class FormBox extends HBox {
     public static final String DEFAULT_RESOURCE = "English";
-    public static final int WIDTH = 500;
     public static final int PADDING = 10;
     protected ResourceBundle myResources;
     protected String myKey;
@@ -30,7 +28,6 @@ public abstract class FormBox extends HBox {
         myKey = label.toLowerCase();
         this.getChildren().add(myLabel);
         this.setPadding(new Insets(PADDING));
-        //this.setWidth(WIDTH);
     }
 
     /**
