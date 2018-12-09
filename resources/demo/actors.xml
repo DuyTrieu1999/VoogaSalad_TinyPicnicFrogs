@@ -247,7 +247,9 @@
                     <string>top</string>
                     <engine.backend.AnimationObject>
                         <animationName>top</animationName>
-                        <animationPath>enemy_top.png</animationPath>
+                        <animationPath>male_player_back_32x32.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spiteCols>4</spiteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -255,7 +257,9 @@
                     <string>idle</string>
                     <engine.backend.AnimationObject>
                         <animationName>idle</animationName>
-                        <animationPath>enemy_idle.png</animationPath>
+                        <animationPath>male_player_front_32x32.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spiteCols>4</spiteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -263,7 +267,9 @@
                     <string>left</string>
                     <engine.backend.AnimationObject>
                         <animationName>left</animationName>
-                        <animationPath>enemy_left.png</animationPath>
+                        <animationPath>male_player_left_32x32.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spiteCols>4</spiteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -271,7 +277,9 @@
                     <string>bottom</string>
                     <engine.backend.AnimationObject>
                         <animationName>bottom</animationName>
-                        <animationPath>enemy_bot.png</animationPath>
+                        <animationPath>male_player_front_32x32.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spiteCols>4</spiteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
@@ -279,7 +287,9 @@
                     <string>right</string>
                     <engine.backend.AnimationObject>
                         <animationName>right</animationName>
-                        <animationPath>enemy_right.png</animationPath>
+                        <animationPath>male_player_right_32x32.png</animationPath>
+                        <spriteRows>1</spriteRows>
+                        <spiteCols>4</spiteCols>
                         <coordinate reference="../../../../myCoordinate"/>
                     </engine.backend.AnimationObject>
                 </entry>
