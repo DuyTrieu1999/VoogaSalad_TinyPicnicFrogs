@@ -1,20 +1,15 @@
 package authoring.authoring_frontend.FormBoxes;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.json.simple.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 /**
  * AnimationBox
@@ -27,10 +22,12 @@ public class AnimationBox extends FormBox {
     private String fileName;
     private int myRows;
     private int myCols;
+    private boolean btnClicked;
 
     public AnimationBox(String label) {
         super(label);
         fileName = null;
+        btnClicked = false;
     }
 
     /**
@@ -39,14 +36,16 @@ public class AnimationBox extends FormBox {
     @Override
     public void setContent() {
         FileChooser myFC = new FileChooser();
+        FileChooser.ExtensionFilter filter =new FileChooser.ExtensionFilter("Image Files","*.bmp", "*.gif", "*.jpeg", "*.png");
+
         myFC.setTitle(myResources.getString("NewFile"));
+        myFC.getExtensionFilters().add(filter);
+
         ImageView fileIm = new ImageView();
 
         Button fileBtn = new Button(myResources.getString("NewFile"));
-
         fileBtn.setOnAction(e -> {
             File file = myFC.showOpenDialog(getScene().getWindow());
-            //TODO: error check
             if(file != null) {
                 fileName = file.toString();
                 String[]arr=fileName.split("/"); // Regex for non-Mac "\\\\"));
@@ -56,8 +55,10 @@ public class AnimationBox extends FormBox {
 
             }
         });
+
         Button spritButn= new Button(myResources.getString("setBtn"));
         spritButn.setOnAction(event -> {
+            btnClicked = true;
             launchDialog();
         });
 
@@ -78,13 +79,14 @@ public class AnimationBox extends FormBox {
     }
 
     /**
-     * error checking for a valid file format
-     * @return true if user has selected a valid file
+     * error checking for a valid file format and sprite dimensions set
+     * @return true if user has selected a file and set dimensions
      */
     @Override
-    public boolean hasValidEntry() { //TODO: figure out how to check file formats
-        return fileName != null;
-    } //TODO: fix error checking
+    public boolean hasValidEntry() {
+        return fileName != null && btnClicked;
+    }
+
     private void launchDialog(){
         Alert alert= new Alert(Alert.AlertType.INFORMATION);
         TextField rowText=new TextField(myResources.getString("spriteRows"));
