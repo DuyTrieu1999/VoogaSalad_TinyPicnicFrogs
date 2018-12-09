@@ -87,5 +87,5 @@ public class MessageListBox extends FormBox {
     @Override
     public JSONObject getJSONContent() {
         return null;
-    }
+    } // Unused in this class
 }

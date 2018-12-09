@@ -31,6 +31,8 @@ public class PrototypeForm extends Form {
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
     private List<FormBox> myInteractionForms;
+    private MessageListBox myActivateBox;
+    private MessageListBox myDeactivateBox;
     private TextField prototypeName;
     private CheckBox isPlayer;
     private BoundsBox myBounds;
@@ -52,7 +54,7 @@ public class PrototypeForm extends Form {
     }
 
     /**
-     * adds all necessary fields to form
+     * adds all sections of FormBoxes to PrototypeForm
      */
     @Override
     public void addAllFields() {
@@ -128,6 +130,16 @@ public class PrototypeForm extends Form {
             }
         });
 
+        // Activate Messages
+        myActivateBox = new MessageListBox(myResources.getString("activate"), myManager);
+        myActivateBox.setContent();
+
+        // Deactivate Messages
+        myDeactivateBox = new MessageListBox(myResources.getString("deactivate"), myManager);
+        myDeactivateBox.setContent();
+
+        this.getChildren().addAll(myActivateBox, myDeactivateBox);
+
         // Interactions
         Button addIBtn = new Button(myResources.getString("AddNew"));
         VBox interactionsBox = new VBox();
@@ -158,8 +170,6 @@ public class PrototypeForm extends Form {
     public void saveFunction() {
         JSONObject myPrototype = new JSONObject();
         JSONArray myAnimations = new JSONArray();
-        JSONArray myActivaters = new JSONArray();
-        JSONArray myDeactivaters = new JSONArray();
         JSONArray myStats = new JSONArray();
         JSONArray myInteractions = new JSONArray();
 
@@ -174,7 +184,7 @@ public class PrototypeForm extends Form {
                 invalidDataAlert("animations");
                 return;
             }
-            myAnimations.add(myAnimationForms.get(i).getContent());
+            myAnimations.add(myAnimationForms.get(i).getJSONContent());
         }
         myPrototype.put("animations", myAnimations);
 
@@ -182,30 +192,30 @@ public class PrototypeForm extends Form {
             invalidDataAlert("bounds");
             return;
         }
-        myPrototype.put("bounds", myBounds.getContent());
+        myPrototype.put("bounds", myBounds.getJSONContent());
 
         for(int i = 0; i < myStatisticsForms.size(); i++) {
             if(!myStatisticsForms.get(i).hasValidEntry()) {
                 invalidDataAlert("statistics");
                 return;
             }
-            myStats.add(myStatisticsForms.get(i).getContent());
+            myStats.add(myStatisticsForms.get(i).getJSONContent());
         }
         myPrototype.put("stats", myStats);
 
         myPrototype.put("isPlayer", isPlayer.isSelected());
 
-        //TODO: add code to create JSON Arrays
-        myPrototype.put("ActivateMessages", myActivaters);
+        //  and Deactivate Messages
+        myPrototype.put("ActivateMessages", myActivateBox.getJSONArray());
 
-        myPrototype.put("DeactivateMessages", myDeactivaters);
+        myPrototype.put("DeactivateMessages", myDeactivateBox.getJSONArray());
 
         for(int i = 0; i < myInteractionForms.size(); i++) {
             if(!myInteractionForms.get(i).hasValidEntry()) {
                 invalidDataAlert("interactions");
                 return;
             }
-            myInteractions.add(myInteractionForms.get(i).getContent());
+            myInteractions.add(myInteractionForms.get(i).getJSONContent());
         }
         myPrototype.put("interactions", myInteractions);
 
