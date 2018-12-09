@@ -22,9 +22,12 @@
     "name":"fight1",
     "type":"fight",
     "animations":[{"key":"default","path":"/resource/charizard3.png"},{"key":"special","path":"/resource/charizard4.png"}],
-    "Messages":[
-      {"key":"prototypeVictory","messageKey":"onVictory"},
-      {"key":"prototypeDefeat","messageKey":"onDefeat"}
+    "ActivateMessages":[
+      "onVictory"
+    ],
+    "DeactivateMessages":[
+      "prototypeDefeat",
+      "onDefeat"
     ],
 
     "moves":[
