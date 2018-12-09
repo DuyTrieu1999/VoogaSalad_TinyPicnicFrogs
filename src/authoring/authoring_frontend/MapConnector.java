@@ -105,7 +105,7 @@ public class MapConnector {
         for(int i=0;i<myCells.size();i++){
             for(int j=0;j<myCells.get(i).size();j++){
                 StackPane thisCell = new StackPane();
-                thisCell.setPrefSize(18, 18);
+                thisCell.setPrefSize(mapManager.getCellSize(), mapManager.getCellSize());
                 thisCell.setStyle("-fx-border-color: black;");
                 for(Actor a:myCells.get(i).get(j).getActors()){
                     thisCell.getChildren().add(a.getActorImage());
