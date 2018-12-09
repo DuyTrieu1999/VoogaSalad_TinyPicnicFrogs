@@ -31,9 +31,11 @@ public abstract class MenuView extends HBox {
         pane = new BorderPane();
         activeCommands = new ArrayList<>();
         addListView();
+        this.getChildren().add(listView);
 
     }
     public void addListView () {
+        listView = new ListView<>();
         commandList = myController.getAllCommand();
         List<String> nameList = new ArrayList<>();
         for (Command command:commandList) {
@@ -45,14 +47,6 @@ public abstract class MenuView extends HBox {
         listView.setItems(items);
     }
     public void setSelectedCommand() {
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
-                String command = listView.getSelectionModel().getSelectedItem();
-                activeCommands.add(map.get(command));
-                GameMenuEvent e = new GameMenuEvent(activeCommands.get(0), InputSource.PLAYER);
-                ServiceLocator.getGameWorld().handleInput(e);
 
     }
 }
