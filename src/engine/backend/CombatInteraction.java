@@ -67,6 +67,6 @@ public class CombatInteraction extends Interaction{
                 combatMove.setImages();
             }}
         myCombatIdleAnimation=super.animationMap.get("idle");
-//        System.out.println(myCombatIdleAnimation.getName());
+        System.out.println(myCombatIdleAnimation.getName());
     }
 }

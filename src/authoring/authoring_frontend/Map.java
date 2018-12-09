@@ -16,6 +16,8 @@ public class Map {
     private Grid myGrid;
     private int width;
     private int height;
+    private int cellWidth;
+    private int cellHeight;
     private String programName;
     //private HashMap<Pair<Integer, Integer>, String> connectedPoints;
 
@@ -26,8 +28,8 @@ public class Map {
      * @param pName Name of the program.
      * @param myManager GameManager of the game.
      */
-    Map(int mapWidth, int mapHeight, String pName, GameManager myManager){
-        this(1, mapWidth, mapHeight, pName, myManager);
+    Map(int mapWidth, int mapHeight, int cWidth, int cHeight, String pName, GameManager myManager){
+        this(1, mapWidth, mapHeight, cWidth, cHeight, pName, myManager);
     }
 
     /**
@@ -38,12 +40,15 @@ public class Map {
      * @param pName Name of the program.
      * @param myManager GameManager of the game.
      */
-    Map(int mapID, int mapWidth, int mapHeight, String pName, GameManager myManager){
+    Map(int mapID, int mapWidth, int mapHeight, int cWidth, int cHeight, String pName, GameManager myManager){
+        cellHeight = cHeight;
+        cellWidth = cWidth;
+        //System.out.println(cWidth + " " + cHeight);
         id = mapID;
         width = mapWidth;
         height = mapHeight;
         programName = pName;
-        myGrid = new Grid(width, height, programName, myManager);
+        myGrid = new Grid(width, height, cWidth, cHeight, programName, myManager);
         //connectedPoints = new HashMap<>();
     }
 

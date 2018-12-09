@@ -84,5 +84,5 @@ public class Controller {
      */
     public void setBattleView() { myView.setBattleView(); }
 
-    public void addDialogue(Message m) { myView.getMyView().addDialouge(m); }
+    public void addDialogue(Message m) { myView.getMyView().addDialogue(m); }
 }

@@ -20,12 +20,8 @@ public class PlayerTurn extends Turn {
 
 
 
-
     @Override
     public void initializeTurn() {
         System.out.println("Player Turn");
-
     }
-
-
 }

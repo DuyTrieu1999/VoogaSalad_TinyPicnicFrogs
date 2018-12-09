@@ -19,8 +19,6 @@ import javafx.scene.paint.Color;
 public class AuthoringView {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 620;
-    public static final int GRID_WIDTH  = 30;
-    public static final int GRID_HEIGHT = 20;
     public static final String STYLESHEET = "default.css";
     private Group myRoot;
     private Scene myScene;
@@ -80,7 +78,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(GRID_WIDTH, GRID_HEIGHT));
+        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane());
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setCenter(new ScrollPane(mapManager.getActiveMap()));
@@ -108,7 +106,7 @@ public class AuthoringView {
         layersAndMaps.getTabs().addAll(myMaps.getMapList());
         layersAndMaps.setSide(Side.BOTTOM);
         */
-        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane(width, height));
+        leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane());
         TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
 
         myMainView.setLeft(leftSide);
