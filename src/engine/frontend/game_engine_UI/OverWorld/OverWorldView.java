@@ -2,8 +2,11 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.*;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.AnimationProcesser.SpriteProcesser;
 import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import engine.frontend.game_engine_UI.WorldView;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -26,6 +29,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Collection<AnimationObject> myAnimations;
     private Actor myPlayer;
     private DialogueMenu dialogueMenu;
+    private final IntegerProperty frameCounter = new SimpleIntegerProperty(0);
 
     /**
      * @param controller Controller that will send information from the back end to be updated in the front end
@@ -93,9 +97,12 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
                 animation.setLayoutY(0);
             }
             else{
+                SpriteProcesser processer = new SpriteProcesser(animation, animationObject.getSpriteRows(), animationObject.getSpiteCols());
+                frameCounter.set((frameCounter.get() + 1) % (animationObject.getSpriteRows() * animationObject.getSpiteCols()));
+                animation.setViewport(processer.getViewList()[frameCounter.get()]);
                 animation.setLayoutY(100);
-                animation.setFitWidth(100);
-                animation.setFitHeight(100);
+                animation.setFitWidth(400);
+                animation.setFitHeight(200);
             }
             displayPane.getChildren().add(animation);
         }

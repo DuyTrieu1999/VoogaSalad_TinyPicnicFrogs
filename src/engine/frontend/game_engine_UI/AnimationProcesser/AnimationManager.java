@@ -13,15 +13,10 @@ public class AnimationManager {
     private ParallelTransition transitionManager;
     private Node node = new Pane();
     private List<AnimationObject> animationObjects = new ArrayList<>();
-    private List<KeyFrame> keyFrames = new ArrayList<>();
-    private int count = 10;
-    private static final int OFFSET_X =  18;
-    private static final int OFFSET_Y =  25;
-    private static final int WIDTH    = 374;
-    private static final int HEIGHT   = 243;
 
     public AnimationManager(List<AnimationObject> objects) {
         for (AnimationObject object : objects) {
+            SpriteProcesser processer = new SpriteProcesser(object.getAnimationView(), object.getSpriteRows(), object.getSpiteCols());
 
         }
 

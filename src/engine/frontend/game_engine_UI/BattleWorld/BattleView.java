@@ -75,9 +75,4 @@ public class BattleView extends WorldView implements BattleViewAPI {
     public MenuView getMenuView () {
         return menuView;
     }
-    @Override
-    public void updateView () {
-
-    }
-
 }

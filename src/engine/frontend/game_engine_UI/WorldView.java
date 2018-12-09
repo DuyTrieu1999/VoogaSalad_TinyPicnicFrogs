@@ -1,9 +1,7 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.Commands.Command;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.controller.Controller;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 
@@ -11,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import java.util.List;
 
 /**
  * Super class that manages the view in the game. This class is extended by OverWorldView

@@ -1,6 +1,5 @@
 package engine.frontend.game_engine_UI.MenuView;
 
-import engine.backend.Commands.Command;
 import engine.backend.ServiceLocator;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
