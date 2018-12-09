@@ -22,6 +22,8 @@ public class ActorPrototype {
 	private Map<String, String> animationMap;
 	private Map<String, int[]> spriteDimensionsMap;
 	private Map<String, Interaction> interactionMap;
+	private List<Message> activateMessagesList;
+	private List<Message> deactivateMessagesList;
 	private Map<String, Integer> myStats;
 	private String name;
 	private Bounds myBound;
@@ -32,7 +34,7 @@ public class ActorPrototype {
 	 * @param prototypeMessages List that maps interactions to messages it sends
 	 */
 
-	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages) {
+	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages) { //add messages
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
@@ -41,6 +43,10 @@ public class ActorPrototype {
 		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages);
 		isPlayer = (boolean) data.get("isPlayer");
 		myBound = parseBounds((JSONObject) data.get("bounds"));
+		activateMessagesList = activateMessages;
+		deactivateMessagesList = deactivateMessages;
+
+
 	}
 
 	/**
@@ -52,7 +58,8 @@ public class ActorPrototype {
 	 * @param nameP
 	 */
 	protected ActorPrototype(Map<String, String> animationMapP, Map<String, Interaction> interactionMapP,
-							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap) {
+							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap, List<Message> activateMessages,
+							 List<Message> deactivateMessages) {
 		animationMap = animationMapP;
 		interactionMap = interactionMapP;
 		myStats = statsMap;
@@ -60,6 +67,10 @@ public class ActorPrototype {
 		isPlayer = player;
 		myBound = bounds;
 		spriteDimensionsMap = dimensionMap;
+		activateMessagesList = activateMessages;
+		deactivateMessagesList = deactivateMessages;
+
+
 	}
 
 	public String getName() {
@@ -118,6 +129,7 @@ public class ActorPrototype {
 			myInteraction = new BackgroundInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
+
 	}
 
 	/**
@@ -155,7 +167,8 @@ public class ActorPrototype {
 	 * @return the new instance of the actor prototype
 	 */
 	protected ActorPrototype clone() {
-		return new ActorPrototype(animationMap, interactionMap, myStats, name, isPlayer, myBound, spriteDimensionsMap);
+		return new ActorPrototype(animationMap, interactionMap, myStats, name, isPlayer, myBound, spriteDimensionsMap,
+				activateMessagesList, deactivateMessagesList);
 	}
 
 	/**
@@ -202,6 +215,7 @@ public class ActorPrototype {
 	/**
 	 * @return ObservablePrototype
 	 */
+
 	public ObservablePrototype getObservablePrototype() {
 		System.out.println(animationMap.get("idle"));
 		Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
@@ -214,4 +228,5 @@ public class ActorPrototype {
 	public Map<String, int[]> getSpriteDimensionsMap() {
 		return spriteDimensionsMap;
 	}
+
 }

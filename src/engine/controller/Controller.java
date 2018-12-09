@@ -28,11 +28,6 @@ public class Controller {
      */
     private Supplier<Actor> playerActorSupplier = () -> ServiceLocator.getActorManager().getPlayerActor();
     public Actor getPlayer () { return playerActorSupplier.get(); }
-    /**
-     * supplies the list of active Commands
-     */
-    private Supplier<List<Command>> activeCommandSupplier = () -> myView.getActiveCommand();
-    public List<Command> getActiveCommands () { return activeCommandSupplier.get(); }
 
     /**
      * receive the list of Commands
@@ -50,9 +45,6 @@ public class Controller {
      */
     private Supplier<List<AnimationObject>> battlePlayerAnimationSupplier = () -> ServiceLocator.getCombatManager().getAlliesIdleAnimation();
     public List<AnimationObject> getBattlePlayerAnimation () { return battlePlayerAnimationSupplier.get(); }
-
-    private Supplier<GameState> gameStateSupplier = () -> ServiceLocator.getGameWorld().getGameState();
-    public GameState getGameState () { return  gameStateSupplier.get(); }
 
     /**
      * supplies the list of battle animations for the enemy
@@ -84,5 +76,5 @@ public class Controller {
      */
     public void setBattleView() { myView.setBattleView(); }
 
-    public void addDialogue(Message m) { myView.getMyView().addDialouge(m); }
+    public void addDialogue(String m) { myView.getMyView().addDialogue(m); }
 }

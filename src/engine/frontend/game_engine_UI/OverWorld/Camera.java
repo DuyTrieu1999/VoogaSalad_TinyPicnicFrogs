@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI.OverWorld;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
 import javafx.scene.layout.Pane;
+import javafx.geometry.Point2D;
 
 public class Camera extends Pane {
     Actor myPlayer;

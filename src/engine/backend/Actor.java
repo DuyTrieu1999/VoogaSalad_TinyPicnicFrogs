@@ -10,6 +10,7 @@ import java.util.Map;
  *
  * @author Max Bartlett (mmb70)
  */
+
 public class Actor {
 	private Coordinate myCoordinate;
 	private Map<String, Interaction> myInteractionMap;

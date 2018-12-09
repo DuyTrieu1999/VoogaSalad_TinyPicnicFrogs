@@ -145,10 +145,7 @@ public class GameWorld {
     private void handleMenuEvent(GameMenuEvent e){
         if(myGameState == GameState.Combat){
             System.out.println("menu event triggered");
-            var activeCommand = ServiceLocator.getController().getActiveCommands();
-            if(activeCommand != null){
-                ServiceLocator.getCombatManager().receiveInput(e);
-            }
+            ServiceLocator.getCombatManager().receiveInput(e);
         }
 
     }

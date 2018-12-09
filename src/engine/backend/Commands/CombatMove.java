@@ -51,7 +51,7 @@ public class CombatMove extends Command {
             health-=targetValue;
         }
         else if (myTargetType==targetType.PERCENTAGE){
-         health=(int)((100-targetValue)*health/100);
+            health=(int)((100-targetValue)*health/100);
         }
         return health;
     }

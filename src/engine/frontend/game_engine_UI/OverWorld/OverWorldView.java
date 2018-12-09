@@ -2,11 +2,14 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.*;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +25,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Camera myCamera;
     private Collection<AnimationObject> myAnimations;
     private Actor myPlayer;
+    private DialogueMenu dialogueMenu;
 
     /**
      * @param controller Controller that will send information from the back end to be updated in the front end
@@ -134,7 +138,13 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     public void closeMenu () {
 
     }
-    public void addDialouge (Message m) {
-
+    public void addDialogue (String m) {
+        dialogueMenu = new DialogueMenu(myController, m);
+        displayPane.getChildren().add(dialogueMenu);
+        dialogueMenu.setLayoutX(350);
+        dialogueMenu.setLayoutY(500);
+    }
+    public void closeDialogue() {
+        displayPane.getChildren().remove(dialogueMenu);
     }
 }

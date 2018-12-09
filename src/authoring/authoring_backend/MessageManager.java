@@ -50,7 +50,7 @@ public class MessageManager {
       XStream serializer = new XStream(new DomDriver());
       String serialized= serializer.toXML(messageMap);
       try{
-          Files.write(Paths.get(path+"messages.xml"),serialized.getBytes());}catch (IOException e){e.printStackTrace();}
+          Files.write(Paths.get(path+"messages.xml"),serialized.getBytes());}catch (IOException e){throw new SaveException();}
 
 
 

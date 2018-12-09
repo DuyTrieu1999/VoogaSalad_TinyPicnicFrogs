@@ -4,6 +4,13 @@
   "stats":[{"key":"health","value":50},{"key":"damage","value":5}
 
   ],
+  "ActivateMessages":[
+  "onVictory","onDefeat"
+],
+  "DeactivateMessages":[
+  {"messageKey":"onVictory"},
+  {"messageKey":"onDefeat"}
+],
   "bounds":{
     "relX":0,
     "relY":0,
@@ -15,9 +22,12 @@
     "name":"fight1",
     "type":"fight",
     "animations":[{"key":"default","path":"/resource/charizard3.png"},{"key":"special","path":"/resource/charizard4.png"}],
-    "Messages":[
-      {"key":"prototypeVictory","messageKey":"onVictory"},
-      {"key":"prototypeDefeat","messageKey":"onDefeat"}
+    "ActivateMessages":[
+      "onVictory"
+    ],
+    "DeactivateMessages":[
+      "prototypeDefeat",
+      "onDefeat"
     ],
 
     "moves":[

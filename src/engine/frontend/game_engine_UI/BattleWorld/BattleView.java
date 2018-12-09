@@ -3,6 +3,7 @@ package engine.frontend.game_engine_UI.BattleWorld;
 import engine.backend.AnimationObject;
 import engine.backend.Commands.Command;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.MenuView.BattleMenu;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.geometry.Pos;
@@ -60,19 +61,23 @@ public class BattleView extends WorldView implements BattleViewAPI {
         displayPane.getChildren().add(buttonBox);
         buttonBox.setTranslateY(battle_background.getFitHeight());
         combatButton.setOnMouseClicked((event -> {
-            System.out.println("something");
-            List<Command> commandList = myController.getAllCommand();
-            menuView = new MenuView(commandList, displayPane);
+            menuView = new BattleMenu(myController);
             menuView.setPrefHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
             menuView.setMaxHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
-            menuView.setSellectedCommand();
-            System.out.println(menuView);
+            menuView.setSelectedCommand();
+            this.playerSide.setHealth(myController.getalliesHealth().get(0));
+            this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
+            System.out.println("health: " + myController.getalliesHealth().get(0));
         }));
     }
     public MenuView getMenuView () {
         return menuView;
+    }
+    @Override
+    public void updateView () {
+
     }
 
 }
