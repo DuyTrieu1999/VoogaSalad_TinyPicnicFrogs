@@ -23,6 +23,7 @@ public class MapManager {
     private BorderPane activeMap = new BorderPane();
     private ArrayList<Portal> portals = new ArrayList<>();
     private GameManager gameManager;
+    private int cellSize;
 
     /**
      * Constructor
@@ -41,7 +42,8 @@ public class MapManager {
      * @param height Height of map in cells.
      */
     public void createMap(String name, int width, int height){
-        gameMaps.put(name, new Map(width, height, programName, gameManager));
+        //System.out.println("c" + cellSize);
+        gameMaps.put(name, new Map(width, height, cellSize, cellSize, programName, gameManager));
     }
 
     /**
@@ -190,6 +192,14 @@ public class MapManager {
 
         //change view
         setActiveMap(activeMapName);
+    }
+
+    public int getCellSize(){
+        return cellSize;
+    }
+
+    public void setCellSize(int size){
+        cellSize = size;
     }
 
 }
