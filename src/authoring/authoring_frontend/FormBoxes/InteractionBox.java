@@ -1,23 +1,21 @@
 package authoring.authoring_frontend.FormBoxes;
 
 import authoring.authoring_backend.GameManager;
-import engine.backend.Message;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.File;
 import java.util.*;
 
+/**
+ * InteractionBox
+ *
+ * @author brookekeene
+ */
 public class InteractionBox extends FormBox {
     private SelectBox myType;
     private List<AnimationBox> myAnimations;
@@ -27,13 +25,19 @@ public class InteractionBox extends FormBox {
     private List<String> messageChoices;
     private GameManager myManager;
 
+    /**
+     * Constructor
+     */
     public InteractionBox(String label, GameManager manager) {
         super(label);
         myManager = manager;
-        typeChoices = new ArrayList<>(List.of("fight"));;
+        typeChoices = new ArrayList<>(List.of("Combat", "Dialogue", "Background"));;
         messageChoices = myManager.getMessageIds();
     }
 
+    /**
+     *
+     */
     @Override
     public void setContent() {
         myMessages = new ArrayList<>();
@@ -107,8 +111,12 @@ public class InteractionBox extends FormBox {
         this.getChildren().add(myContent);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         JSONArray myAnimationJSON = new JSONArray();
         JSONArray myMessageJSON = new JSONArray();
@@ -116,19 +124,18 @@ public class InteractionBox extends FormBox {
 
         // Animations
         for(AnimationBox box: myAnimations) {
-            myAnimationJSON.add(box.getContent());
+            myAnimationJSON.add(box.getJSONContent());
         }
 
         // Messages
-        // TODO: createMessage(String key, String messageBody) will save message to messageMap in GameManager
-
         for(MessageBox box:myMessages) {
-            myMessageJSON.add(box.getContent());
+            myMessageJSON.add(box.getJSONContent());
         }
 
         // Moves
         for(MoveBox box:myMoves) {
-            myMoveJSON.add(box.getContent());
+            myMoveJSON.add(box.getJSONContent());
+
         }
 
         myObject.put("name", myKey);
@@ -139,9 +146,41 @@ public class InteractionBox extends FormBox {
         return myObject;
     }
 
-
+    /**
+     * error checking for all fields of an interaction
+     * @return true if user has input all necessary data
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() { // TODO: finish
+        if(!myType.hasValidEntry()) {
+            return false;
+        } else if (!validEntries()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validEntries() {
+        // Animations
+        for(AnimationBox box: myAnimations) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+
+        // Messages
+        for(MessageBox box:myMessages) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+
+        // Moves
+        for(MoveBox box:myMoves) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

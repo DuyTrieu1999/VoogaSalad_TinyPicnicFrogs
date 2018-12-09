@@ -1,10 +1,7 @@
 package engine.backend.Commands;
 
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
-import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.CombatInteraction;
-import javafx.animation.Animation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

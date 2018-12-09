@@ -48,7 +48,8 @@ public class DialogueMenu extends HBox {
             public void handle(MouseEvent event) {
                 System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
                 String command = listView.getSelectionModel().getSelectedItem();
-
+                GameMenuEvent e = new GameMenuEvent(map.get(command), InputSource.PLAYER);
+                ServiceLocator.getGameWorld().handleInput(e);
             }
         });
     }

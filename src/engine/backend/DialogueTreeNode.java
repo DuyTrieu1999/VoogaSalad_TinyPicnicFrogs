@@ -1,8 +1,9 @@
 package engine.backend;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import engine.backend.Commands.Command;
+import engine.backend.Commands.DialogueSelectCommand;
+
+import java.util.*;
 
 public class DialogueTreeNode {
 	String myDialogue;
@@ -41,17 +42,21 @@ public class DialogueTreeNode {
 		return myChildren.keySet();
 	}
 
+	public List<Command> getResponsesCommands() {
+		List<Command> commands = new ArrayList();
+		for(String response : getResponses()) {
+			commands.add(new DialogueSelectCommand(response));
+		}
+		return commands;
+	}
+
 	/**
 	 * Gets nextDialogue from response
 	 * @param response
 	 * @return nextDialogue
 	 */
-	public String getNextDialogue(String response) {
-		String nextDialogue = myChildren.get(response).getDialogue();
-		if(myChildren.get(response).equals(null)) {
-			return "NULL";
-		}
-		return nextDialogue;
+	public DialogueTreeNode getChild(String response) {
+		return myChildren.get(response);
 	}
 
 	/**
