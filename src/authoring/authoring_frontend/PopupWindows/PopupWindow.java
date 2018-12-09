@@ -40,6 +40,7 @@ public abstract class PopupWindow {
         window.setTitle(label);
 
         window.setScene(myScene);
+        window.setResizable(false);
         window.show();
     }
 
