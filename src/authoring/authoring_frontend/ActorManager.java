@@ -22,7 +22,7 @@ import java.util.List;
  *
  * @author Allen Qiu
  */
-class ActorManager {
+public class ActorManager {
     private ArrayList<Actor> backgroundActors;
     private ArrayList<Actor> playableActors;
     private GameManager gameManager;
