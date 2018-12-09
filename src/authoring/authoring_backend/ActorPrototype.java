@@ -20,6 +20,7 @@ public class ActorPrototype {
 	private Map<String, String> animationMap;
 	private Map<String, int[]> spriteDimensionsMap;
 	private Map<String, Interaction> interactionMap;
+	private List<Message>activateMessages,deactivateMessages;
 	private Map<String, Integer> myStats;
 	private String name;
 	private Bounds myBound;

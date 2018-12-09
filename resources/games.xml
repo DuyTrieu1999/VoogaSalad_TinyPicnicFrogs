@@ -14,8 +14,8 @@
   <entry>
     <string>./resources/testSave2/</string>
     <authoring.authoring__backend.GameData>
-      <title>testGame2</title>
-      <description>testDescription</description>
+      <title>testSave</title>
+      <description>testSave Exception</description>
       <path>./resources/testSave2/</path>
       <mapWidth>480</mapWidth>
       <mapHeight>320</mapHeight>

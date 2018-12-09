@@ -47,7 +47,7 @@ public class UserProfileManager {
             parseArray((JSONArray)response.get("gamesPlayed"),gamesPlayed);
             playerLoggedIn = true;
             System.out.println(userBio);
-        }catch (IOException e){e.printStackTrace();}
+        }catch (IOException e){throw new ServerException(e);}
         catch (InterruptedException e){throw new ServerException(e);} catch (ParseException e) {
             throw new ServerException(e);
         }
@@ -58,8 +58,8 @@ public class UserProfileManager {
             myManager.register(email, password, bio, name);
             login(email,password);
 
-        }catch (InterruptedException e){e.printStackTrace();} catch (IOException e) {
-            e.printStackTrace();
+        }catch (InterruptedException e){throw new ServerException(e);} catch (IOException e) {
+            throw new ServerException(e);
         }
     }
     public Map<String,String> getUserAttributes(){

@@ -104,7 +104,7 @@ public class GameManager {
      * @param descriptionP game description
      * @param filePath file path to xml files
      */
-    public void saveGame(String titleP,String descriptionP, String filePath){
+    public void saveGame(String titleP,String descriptionP, String filePath)throws SaveException{
         filePath+="/";
         System.out.println("fired");
         GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
@@ -126,7 +126,7 @@ public class GameManager {
                 gameList.put(data.getPath(),data);
                 dataStr=serializer.toXML(gameList);
             }
-            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
+            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){throw new SaveException();}
     }
 
     /**
