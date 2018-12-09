@@ -2,7 +2,7 @@
   {
     "name":"grass",
     "animations":[
-      {"key":"default","path":"1.png"}
+      {"key":"idle","path":"1.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -20,12 +20,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"1.png"}]}]
+      "animations":[{"key":"idle","path":"1.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"treebottom",
     "animations":[
-      {"key":"default","path":"2.png"}
+      {"key":"idle","path":"2.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -43,12 +43,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"2.png"}]}]
+      "animations":[{"key":"idle","path":"2.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"treemiddle",
     "animations":[
-      {"key":"default","path":"3.png"}
+      {"key":"idle","path":"3.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -66,12 +66,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"3.png"}]}]
+      "animations":[{"key":"idle","path":"3.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"treetop",
     "animations":[
-      {"key":"default","path":"4.png"}
+      {"key":"idle","path":"4.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -89,12 +89,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"4.png"}]}]
+      "animations":[{"key":"idle","path":"4.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bouldertopleft",
     "animations":[
-      {"key":"default","path":"5.png"}
+      {"key":"idle","path":"5.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -112,12 +112,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"5.png"}]}]
+      "animations":[{"key":"idle","path":"5.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bouldertopright",
     "animations":[
-      {"key":"default","path":"6.png"}
+      {"key":"idle","path":"6.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -135,12 +135,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"6.png"}]}]
+      "animations":[{"key":"idle","path":"6.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulderbottomleft",
     "animations":[
-      {"key":"default","path":"7.png"}
+      {"key":"idle","path":"7.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -158,12 +158,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"7.png"}]}]
+      "animations":[{"key":"idle","path":"7.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulderbottomright",
     "animations":[
-      {"key":"default","path":"8.png"}
+      {"key":"idle","path":"8.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -181,12 +181,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"8.png"}]}]
+      "animations":[{"key":"idle","path":"8.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder2topleft",
     "animations":[
-      {"key":"default","path":"9.png"}
+      {"key":"idle","path":"9.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -204,12 +204,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"9.png"}]}]
+      "animations":[{"key":"idle","path":"9.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder2topright",
     "animations":[
-      {"key":"default","path":"10.png"}
+      {"key":"idle","path":"10.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -227,12 +227,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"10.png"}]}]
+      "animations":[{"key":"idle","path":"10.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder2bottomleft",
     "animations":[
-      {"key":"default","path":"11.png"}
+      {"key":"idle","path":"11.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -250,12 +250,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"11.png"}]}]
+      "animations":[{"key":"idle","path":"11.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder2bottomright",
     "animations":[
-      {"key":"default","path":"12.png"}
+      {"key":"idle","path":"12.png","spriteRows":1,"spriteCols":1,"spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -273,12 +273,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"12.png"}]}]
+      "animations":[{"key":"idle","path":"12.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder3",
     "animations":[
-      {"key":"default","path":"13.png"}
+      {"key":"idle","path":"13.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -296,12 +296,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"13.png"}]}]
+      "animations":[{"key":"idle","path":"13.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder4",
     "animations":[
-      {"key":"default","path":"14.png"}
+      {"key":"idle","path":"14.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -319,12 +319,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"14.png"}]}]
+      "animations":[{"key":"idle","path":"14.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder5top",
     "animations":[
-      {"key":"default","path":"15.png"}
+      {"key":"idle","path":"15.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -342,12 +342,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"15.png"}]}]
+      "animations":[{"key":"idle","path":"15.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder5bottom",
     "animations":[
-      {"key":"default","path":"16.png"}
+      {"key":"idle","path":"16.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -365,12 +365,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"16.png"}]}]
+      "animations":[{"key":"idle","path":"16.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder6top",
     "animations":[
-      {"key":"default","path":"17.png"}
+      {"key":"idle","path":"17.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -388,12 +388,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"17.png"}]}]
+      "animations":[{"key":"idle","path":"17.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"boulder6bottom",
     "animations":[
-      {"key":"default","path":"18.png"}
+      {"key":"idle","path":"18.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -411,12 +411,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"18.png"}]}]
+      "animations":[{"key":"idle","path":"18.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bigholetopleft",
     "animations":[
-      {"key":"default","path":"19.png"}
+      {"key":"idle","path":"19.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -434,12 +434,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"19.png"}]}]
+      "animations":[{"key":"idle","path":"19.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bigholetopright",
     "animations":[
-      {"key":"default","path":"20.png"}
+      {"key":"idle","path":"20.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -457,12 +457,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"20.png"}]}]
+      "animations":[{"key":"idle","path":"20.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bigholebottomleft",
     "animations":[
-      {"key":"default","path":"21.png"}
+      {"key":"idle","path":"21.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -480,12 +480,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"21.png"}]}]
+      "animations":[{"key":"idle","path":"21.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"bigholebottomright",
     "animations":[
-      {"key":"default","path":"22.png"}
+      {"key":"idle","path":"22.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -503,12 +503,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"22.png"}]}]
+      "animations":[{"key":"idle","path":"22.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"smallholeleft",
     "animations":[
-      {"key":"default","path":"23.png"}
+      {"key":"idle","path":"23.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -526,12 +526,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"23.png"}]}]
+      "animations":[{"key":"idle","path":"23.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"smallholeright",
     "animations":[
-      {"key":"default","path":"24.png"}
+      {"key":"idle","path":"24.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -549,12 +549,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"24.png"}]}]
+      "animations":[{"key":"idle","path":"24.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"dirtpatch",
     "animations":[
-      {"key":"default","path":"25.png"}
+      {"key":"idle","path":"25.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -572,12 +572,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"25.png"}]}]
+      "animations":[{"key":"idle","path":"25.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hilltopleft",
     "animations":[
-      {"key":"default","path":"26.png"}
+      {"key":"idle","path":"26.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -595,12 +595,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"26.png"}]}]
+      "animations":[{"key":"idle","path":"26.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hilltopmiddle",
     "animations":[
-      {"key":"default","path":"27.png"}
+      {"key":"idle","path":"27.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -618,12 +618,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"27.png"}]}]
+      "animations":[{"key":"idle","path":"27.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hilltopright",
     "animations":[
-      {"key":"default","path":"28.png"}
+      {"key":"idle","path":"28.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -641,12 +641,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"28.png"}]}]
+      "animations":[{"key":"idle","path":"28.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillmiddleleft",
     "animations":[
-      {"key":"default","path":"29.png"}
+      {"key":"idle","path":"29.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -664,12 +664,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"29.png"}]}]
+      "animations":[{"key":"idle","path":"29.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillmiddlemiddle",
     "animations":[
-      {"key":"default","path":"30.png"}
+      {"key":"idle","path":"30.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -687,12 +687,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"30.png"}]}]
+      "animations":[{"key":"idle","path":"30.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillmiddleright",
     "animations":[
-      {"key":"default","path":"31.png"}
+      {"key":"idle","path":"31.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -710,12 +710,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"31.png"}]}]
+      "animations":[{"key":"idle","path":"31.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillbottomleft",
     "animations":[
-      {"key":"default","path":"32.png"}
+      {"key":"idle","path":"32.png","spriteRows":1,"spriteCols":1}
     ],
     "isPlayer":false,
     "stats":[],
@@ -734,12 +734,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"32.png"}]}]
+      "animations":[{"key":"idle","path":"32.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillbottommiddle",
     "animations":[
-      {"key":"default","path":"33.png"}
+      {"key":"idle","path":"33.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -757,12 +757,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"33.png"}]}]
+      "animations":[{"key":"idle","path":"33.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"hillbottomright",
     "animations":[
-      {"key":"default","path":"34.png"}
+      {"key":"idle","path":"34.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -780,12 +780,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"34.png"}]}]
+      "animations":[{"key":"idle","path":"34.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2topleft",
     "animations":[
-      {"key":"default","path":"35.png"}
+      {"key":"idle","path":"35.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -803,12 +803,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"35.png"}]}]
+      "animations":[{"key":"idle","path":"35.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2topright",
     "animations":[
-      {"key":"default","path":"36.png"}
+      {"key":"idle","path":"36.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -826,12 +826,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"36.png"}]}]
+      "animations":[{"key":"idle","path":"36.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2farleft",
     "animations":[
-      {"key":"default","path":"37.png"}
+      {"key":"idle","path":"37.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -849,12 +849,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"37.png"}]}]
+      "animations":[{"key":"idle","path":"37.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2left",
     "animations":[
-      {"key":"default","path":"38.png"}
+      {"key":"idle","path":"38.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -872,12 +872,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"38.png"}]}]
+      "animations":[{"key":"idle","path":"38.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2right",
     "animations":[
-      {"key":"default","path":"39.png"}
+      {"key":"idle","path":"39.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -895,12 +895,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"39.png"}]}]
+      "animations":[{"key":"idle","path":"39.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2farright",
     "animations":[
-      {"key":"default","path":"40.png"}
+      {"key":"idle","path":"40.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -918,12 +918,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"40.png"}]}]
+      "animations":[{"key":"idle","path":"40.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2bottomleft",
     "animations":[
-      {"key":"default","path":"41.png"}
+      {"key":"idle","path":"41.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -941,12 +941,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"41.png"}]}]
+      "animations":[{"key":"idle","path":"41.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"tree2bottomright",
     "animations":[
-      {"key":"default","path":"42.png"}
+      {"key":"idle","path":"42.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -964,12 +964,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"42.png"}]}]
+      "animations":[{"key":"idle","path":"42.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"orangeplayer",
     "animations":[
-      {"key":"default","path":"43.png"}
+      {"key":"idle","path":"43.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -987,12 +987,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"43.png"}]}]
+      "animations":[{"key":"idle","path":"43.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"brownplayer",
     "animations":[
-      {"key":"default","path":"44.png"}
+      {"key":"idle","path":"44.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -1010,12 +1010,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"44.png"}]}]
+      "animations":[{"key":"idle","path":"44.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"grayplayer",
     "animations":[
-      {"key":"default","path":"45.png"}
+      {"key":"idle","path":"45.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -1033,12 +1033,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"45.png"}]}]
+      "animations":[{"key":"idle","path":"45.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"greenplayer",
     "animations":[
-      {"key":"default","path":"46.png"}
+      {"key":"idle","path":"46.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -1056,12 +1056,12 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"46.png"}]}]
+      "animations":[{"key":"idle","path":"46.png","spriteRows":1,"spriteCols":1}]}]
   },
   {
     "name":"pinkplayer",
     "animations":[
-      {"key":"default","path":"47.png"}
+      {"key":"idle","path":"47.png","spriteRows":1,"spriteCols":1}
     ],
     "stats":[],
     "bounds":{
@@ -1079,6 +1079,6 @@
         {"key":"backroundTouched","messageKey":"onVictory"}
 
       ],
-      "animations":[{"key":"default","path":"47.png"}]}]
+      "animations":[{"key":"idle","path":"47.png","spriteRows":1,"spriteCols":1}]}]
   }
 ]

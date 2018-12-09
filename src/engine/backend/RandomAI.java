@@ -1,9 +1,7 @@
 package engine.backend;
 
-import engine.backend.AI;
 import engine.backend.Commands.Command;
 
-import java.util.List;
 import java.util.Random;
 
 public class RandomAI extends AI {

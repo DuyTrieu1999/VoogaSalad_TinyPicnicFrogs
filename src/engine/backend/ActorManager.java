@@ -3,6 +3,12 @@ package engine.backend;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages actors
+ *
+ * @author Max Bartlett (mmb70)
+ */
+
 public class ActorManager {
 	List<Actor> allActors;
 	List<Actor> activeActors;

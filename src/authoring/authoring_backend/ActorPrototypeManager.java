@@ -80,7 +80,7 @@ public class ActorPrototypeManager {
      * @param path: ath to folder where to save all prototypes
      */
     protected void serializeAllPrototypes(String path){
-        int index=0;
+        System.out.println("Prototypes:"+actorPrototypeMap.size());
         XStream serializer = new XStream(new DomDriver());
         serializer.omitField(AnimationObject.class,"animationView");
         String serialized= serializer.toXML(actorPrototypeMap);

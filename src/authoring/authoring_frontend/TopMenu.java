@@ -20,8 +20,11 @@ import java.util.ResourceBundle;
  *
  * @author brookekeene
  */
-public class TopMenu extends HBox {
-    public static final String DEFAULT_RESOURCE = "English";
+class TopMenu extends HBox {
+    private static final String DEFAULT_RESOURCE = "English";
+    private static final int PADDING_TEN = 10;
+    private static final int PADDING_TWENTY = 20;
+    private static final int PADDING_ONEFIFTY = 150;
 
     private GameManager myManager;
     private MenuBar myMenu;
@@ -33,7 +36,7 @@ public class TopMenu extends HBox {
     /**
      * Constructor
      */
-    public TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
+    TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
         myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
@@ -68,6 +71,8 @@ public class TopMenu extends HBox {
         MenuItem newActor = new MenuItem(myResources.getString("Prototype"));
         MenuItem newMessage = new MenuItem(myResources.getString("Message"));
 
+        newSubmenu.getItems().addAll(newGame, newActor, newMessage);
+
         newGame.setOnAction(e -> {
             Dialog<Pair<String, String>> dialog = new Dialog<>();
             dialog.setTitle("New Game");
@@ -75,9 +80,9 @@ public class TopMenu extends HBox {
             ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
             GridPane grid = new GridPane();
-            grid.setHgap(10);
-            grid.setVgap(10);
-            grid.setPadding(new Insets(20, 150, 10, 10));
+            grid.setHgap(PADDING_TEN);
+            grid.setVgap(PADDING_TEN);
+            grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
             TextField xSize = new TextField();
             xSize.setPromptText("Width");
             TextField ySize = new TextField();
@@ -110,16 +115,12 @@ public class TopMenu extends HBox {
 
 
         newActor.setOnAction(e -> {
-            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager);
         });
 
         newMessage.setOnAction(e -> {
-            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager);
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager);
         });
-
-        newSubmenu.getItems().add(newGame);
-        newSubmenu.getItems().add(newActor);
-        newSubmenu.getItems().add(newMessage);
 
         // Open Submenu
         MenuItem openItem = new MenuItem(myResources.getString("Open"));
@@ -132,7 +133,7 @@ public class TopMenu extends HBox {
         MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
         saveGame.setOnAction(e -> {
-            PopupWindow mySaver = PopupFactory.getPopup("save", myManager);
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager);
         });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
@@ -158,9 +159,9 @@ public class TopMenu extends HBox {
             ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
             GridPane grid = new GridPane();
-            grid.setHgap(10);
-            grid.setVgap(10);
-            grid.setPadding(new Insets(20, 150, 10, 10));
+            grid.setHgap(PADDING_TEN);
+            grid.setVgap(PADDING_TEN);
+            grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
             TextField xSize = new TextField();
             xSize.setPromptText("Width");
             TextField ySize = new TextField();
@@ -185,8 +186,9 @@ public class TopMenu extends HBox {
             result.ifPresent(widthHeight -> {
                 int newWidth = Integer.parseInt(widthHeight.getKey());
                 int newHeight = Integer.parseInt(widthHeight.getValue());
+                //System.out.println(newWidth + " " + newHeight);
                 Map currentMap = mapManager.getMap(mapManager.getActiveMapName());
-                System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
+                //System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
                 if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirm Data Loss");
@@ -194,9 +196,8 @@ public class TopMenu extends HBox {
                     alert.setContentText("Are you ok with this?");
 
                     Optional<ButtonType> clippingResult = alert.showAndWait();
-                    if (clippingResult.get() == ButtonType.OK){
+                    if (clippingResult.isPresent() && clippingResult.get() == ButtonType.OK){
                         // ... user chose OK
-                        System.out.println("hahaha");
                         mapManager.changeMapDimensions(newWidth, newHeight);
                     }
                 }
@@ -252,7 +253,7 @@ public class TopMenu extends HBox {
 
             for(String mapName:mapManager.getMapList()){
                 Map thisMap = mapManager.getMap(mapName);
-                Grid thisGrid = thisMap.getGrid();
+                //Grid thisGrid = thisMap.getGrid();
                 /*
                 Cell[][] theseCells = thisGrid.getCells();
                 for(int i=0;i<theseCells.length;i++){

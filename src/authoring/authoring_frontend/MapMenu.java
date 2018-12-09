@@ -19,9 +19,15 @@ public class MapMenu extends HBox {
     private VBox mapList = new VBox();
     private ListView<String> mapView = new ListView<>();
     private HBox buttonView = new HBox();
-    private String programName;
+    //private String programName;
     private MapManager mapManager;
     private GameManager gameManager;
+    private int cellWidth = 16;
+    private int cellHeight = 16;
+    private static final int WINDOW_HEIGHT = 200;
+    private static final int PADDING_TEN = 10;
+    private static final int PADDING_TWENTY = 20;
+    private static final int PADDING_ONEFIFTY = 150;
 
     /**
      * Constructor
@@ -29,9 +35,9 @@ public class MapMenu extends HBox {
      * @param manager MapManager of the game
      * @param gm GameManager of the game
      */
-    public MapMenu(String pName, MapManager manager, GameManager gm) {
+    MapMenu(String pName, MapManager manager, GameManager gm) {
         this.getChildren().add(new Label("map"));
-        programName = pName;
+        //programName = pName;
         mapManager = manager;
         gameManager = gm;
     }
@@ -40,13 +46,13 @@ public class MapMenu extends HBox {
      * Initializes the list for the first time.
      * @return ListView of map names.
      */
-    public ListView<String> setupList(int width, int height){
+    private ListView<String> setupList(int width, int height){
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String newMap = mapManager.createMap(width, height);
-        gameManager.setUpMap(30, 20, 1, 1);
+        gameManager.setUpMap(cellWidth*width, cellHeight*height, width, height);
         mapView.getItems().add(newMap);
         mapManager.setActiveMap(newMap);
-        mapView.setPrefHeight(200);
+        mapView.setPrefHeight(WINDOW_HEIGHT);
         mapView.setOnMouseClicked(event -> {
             if(event.getClickCount() == 2){
                 mapManager.setActiveMap(mapView.getSelectionModel().getSelectedItem());
@@ -59,7 +65,7 @@ public class MapMenu extends HBox {
      * Creates the buttons.
      * @return HBox with buttons.
      */
-    public HBox setupButtons(){
+    private HBox setupButtons(){
         Button newMap = new Button("New Map");
         newMap.setOnAction(event -> {
             Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -68,9 +74,9 @@ public class MapMenu extends HBox {
             ButtonType loginButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
             GridPane grid = new GridPane();
-            grid.setHgap(10);
-            grid.setVgap(10);
-            grid.setPadding(new Insets(20, 150, 10, 10));
+            grid.setHgap(PADDING_TEN);
+            grid.setVgap(PADDING_TEN);
+            grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
             TextField xSize = new TextField();
             xSize.setPromptText("Width");
             TextField ySize = new TextField();
@@ -115,7 +121,7 @@ public class MapMenu extends HBox {
             else {
                 //error
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                StringBuilder lol = new StringBuilder();
+                //StringBuilder lol = new StringBuilder();
                 alert.setTitle("Error");
                 alert.setHeaderText("Error");
                 alert.setContentText("You have no maps to connect!");
@@ -131,7 +137,7 @@ public class MapMenu extends HBox {
      * Gets pane with all the tabs.
      * @return VBox with all the tabs.
      */
-    public VBox getMapPane(int width, int height){
+    VBox getMapPane(int width, int height){
         mapList.getChildren().addAll(setupButtons(), setupList(width, height));
         return mapList;
     }

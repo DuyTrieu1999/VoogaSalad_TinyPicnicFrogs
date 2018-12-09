@@ -79,10 +79,9 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
      * to fit the screen
      */
     private void addActors () {
-        ImageView backgroundView=new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("background.png")));
-        displayPane.getChildren().add(backgroundView);
         myAnimations = myController.getAnimation();
         for (AnimationObject animationObject: myAnimations) {
+            System.out.println(animationObject.getName());
             ImageView animation = animationObject.getAnimationView();
             animation.setLayoutX(100);
             animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
@@ -93,8 +92,6 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
             }
             else{
                 animation.setLayoutY(100);
-                animation.setFitHeight(50);
-                animation.setFitWidth(50);
             }
 
             displayPane.getChildren().add(animation);

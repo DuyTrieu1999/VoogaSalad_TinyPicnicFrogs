@@ -1,6 +1,5 @@
 package authoring.authoring_frontend;
 
-import authoring.authoring_backend.GameData;
 import authoring.authoring_backend.GameManager;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,10 +19,10 @@ import java.util.ResourceBundle;
  * @author brookekeene
  */
 public class SaveForm extends VBox {
-    public static final String DEFAULT_RESOURCE = "English";
-    public static int SIZE = 300;
-    public static int FIELD_SIZE = 250;
-    public static int PADDING = 10;
+    private static final String DEFAULT_RESOURCE = "English";
+    private static final int SIZE = 300;
+    private static final int FIELD_SIZE = 250;
+    private static final int PADDING = 10;
     private ResourceBundle myResources;
     private GameManager myManager;
     private TextField gameName;
@@ -70,7 +69,9 @@ public class SaveForm extends VBox {
             File selectedDirectory = directoryChooser.showDialog(new Stage());
 
             if (selectedDirectory != null) {
-                gamePath = selectedDirectory.getPath();
+                gamePath = selectedDirectory.toString();
+                String[] arr = gamePath.split("\\\\");
+                gamePath = arr[arr.length-1];
             }
         });
 
@@ -86,11 +87,9 @@ public class SaveForm extends VBox {
      * creates a GameData object and calls the GameManager.saveGame method
      */
     private void saveFunction () { //TODO: error check
+        System.out.println("fired frontend");
         String title = gameName.getText();
         String description = gameDescript.getText();
-        // TODO: do we need height and width of map?
-
-        GameData data = new GameData(title, description, gamePath);
-        myManager.saveGame(title,description, gamePath); // myManager.saveGame(data);
+        myManager.saveGame(title,description,gamePath);
     }
 }

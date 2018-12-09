@@ -6,9 +6,11 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
 import engine.backend.Message;
+import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,6 +30,7 @@ public class GameManager {
     private ActorPrototypeManager actorPrototypeManager;
     private MessageManager messageManager;
     private MapManager mapManager;
+    private final String GAME_SAVE_PATH="./resources/games.xml";
 
     public GameManager(){
         actorManager=new ActorManager();
@@ -67,7 +70,7 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
         }
-
+         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
     }
 
     /**
@@ -103,14 +106,26 @@ public class GameManager {
      * @param filePath file path to xml files
      */
     public void saveGame(String titleP,String descriptionP, String filePath){
-        GameData data = new GameData(titleP,descriptionP,filePath);
+        filePath+="/";
+        GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
         actorManager.serializeAllActors(data.getPath());
         messageManager.serializeAllMessages(data.getPath());
         actorPrototypeManager.serializeAllPrototypes(data.getPath());
         XStream serializer =  new XStream(new DomDriver());
-        String datastr=serializer.toXML(data);
+        String dataStr;
         try{
-            Files.write(Paths.get(data.getPath()+"gameData.xml"),datastr.getBytes());}catch (IOException e){e.printStackTrace();}
+            File gameMap= new File(GAME_SAVE_PATH);
+            if(gameMap.exists()){
+                Map<String,GameData>gameList=(Map<String,GameData>)serializer.fromXML(gameMap);
+                gameList.put(data.getPath(),data);
+                dataStr=serializer.toXML(gameList);
+            }
+            else{
+                Map<String,GameData>gameList= new HashMap<>();
+                gameList.put(data.getPath(),data);
+                 dataStr=serializer.toXML(gameList);
+            }
+            Files.write(Paths.get(GAME_SAVE_PATH),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
     }
 
     /**
@@ -141,20 +156,18 @@ public class GameManager {
 
     /**
      * Loads the message from a pre-existing XML File
-     * @param key where to put the message in the message map
      * @param path path to the XML file
      */
-    public void loadMessage(String key, String path){
-        messageManager.loadMessage(key, path);
+    public void loadMessages(String path){
+        messageManager.loadMessages(path);
     }
 
     /**
      * Loads the prototype from a pre-existing XML File
-     * @param key: where to put the prototype in the prototype map
      * @param path path to the XML file
      */
-    public void loadPrototype(String key, String path){
-        actorPrototypeManager.loadPrototype(key, path);
+    public void loadPrototypes(String path){
+        actorPrototypeManager.loadPrototypes(path);
     }
 
     /**
@@ -180,7 +193,13 @@ public class GameManager {
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
 
+    /**
+     * @return Observable actors for front-end use
+     */
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
+    /**
+     * @return Observable prototypes for front-end use
+     */
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 
