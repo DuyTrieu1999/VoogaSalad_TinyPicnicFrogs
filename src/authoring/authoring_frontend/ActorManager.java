@@ -113,7 +113,7 @@ public class ActorManager {
             defalutObject.put("isPlayer",false);
             JSONArray interractions= new JSONArray();
             JSONObject backgroundInterraction=new JSONObject();
-            backgroundInterraction.put("name","background");
+            backgroundInterraction.put("name","idle");
             backgroundInterraction.put("type","background");
             backgroundInterraction.put("canPassThrough",true);
             backgroundInterraction.put("messages",new JSONArray());
