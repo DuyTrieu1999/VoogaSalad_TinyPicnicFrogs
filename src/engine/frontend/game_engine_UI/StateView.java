@@ -46,7 +46,7 @@ public class StateView {
      * set the battle view as the main view
      */
     public void setBattleView () {
-        var fightScene = new FightScene();
+        var fightScene = new FightScene(myController);
         battleView = new BattleView(myController);
         fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());battleView.init();});
         myStage.setScene(fightScene.getMyScene());

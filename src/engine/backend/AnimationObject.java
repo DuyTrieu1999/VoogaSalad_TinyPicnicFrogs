@@ -88,5 +88,4 @@ public class AnimationObject {
 	public int getSpiteCols() {
 		return spiteCols;
 	}
-
 }
