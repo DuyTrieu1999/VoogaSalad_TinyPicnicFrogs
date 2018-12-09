@@ -25,6 +25,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private Camera myCamera;
     private Collection<AnimationObject> myAnimations;
     private Actor myPlayer;
+    private DialogueMenu dialogueMenu;
 
     /**
      * @param controller Controller that will send information from the back end to be updated in the front end
@@ -138,9 +139,12 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
 
     }
     public void addDialogue (String m) {
-        DialogueMenu dialogueMenu = new DialogueMenu(myController, m);
+        dialogueMenu = new DialogueMenu(myController, m);
         displayPane.getChildren().add(dialogueMenu);
         dialogueMenu.setLayoutX(350);
         dialogueMenu.setLayoutY(500);
+    }
+    public void closeDialogue() {
+        displayPane.getChildren().remove(dialogueMenu);
     }
 }

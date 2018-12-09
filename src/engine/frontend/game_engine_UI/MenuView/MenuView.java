@@ -24,30 +24,29 @@ public abstract class MenuView extends HBox {
     protected List<Command> activeCommands;
     protected ListView<String> listView;
     Map<String, Command> map = new HashMap<>();
+    protected Controller myController;
 
     public MenuView (Controller controller) {
+        this.myController = controller;
         pane = new BorderPane();
-        commandList = controller.getAllCommand();
         activeCommands = new ArrayList<>();
+        listView = new ListView<>();
+        pane.setCenter(listView);
+        this.getChildren().add(pane);
         addListView();
     }
-    private void addListView () {
+    public void addListView () {
+        commandList = myController.getAllCommand();
         List<String> nameList = new ArrayList<>();
         for (Command command:commandList) {
             nameList.add(command.getName());
             map.put(command.getName(), command);
         }
         ObservableList<String> items = FXCollections.observableArrayList (nameList);
-        listView = new ListView<>();
         listView.setPrefSize(100, 50);
         listView.setItems(items);
-        pane.setCenter(listView);
-        this.getChildren().add(pane);
     }
     public void setSelectedCommand() {
 
-    }
-    public List<Command> getActiveCommands () {
-        return activeCommands;
     }
 }
