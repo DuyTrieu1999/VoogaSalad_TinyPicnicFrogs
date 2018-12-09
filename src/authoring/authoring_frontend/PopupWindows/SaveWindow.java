@@ -11,7 +11,6 @@ import javafx.scene.control.ScrollPane;
  */
 public class SaveWindow extends PopupWindow{
     private int size;
-    private SaveForm myContent;
 
     /**
      * Constructor

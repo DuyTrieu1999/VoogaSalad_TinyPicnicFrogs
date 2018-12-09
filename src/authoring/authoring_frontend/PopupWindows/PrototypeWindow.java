@@ -16,7 +16,6 @@ import javafx.scene.control.ScrollPane;
 public class PrototypeWindow extends PopupWindow {
     //    public static final String DEFAULT_STYLESHEET = "light.css";
     private int size;
-    private PrototypeForm myContent;
     private ActorManager actorManager;
 
     /**
