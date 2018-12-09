@@ -2,11 +2,9 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -60,6 +58,7 @@ public class SaveForm extends VBox {
 
         // Description
         gameDescript = new TextArea();
+        gameDescript.setWrapText(true);
         gameDescript.setPrefSize(FIELD_SIZE, FIELD_SIZE);
         this.getChildren().addAll(description, gameDescript);
 
@@ -87,7 +86,6 @@ public class SaveForm extends VBox {
      * creates a GameData object and calls the GameManager.saveGame method
      */
     private void saveFunction () { //TODO: error check
-        System.out.println("fired frontend");
         String title = gameName.getText();
         String description = gameDescript.getText();
 
@@ -96,6 +94,13 @@ public class SaveForm extends VBox {
         String path=".";
         for(int i=index;i<arr.size();i+=1){path+="/"+arr.get(i);}
 
-        myManager.saveGame(title,description,path);
+        try {
+            myManager.saveGame(title,description,path);
+        } catch (SaveException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(myResources.getString("error"));
+            alert.getDialogPane().setContent(new VBox(new Text(e.getMessage())));
+            alert.showAndWait();
+        }
     }
 }
