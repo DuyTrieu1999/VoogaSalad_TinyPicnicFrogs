@@ -1,38 +1,39 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
-import engine.backend.Actor;
-import engine.backend.ServiceLocator;
+import engine.controller.Controller;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class FightScene extends SplashScreen {
+/**
+ * @author pkp9
+ * splash screen that appears before a battle
+ */
 
-    private static final int SPRITE_HEIGHT = 64;
+public class FightScene extends SplashScreen {
 
 
     void addElements() {
         ImageView vs_screen = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VS_screen.png")));
         pane.getChildren().add(vs_screen);
+
         vs_screen.setFitHeight(SCREEN_HEIGHT);
         vs_screen.setFitWidth(SCREEN_WIDTH);
 
-        Actor playerActor = ServiceLocator.getActorManager().getPlayerActor();
-
-        ImageView playerActorImageView = playerActor.getActiveAnimation().getAnimationView();//change to whichever player is chosen by the user
+        //gets player image
+        ImageView playerActorImageView = controller.getBattlePlayerAnimation().get(0).getAnimationView();
         pane.getChildren().add(playerActorImageView);
         playerActorImageView.setX(SCREEN_WIDTH / 4 - playerActorImageView.getFitWidth() / 2);
         playerActorImageView.setY(SCREEN_HEIGHT / 2 - playerActorImageView.getFitHeight() / 2);
         
-
-        ImageView opponent = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("VSBlue.png")));
-        //change to current opponent
-        pane.getChildren().add(opponent);
-        opponent.setX(playerActorImageView.getX() + SCREEN_WIDTH / 2);
-        opponent.setY(SCREEN_HEIGHT / 2 - SPRITE_HEIGHT);
+        //gets opponent image
+        ImageView opponentActorImageView = controller.getBattleEnemyAnimation().get(0).getAnimationView();
+        pane.getChildren().add(opponentActorImageView);
+        opponentActorImageView.setX(playerActorImageView.getX() + SCREEN_WIDTH / 2);
+        opponentActorImageView.setY(SCREEN_HEIGHT / 2 - opponentActorImageView.getFitHeight());
 
 
     }
-    public FightScene() {
-        super();
+    public FightScene(Controller controller) {
+        super(controller);
     }
 }

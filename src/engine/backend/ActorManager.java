@@ -14,6 +14,12 @@ public class ActorManager {
 	 */
 	public ActorManager(List<Actor> actorList) {
 		allActors = actorList;
+
+		for(Actor a:allActors){
+			boolean nBol=a.getActiveAnimation().getAnimationView()==null;
+			System.out.println(nBol);
+		}
+
 		inactiveActors = new ArrayList<>();
 		activeActors = allActors;
 		setPlayerActor();

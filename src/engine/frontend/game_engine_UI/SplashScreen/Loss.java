@@ -1,5 +1,6 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
+import engine.controller.Controller;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -21,7 +22,7 @@ public class Loss extends SplashScreen {
         pane.setCenter(text);
     }
 
-    Loss() {
-        super();
+    Loss(Controller controller) {
+        super(controller);
     }
 }

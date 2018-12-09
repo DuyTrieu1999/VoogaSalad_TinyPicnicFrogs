@@ -5,7 +5,7 @@ import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.backend.gameevent.GameMenuEvent;
-import javafx.event.Event;
+import javafx.concurrent.Service;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -67,7 +67,9 @@ public class GameWorld {
     }
 
     public void onTick(){
-        detectCollisions();
+        if(myGameState == GameState.Overworld){
+            detectCollisions();
+        }
         if(myGameState == GameState.Combat){
             ServiceLocator.getCombatManager().combatTick();
         }
@@ -113,6 +115,7 @@ public class GameWorld {
         var combatMan = new CombatManager(alliesList, enemyList, new LowestHealthFirstInitiative());
         ServiceLocator.provideCombatManager(combatMan);
         ServiceLocator.getController().setBattleView();
+        combatMan.nextTurn();
         //combatMan.nextTurn();
     }
 
@@ -130,7 +133,14 @@ public class GameWorld {
     }
 
     private void handleMenuEvent(GameMenuEvent e){
-        System.out.println("menu event triggered");
+        if(myGameState == GameState.Combat){
+            System.out.println("menu event triggered");
+            var activeCommand = ServiceLocator.getController().getActiveCommands();
+            if(activeCommand != null){
+                ServiceLocator.getCombatManager().receiveInput(e);
+            }
+        }
+
     }
 
     private void handleKeyEvent(GameKeyEvent e){

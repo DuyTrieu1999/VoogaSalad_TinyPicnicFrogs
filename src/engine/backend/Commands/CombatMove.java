@@ -44,6 +44,19 @@ public class CombatMove extends Command {
 
     @Override
     public void execute(List<Object> params) {
+        if(myTarget.getClass() == CombatInteraction.class){
+            int currentHealth = ((CombatInteraction) myTarget).getHealth();
+            ((CombatInteraction) myTarget).setHealth(calculateHealth(currentHealth));
+        }
+    }
+    private int calculateHealth(int health){
+        if(myTargetType==targetType.CONSTANT){
+            health-=targetValue;
+        }
+        else if (myTargetType==targetType.PERCENTAGE){
+            health=(int)((100-targetValue)*health/100);
+        }
+        return health;
     }
     private targetType parseTargetType(String value){
         if(value.equals("constant"))return targetType.CONSTANT;
@@ -61,7 +74,7 @@ public class CombatMove extends Command {
         Map<String,AnimationObject>animationMap=new HashMap<>();
         for(int i=0;i<arr.size();i+=1){
             JSONObject animation=(JSONObject)arr.get(i);
-            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path")));
+            animationMap.put((String)animation.get("key"),new AnimationObject((String)animation.get("key"),(String)animation.get("path"),Integer.parseInt(String.valueOf(animation.get("spriteRows"))),Integer.parseInt(String.valueOf(animation.get("spriteCols")))));
         }
         return animationMap;
     }

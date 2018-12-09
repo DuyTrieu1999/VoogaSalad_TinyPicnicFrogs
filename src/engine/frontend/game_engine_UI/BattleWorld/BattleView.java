@@ -42,10 +42,15 @@ public class BattleView extends WorldView implements BattleViewAPI {
         clearView();
         this.myEnemy = myController.getBattleEnemyAnimation().get(0);
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
+<<<<<<< HEAD
         AnimationObject testPlayer = new AnimationObject("player battle", pathWay+"player_right.png");
         AnimationObject testEnemy = new AnimationObject("enemy battle", pathWay+"player_left.png");
         playerSide = new PlayerSide(testPlayer);
         opponentSide = new OpponentSide(testEnemy);
+=======
+        playerSide = new PlayerSide(myPlayer);
+        opponentSide = new OpponentSide(myEnemy);
+>>>>>>> 69d9ec06d71cb7f7bf90a11c9d709f307bde5cfb
         this.playerSide.setHealth(myController.getalliesHealth().get(0));
         this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
         battle_background = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
@@ -66,10 +71,17 @@ public class BattleView extends WorldView implements BattleViewAPI {
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
             menuView.setPrefHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
+<<<<<<< HEAD
             menuView.getPane().setMaxHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
             displayPane.setCenter(menuView.getPane());
             displayPane.setAlignment(menuView.getPane(), Pos.BOTTOM_CENTER);
             menuView.setSelectedCommand();
+=======
+            menuView.setMaxHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
+            displayPane.setCenter(menuView);
+            displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
+            menuView.setSellectedCommand();
+>>>>>>> 69d9ec06d71cb7f7bf90a11c9d709f307bde5cfb
             System.out.println(menuView);
         }));
     }
