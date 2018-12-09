@@ -1,6 +1,7 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_backend.SaveException;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;

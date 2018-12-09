@@ -1,6 +1,8 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_frontend.Actor;
+import authoring.authoring_frontend.ActorManager;
 import authoring.authoring_frontend.FormBoxes.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

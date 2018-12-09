@@ -1,4 +1,4 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
 
