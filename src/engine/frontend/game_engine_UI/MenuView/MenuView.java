@@ -4,6 +4,7 @@ import engine.backend.Commands.Command;
 import engine.backend.ServiceLocator;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
+import engine.controller.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -17,51 +18,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MenuView extends HBox {
-    private BorderPane pane;
-    private List<Command> commandList;
-    private List<Command> activeCommands;
-    private ListView<String> listView;
+public abstract class MenuView extends HBox {
+    protected BorderPane pane;
+    protected List<Command> commandList;
+    protected List<Command> activeCommands;
+    protected ListView<String> listView;
     Map<String, Command> map = new HashMap<>();
+    protected Controller myController;
 
-    private boolean isClosed;
-    private BorderPane view;
-
-    public MenuView (List<Command> list, BorderPane view) {
-        this.view = view;
+    public MenuView (Controller controller) {
+        this.myController = controller;
         pane = new BorderPane();
-        isClosed = false;
-        commandList = list;
         activeCommands = new ArrayList<>();
         addListView();
+        this.getChildren().add(listView);
+
     }
-    private void addListView () {
+    public void addListView () {
+        listView = new ListView<>();
+        commandList = myController.getAllCommand();
         List<String> nameList = new ArrayList<>();
         for (Command command:commandList) {
             nameList.add(command.getName());
             map.put(command.getName(), command);
         }
         ObservableList<String> items = FXCollections.observableArrayList (nameList);
-        listView = new ListView<>();
         listView.setPrefSize(100, 50);
         listView.setItems(items);
-        pane.setCenter(listView);
-        this.getChildren().add(pane);
     }
-    public void setSellectedCommand () {
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
-                String command = listView.getSelectionModel().getSelectedItem();
-                activeCommands.add(map.get(command));
-                GameMenuEvent e = new GameMenuEvent(activeCommands.get(0), InputSource.PLAYER);
-                ServiceLocator.getGameWorld().handleInput(e);
+    public void setSelectedCommand() {
 
-            }
-        });
-    }
-    public List<Command> getActiveCommands () {
-        return activeCommands;
     }
 }

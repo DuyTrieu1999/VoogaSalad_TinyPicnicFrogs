@@ -2,10 +2,10 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.PopupWindows.PopupWindow;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -115,11 +115,11 @@ class TopMenu extends HBox {
 
 
         newActor.setOnAction(e -> {
-            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager, mapManager);
         });
 
         newMessage.setOnAction(e -> {
-            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager);
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager, mapManager);
         });
 
         // Open Submenu
@@ -127,13 +127,14 @@ class TopMenu extends HBox {
 
         openItem.setOnAction(e -> {
             System.out.println("Open FileChooser"); //TODO: replace this with code
+            PopupFactory.getPopup("open", myManager, actorManager, mapManager);
         });
 
         // Save Submenu
         MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
         saveGame.setOnAction(e -> {
-            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager);
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager, mapManager);
         });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);

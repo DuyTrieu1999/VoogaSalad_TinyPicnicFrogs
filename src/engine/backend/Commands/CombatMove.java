@@ -1,10 +1,7 @@
 package engine.backend.Commands;
 
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
-import engine.backend.Actor;
 import engine.backend.AnimationObject;
 import engine.backend.CombatInteraction;
-import javafx.animation.Animation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -54,7 +51,7 @@ public class CombatMove extends Command {
             health-=targetValue;
         }
         else if (myTargetType==targetType.PERCENTAGE){
-         health=(int)((100-targetValue)*health/100);
+            health=(int)((100-targetValue)*health/100);
         }
         return health;
     }

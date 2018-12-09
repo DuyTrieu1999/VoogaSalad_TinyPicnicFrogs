@@ -1,6 +1,8 @@
-package authoring.authoring_frontend;
+package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_frontend.Actor;
+import authoring.authoring_frontend.ActorManager;
 import authoring.authoring_frontend.FormBoxes.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,9 +13,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 /**
  * PrototypeForm
@@ -24,42 +26,39 @@ import java.util.ResourceBundle;
  *
  * @author brookekeene
  */
-public class PrototypeForm extends VBox {
-    private static final String DEFAULT_RESOURCE = "English";
+public class PrototypeForm extends Form {
     private static int SIZE = 500;
-    private static int PADDING = 10;
-    private static int FIELD_SIZE = 150;
-    private ResourceBundle myResources;
+    private static int SMALL_FIELD = 150;
+    private HashMap<String, List> myForms;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
     private List<FormBox> myInteractionForms;
+    private MessageListBox myActivateBox;
+    private MessageListBox myDeactivateBox;
     private TextField prototypeName;
     private CheckBox isPlayer;
     private BoundsBox myBounds;
-
-    private GameManager myManager;
     private ActorManager actorManager;
 
     /**
      * Constructor
      */
     public PrototypeForm(GameManager manager, ActorManager a) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
+        super(manager);
+        actorManager = a;
+
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
-        myManager = manager;
-        actorManager = a;
 
-        //this.setMaxSize(SIZE, SIZE);
-        this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
 
     /**
-     * adds all necessary fields to form
+     * adds all sections of FormBoxes to PrototypeForm
      */
-    private void addAllFields() {
+    @Override
+    public void addAllFields() {
         Label name = new Label(myResources.getString("name"));
         Label animations = new Label(myResources.getString("animations"));
         Label stats = new Label(myResources.getString("stats"));
@@ -79,7 +78,7 @@ public class PrototypeForm extends VBox {
 
         // Name
         prototypeName = new TextField();
-        prototypeName.setMaxWidth(FIELD_SIZE);
+        prototypeName.setMaxWidth(SMALL_FIELD);
         this.getChildren().addAll(name, prototypeName);
 
         // isPlayer
@@ -132,6 +131,16 @@ public class PrototypeForm extends VBox {
             }
         });
 
+        // Activate Messages
+        myActivateBox = new MessageListBox(myResources.getString("activate"), myManager);
+        myActivateBox.setContent();
+
+        // Deactivate Messages
+        myDeactivateBox = new MessageListBox(myResources.getString("deactivate"), myManager);
+        myDeactivateBox.setContent();
+
+        this.getChildren().addAll(myActivateBox, myDeactivateBox);
+
         // Interactions
         Button addIBtn = new Button(myResources.getString("AddNew"));
         VBox interactionsBox = new VBox();
@@ -158,36 +167,72 @@ public class PrototypeForm extends VBox {
     /**
      * saves all information as a JSON object
      */
-    private void saveFunction() { //TODO: error check
+    @Override
+    public void saveFunction() {
         JSONObject myPrototype = new JSONObject();
         JSONArray myAnimations = new JSONArray();
         JSONArray myStats = new JSONArray();
         JSONArray myInteractions = new JSONArray();
 
+        if(prototypeName.getText().isEmpty()) {
+            invalidDataAlert("name");
+            return;
+        }
         myPrototype.put("name", prototypeName.getText());
 
         for(int i = 0; i < myAnimationForms.size(); i++) {
-            System.out.println(myAnimationForms.get(i).getContent());
-            myAnimations.add(myAnimationForms.get(i).getContent());
+            if(!myAnimationForms.get(i).hasValidEntry()) {
+                invalidDataAlert("animations");
+                return;
+            }
+            myAnimations.add(myAnimationForms.get(i).getJSONContent());
         }
         myPrototype.put("animations", myAnimations);
 
-        myPrototype.put("bounds", myBounds.getContent());
+        if(!myBounds.hasValidEntry()) {
+            invalidDataAlert("bounds");
+            return;
+        }
+        myPrototype.put("bounds", myBounds.getJSONContent());
 
         for(int i = 0; i < myStatisticsForms.size(); i++) {
-            myStats.add(myStatisticsForms.get(i).getContent());
+            if(!myStatisticsForms.get(i).hasValidEntry()) {
+                invalidDataAlert("statistics");
+                return;
+            }
+            myStats.add(myStatisticsForms.get(i).getJSONContent());
         }
         myPrototype.put("stats", myStats);
 
         myPrototype.put("isPlayer", isPlayer.isSelected());
 
+        //  and Deactivate Messages
+        myPrototype.put("ActivateMessages", myActivateBox.getJSONArray());
+
+        myPrototype.put("DeactivateMessages", myDeactivateBox.getJSONArray());
+
         for(int i = 0; i < myInteractionForms.size(); i++) {
-            myInteractions.add(myInteractionForms.get(i).getContent());
+            if(!myInteractionForms.get(i).hasValidEntry()) {
+                invalidDataAlert("interactions");
+                return;
+            }
+            myInteractions.add(myInteractionForms.get(i).getJSONContent());
         }
         myPrototype.put("interactions", myInteractions);
 
         System.out.println(myPrototype); // TESTING
         myManager.createActorPrototype(myPrototype);
         actorManager.addActor(new Actor(myPrototype), (boolean)myPrototype.get("isPlayer"));
-        actorManager.setupTabs();   }
+        actorManager.setupTabs();
+    }
+
+    /**
+     * creates an AlertBox with the appropriate message when the user inputs data incorrectly
+     */
+    private void invalidDataAlert(String issue) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText(myResources.getString("error"));
+        errorAlert.setContentText(myResources.getString("errorMessage") + issue);
+        errorAlert.showAndWait();
+    }
 }

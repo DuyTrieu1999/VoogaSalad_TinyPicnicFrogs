@@ -6,9 +6,9 @@ import authoring.authoring_frontend.PopupWindows.*;
 class PopupFactory {
     private final static int PROTOTYPE_SIZE = 500;
     private final static int MESSAGE_SIZE = 300;
-    private final static int SAVE_SIZE = 200;
+    private final static int SAVE_SIZE = 400;
 
-    static PopupWindow getPopup(String type, GameManager manager, ActorManager actorManager) {
+    static PopupWindow getPopup(String type, GameManager manager, ActorManager actorManager, MapManager mapManager) {
         if("prototype".equalsIgnoreCase(type)) {
             return new PrototypeWindow(manager, PROTOTYPE_SIZE, actorManager);
         }
@@ -17,6 +17,9 @@ class PopupFactory {
         }
         else if("save".equalsIgnoreCase(type)) {
             return new SaveWindow(manager, SAVE_SIZE);
+        }
+        else if("open".equalsIgnoreCase(type)){
+            return new LoadWindow(manager, SAVE_SIZE, actorManager, mapManager);
         }
         return null;
     }

@@ -3,15 +3,12 @@ package engine.backend;
 import engine.backend.Commands.CombatMove;
 
 import engine.backend.Commands.Command;
-import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
 
-import javax.swing.event.MenuEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.spi.LocaleServiceProvider;
 
 /**
  * Manages the combat state (taking turns, etc).
@@ -88,35 +85,35 @@ public class CombatManager {
      */
     public void nextTurn(){
         System.out.println("next turnss");
-            turnLock = true;
-            //run the current turn and put it on the end of the queue
-            turnList.add(turnList.remove(0));
-            //remove dead
-            List<CombatInteraction> deadList = new ArrayList<>();
-            for(CombatInteraction a : myAllies){
-                System.out.println(a.getHealth());
-                if(a.getHealth() <= 0){
-                    deadList.add(a);
-                }
+        turnLock = true;
+        //run the current turn and put it on the end of the queue
+        turnList.add(turnList.remove(0));
+        //remove dead
+        List<CombatInteraction> deadList = new ArrayList<>();
+        for(CombatInteraction a : myAllies){
+            System.out.println(a.getHealth());
+            if(a.getHealth() <= 0){
+                deadList.add(a);
             }
-            myAllies.removeAll(deadList);
-            deadList.clear();
-            for(CombatInteraction e : myEnemies){
-                System.out.println(e.getHealth());
-                if(e.getHealth() <= 0){
-                    deadList.add(e);
-                }
+        }
+        myAllies.removeAll(deadList);
+        deadList.clear();
+        for(CombatInteraction e : myEnemies){
+            System.out.println(e.getHealth());
+            if(e.getHealth() <= 0){
+                deadList.add(e);
             }
-            myEnemies.removeAll(deadList);
-            if(myAllies.size() < 1){
-                playerDefeat();
-            }
-            if(myEnemies.size()< 1){
-                playerVictory();
-            }
+        }
+        myEnemies.removeAll(deadList);
+        if(myAllies.size() < 1){
+            playerDefeat();
+        }
+        if(myEnemies.size()< 1){
+            playerVictory();
+        }
 
-            nextSource = turnList.get(0).getExpectedSource();
-            turnList.get(0).initializeTurn();
+        nextSource = turnList.get(0).getExpectedSource();
+        turnList.get(0).initializeTurn();
     }
 
 

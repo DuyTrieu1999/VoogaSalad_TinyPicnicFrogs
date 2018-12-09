@@ -1,6 +1,7 @@
 package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_frontend.Forms.Form;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -22,6 +23,7 @@ public abstract class PopupWindow {
     protected GameManager myManager;
     protected Group myRoot;
     protected Scene myScene;
+    protected Form myContent;
 
     public PopupWindow(GameManager manager, int size) {
         myManager = manager;
@@ -40,6 +42,7 @@ public abstract class PopupWindow {
         window.setTitle(label);
 
         window.setScene(myScene);
+        window.setResizable(false);
         window.show();
     }
 

@@ -25,8 +25,8 @@ public class Grid {
     //private Cell[][] myCells;
     private static final int DEFAULT_WIDTH  = 30;
     private static final int DEFAULT_HEIGHT = 20;
-    private int cellWidth = 18;
-    private int cellHeight = 18;
+    private int cellWidth;
+    private int cellHeight;
     private ArrayList<ArrayList<Cell>> myCells;
     private int gridWidth;
     private int gridHeight;
@@ -39,8 +39,8 @@ public class Grid {
      * @param name Program name.
      * @param myManager GameManager of current game.
      */
-    Grid(String name, GameManager myManager){
-        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, name, myManager);
+    Grid(String name, int cellWidth, int cellHeight, GameManager myManager){
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, cellWidth, cellHeight, name, myManager);
     }
 
     /**
@@ -50,7 +50,9 @@ public class Grid {
      * @param name Program name.
      * @param myManager GameManager of current game.
      */
-    Grid(int width, int height, String name, GameManager myManager){
+    Grid(int width, int height, int cWidth, int cHeight, String name, GameManager myManager){
+        cellWidth = cWidth + 2;
+        cellHeight = cHeight + 2;
         gridWidth = width;
         gridHeight = height;
         programName = name;
@@ -75,7 +77,8 @@ public class Grid {
      */
     private StackPane createCell(){
         StackPane thisCell = new StackPane();
-        thisCell.setPrefSize(cellWidth, cellHeight);
+        //System.out.println(cellWidth + " " + cellHeight);
+        thisCell.setMinSize(cellWidth, cellHeight);
         thisCell.setStyle("-fx-border-color: black;");
 
         thisCell.setOnMouseClicked(event -> {
@@ -94,23 +97,23 @@ public class Grid {
                             if(y > lastY){
                                 for(int i=lastX;i<=x;i++){
                                     for(int j=lastY;j<=y;j++){
-                                        System.out.println("Case 1");
                                         //System.out.println("Trying to find the StackPane at " + i + ", " + j);
                                         StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
-                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        addActor(currentCell, activeActor, i, j);
+/*                                        currentCell.getChildren().add(activeActor.getActorImage());
                                         myCells.get(j).get(i).addActor(activeActor);
-                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);*/
                                     }
                                 }
                             }
                             else if(y < lastY){
                                 for(int i=lastX;i<=x;i++){
                                     for(int j=y;y<=lastY;j++){
-                                        System.out.println("Case 2");
                                         StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
-                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        addActor(currentCell, activeActor, i, j);
+/*                                        currentCell.getChildren().add(activeActor.getActorImage());
                                         myCells.get(i).get(j).addActor(activeActor);
-                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);*/
                                     }
                                 }
                             }
@@ -120,9 +123,10 @@ public class Grid {
                                 for(int i=x;i<=lastX;i++){
                                     for(int j=lastY;j<=y;j++){
                                         StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
-                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        addActor(currentCell, activeActor, i, j);
+/*                                        currentCell.getChildren().add(activeActor.getActorImage());
                                         myCells.get(i).get(j).addActor(activeActor);
-                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);*/
                                     }
                                 }
                             }
@@ -130,9 +134,10 @@ public class Grid {
                                 for(int i=x;i<=lastX;i++){
                                     for(int j=y;j<=lastY;j++){
                                         StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
-                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        addActor(currentCell, activeActor, i, j);
+/*                                        currentCell.getChildren().add(activeActor.getActorImage());
                                         myCells.get(i).get(j).addActor(activeActor);
-                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);*/
                                     }
                                 }
                             }
@@ -140,10 +145,11 @@ public class Grid {
                     }
                 }
                 else {
-                    thisCell.getChildren().add(activeActor.getActorImage());
+                    addActor(thisCell, activeActor, x, y);
+/*                    thisCell.getChildren().add(activeActor.getActorImage());
                     //myCells[x][y].addActor(activeActor);
                     myCells.get(x).get(y).addActor(activeActor);
-                    gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
+                    gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);*/
                 }
             }
             else {
@@ -159,44 +165,24 @@ public class Grid {
             lastSelectedCell = thisCell;
         });
 
-        //thisCell.addEventFilter(MouseEvent.ANY, e -> System.out.println( e));
-
-        /*
-        thisCell.addEventHandler(MouseEvent.ANY, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                boolean pressed = false;
-                if(event.getEventType() == MouseEvent.MOUSE_PRESSED){
-                    pressed = true;
-                }
-                if(event.getEventType() == MouseEvent.MOUSE_CLICKED || (event.getEventType() == MouseEvent.MOUSE_ENTERED && pressed)){
-                    Actor activeActor = ActiveItem.getActiveItem(programName);
-                    int x = GridPane.getColumnIndex(thisCell);
-                    int y = GridPane.getRowIndex(thisCell);
-                    if(activeActor != null){
-                        thisCell.getChildren().add(activeActor.getActorImage());
-                        //myCells[x][y].addActor(activeActor);
-                        myCells.get(x).get(y).addActor(activeActor);
-                        gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
-                    }
-                    else {
-                        if(thisCell.getChildren().size() > 0){
-                            thisCell.getChildren().remove(thisCell.getChildren().size()-1);
-                            ArrayList<Actor> actorsOfCell = myCells.get(x).get(y).getActors();
-                            //ArrayList<Actor> actorsOfCell = myCells[x][y].getActors();
-                            gameManager.deleteActor(actorsOfCell.get(actorsOfCell.size()-1).getActorPrototypeID()+x+"-"+y+"-"+(thisCell.getChildren().size()-1));
-                            myCells.get(x).remove(y);
-                            //myCells[x][y].removeActor();
-                        }
-                    }
-                }
-                if(event.getEventType() == MouseEvent.MOUSE_RELEASED){
-                    pressed = false;
-                }
-            }
-        });
-        */
         return thisCell;
+    }
+
+    public void addActor(StackPane cell, Actor actor, int x, int y){
+        cell.getChildren().add(actor.getActorImage());
+        myCells.get(x).get(y).addActor(actor);
+        gameManager.createActor(actor.getActorPrototypeID(), x, y, cell.getChildren().size(), 0, 0);
+    }
+
+    public void addActor(Actor actor, int x, int y){
+        StackPane cell = (StackPane)getGridPaneNodeAt(x, y);
+        addActor(cell, actor, x, y);
+    }
+
+    public void addActorFrontendOnly(Actor actor, int x, int y){
+        StackPane cell = (StackPane)getGridPaneNodeAt(x, y);
+        cell.getChildren().add(actor.getActorImage());
+        myCells.get(x).get(y).addActor(actor);
     }
 
     /**

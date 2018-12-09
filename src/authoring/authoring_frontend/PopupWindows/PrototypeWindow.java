@@ -2,7 +2,7 @@ package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.ActorManager;
-import authoring.authoring_frontend.PrototypeForm;
+import authoring.authoring_frontend.Forms.PrototypeForm;
 import javafx.scene.control.ScrollPane;
 
 /**
@@ -16,7 +16,6 @@ import javafx.scene.control.ScrollPane;
 public class PrototypeWindow extends PopupWindow {
     //    public static final String DEFAULT_STYLESHEET = "light.css";
     private int size;
-    private PrototypeForm myContent;
     private ActorManager actorManager;
 
     /**

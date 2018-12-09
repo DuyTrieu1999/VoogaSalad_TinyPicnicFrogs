@@ -1,7 +1,7 @@
 package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.MessageForm;
+import authoring.authoring_frontend.Forms.MessageForm;
 
 /**
  * Message Window
@@ -10,15 +10,12 @@ import authoring.authoring_frontend.MessageForm;
  * @author brookekeene
  */
 public class MessageWindow extends PopupWindow{
-    private int size;
-    private MessageForm myMessageForm;
 
     /**
      * Constructor
      */
     public MessageWindow(GameManager manager, int n) {
         super(manager, n);
-        size = n;
 
         this.display(myResources.getString("CreateMessage"));
         this.addContent();
@@ -30,7 +27,7 @@ public class MessageWindow extends PopupWindow{
      * message information
      */
     public void addContent() {
-        myMessageForm = new MessageForm(myManager);
-        myRoot.getChildren().add(myMessageForm);
+        myContent = new MessageForm(myManager);
+        myRoot.getChildren().add(myContent);
     }
 }

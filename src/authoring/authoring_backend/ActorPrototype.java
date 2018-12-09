@@ -1,6 +1,8 @@
 package authoring.authoring_backend;
 
 import engine.backend.*;
+import engine.backend.CombatInteraction;
+import engine.backend.Interaction;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
@@ -224,9 +226,10 @@ public class ActorPrototype {
 	 */
 
 	public ObservablePrototype getObservablePrototype() {
-		System.out.println(animationMap.get("idle"));
+		System.out.println(interactionMap.get("idle").getName());
 		Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
-		return new ObservablePrototype(getName(), new ImageView(img));
+		return new ObservablePrototype(getName(), new ImageView(img),interactionMap.get("idle").getClass().isInstance(BackgroundInteraction.class));
+
 	}
 
 	/**

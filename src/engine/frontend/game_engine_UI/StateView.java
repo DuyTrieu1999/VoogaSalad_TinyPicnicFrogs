@@ -46,11 +46,10 @@ public class StateView {
      * set the battle view as the main view
      */
     public void setBattleView () {
-        var fightScene = new FightScene();
+        var fightScene = new FightScene(myController);
         battleView = new BattleView(myController);
-        fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());battleView.init();});
+        fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());});
         myStage.setScene(fightScene.getMyScene());
-//        myStage.show();
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");
@@ -59,14 +58,7 @@ public class StateView {
         myStage.setScene(myView.getMyScene());
         myStage.show();
     }
-    /**
-     * this function is called by the back end to get the list of commands the user
-     * is choosing
-     */
-    public List<Command> getActiveCommand () {
-        System.out.println("battle view is: " + battleView);
-        return battleView.getMenuView().getActiveCommands();
-    }
+
     public OverWorldView getMyView () {
         return myView;
     }

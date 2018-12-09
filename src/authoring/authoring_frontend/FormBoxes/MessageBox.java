@@ -44,15 +44,19 @@ public class MessageBox extends FormBox {
      * and the messageKey, the type of message chosen
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("key", myKey.getText());
         myObject.put("messageKey", myMessageKey.getValue());
         return myObject;
     }
 
+    /**
+     * error checking for a all fields of a key and messageKey pair
+     * @return true if user has input a key and selected a message
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() {
+        return !(myKey.getText().isEmpty()) && (myMessageKey.getValue() != null);
     }
 }

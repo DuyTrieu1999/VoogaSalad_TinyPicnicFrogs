@@ -8,6 +8,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -22,8 +24,10 @@ public class MapMenu extends HBox {
     //private String programName;
     private MapManager mapManager;
     private GameManager gameManager;
-    private int cellWidth = 16;
-    private int cellHeight = 16;
+    private int cellWidth;
+    private int cellHeight;
+    private int width;
+    private int height;
     private static final int WINDOW_HEIGHT = 200;
     private static final int PADDING_TEN = 10;
     private static final int PADDING_TWENTY = 20;
@@ -46,7 +50,8 @@ public class MapMenu extends HBox {
      * Initializes the list for the first time.
      * @return ListView of map names.
      */
-    private ListView<String> setupList(int width, int height){
+    private ListView<String> setupList(){
+        setCellSizes();
         mapView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         String newMap = mapManager.createMap(width, height);
         gameManager.setUpMap(cellWidth*width, cellHeight*height, width, height);
@@ -59,6 +64,55 @@ public class MapMenu extends HBox {
             }
         });
         return mapView;
+    }
+
+    private void setCellSizes(){
+        Dialog<ArrayList<String>> dialog = new Dialog<>();
+        dialog.setTitle("Project Setup");
+        dialog.setHeaderText("Enter the dimensions of the project:");
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, ButtonType.CANCEL);
+        GridPane grid = new GridPane();
+        grid.setHgap(PADDING_TEN);
+        grid.setVgap(PADDING_TEN);
+        grid.setPadding(new Insets(PADDING_TWENTY, PADDING_ONEFIFTY, PADDING_TEN, PADDING_TEN));
+        TextField xSize = new TextField();
+        xSize.setPromptText("Width");
+        TextField ySize = new TextField();
+        ySize.setPromptText("Height");
+        TextField cellSize = new TextField();
+        cellSize.setPromptText("Cell Size");
+
+        grid.add(new Label("Width:"), 0, 0);
+        grid.add(xSize, 1, 0);
+        grid.add(new Label("Height:"), 0, 1);
+        grid.add(ySize, 1, 1);
+        grid.add(new Label("Cell Size:"), 0, 2);
+        grid.add(cellSize, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == okButton) {
+                ArrayList<String> results = new ArrayList<>();
+                results.add(xSize.getText());
+                results.add(ySize.getText());
+                results.add(cellSize.getText());
+                return results;
+            }
+            return null;
+        });
+
+        Optional<ArrayList<String>> result = dialog.showAndWait();
+
+        result.ifPresent(widthHeight -> {
+            width = Integer.parseInt(widthHeight.get(0));
+            height = Integer.parseInt(widthHeight.get(1));
+            cellWidth = Integer.parseInt(widthHeight.get(2));
+            cellHeight = Integer.parseInt(widthHeight.get(2));
+            mapManager.setCellSize(cellWidth);
+            //System.out.println(cellWidth);
+        });
     }
 
     /**
@@ -147,8 +201,8 @@ public class MapMenu extends HBox {
      * Gets pane with all the tabs.
      * @return VBox with all the tabs.
      */
-    VBox getMapPane(int width, int height){
-        mapList.getChildren().addAll(setupButtons(), setupList(width, height));
+    VBox getMapPane(){
+        mapList.getChildren().addAll(setupButtons(), setupList());
         return mapList;
     }
 
