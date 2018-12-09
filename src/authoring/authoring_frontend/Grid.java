@@ -2,10 +2,13 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
@@ -29,6 +32,7 @@ public class Grid {
     private int gridHeight;
     private String programName;
     private GameManager gameManager;
+    private StackPane lastSelectedCell = null;
 
     /**
      * Default constructor makes a 30x20 grid.
@@ -74,16 +78,73 @@ public class Grid {
         thisCell.setPrefSize(cellWidth, cellHeight);
         thisCell.setStyle("-fx-border-color: black;");
 
-
         thisCell.setOnMouseClicked(event -> {
             Actor activeActor = ActiveItem.getActiveItem(programName);
             int x = GridPane.getColumnIndex(thisCell);
             int y = GridPane.getRowIndex(thisCell);
             if(activeActor != null){
-                thisCell.getChildren().add(activeActor.getActorImage());
-                //myCells[x][y].addActor(activeActor);
-                myCells.get(x).get(y).addActor(activeActor);
-                gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
+                if(event.isShiftDown()){
+                    if(lastSelectedCell != null){
+                        //System.out.println("Trying to place multiple tiles!");
+                        int lastX = GridPane.getColumnIndex(lastSelectedCell);
+                        int lastY = GridPane.getRowIndex(lastSelectedCell);
+                        //System.out.println(x + " " + y + " " + lastX + " " + lastY);
+                        //draw a square
+                        if(x > lastX){
+                            if(y > lastY){
+                                for(int i=lastX;i<=x;i++){
+                                    for(int j=lastY;j<=y;j++){
+                                        System.out.println("Case 1");
+                                        //System.out.println("Trying to find the StackPane at " + i + ", " + j);
+                                        StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
+                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        myCells.get(j).get(i).addActor(activeActor);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                    }
+                                }
+                            }
+                            else if(y < lastY){
+                                for(int i=lastX;i<=x;i++){
+                                    for(int j=y;y<=lastY;j++){
+                                        System.out.println("Case 2");
+                                        StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
+                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        myCells.get(i).get(j).addActor(activeActor);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                        else if(x < lastX){
+                            if(y > lastY){
+                                for(int i=x;i<=lastX;i++){
+                                    for(int j=lastY;j<=y;j++){
+                                        StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
+                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        myCells.get(i).get(j).addActor(activeActor);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                    }
+                                }
+                            }
+                            else if(y < lastY){
+                                for(int i=x;i<=lastX;i++){
+                                    for(int j=y;j<=lastY;j++){
+                                        StackPane currentCell = (StackPane)getGridPaneNodeAt(i, j);
+                                        currentCell.getChildren().add(activeActor.getActorImage());
+                                        myCells.get(i).get(j).addActor(activeActor);
+                                        gameManager.createActor(activeActor.getActorPrototypeID(), i, j, currentCell.getChildren().size(), 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    thisCell.getChildren().add(activeActor.getActorImage());
+                    //myCells[x][y].addActor(activeActor);
+                    myCells.get(x).get(y).addActor(activeActor);
+                    gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
+                }
             }
             else {
                 if(thisCell.getChildren().size() > 0){
@@ -95,7 +156,46 @@ public class Grid {
                     //myCells[x][y].removeActor();
                 }
             }
+            lastSelectedCell = thisCell;
         });
+
+        //thisCell.addEventFilter(MouseEvent.ANY, e -> System.out.println( e));
+
+        /*
+        thisCell.addEventHandler(MouseEvent.ANY, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                boolean pressed = false;
+                if(event.getEventType() == MouseEvent.MOUSE_PRESSED){
+                    pressed = true;
+                }
+                if(event.getEventType() == MouseEvent.MOUSE_CLICKED || (event.getEventType() == MouseEvent.MOUSE_ENTERED && pressed)){
+                    Actor activeActor = ActiveItem.getActiveItem(programName);
+                    int x = GridPane.getColumnIndex(thisCell);
+                    int y = GridPane.getRowIndex(thisCell);
+                    if(activeActor != null){
+                        thisCell.getChildren().add(activeActor.getActorImage());
+                        //myCells[x][y].addActor(activeActor);
+                        myCells.get(x).get(y).addActor(activeActor);
+                        gameManager.createActor(activeActor.getActorPrototypeID(), x, y, thisCell.getChildren().size(), 0, 0);
+                    }
+                    else {
+                        if(thisCell.getChildren().size() > 0){
+                            thisCell.getChildren().remove(thisCell.getChildren().size()-1);
+                            ArrayList<Actor> actorsOfCell = myCells.get(x).get(y).getActors();
+                            //ArrayList<Actor> actorsOfCell = myCells[x][y].getActors();
+                            gameManager.deleteActor(actorsOfCell.get(actorsOfCell.size()-1).getActorPrototypeID()+x+"-"+y+"-"+(thisCell.getChildren().size()-1));
+                            myCells.get(x).remove(y);
+                            //myCells[x][y].removeActor();
+                        }
+                    }
+                }
+                if(event.getEventType() == MouseEvent.MOUSE_RELEASED){
+                    pressed = false;
+                }
+            }
+        });
+        */
         return thisCell;
     }
 
@@ -105,6 +205,13 @@ public class Grid {
      */
     GridPane getGridPane(){
         return mapGridPane;
+    }
+
+    ScrollPane getScrollPane(){
+        ScrollPane thisMap = new ScrollPane(mapGridPane);
+        thisMap.setPrefViewportHeight(575);
+        thisMap.setPrefViewportWidth(725);
+        return thisMap;
     }
 
     /**
@@ -188,6 +295,19 @@ public class Grid {
         }
         mapGridPane.getChildren().removeAll(toRemove);
 
+    }
+
+    public Node getGridPaneNodeAt(int x, int y){
+        Node result = null;
+        ObservableList<Node> gridPaneChildren = mapGridPane.getChildren();
+        //System.out.println(gridPaneChildren.size());
+        for(Node n:gridPaneChildren){
+            if(mapGridPane.getColumnIndex(n) == x && mapGridPane.getRowIndex(n) == y){
+                result = n;
+                break;
+            }
+        }
+        return result;
     }
 
 }

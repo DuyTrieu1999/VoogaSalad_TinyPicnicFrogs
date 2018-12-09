@@ -1,5 +1,6 @@
 package player;
 
+import authoring.authoring_frontend.Main;
 import engine.frontend.game_engine_UI.BattleWorld.OpponentSide;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -170,7 +171,12 @@ public class SceneManager {
     private void setFileMenu(Menu menu){
         MenuItem exitItem = new MenuItem(myResources.getString("exitMI"));
         exitItem.setOnAction(event->{System.exit(0);});
-        menu.getItems().add(exitItem);
+        MenuItem newGameItem= new MenuItem(myResources.getString("launchAuthoringItem"));
+        newGameItem.setOnAction(event->{
+            Main main= new Main();
+            main.start(new Stage());
+        });
+        menu.getItems().addAll(exitItem,newGameItem);
     }
 
     /**

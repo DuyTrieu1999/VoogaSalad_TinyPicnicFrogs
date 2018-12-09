@@ -189,7 +189,15 @@ class TopMenu extends HBox {
                 //System.out.println(newWidth + " " + newHeight);
                 Map currentMap = mapManager.getMap(mapManager.getActiveMapName());
                 //System.out.println(newWidth + " " + newHeight + " " + currentMap.getWidth() + " " + currentMap.getHeight());
-                if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
+                if(newWidth <= 0 || newHeight <= 0){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Incorrect Dimensions");
+                    alert.setContentText("Width or height must be above 0!");
+
+                    alert.showAndWait();
+                }
+                else if(newWidth < currentMap.getWidth() || newHeight < currentMap.getHeight()){
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirm Data Loss");
                     alert.setHeaderText("The new map width or height has decreased: some clipping will occur.");
