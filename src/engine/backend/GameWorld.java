@@ -5,10 +5,11 @@ import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.backend.gameevent.GameMenuEvent;
-import javafx.concurrent.Service;
+import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -114,8 +115,11 @@ public class GameWorld {
      * @param interaction interaction of non-player actor
      */
     private void launchInteraction(Interaction interaction){
-        if(interaction instanceof CombatInteraction){
+        if(interaction instanceof CombatInteraction) {
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
+        }
+        if(interaction instanceof DialogueInteraction) {
+            launchDialogueInteraction((DialogueInteraction) interaction);
         }
     }
 
@@ -130,6 +134,10 @@ public class GameWorld {
         ServiceLocator.getController().setBattleView();
         combatMan.nextTurn();
         //combatMan.nextTurn();
+    }
+
+    private void launchDialogueInteraction(DialogueInteraction dialogueInteraction) {
+        dialogueInteraction.setMenu();
     }
 
     /**
@@ -148,10 +156,11 @@ public class GameWorld {
     private void handleMenuEvent(GameMenuEvent e){
         if(myGameState == GameState.Combat){
             System.out.println("menu event triggered");
-            var activeCommand = ServiceLocator.getController().getActiveCommands();
-            if(activeCommand != null){
-                ServiceLocator.getCombatManager().receiveInput(e);
-            }
+            ServiceLocator.getCombatManager().receiveInput(e);
+        }
+        if(myGameState == GameState.Overworld){
+            System.out.println("Dialogue menu event triggered");
+            e.getOption().execute(null);
         }
 
     }

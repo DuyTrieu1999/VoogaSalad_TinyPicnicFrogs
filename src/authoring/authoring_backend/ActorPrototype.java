@@ -1,6 +1,8 @@
 package authoring.authoring_backend;
 
 import engine.backend.*;
+import engine.backend.CombatInteraction;
+import engine.backend.Interaction;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
