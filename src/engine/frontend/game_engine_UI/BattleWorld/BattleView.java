@@ -60,7 +60,6 @@ public class BattleView extends WorldView implements BattleViewAPI {
         displayPane.getChildren().add(buttonBox);
         buttonBox.setTranslateY(battle_background.getFitHeight());
         combatButton.setOnMouseClicked((event -> {
-            System.out.println("something");
             List<Command> commandList = myController.getAllCommand();
             menuView = new MenuView(commandList, displayPane);
             menuView.setPrefHeight(SCREEN_HEIGHT-battle_background.getFitHeight());
@@ -68,7 +67,6 @@ public class BattleView extends WorldView implements BattleViewAPI {
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
             menuView.setSellectedCommand();
-            System.out.println(menuView);
         }));
     }
     public MenuView getMenuView () {
