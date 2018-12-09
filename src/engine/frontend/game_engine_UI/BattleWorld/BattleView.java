@@ -68,6 +68,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
             menuView.setSellectedCommand();
+            System.out.println(menuView);
         }));
     }
     public MenuView getMenuView () {

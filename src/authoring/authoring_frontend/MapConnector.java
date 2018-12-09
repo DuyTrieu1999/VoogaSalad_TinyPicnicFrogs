@@ -4,8 +4,10 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.util.Pair;
 
@@ -23,7 +25,10 @@ public class MapConnector {
     private Map secondMap;
     private Cell firstCell;
     private Cell secondCell;
+    private StackPane firstCellPane;
+    private StackPane secondCellPane;
     private MapManager mapManager;
+    private int choosingMap = 1;
 
     /**
      * Constructor
@@ -44,6 +49,7 @@ public class MapConnector {
         if(firstMap != null){
             selectSquareDialog(firstMap);
             if(firstCell != null){
+                choosingMap = 2;
                 secondMap = selectMapDialog();
                 if(secondMap != null){
                     selectSquareDialog(secondMap);
@@ -104,16 +110,25 @@ public class MapConnector {
                 for(Actor a:myCells.get(i).get(j).getActors()){
                     thisCell.getChildren().add(a.getActorImage());
                 }
-                thisCell.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        thisCell.setStyle("-fx-border-color: blue;");
-                        int x = selectOne.getColumnIndex(thisCell);
-                        int y = selectOne.getRowIndex(thisCell);
-                        setCell(x, y, myCells);
+                thisCell.setOnMouseClicked(event -> {
+                    if(choosingMap == 1){
+                        if(firstCell != null){
+                            firstCellPane.setStyle("-fx-border-color: black;");
+                        }
+                        firstCellPane = thisCell;
                     }
+                    else {
+                        if(secondCell != null){
+                            secondCellPane.setStyle("-fx-border-color: black;");
+                        }
+                        secondCellPane = thisCell;
+                    }
+                    thisCell.setStyle("-fx-border-color: blue;");
+                    int x = selectOne.getColumnIndex(thisCell);
+                    int y = selectOne.getRowIndex(thisCell);
+                    setCell(x, y, myCells);
                 });
-                selectOne.add(thisCell, i, j);
+                selectOne.add(thisCell, j, i);
             }
         }
         /*
@@ -138,13 +153,15 @@ public class MapConnector {
             }
         }
         */
+        ScrollPane selectCell = new ScrollPane(selectOne);
+        selectCell.setPrefViewportWidth(200);
+        selectCell.setPrefViewportHeight(300);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Choose a square");
         alert.setHeaderText("Choose a square");
         alert.setContentText("Choose a square that you want the portal to be placed on.");
-        alert.getDialogPane().setContent(selectOne);
-
+        alert.getDialogPane().setContent(selectCell);
         alert.showAndWait();
 
     }
@@ -156,7 +173,7 @@ public class MapConnector {
      * @param myCells The matrix of cells.
      */
     private void setCell(int x, int y, ArrayList<ArrayList<Cell>> myCells){
-        if(firstCell == null){
+        if(choosingMap == 1){
             //firstCell = myCells[x][y];
             firstCell = myCells.get(x).get(y);
         }

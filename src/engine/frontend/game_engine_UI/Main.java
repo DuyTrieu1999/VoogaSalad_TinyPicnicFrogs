@@ -19,7 +19,7 @@ public class Main extends Application {
     private static String gameFilePath="voogasalad_tinypicnicfrogs/resources/demo/";
 
     public static void main(String[] args) {
-        initialize();
+        initialize(gameFilePath);
         launch(args);
     }
 
@@ -27,17 +27,17 @@ public class Main extends Application {
      *
      * @param filePath filepath to the folder where actos and messages xml files are
      */
-    public void setFilePath(String filePath){gameFilePath=filePath;}
+    public void setFilePath(String filePath){gameFilePath=filePath;System.out.println(gameFilePath);}
 
     public void start(Stage stage) {
         new StateView(stage);
     }
 
-    private static void initialize(){
+    public static void initialize(String filePath){
         ServiceLocator.provideAI(new RandomAI());
         //Values should be loaded from the file
 
-        var dummyActorList = loadActors(gameFilePath);
+        var dummyActorList = loadActors(filePath);
         var actorMan = new ActorManager(dummyActorList);
         //System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
@@ -52,7 +52,8 @@ public class Main extends Application {
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
-            a.serialize();
+            System.out.println("Fired");
+           // a.serialize();
             a.setImages();
         }
         return actorList;

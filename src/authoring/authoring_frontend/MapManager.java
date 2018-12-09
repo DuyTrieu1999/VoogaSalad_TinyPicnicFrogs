@@ -1,7 +1,9 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -95,8 +97,8 @@ public class MapManager {
      * Gets the currently active map.
      * @return Cureently active map.
      */
-    public BorderPane getActiveMap(){
-        return activeMap;
+    public ScrollPane getActiveMap(){
+        return new ScrollPane(activeMap);
     }
 
     /**
@@ -106,7 +108,7 @@ public class MapManager {
     public void setActiveMap(String name){
         if(gameMaps.containsKey(name)){
             activeMapName = name;
-            activeMap.setCenter(gameMaps.get(name).getGridPane());
+            activeMap.setCenter(gameMaps.get(name).getScrollPane());
         }
     }
 
@@ -190,7 +192,4 @@ public class MapManager {
         setActiveMap(activeMapName);
     }
 
-    public void changeHeight(int newHeight){
-
-    }
 }

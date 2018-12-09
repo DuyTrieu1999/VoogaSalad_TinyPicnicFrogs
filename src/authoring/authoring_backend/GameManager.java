@@ -56,20 +56,38 @@ public class GameManager {
 
     public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
-        List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
-        for(int i=0;i<interractionArr.size();i+=1)
-        {
-            JSONObject interraction=(JSONObject) interractionArr.get(i);
-            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
 
-            Map<String,Message>messageMap=new HashMap<>();
-            for(int j=0;j<interractionMessages.size();j+=1){
-                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
-                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
-            }
-            prototypeMessageMapList.add(messageMap);
+
+        List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
+       // for(int i=0;i<interractionArr.size();i+=1)
+        {
+//            JSONObject interraction=(JSONObject) interractionArr.get(i);
+//            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+//
+//            Map<String,Message>messageMap=new HashMap<>();
+//            for(int j=0;j<interractionMessages.size();j+=1){
+//                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
+//                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
+//            }
+//            prototypeMessageMapList.add(messageMap
         }
-         actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+        ArrayList<Message> aMessages = new ArrayList<>();
+        ArrayList<Message> dMessages = new ArrayList<>();
+        JSONArray activeMessages = (JSONArray) formData.get("ActivateMessages");
+        for(int i = 0; i < activeMessages.size(); i++){
+            Message m = messageManager.getMessage((String)activeMessages.get(i));
+            aMessages.add(m);
+        }
+
+        JSONArray deactiveMessages = (JSONArray) formData.get("DeactivateMessages");
+        for(int i = 0; i < deactiveMessages.size(); i++){
+            Message m = messageManager.getMessage((String)deactiveMessages.get(i));
+            dMessages.add(m);
+        }
+
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages );
+
+
     }
 
     /**
@@ -94,7 +112,6 @@ public class GameManager {
     public Actor getActor(String id){return actorManager.getActor(id);}
     public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);
 
-
     }
 
 
@@ -104,7 +121,7 @@ public class GameManager {
      * @param descriptionP game description
      * @param filePath file path to xml files
      */
-    public void saveGame(String titleP,String descriptionP, String filePath){
+    public void saveGame(String titleP,String descriptionP, String filePath)throws SaveException{
         filePath+="/";
         System.out.println("fired");
         GameData data = new GameData(titleP,descriptionP,filePath,mapManager.getMapWidth(),mapManager.getMapHeight(),mapManager.squareWidth,mapManager.squareHeight);
@@ -117,16 +134,16 @@ public class GameManager {
             File gameMap= new File("./resources/games.xml");
             if(gameMap.exists()){
                 System.out.println("exists");
-                List<GameData>gameList=(List<GameData>)serializer.fromXML(gameMap);
-                gameList.add(data);
+                Map<String,GameData>gameList=(Map<String,GameData>)serializer.fromXML(gameMap);
+                gameList.put(data.getPath(),data);
                 dataStr=serializer.toXML(gameList);
             }
             else{
-                List<GameData>gameList= new ArrayList<>();
-                gameList.add(data);
-                 dataStr=serializer.toXML(gameList);
+                Map<String,GameData>gameList= new HashMap<>();
+                gameList.put(data.getPath(),data);
+                dataStr=serializer.toXML(gameList);
             }
-            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){e.printStackTrace();}
+            Files.write(Paths.get("./resources/"+"games.xml"),dataStr.getBytes());}catch (IOException e){throw new SaveException();}
     }
 
     /**
@@ -193,8 +210,15 @@ public class GameManager {
      * @param id id of the message corresponding to the key in the map
      */
     public void deleteMessage(String id){messageManager.deleteMessage(id);}
+    /**
+     * @return Observable actors for front-end use
+     */
 
     public List<ObservableActor> getObservableActors(){return actorManager.getObservableList();}
+    /**
+     * @return Observable prototypes for front-end use
+     */
+
     public List<ObservablePrototype>getObservablePrototypes(){return actorPrototypeManager.getObservableList();}
 
 

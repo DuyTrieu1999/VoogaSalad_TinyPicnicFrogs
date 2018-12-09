@@ -12,6 +12,8 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -90,6 +92,11 @@ public class SaveForm extends VBox {
         String title = gameName.getText();
         String description = gameDescript.getText();
         // TODO: do we need height and width of map?
-        myManager.saveGame(title,description,gamePath);
+        List<String> arr= Arrays.asList(gamePath.split("\\\\"));
+        int index=arr.indexOf("resources");
+        String path=".";
+        for(int i=index;i<arr.size();i+=1){path+="/"+arr.get(i);}
+
+        myManager.saveGame(title,description,path);
     }
 }

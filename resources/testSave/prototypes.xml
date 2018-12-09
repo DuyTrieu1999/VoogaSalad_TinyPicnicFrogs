@@ -8,7 +8,16 @@
           <string>11.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -18,6 +27,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>11.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -31,7 +42,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2bottomleft</name>
       <myBound>
@@ -52,7 +63,16 @@
           <string>16.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -62,6 +82,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>16.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -75,7 +97,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder5bottom</name>
       <myBound>
@@ -96,7 +118,16 @@
           <string>26.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -106,6 +137,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>26.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -119,7 +152,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopleft</name>
       <myBound>
@@ -140,7 +173,16 @@
           <string>36.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -150,6 +192,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>36.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -163,7 +207,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2topright</name>
       <myBound>
@@ -184,7 +228,16 @@
           <string>25.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -194,6 +247,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>25.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -207,7 +262,7 @@
             <canPassThrough>true</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>dirtpatch</name>
       <myBound>
@@ -228,7 +283,16 @@
           <string>43.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -238,6 +302,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>43.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -251,7 +317,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>orangeplayer</name>
       <myBound>
@@ -272,7 +338,16 @@
           <string>21.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -282,6 +357,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>21.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -295,7 +372,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholebottomleft</name>
       <myBound>
@@ -316,7 +393,16 @@
           <string>22.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -326,6 +412,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>22.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -339,7 +427,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholebottomright</name>
       <myBound>
@@ -360,7 +448,16 @@
           <string>9.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -370,6 +467,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>9.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -383,7 +482,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2topleft</name>
       <myBound>
@@ -404,7 +503,16 @@
           <string>10.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -414,6 +522,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>10.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -427,7 +537,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2topright</name>
       <myBound>
@@ -448,7 +558,16 @@
           <string>37.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -458,6 +577,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>37.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -471,7 +592,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2farleft</name>
       <myBound>
@@ -492,7 +613,16 @@
           <string>3.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -502,6 +632,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>3.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -515,7 +647,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treemiddle</name>
       <myBound>
@@ -536,7 +668,16 @@
           <string>29.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -546,6 +687,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>29.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -559,7 +702,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddleleft</name>
       <myBound>
@@ -580,7 +723,16 @@
           <string>42.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -590,6 +742,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>42.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -603,7 +757,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2bottomright</name>
       <myBound>
@@ -624,7 +778,16 @@
           <string>23.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -634,6 +797,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>23.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -647,7 +812,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>smallholeleft</name>
       <myBound>
@@ -668,7 +833,16 @@
           <string>44.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -678,6 +852,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>44.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -691,7 +867,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>brownplayer</name>
       <myBound>
@@ -712,7 +888,16 @@
           <string>30.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -722,6 +907,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>30.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -735,7 +922,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddlemiddle</name>
       <myBound>
@@ -756,7 +943,16 @@
           <string>1.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -766,6 +962,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>1.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -779,7 +977,7 @@
             <canPassThrough>true</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>grass</name>
       <myBound>
@@ -800,7 +998,16 @@
           <string>20.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -810,6 +1017,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>20.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -823,7 +1032,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholetopright</name>
       <myBound>
@@ -844,7 +1053,16 @@
           <string>46.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -854,6 +1072,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>46.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -867,7 +1087,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>greenplayer</name>
       <myBound>
@@ -888,7 +1108,16 @@
           <string>17.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -898,6 +1127,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>17.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -911,7 +1142,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder6top</name>
       <myBound>
@@ -924,48 +1155,6 @@
     </authoring.authoring__backend.ActorPrototype>
   </entry>
   <entry>
-    <string>player</string>
-    <authoring.authoring__backend.ActorPrototype>
-      <animationMap>
-        <entry>
-          <string>top</string>
-          <string>player_top.png</string>
-        </entry>
-        <entry>
-          <string>idle</string>
-          <string>player_bot.png</string>
-        </entry>
-        <entry>
-          <string>left</string>
-          <string>player_left.png</string>
-        </entry>
-        <entry>
-          <string>bottom</string>
-          <string>player_bot.png</string>
-        </entry>
-        <entry>
-          <string>right</string>
-          <string>player_right.png</string>
-        </entry>
-      </animationMap>
-      <interractionMap/>
-      <myStats>
-        <entry>
-          <string>health</string>
-          <int>10</int>
-        </entry>
-      </myStats>
-      <name>player</name>
-      <myBound>
-        <width>0</width>
-        <height>0</height>
-        <relX>0</relX>
-        <relY>0</relY>
-      </myBound>
-      <isPlayer>true</isPlayer>
-    </authoring.authoring__backend.ActorPrototype>
-  </entry>
-  <entry>
     <string>boulderbottomright</string>
     <authoring.authoring__backend.ActorPrototype>
       <animationMap>
@@ -974,7 +1163,16 @@
           <string>8.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -984,6 +1182,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>8.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -997,7 +1197,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulderbottomright</name>
       <myBound>
@@ -1018,7 +1218,16 @@
           <string>7.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1028,6 +1237,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>7.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1041,7 +1252,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulderbottomleft</name>
       <myBound>
@@ -1062,7 +1273,16 @@
           <string>18.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1072,6 +1292,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>18.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1085,7 +1307,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder6bottom</name>
       <myBound>
@@ -1106,7 +1328,16 @@
           <string>41.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1116,6 +1347,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>41.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1129,7 +1362,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2bottomleft</name>
       <myBound>
@@ -1150,7 +1383,16 @@
           <string>24.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1160,6 +1402,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>24.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1173,7 +1417,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>smallholeright</name>
       <myBound>
@@ -1194,7 +1438,16 @@
           <string>13.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1204,6 +1457,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>13.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1217,7 +1472,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder3</name>
       <myBound>
@@ -1238,7 +1493,16 @@
           <string>14.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1248,6 +1512,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>14.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1261,7 +1527,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder4</name>
       <myBound>
@@ -1282,7 +1548,16 @@
           <string>6.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1292,6 +1567,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>6.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1305,7 +1582,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bouldertopright</name>
       <myBound>
@@ -1326,7 +1603,16 @@
           <string>33.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1336,6 +1622,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>33.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1349,7 +1637,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottommiddle</name>
       <myBound>
@@ -1370,7 +1658,16 @@
           <string>35.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1380,6 +1677,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>35.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1393,7 +1692,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2topleft</name>
       <myBound>
@@ -1414,7 +1713,16 @@
           <string>45.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1424,6 +1732,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>45.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1437,7 +1747,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>grayplayer</name>
       <myBound>
@@ -1458,7 +1768,16 @@
           <string>4.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1468,6 +1787,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>4.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1481,7 +1802,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treetop</name>
       <myBound>
@@ -1502,7 +1823,16 @@
           <string>27.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1512,6 +1842,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>27.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1525,7 +1857,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopmiddle</name>
       <myBound>
@@ -1546,7 +1878,16 @@
           <string>28.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1556,6 +1897,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>28.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1569,7 +1912,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hilltopright</name>
       <myBound>
@@ -1590,7 +1933,16 @@
           <string>12.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1600,6 +1952,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>12.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1613,7 +1967,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder2bottomright</name>
       <myBound>
@@ -1634,7 +1988,16 @@
           <string>38.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1644,6 +2007,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>38.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1657,7 +2022,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2left</name>
       <myBound>
@@ -1678,7 +2043,16 @@
           <string>19.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1688,6 +2062,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>19.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1701,7 +2077,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bigholetopleft</name>
       <myBound>
@@ -1722,7 +2098,16 @@
           <string>2.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1732,6 +2117,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>2.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1745,7 +2132,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>treebottom</name>
       <myBound>
@@ -1766,7 +2153,16 @@
           <string>31.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1776,6 +2172,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>31.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1789,7 +2187,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillmiddleright</name>
       <myBound>
@@ -1810,7 +2208,16 @@
           <string>32.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1820,6 +2227,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>32.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1833,7 +2242,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottomleft</name>
       <myBound>
@@ -1854,7 +2263,16 @@
           <string>40.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1864,6 +2282,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>40.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1877,7 +2297,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2farright</name>
       <myBound>
@@ -1898,7 +2318,16 @@
           <string>47.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1908,6 +2337,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>47.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1921,7 +2352,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>pinkplayer</name>
       <myBound>
@@ -1942,7 +2373,16 @@
           <string>5.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1952,6 +2392,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>5.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -1965,7 +2407,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>bouldertopleft</name>
       <myBound>
@@ -1986,7 +2428,16 @@
           <string>15.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -1996,6 +2447,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>15.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2009,7 +2462,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>boulder5top</name>
       <myBound>
@@ -2030,7 +2483,16 @@
           <string>34.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2040,6 +2502,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>34.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2053,7 +2517,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>hillbottomright</name>
       <myBound>
@@ -2074,7 +2538,16 @@
           <string>39.png</string>
         </entry>
       </animationMap>
-      <interractionMap>
+      <spriteDimensionsMap>
+        <entry>
+          <string>idle</string>
+          <int-array>
+            <int>1</int>
+            <int>1</int>
+          </int-array>
+        </entry>
+      </spriteDimensionsMap>
+      <interactionMap>
         <entry>
           <string>background</string>
           <engine.backend.BackgroundInteraction>
@@ -2084,6 +2557,8 @@
                 <engine.backend.AnimationObject>
                   <animationName>idle</animationName>
                   <animationPath>39.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
                 </engine.backend.AnimationObject>
               </entry>
             </animationMap>
@@ -2097,7 +2572,7 @@
             <canPassThrough>false</canPassThrough>
           </engine.backend.BackgroundInteraction>
         </entry>
-      </interractionMap>
+      </interactionMap>
       <myStats/>
       <name>tree2right</name>
       <myBound>
