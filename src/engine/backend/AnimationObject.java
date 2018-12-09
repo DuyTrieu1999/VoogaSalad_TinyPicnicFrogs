@@ -72,6 +72,7 @@ public class AnimationObject {
 	 */
 	public void setImage() {
 		animationView = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream(animationPath)));
+		System.out.println(animationView==null);
 	}
 
 	/**
@@ -87,4 +88,5 @@ public class AnimationObject {
 	public int getSpiteCols() {
 		return spiteCols;
 	}
+
 }

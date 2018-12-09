@@ -24,12 +24,12 @@ public class PlayerMain extends Application {
     public static final int SCREEN_SIZE=500;
     private authoring.authoring_frontend.Main authoringMain;
 
- @Override
+    @Override
     public void start(Stage stage){
 
-     stage.setTitle("Game Portal");
-     userProfileManager= new UserProfileManager();
-     myManager=new SceneManager(userProfileManager, stage);
+        stage.setTitle("Game Portal");
+        userProfileManager= new UserProfileManager();
+        myManager=new SceneManager(userProfileManager, stage);
         stage.show();
 
     }

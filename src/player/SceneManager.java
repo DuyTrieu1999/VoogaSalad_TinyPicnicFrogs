@@ -89,7 +89,7 @@ public class SceneManager {
                 launchErrorDialog(e.getException());
             }
             if(userManager.isPlayerLoggedIn()){
-               myStage.setScene(setUpMainScene());}
+                myStage.setScene(setUpMainScene());}
         });
     }
 
@@ -225,13 +225,13 @@ public class SceneManager {
         dialog.setContentText(myResources.getString("namePrompt"));
         Optional <String>result=dialog.showAndWait();
         result.ifPresent(name->{
-                if(!name.equals(myResources.getString("name"))){
-                    try{
+            if(!name.equals(myResources.getString("name"))){
+                try{
                     setUpUserListDialog(myResources.getString("socialPortal"),myResources.getString("users"),userManager.lookUpUsers(name));}
-                    catch(ServerException e){
-                        launchErrorDialog(e.getException());
-                    }
+                catch(ServerException e){
+                    launchErrorDialog(e.getException());
                 }
+            }
         });
     }
 

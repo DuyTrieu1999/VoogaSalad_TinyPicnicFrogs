@@ -1,1 +1,60 @@
-<map/>
+<map>
+  <entry>
+    <string>treemiddle68-34-1</string>
+    <engine.backend.Actor>
+      <myCoordinate>
+        <x>68</x>
+        <y>34</y>
+        <z>1</z>
+      </myCoordinate>
+      <myInteractionMap>
+        <entry>
+          <string>background</string>
+          <engine.backend.BackgroundInteraction>
+            <animationMap>
+              <entry>
+                <string>idle</string>
+                <engine.backend.AnimationObject>
+                  <animationName>idle</animationName>
+                  <animationPath>3.png</animationPath>
+                  <spriteRows>1</spriteRows>
+                  <spiteCols>1</spiteCols>
+                </engine.backend.AnimationObject>
+              </entry>
+            </animationMap>
+            <messageMap>
+              <entry>
+                <string>backroundTouched</string>
+                <null/>
+              </entry>
+            </messageMap>
+            <myName>background</myName>
+            <canPassThrough>false</canPassThrough>
+          </engine.backend.BackgroundInteraction>
+        </entry>
+      </myInteractionMap>
+      <myStatsMap/>
+      <myAnimationMap>
+        <entry>
+          <string>idle</string>
+          <engine.backend.AnimationObject>
+            <animationName>idle</animationName>
+            <animationPath>3.png</animationPath>
+            <coordinate reference="../../../../myCoordinate"/>
+            <spriteRows>1</spriteRows>
+            <spiteCols>1</spiteCols>
+          </engine.backend.AnimationObject>
+        </entry>
+      </myAnimationMap>
+      <myName>treemiddle68-34-1</myName>
+      <myActiveAnimation reference="../myAnimationMap/entry/engine.backend.AnimationObject"/>
+      <isPlayerActor>false</isPlayerActor>
+      <myBounds>
+        <width>5</width>
+        <height>5</height>
+        <relX>0</relX>
+        <relY>0</relY>
+      </myBounds>
+    </engine.backend.Actor>
+  </entry>
+</map>

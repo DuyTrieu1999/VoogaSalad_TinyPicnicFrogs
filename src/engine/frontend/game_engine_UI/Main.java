@@ -19,7 +19,7 @@ public class Main extends Application {
     private static String gameFilePath="./resources/demo/";
 
     public static void main(String[] args) {
-        initialize();
+        initialize(gameFilePath);
         launch(args);
     }
 
@@ -33,13 +33,13 @@ public class Main extends Application {
         new StateView(stage);
     }
 
-    private static void initialize(){
+    private static void initialize(String filePath){
         ServiceLocator.provideAI(new RandomAI());
         //Values should be loaded from the file
 
-        var dummyActorList = loadActors(gameFilePath);
+        var dummyActorList = loadActors(filePath);
         var actorMan = new ActorManager(dummyActorList);
-        System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
+        //System.out.println("ANIMATIONS: "+actorMan.getAnimationObjects().size());
         ServiceLocator.provideActorManager(actorMan);
         var gameWorld = new GameWorld(1000, 1000);
         ServiceLocator.provideGameWorld(gameWorld);
@@ -53,8 +53,9 @@ public class Main extends Application {
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
             System.out.println("Fired");
-            a.serialize();
+           // a.serialize();
             a.setImages();
+            System.out.println(a.getActiveAnimation().getAnimationView()==null);
 
         }
         return actorList;

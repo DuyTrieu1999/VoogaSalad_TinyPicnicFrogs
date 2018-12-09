@@ -92,8 +92,8 @@ public class AnimationBox extends FormBox {
         Button setBtn= new Button(myResources.getString("setBtn"));
         setBtn.setOnAction(event -> {
             try{
-            myRows=Integer.parseInt(rowText.getText());
-            myCols=Integer.parseInt(colText.getText());}
+                myRows=Integer.parseInt(rowText.getText());
+                myCols=Integer.parseInt(colText.getText());}
             catch (NumberFormatException e){
                 Alert alert1= new Alert(Alert.AlertType.ERROR);
                 alert1.setHeaderText(myResources.getString("numErrorHeader"));

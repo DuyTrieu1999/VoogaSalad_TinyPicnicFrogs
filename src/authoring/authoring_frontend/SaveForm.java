@@ -11,6 +11,8 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -69,9 +71,7 @@ public class SaveForm extends VBox {
             File selectedDirectory = directoryChooser.showDialog(new Stage());
 
             if (selectedDirectory != null) {
-                gamePath = selectedDirectory.toString();
-                String[] arr = gamePath.split("\\\\");
-                gamePath = arr[arr.length-1];
+                gamePath = selectedDirectory.getPath();
             }
         });
 
@@ -90,6 +90,12 @@ public class SaveForm extends VBox {
         System.out.println("fired frontend");
         String title = gameName.getText();
         String description = gameDescript.getText();
-        myManager.saveGame(title,description,gamePath);
+
+        List<String> arr= Arrays.asList(gamePath.split("\\\\"));
+        int index=arr.indexOf("resources");
+        String path=".";
+        for(int i=index;i<arr.size();i+=1){path+="/"+arr.get(i);}
+
+        myManager.saveGame(title,description,path);
     }
 }

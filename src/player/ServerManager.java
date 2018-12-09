@@ -48,7 +48,7 @@ public class ServerManager {
         HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+LOGIN_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body)).version(HttpClient.Version.HTTP_1_1).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
 
-            return(JSONObject)parser.parse(response.body());
+        return(JSONObject)parser.parse(response.body());
 
 
     }
@@ -88,23 +88,23 @@ public class ServerManager {
      * @throws InterruptedException handled by userProfileManager
      */
     public JSONObject updateUser(String email, String password, String bio,String name ) throws IOException, InterruptedException {
-    String body = "{\n" +
-            "\t\"user\":{\n" +
-            "\t\t\"email\":\""+email+"\",\n" +
-            "\t\t\"password\":\""+password+"\",\n" +
-            "\t\t\"bio\":\""+bio+"\",\n" +
-            "\t\t\"name\":\""+name+"\"\n" +
-            "\t}\n" +
-            "}";
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+UPDATE_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body)).version(HttpClient.Version.HTTP_1_1).build();
-    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
-    try {
-        return(JSONObject)parser.parse(response.body());
-    } catch (ParseException e) {
-        return null;
+        String body = "{\n" +
+                "\t\"user\":{\n" +
+                "\t\t\"email\":\""+email+"\",\n" +
+                "\t\t\"password\":\""+password+"\",\n" +
+                "\t\t\"bio\":\""+bio+"\",\n" +
+                "\t\t\"name\":\""+name+"\"\n" +
+                "\t}\n" +
+                "}";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+UPDATE_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body)).version(HttpClient.Version.HTTP_1_1).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+        try {
+            return(JSONObject)parser.parse(response.body());
+        } catch (ParseException e) {
+            return null;
+        }
     }
-}
 
     /**
      *
@@ -114,16 +114,16 @@ public class ServerManager {
      * @throws InterruptedException handled by userProfileManager
      */
     public JSONArray lookUpUsers(String name) throws IOException, InterruptedException {
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+LOOKUP_PATH)) .header("Content-Type", "application/json").header("name",name).GET().version(HttpClient.Version.HTTP_1_1).build();
-    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
-    try {
-        System.out.println(response.body());
-        return(JSONArray) parser.parse(response.body());
-    } catch (ParseException e) {
-        return null;
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+LOOKUP_PATH)) .header("Content-Type", "application/json").header("name",name).GET().version(HttpClient.Version.HTTP_1_1).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+        try {
+            System.out.println(response.body());
+            return(JSONArray) parser.parse(response.body());
+        } catch (ParseException e) {
+            return null;
+        }
     }
-}
 
     /**
      *
@@ -134,20 +134,20 @@ public class ServerManager {
      * @throws InterruptedException handled by userProfileManager
      */
     public JSONArray followUser(String targetEmail, String followerEmail) throws IOException, InterruptedException {
-    JSONObject body = new JSONObject();
-    body.put("target",targetEmail);
-    body.put("follower",followerEmail);
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+FOLLOW_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body.toJSONString())).version(HttpClient.Version.HTTP_1_1).build();
-    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
-    try {
-        return (JSONArray) parser.parse(response.body());
+        JSONObject body = new JSONObject();
+        body.put("target",targetEmail);
+        body.put("follower",followerEmail);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request=HttpRequest.newBuilder().uri(URI.create(URL_LOCAL+FOLLOW_PATH)) .header("Content-Type", "application/json").PUT(HttpRequest.BodyPublisher.fromString(body.toJSONString())).version(HttpClient.Version.HTTP_1_1).build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+        try {
+            return (JSONArray) parser.parse(response.body());
 
-    } catch (ParseException e) {
-        return null;
+        } catch (ParseException e) {
+            return null;
+        }
+
     }
-
-}
 
 
 }

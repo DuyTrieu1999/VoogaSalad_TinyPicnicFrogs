@@ -1,10 +1,13 @@
 package engine.frontend.game_engine_UI;
 
+import engine.backend.ActorManager;
 import engine.backend.Commands.Command;
+import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.SplashScreen.FightScene;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -24,6 +27,7 @@ public class StateView {
 
     public StateView(Stage stage) {
         this.myStage = stage;
+       // ActorManager a=ServiceLocator.getActorManager();
         myController = new Controller(this);
         myView = new OverWorldView(myController);
         setUpView();
@@ -42,8 +46,10 @@ public class StateView {
      * set the battle view as the main view
      */
     public void setBattleView () {
+        var fightScene = new FightScene();
         battleView = new BattleView(myController);
-        myStage.setScene(battleView.getMyScene());
+        fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());battleView.init();});
+        myStage.setScene(fightScene.getMyScene());
 //        myStage.show();
     }
     private void setUpStage () {
@@ -58,7 +64,7 @@ public class StateView {
      * is choosing
      */
     public List<Command> getActiveCommand () {
-        System.out.println(battleView);
+        System.out.println("battle view is: " + battleView);
         return battleView.getMenuView().getActiveCommands();
     }
     public OverWorldView getMyView () {

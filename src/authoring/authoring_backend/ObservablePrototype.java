@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
  * Dependencies: None
  * Usages: when an ActorPrototype is created it creates an observable prototype and puts it in a list. Front-end can then request access to the list
  */
+
 public class ObservablePrototype {
     public String myId;
     public ImageView myView;

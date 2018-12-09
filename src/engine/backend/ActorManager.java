@@ -3,12 +3,6 @@ package engine.backend;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Manages actors
- *
- * @author Max Bartlett (mmb70)
- */
-
 public class ActorManager {
 	List<Actor> allActors;
 	List<Actor> activeActors;
@@ -20,6 +14,12 @@ public class ActorManager {
 	 */
 	public ActorManager(List<Actor> actorList) {
 		allActors = actorList;
+
+		for(Actor a:allActors){
+			boolean nBol=a.getActiveAnimation().getAnimationView()==null;
+			System.out.println(nBol);
+		}
+
 		inactiveActors = new ArrayList<>();
 		activeActors = allActors;
 		setPlayerActor();
