@@ -49,6 +49,7 @@ public class Main extends Application {
     private static List<Actor> loadActors(String path){
         XStream serializer = new XStream(new DomDriver());
         Map<String,Actor>loadedMap=(Map<String, Actor>) serializer.fromXML(Paths.get(path+"actors.xml").toFile());
+
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
