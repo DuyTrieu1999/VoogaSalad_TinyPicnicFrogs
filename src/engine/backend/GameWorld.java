@@ -143,6 +143,10 @@ public class GameWorld {
             System.out.println("menu event triggered");
             ServiceLocator.getCombatManager().receiveInput(e);
         }
+        if(myGameState == GameState.Overworld){
+            System.out.println("Dialogue menu event triggered");
+            e.getOption().execute(null);
+        }
 
     }
 
