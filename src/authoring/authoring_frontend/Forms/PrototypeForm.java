@@ -15,7 +15,6 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 /**
  * PrototypeForm
@@ -26,42 +25,37 @@ import java.util.ResourceBundle;
  *
  * @author brookekeene
  */
-public class PrototypeForm extends VBox {
-    private static final String DEFAULT_RESOURCE = "English";
+public class PrototypeForm extends Form {
     private static int SIZE = 500;
-    private static int PADDING = 10;
     private static int FIELD_SIZE = 150;
-    private ResourceBundle myResources;
     private List<FormBox> myAnimationForms;
     private List<FormBox> myStatisticsForms;
     private List<FormBox> myInteractionForms;
     private TextField prototypeName;
     private CheckBox isPlayer;
     private BoundsBox myBounds;
-
-    private GameManager myManager;
     private ActorManager actorManager;
 
     /**
      * Constructor
      */
     public PrototypeForm(GameManager manager, ActorManager a) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
+        super(manager);
+
         myAnimationForms = new ArrayList<>();
         myStatisticsForms = new ArrayList<>();
         myInteractionForms = new ArrayList<>();
-        myManager = manager;
         actorManager = a;
 
         //this.setMaxSize(SIZE, SIZE);
-        this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
 
     /**
      * adds all necessary fields to form
      */
-    private void addAllFields() {
+    @Override
+    public void addAllFields() {
         Label name = new Label(myResources.getString("name"));
         Label animations = new Label(myResources.getString("animations"));
         Label stats = new Label(myResources.getString("stats"));
@@ -160,9 +154,12 @@ public class PrototypeForm extends VBox {
     /**
      * saves all information as a JSON object
      */
-    private void saveFunction() { //TODO: make error checking more efficient
+    @Override
+    public void saveFunction() {
         JSONObject myPrototype = new JSONObject();
         JSONArray myAnimations = new JSONArray();
+        JSONArray myActivaters = new JSONArray();
+        JSONArray myDeactivaters = new JSONArray();
         JSONArray myStats = new JSONArray();
         JSONArray myInteractions = new JSONArray();
 
@@ -197,6 +194,11 @@ public class PrototypeForm extends VBox {
         myPrototype.put("stats", myStats);
 
         myPrototype.put("isPlayer", isPlayer.isSelected());
+
+        //TODO: add code to create JSON Arrays
+        myPrototype.put("ActivateMessages", myActivaters);
+
+        myPrototype.put("DeactivateMessages", myDeactivaters);
 
         for(int i = 0; i < myInteractionForms.size(); i++) {
             if(!myInteractionForms.get(i).hasValidEntry()) {

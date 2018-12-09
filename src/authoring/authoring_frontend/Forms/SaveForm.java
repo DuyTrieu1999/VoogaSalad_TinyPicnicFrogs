@@ -2,7 +2,6 @@ package authoring.authoring_frontend.Forms;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_backend.SaveException;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -12,20 +11,15 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * SaveForm
  *
  * @author brookekeene
  */
-public class SaveForm extends VBox {
-    private static final String DEFAULT_RESOURCE = "English";
+public class SaveForm extends Form {
     private static final int SIZE = 300;
     private static final int FIELD_SIZE = 250;
-    private static final int PADDING = 10;
-    private ResourceBundle myResources;
-    private GameManager myManager;
     private TextField gameName;
     private TextArea gameDescript;
     private String gamePath;
@@ -34,19 +28,18 @@ public class SaveForm extends VBox {
      * Constructor
      */
     public SaveForm(GameManager manager) {
-        myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
-        myManager = manager;
+        super(manager);
         gamePath = "";
 
         this.setMaxSize(SIZE, SIZE);
-        this.setPadding(new Insets(PADDING));
         this.addAllFields();
     }
 
     /**
      * add UI elements for user to input game information
      */
-    private void addAllFields() {
+    @Override
+    public void addAllFields() {
         // Labels
         Label name = new Label(myResources.getString("name"));
         Label description = new Label(myResources.getString("description"));
@@ -86,7 +79,8 @@ public class SaveForm extends VBox {
     /**
      * creates a GameData object and calls the GameManager.saveGame method
      */
-    private void saveFunction () { //TODO: error check
+    @Override
+    public void saveFunction () { //TODO: error check
         String title = gameName.getText();
         String description = gameDescript.getText();
 
