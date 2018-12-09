@@ -9,7 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 import static javafx.application.Application.launch;
+import static player.SceneManager.DEFAULT_RESOURCE;
 
 /**
  * @author Michael Glushakov
@@ -23,11 +26,12 @@ public class PlayerMain extends Application {
     private UserProfileManager userProfileManager;
     public static final int SCREEN_SIZE=700;
     private authoring.authoring_frontend.Main authoringMain;
+    private ResourceBundle myResources;
 
     @Override
     public void start(Stage stage){
-
-        stage.setTitle("Game Portal");
+        myResources=ResourceBundle.getBundle(DEFAULT_RESOURCE);
+        stage.setTitle(myResources.getString("playerTitle"));
         userProfileManager= new UserProfileManager();
         myManager=new SceneManager(userProfileManager, stage);
         stage.show();

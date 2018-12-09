@@ -27,13 +27,13 @@ public class Main extends Application {
      *
      * @param filePath filepath to the folder where actos and messages xml files are
      */
-    public void setFilePath(String filePath){gameFilePath=filePath;}
+    public void setFilePath(String filePath){gameFilePath=filePath;System.out.println(gameFilePath);}
 
     public void start(Stage stage) {
         new StateView(stage);
     }
 
-    private static void initialize(String filePath){
+    public static void initialize(String filePath){
         ServiceLocator.provideAI(new RandomAI());
         //Values should be loaded from the file
 

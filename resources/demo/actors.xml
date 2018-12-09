@@ -94,7 +94,7 @@
                                 <myName>basic attack</myName>
                                 <stat>HP</stat>
                                 <targetActorNum>1</targetActorNum>
-                                <targetValue>10</targetValue>
+                                <targetValue>1</targetValue>
                                 <myTargetType>CONSTANT</myTargetType>
                                 <myTargetActor>ENEMY</myTargetActor>
                                 <myAnimationMap>
@@ -208,7 +208,7 @@
                                 <myName>basic attack</myName>
                                 <stat>HP</stat>
                                 <targetActorNum>1</targetActorNum>
-                                <targetValue>10</targetValue>
+                                <targetValue>1</targetValue>
                                 <myTargetType>CONSTANT</myTargetType>
                                 <myTargetActor>ENEMY</myTargetActor>
                                 <myAnimationMap>

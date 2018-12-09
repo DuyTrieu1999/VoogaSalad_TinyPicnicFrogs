@@ -1,6 +1,7 @@
 package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 import java.util.HashMap;
@@ -68,6 +69,10 @@ public class Map {
      */
     public GridPane getGridPane(){
         return myGrid.getGridPane();
+    }
+
+    public ScrollPane getScrollPane(){
+        return myGrid.getScrollPane();
     }
 
     /**

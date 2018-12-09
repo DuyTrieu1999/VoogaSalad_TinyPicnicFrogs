@@ -4,6 +4,13 @@
   "stats":[{"key":"health","value":50},{"key":"damage","value":5}
 
   ],
+  "ActivateMessages":[
+  "onVictory","onDefeat"
+],
+  "DeactivateMessages":[
+  {"messageKey":"onVictory"},
+  {"messageKey":"onDefeat"}
+],
   "bounds":{
     "relX":0,
     "relY":0,

@@ -70,6 +70,13 @@ public class CombatManager {
      */
     public void receiveInput(GameMenuEvent e){
         if(e.getSource() == nextSource){
+            System.out.println(e.getSource());
+            if(e.getSource() == InputSource.PLAYER){
+                e.getOption().bind(myEnemies.get(0));
+            }
+            else if(e.getSource() == InputSource.AI){
+                e.getOption().bind(myAllies.get(0));
+            }
             e.getOption().execute(null);
             turnLock = false;
         }
@@ -87,6 +94,7 @@ public class CombatManager {
             //remove dead
             List<CombatInteraction> deadList = new ArrayList<>();
             for(CombatInteraction a : myAllies){
+                System.out.println(a.getHealth());
                 if(a.getHealth() <= 0){
                     deadList.add(a);
                 }
@@ -94,6 +102,7 @@ public class CombatManager {
             myAllies.removeAll(deadList);
             deadList.clear();
             for(CombatInteraction e : myEnemies){
+                System.out.println(e.getHealth());
                 if(e.getHealth() <= 0){
                     deadList.add(e);
                 }
@@ -112,11 +121,13 @@ public class CombatManager {
 
 
     private void playerDefeat() {
-    
+        System.out.println("PLAYER LOST");
+        ServiceLocator.getGameWorld().activateOverWorld();
     }
 
     private void playerVictory(){
-
+        System.out.println("PLAYER WON");
+        ServiceLocator.getGameWorld().activateOverWorld();
     }
 
     public List<Integer> getAlliesHealth(){
