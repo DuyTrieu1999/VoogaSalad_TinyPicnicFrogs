@@ -16,7 +16,7 @@ public class Main extends Application {
      * path to game Files to be loaded
      */
 
-    private static String gameFilePath="./resources/demo/";
+    private static String gameFilePath="voogasalad_tinypicnicfrogs/resources/demo/";
 
     public static void main(String[] args) {
         initialize(gameFilePath);
@@ -53,7 +53,6 @@ public class Main extends Application {
         List<Actor>actorList= new ArrayList<>();
         actorList.addAll(loadedMap.values());
         for(Actor a:actorList){
-            System.out.println("Fired");
            // a.serialize();
             a.setImages();
         }

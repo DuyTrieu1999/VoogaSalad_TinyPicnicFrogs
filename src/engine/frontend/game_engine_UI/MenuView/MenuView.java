@@ -4,6 +4,7 @@ import engine.backend.Commands.Command;
 import engine.backend.ServiceLocator;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
+import engine.controller.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -17,21 +18,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MenuView extends HBox {
+public abstract class MenuView extends HBox {
     protected BorderPane pane;
     protected List<Command> commandList;
     protected List<Command> activeCommands;
     protected ListView<String> listView;
     Map<String, Command> map = new HashMap<>();
 
-    private boolean isClosed;
-    private BorderPane view;
-
-    public MenuView (List<Command> list, BorderPane view) {
-        this.view = view;
+    public MenuView (Controller controller) {
         pane = new BorderPane();
-        isClosed = false;
-        commandList = list;
+        commandList = controller.getAllCommand();
         activeCommands = new ArrayList<>();
         addListView();
     }
@@ -48,18 +44,8 @@ public class MenuView extends HBox {
         pane.setCenter(listView);
         this.getChildren().add(pane);
     }
-    public void setSellectedCommand () {
-        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
-                String command = listView.getSelectionModel().getSelectedItem();
-                activeCommands.add(map.get(command));
-                GameMenuEvent e = new GameMenuEvent(activeCommands.get(0), InputSource.PLAYER);
-                ServiceLocator.getGameWorld().handleInput(e);
+    public void setSelectedCommand() {
 
-            }
-        });
     }
     public List<Command> getActiveCommands () {
         return activeCommands;

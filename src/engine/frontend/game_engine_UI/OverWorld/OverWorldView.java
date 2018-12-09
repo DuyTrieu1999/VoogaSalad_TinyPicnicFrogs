@@ -2,6 +2,7 @@ package engine.frontend.game_engine_UI.OverWorld;
 
 import engine.backend.*;
 import engine.controller.Controller;
+import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -136,14 +137,10 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     public void closeMenu () {
 
     }
-    public void addDialogue (Message m) {
-        ScrollPane scrollPane = new ScrollPane();
-        Text messageText = new Text(m.getMessageString());
-        scrollPane.setContent(messageText);
-        scrollPane.setPrefViewportHeight(50);
-        scrollPane.setPrefViewportWidth(1000);
-        scrollPane.setLayoutY(670);
-        displayPane.getChildren().add(scrollPane);
-
+    public void addDialogue (String m) {
+        DialogueMenu dialogueMenu = new DialogueMenu(myController, m);
+        displayPane.getChildren().add(dialogueMenu);
+        dialogueMenu.setLayoutX(350);
+        dialogueMenu.setLayoutY(500);
     }
 }
