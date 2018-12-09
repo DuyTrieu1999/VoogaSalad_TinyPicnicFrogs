@@ -92,7 +92,7 @@ public class ActorManager {
      */
     private void loadDefaultActors() throws IOException, ParseException {
         JSONArray defaults= new JSONArray();
-        for(int i=1;i<=47;i+=1){
+        for(int i=1;i<=42;i+=1){
             JSONObject defalutObject=new JSONObject();
             defalutObject.put("name","default"+i);
             JSONArray animations= new JSONArray();
