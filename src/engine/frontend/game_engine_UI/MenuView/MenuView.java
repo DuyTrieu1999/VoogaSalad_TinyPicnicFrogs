@@ -34,7 +34,7 @@ public class MenuView extends HBox {
         commandList = list;
         activeCommands = new ArrayList<>();
         addListView();
-        this.getChildren().add(pane);
+        
     }
     private void addListView () {
         List<String> nameList = new ArrayList<>();
