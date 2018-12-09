@@ -4,6 +4,7 @@ package player;
 import authoring.authoring_backend.GameData;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import engine.frontend.game_engine_UI.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,6 +89,13 @@ public class GamePaneManager {
         HBox hBox= new HBox();
         hBox.setSpacing(8);
         Button playButton = new Button(myResources.getString("playBtn"));
+        playButton.setOnAction(event->{
+            Main gameMain= new Main();
+            gameMain.setFilePath(g.getPath());
+            gameMain.initialize(g.getPath());
+            gameMain.start(new Stage());
+
+        });
         Button editButton= new Button(myResources.getString("editBtn"));
         ImageView gameLogo= new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("GameLogo.png")));
         gameLogo.setFitWidth(LOGO_SIDE_LENGTH);
