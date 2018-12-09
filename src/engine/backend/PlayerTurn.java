@@ -23,7 +23,5 @@ public class PlayerTurn extends Turn {
     @Override
     public void initializeTurn() {
         System.out.println("Player Turn");
-        Menu myMenu = new CommandLineMenu(myInt.getCommandList());
-        myMenu.getChoices().get(0).execute(null);
     }
 }
