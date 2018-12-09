@@ -1,10 +1,7 @@
 package engine.frontend.game_engine_UI.AnimationProcesser;
 
 import engine.backend.AnimationObject;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.ParallelTransition;
-import javafx.animation.Transition;
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;

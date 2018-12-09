@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MenuView extends HBox {
-    private BorderPane pane;
-    private List<Command> commandList;
-    private List<Command> activeCommands;
-    private ListView<String> listView;
+    protected BorderPane pane;
+    protected List<Command> commandList;
+    protected List<Command> activeCommands;
+    protected ListView<String> listView;
     Map<String, Command> map = new HashMap<>();
 
     private boolean isClosed;
@@ -31,6 +31,7 @@ public class MenuView extends HBox {
         commandList = list;
         activeCommands = new ArrayList<>();
         addListView();
+        this.getChildren().add(pane);
     }
     private void addListView () {
         List<String> nameList = new ArrayList<>();

@@ -136,7 +136,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     public void closeMenu () {
 
     }
-    public void addDialouge (Message m) {
+    public void addDialogue (Message m) {
         ScrollPane scrollPane = new ScrollPane();
         Text messageText = new Text(m.getMessageString());
         scrollPane.setContent(messageText);
