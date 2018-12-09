@@ -147,4 +147,7 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     public void closeDialogue() {
         displayPane.getChildren().remove(dialogueMenu);
     }
+    public DialogueMenu getDialogueMenu () {
+        return dialogueMenu;
+    }
 }
