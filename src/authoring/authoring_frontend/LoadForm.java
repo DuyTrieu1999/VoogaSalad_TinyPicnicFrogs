@@ -2,11 +2,14 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameData;
 import authoring.authoring_backend.GameManager;
+import authoring.authoring_backend.ObservableActor;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -19,7 +22,7 @@ import java.util.ResourceBundle;
  *
  * @author brookekeene
  */
-public class SaveForm extends VBox {
+public class LoadForm extends VBox {
     private static final String DEFAULT_RESOURCE = "English";
     private static final int SIZE = 300;
     private static final int FIELD_SIZE = 250;
@@ -29,14 +32,18 @@ public class SaveForm extends VBox {
     private TextField gameName;
     private TextArea gameDescript;
     private String gamePath;
+    private ActorManager actorManager;
+    private MapManager mapManager;
 
     /**
      * Constructor
      */
-    public SaveForm(GameManager manager) {
+    public LoadForm(GameManager manager, ActorManager a, MapManager m) {
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         myManager = manager;
         gamePath = "";
+        actorManager = a;
+        mapManager = m;
 
         this.setMaxSize(SIZE, SIZE);
         this.setPadding(new Insets(PADDING));
@@ -77,7 +84,7 @@ public class SaveForm extends VBox {
         this.getChildren().addAll(path, addPathBtn);
 
         // Save Button
-        Button saveBtn = new Button(myResources.getString("Save"));
+        Button saveBtn = new Button(myResources.getString("Load"));
         saveBtn.setOnAction(e -> saveFunction());
         this.getChildren().add(saveBtn);
     }
@@ -90,6 +97,22 @@ public class SaveForm extends VBox {
         String title = gameName.getText();
         String description = gameDescript.getText();
         // TODO: do we need height and width of map?
-        myManager.saveGame(title,description,gamePath);
+        //myManager.saveGame(title,description,gamePath);
+        myManager.loadActors(gamePath + "actors.xml");
+        myManager.loadMessages(gamePath + "messages.xml");
+        myManager.loadPrototypes(gamePath + "prototypes.xml");
+    }
+
+    private void parseActors(ObservableList<ObservableActor> actors){
+        Grid currentGrid = mapManager.getMap(mapManager.getActiveMapName()).getGrid();
+        for(ObservableActor thisActor:actors){
+            currentGrid.addActorFrontendOnly(new Actor(thisActor.myId, thisActor.myView), thisActor.x, thisActor.y);
+        }
+    }
+
+    private void parsePrototypes(ObservableList<ObservableActor> prototypes){
+        for(ObservableActor thisActor:prototypes){
+            actorManager.addActor(new Actor(thisActor.myId, thisActor.myView), true);
+        }
     }
 }
