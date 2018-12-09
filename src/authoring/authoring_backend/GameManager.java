@@ -59,17 +59,17 @@ public class GameManager {
 
 
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
-       // for(int i=0;i<interractionArr.size();i+=1)
+        for(int i=0;i<interractionArr.size();i+=1)
         {
-//            JSONObject interraction=(JSONObject) interractionArr.get(i);
-//            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
-//
-//            Map<String,Message>messageMap=new HashMap<>();
-//            for(int j=0;j<interractionMessages.size();j+=1){
-//                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
-//                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
-//            }
-//            prototypeMessageMapList.add(messageMap
+            JSONObject interraction=(JSONObject) interractionArr.get(i);
+            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+
+            Map<String,Message>messageMap=new HashMap<>();
+            for(int j=0;j<interractionMessages.size();j+=1){
+                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
+                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
+            }
+            prototypeMessageMapList.add(messageMap);
         }
         ArrayList<Message> aMessages = new ArrayList<>();
         ArrayList<Message> dMessages = new ArrayList<>();
