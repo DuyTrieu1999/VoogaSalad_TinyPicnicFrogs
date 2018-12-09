@@ -84,15 +84,28 @@ public class GameWorld {
         var collisionList = new ArrayList<Actor>();
         var playerActor = ServiceLocator.getActorManager().getPlayerActor();
         for(Actor a : actorList){
-            if(overlaps(playerActor, a)){
+            if(overlaps(a, playerActor)){
+                //TODO: get rid of magic values
                 collisionList.add(a);
+                if(playerActor.getHeading() == Heading.LEFT){
+                    playerActor.getCoordinate().setX(playerActor.getCoordinate().getX()+10);
+                }
+                else if(playerActor.getHeading() == Heading.RIGHT){
+                    playerActor.getCoordinate().setX(playerActor.getCoordinate().getX()-10);
+                }
+                else if(playerActor.getHeading() == Heading.UP){
+                    playerActor.getCoordinate().setY(playerActor.getCoordinate().getY()+10);
+                }
+                else if(playerActor.getHeading() == Heading.DOWN){
+                    playerActor.getCoordinate().setY(playerActor.getCoordinate().getY()-10);
+                }
             }
         }
         for(Actor c : collisionList){
             launchInteraction(c.getInteraction());
             //Delete actors you collide with
             //TODO: fix this shit
-            ServiceLocator.getActorManager().inactivate(c);
+            //ServiceLocator.getActorManager().inactivate(c);
         }
     }
 
@@ -185,7 +198,9 @@ public class GameWorld {
 
         boolean xIntersects = (a1MaxX > a2MinX && a1MaxX < a2MaxX) || (a2MaxX > a1MinX && a2MaxX < a1MaxX);
         boolean yIntersects = (a1MaxY > a2MinY && a1MaxY < a2MaxY) || (a2MaxY > a1MinY && a2MaxY < a1MaxY);
-        return xIntersects && yIntersects;
+        // check for hit on the upper edge
+
+        return(xIntersects && yIntersects);
     }
 
 
