@@ -142,7 +142,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
         scrollPane.setContent(messageText);
         scrollPane.setPrefViewportHeight(50);
         scrollPane.setPrefViewportWidth(1000);
-        
+        scrollPane.setLayoutY(670);
+        displayPane.getChildren().add(scrollPane);
 
     }
 }
