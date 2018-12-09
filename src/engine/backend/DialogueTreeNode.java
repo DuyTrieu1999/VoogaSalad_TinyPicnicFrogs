@@ -47,6 +47,7 @@ public class DialogueTreeNode {
 		for(String response : getResponses()) {
 			commands.add(new DialogueSelectCommand(response));
 		}
+		return commands;
 	}
 
 	/**
@@ -65,3 +66,17 @@ public class DialogueTreeNode {
 		return myDialogue;
 	}
 }
+
+//DialogueTreeNode root = //...
+//DialogueTreeNode node = root;
+
+//String dialogue = node.getDialogue();
+//while(!dialogue.equals("NULL")) {
+//	display(dialogue);
+//once user has scrolled through...
+//	display(node.getResponses());
+//once user has selected response...
+//	String response = getUserInput();
+//	node = node.getChild(response);
+//	String dialogue = node.getDialogue();
+//}

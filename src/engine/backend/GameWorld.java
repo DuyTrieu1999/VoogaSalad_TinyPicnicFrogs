@@ -125,22 +125,8 @@ public class GameWorld {
         //combatMan.nextTurn();
     }
 
-    //DialogueTreeNode root = //...
-//DialogueTreeNode node = root;
-
-    //String dialogue = node.getDialogue();
-//while(!dialogue.equals("NULL")) {
-//	display(dialogue);
-//once user has scrolled through...
-//	display(node.getResponses());
-    //once user has selected response...
-//	String response = getUserInput();
-//	node = node.getChild(response);
-//	String dialogue = node.getDialogue();
-//}
     private void launchDialogueInteraction(DialogueInteraction dialogueInteraction) {
         dialogueInteraction.getRoot();
-        ServiceLocator.getController().addDialogue();
     }
 
     /**
