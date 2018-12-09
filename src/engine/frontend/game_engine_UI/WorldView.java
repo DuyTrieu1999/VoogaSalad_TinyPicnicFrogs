@@ -23,10 +23,6 @@ public abstract class WorldView {
     protected BorderPane displayPane;
     protected Controller myController;
 
-    private static final int FRAMES_PER_SECOND = 60;
-    private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
-    private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
-
     protected Runnable nextSceneHandler;
 
     public void setNextSceneHandler (Runnable handler) {
@@ -44,25 +40,7 @@ public abstract class WorldView {
         myScene = new Scene(displayPane, 750 , 600, Color.BLACK);
         myScene.setOnKeyPressed(e -> myController.getGameWorld().handleInput(new GameKeyEvent(e)));
     }
-    /**
-     * Add the animations, and update the view in each frame of the game
-     */
-    public void updateView () {
 
-    }
-
-    public void init () {
-        var frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> {this.step(SECOND_DELAY);});
-        animation.setCycleCount(Timeline.INDEFINITE);
-        animation.getKeyFrames().add(frame);
-        animation.play();
-    }
-    /**
-     * step function that updates the view and detect collisions in each frame
-     */
-    private void step(double elapsedTime) {
-        updateView();
-    }
     /**
      * Clear the view
      */

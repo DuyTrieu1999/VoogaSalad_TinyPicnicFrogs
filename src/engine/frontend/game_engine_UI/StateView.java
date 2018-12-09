@@ -48,9 +48,8 @@ public class StateView {
     public void setBattleView () {
         var fightScene = new FightScene(myController);
         battleView = new BattleView(myController);
-        fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());battleView.init();});
+        fightScene.setNextSceneHandler(()->{myStage.setScene(battleView.getMyScene());});
         myStage.setScene(fightScene.getMyScene());
-//        myStage.show();
     }
     private void setUpStage () {
         myStage.setTitle("VoogaSalad");

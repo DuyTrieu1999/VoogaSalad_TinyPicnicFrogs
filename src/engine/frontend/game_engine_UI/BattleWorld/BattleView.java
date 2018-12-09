@@ -1,7 +1,6 @@
 package engine.frontend.game_engine_UI.BattleWorld;
 
 import engine.backend.AnimationObject;
-import engine.backend.Commands.Command;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.BattleMenu;
 import engine.frontend.game_engine_UI.MenuView.MenuView;
@@ -11,8 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
-import java.util.List;
 
 
 /**
@@ -45,7 +42,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
         this.myPlayer = myController.getBattlePlayerAnimation().get(0);
         playerSide = new PlayerSide(myPlayer);
         opponentSide = new OpponentSide(myEnemy);
-        this.playerSide.setHealth(myController.getalliesHealth().get(0));
+        this.playerSide.setHealth(myController.getAlliesHealth().get(0));
         this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
         battle_background = new ImageView(new Image(this.getClass().getClassLoader().getResourceAsStream("battle_background.png")));
         battle_background.setFitWidth(SCREEN_WIDTH);
@@ -67,9 +64,9 @@ public class BattleView extends WorldView implements BattleViewAPI {
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
             menuView.setSelectedCommand();
-            this.playerSide.setHealth(myController.getalliesHealth().get(0));
+            this.playerSide.setHealth(myController.getAlliesHealth().get(0));
             this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
-            System.out.println("health: " + myController.getalliesHealth().get(0));
+            System.out.println("health: " + myController.getAlliesHealth().get(0));
         }));
     }
     public MenuView getMenuView () {

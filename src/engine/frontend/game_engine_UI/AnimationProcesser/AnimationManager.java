@@ -7,22 +7,24 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 public class AnimationManager {
-    private ParallelTransition transitionManager;
-    private Node node = new Pane();
-    private List<AnimationObject> animationObjects = new ArrayList<>();
+    private Collection<AnimationObject> animationObjects = new ArrayList<>();
+    private HashMap<AnimationObject, Sprite> spriteMap;
 
-    public AnimationManager(List<AnimationObject> objects) {
+    public AnimationManager(Collection<AnimationObject> objects) {
+        animationObjects = objects;
+        spriteMap = new HashMap<>();
         for (AnimationObject object : objects) {
-            SpriteProcesser processer = new SpriteProcesser(object.getAnimationView(), object.getSpriteRows(), object.getSpiteCols());
-
+            SpriteProcesser processor = new SpriteProcesser(object.getAnimationView(), object.getSpriteRows(), object.getSpiteCols());
+            spriteMap.put(object, processor.getViewList()[0]);
         }
 
     }
-
-    public Node getFrame () {
-        return node;
+    public HashMap<AnimationObject, Sprite> getSpriteMap () {
+        return spriteMap;
     }
 }

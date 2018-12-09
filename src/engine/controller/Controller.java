@@ -57,7 +57,7 @@ public class Controller {
      * supplies the list of health for the player during battle
      */
     private Supplier<List<Integer>> alliesBattleHealthSupplier = () -> ServiceLocator.getCombatManager().getAlliesHealth();
-    public List<Integer> getalliesHealth () { return alliesBattleHealthSupplier.get(); }
+    public List<Integer> getAlliesHealth() { return alliesBattleHealthSupplier.get(); }
 
     /**
      * supplies the list of health for the enemy during battle
