@@ -1,9 +1,7 @@
-package engine.backend.interactions;
+package engine.backend;
 
-import engine.backend.AnimationObject;
 import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
-import engine.backend.Message;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

@@ -1,6 +1,6 @@
 package engine.backend.Commands;
 
-import engine.backend.interactions.CombatInteraction;
+import engine.backend.CombatInteraction;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package engine.backend;
 import authoring.authoring_backend.ActorPrototype;
 import authoring.authoring_backend.ObservableActor;
-import engine.backend.interactions.Interaction;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,5 @@
 package engine.backend;
 
-import engine.backend.interactions.Interaction;
 import org.json.simple.JSONObject;
 
 import java.util.Map;

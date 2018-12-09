@@ -1,4 +1,4 @@
-package engine.backend.interactions;
+package engine.backend;
 
 import engine.backend.AnimationObject;
 import engine.backend.Message;

@@ -5,7 +5,6 @@ import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
-import engine.backend.interactions.CombatInteraction;
 
 import java.util.ArrayList;
 import java.util.Comparator;

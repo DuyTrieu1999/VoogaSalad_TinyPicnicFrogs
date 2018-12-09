@@ -2,7 +2,6 @@ package engine.backend;
 
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
-import engine.backend.interactions.CombatInteraction;
 
 /**
  * Runs the turn for an AI controlled opponent

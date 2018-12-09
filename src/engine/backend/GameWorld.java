@@ -5,13 +5,9 @@ import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.backend.gameevent.GameMenuEvent;
-import engine.backend.interactions.CombatInteraction;
-import engine.backend.interactions.DialogueInteraction;
-import engine.backend.interactions.Interaction;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

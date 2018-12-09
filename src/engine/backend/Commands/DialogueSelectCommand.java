@@ -1,7 +1,6 @@
 package engine.backend.Commands;
 
-import engine.backend.Actor;
-import engine.backend.interactions.DialogueInteraction;
+import engine.backend.DialogueInteraction;
 
 
 import java.util.List;

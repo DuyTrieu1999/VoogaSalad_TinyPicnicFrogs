@@ -1,6 +1,4 @@
-package engine.backend.interactions;
-
-import engine.backend.DialogueTreeNode;
+package engine.backend;
 
 public class DialogueInteraction extends Interaction {
 	DialogueTreeNode myRoot;
