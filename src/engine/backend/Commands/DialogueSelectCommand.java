@@ -15,7 +15,7 @@ public class DialogueSelectCommand extends Command{
 
     @Override
     public void execute(List<Object> params) {
-        ((DialogueInteraction) myTarget).getRoot().getChild(myOption);
+        ((DialogueInteraction) myTarget).getNextNode(myOption);
     }
 
     @Override

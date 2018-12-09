@@ -5,9 +5,11 @@ import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.backend.gameevent.GameMenuEvent;
+import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -122,7 +124,7 @@ public class GameWorld {
     }
 
     private void launchDialogueInteraction(DialogueInteraction dialogueInteraction) {
-        dialogueInteraction.getRoot();
+        dialogueInteraction.setMenu();
     }
 
     /**
