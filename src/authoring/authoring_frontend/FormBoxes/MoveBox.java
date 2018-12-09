@@ -39,7 +39,7 @@ public class MoveBox extends FormBox {
      * target value, target type, and animations
      */
     @Override
-    public void setContent() {
+    public void setContent() { //TODO: remove hardcoded strings
         VBox myContent = new VBox();
 
         // Target Statistic
@@ -95,27 +95,44 @@ public class MoveBox extends FormBox {
      * animations
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         JSONArray moveAnimations = new JSONArray();
 
-        for(AnimationBox box:myAnimations) {
-            moveAnimations.add(box.getContent());
+        for (AnimationBox box : myAnimations) {
+            moveAnimations.add(box.getJSONContent());
         }
 
         myObject.put("name", myKey);
-        myObject.put("targetStat", targetStat.getContent().get("value"));
-        myObject.put("targetActorNumber", actorNum.getContent().get("value"));
+        myObject.put("targetStat", targetStat.getField());
+        myObject.put("targetActorNumber", actorNum.getField());
         myObject.put("targetActorType", actorType.getChoice());
-        myObject.put("targetValue", targetVal.getContent().get("value"));
+        myObject.put("targetValue", targetVal.getField());
         myObject.put("targetType", targetType.getChoice());
         myObject.put("animations", moveAnimations);
-
         return myObject;
     }
 
+    /**
+     * error checking for all fields of a move
+     * @return true if user has input all necessary data
+     */
     @Override
-    public boolean invalidEntry() {
-        return false;
+    public boolean hasValidEntry() {
+        return targetStat.hasValidEntry() &&
+                actorNum.hasValidEntry() &&
+                actorType.hasValidEntry() &&
+                targetVal.hasValidEntry() &&
+                targetType.hasValidEntry() &&
+                validAnimations();
+    }
+
+    private boolean validAnimations() {
+        for (AnimationBox box : myAnimations) {
+            if(!box.hasValidEntry()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

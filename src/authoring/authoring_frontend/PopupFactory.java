@@ -6,7 +6,7 @@ import authoring.authoring_frontend.PopupWindows.*;
 class PopupFactory {
     private final static int PROTOTYPE_SIZE = 500;
     private final static int MESSAGE_SIZE = 300;
-    private final static int SAVE_SIZE = 200;
+    private final static int SAVE_SIZE = 400;
 
     static PopupWindow getPopup(String type, GameManager manager, ActorManager actorManager) {
         if("prototype".equalsIgnoreCase(type)) {

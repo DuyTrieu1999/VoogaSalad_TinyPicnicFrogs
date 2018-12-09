@@ -25,8 +25,8 @@ public class Grid {
     //private Cell[][] myCells;
     private static final int DEFAULT_WIDTH  = 30;
     private static final int DEFAULT_HEIGHT = 20;
-    private int cellWidth = 18;
-    private int cellHeight = 18;
+    private int cellWidth;
+    private int cellHeight;
     private ArrayList<ArrayList<Cell>> myCells;
     private int gridWidth;
     private int gridHeight;
@@ -39,8 +39,8 @@ public class Grid {
      * @param name Program name.
      * @param myManager GameManager of current game.
      */
-    Grid(String name, GameManager myManager){
-        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, name, myManager);
+    Grid(String name, int cellWidth, int cellHeight, GameManager myManager){
+        this(DEFAULT_WIDTH, DEFAULT_HEIGHT, cellWidth, cellHeight, name, myManager);
     }
 
     /**
@@ -50,7 +50,9 @@ public class Grid {
      * @param name Program name.
      * @param myManager GameManager of current game.
      */
-    Grid(int width, int height, String name, GameManager myManager){
+    Grid(int width, int height, int cWidth, int cHeight, String name, GameManager myManager){
+        cellWidth = cWidth + 2;
+        cellHeight = cHeight + 2;
         gridWidth = width;
         gridHeight = height;
         programName = name;
@@ -75,7 +77,8 @@ public class Grid {
      */
     private StackPane createCell(){
         StackPane thisCell = new StackPane();
-        thisCell.setPrefSize(cellWidth, cellHeight);
+        //System.out.println(cellWidth + " " + cellHeight);
+        thisCell.setMinSize(cellWidth, cellHeight);
         thisCell.setStyle("-fx-border-color: black;");
 
         thisCell.setOnMouseClicked(event -> {

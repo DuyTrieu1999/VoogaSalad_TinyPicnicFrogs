@@ -67,9 +67,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
             displayPane.setCenter(menuView);
             displayPane.setAlignment(menuView, Pos.BOTTOM_CENTER);
             menuView.setSelectedCommand();
-            this.playerSide.setHealth(myController.getalliesHealth().get(0));
-            this.opponentSide.setHealth(myController.getEnemiesHealth().get(0));
-            System.out.println("health: " + myController.getalliesHealth().get(0));
+            System.out.println(menuView);
         }));
     }
     public MenuView getMenuView () {
