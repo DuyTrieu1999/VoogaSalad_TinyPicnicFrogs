@@ -1,9 +1,7 @@
 package engine.backend;
 
 import engine.backend.gameevent.InputSource;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
-import menu.CommandLineMenu;
-import menu.Menu;
+import engine.backend.interactions.CombatInteraction;
 
 import static java.lang.Thread.sleep;
 

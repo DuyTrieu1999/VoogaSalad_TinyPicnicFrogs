@@ -135,11 +135,11 @@
             <messageMap>
               <entry>
                 <string>prototypeVictory</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.interactions.CombatInteraction/messageMap/entry/engine.backend.Message"/>
               </entry>
               <entry>
                 <string>prototypeDefeat</string>
-                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
+                <engine.backend.Message reference="../../../../../../../../entry/engine.backend.Actor/myInteractionMap/entry/engine.backend.interactions.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
               </entry>
             </messageMap>
             <myName>fight</myName>

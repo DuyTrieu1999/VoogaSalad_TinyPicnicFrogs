@@ -198,7 +198,7 @@
                             </entry>
                             <entry>
                                 <string>prototypeDefeat</string>
-                                <engine.backend.Message reference="../../../../../../../../entry[2]/engine.backend.Actor/myInteractionMap/entry/engine.backend.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
+                                <engine.backend.Message reference="../../../../../../../../entry[2]/engine.backend.Actor/myInteractionMap/entry/engine.backend.interactions.CombatInteraction/messageMap/entry[2]/engine.backend.Message"/>
                             </entry>
                         </messageMap>
                         <myName>fight</myName>

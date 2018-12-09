@@ -1,6 +1,7 @@
 package engine.backend;
 
 import engine.backend.gameevent.InputSource;
+import engine.backend.interactions.CombatInteraction;
 
 /**
  * Represents a single turn in combat

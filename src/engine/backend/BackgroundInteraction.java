@@ -1,10 +1,11 @@
 package engine.backend;
 
+import engine.backend.interactions.Interaction;
 import org.json.simple.JSONObject;
 
 import java.util.Map;
 
-public class BackgroundInteraction extends Interaction{
+public class BackgroundInteraction extends Interaction {
     private boolean canPassThrough;
     public BackgroundInteraction(JSONObject data, Map<String, Message> messages){
         super(data,messages);

@@ -5,10 +5,13 @@ import engine.backend.Commands.*;
 import engine.backend.gameevent.GameEvent;
 import engine.backend.gameevent.GameKeyEvent;
 import engine.backend.gameevent.GameMenuEvent;
-import javafx.concurrent.Service;
+import engine.backend.interactions.CombatInteraction;
+import engine.backend.interactions.DialogueInteraction;
+import engine.backend.interactions.Interaction;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,8 +104,11 @@ public class GameWorld {
      * @param interaction interaction of non-player actor
      */
     private void launchInteraction(Interaction interaction){
-        if(interaction instanceof CombatInteraction){
+        if(interaction instanceof CombatInteraction) {
             launchCombatInteraction((CombatInteraction) ServiceLocator.getActorManager().getPlayerActor().getInteraction(), (CombatInteraction) interaction);
+        }
+        if(interaction instanceof DialogueInteraction) {
+            launchDialogueInteraction((DialogueInteraction) interaction);
         }
     }
 
@@ -117,6 +123,24 @@ public class GameWorld {
         ServiceLocator.getController().setBattleView();
         combatMan.nextTurn();
         //combatMan.nextTurn();
+    }
+
+    //DialogueTreeNode root = //...
+//DialogueTreeNode node = root;
+
+    //String dialogue = node.getDialogue();
+//while(!dialogue.equals("NULL")) {
+//	display(dialogue);
+//once user has scrolled through...
+//	display(node.getResponses());
+    //once user has selected response...
+//	String response = getUserInput();
+//	node = node.getChild(response);
+//	String dialogue = node.getDialogue();
+//}
+    private void launchDialogueInteraction(DialogueInteraction dialogueInteraction) {
+        dialogueInteraction.getRoot();
+        ServiceLocator.getController().addDialogue();
     }
 
     /**
