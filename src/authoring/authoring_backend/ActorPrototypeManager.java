@@ -32,9 +32,10 @@ public class ActorPrototypeManager {
      * @param data JSON representation of data entered by autjor
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
-    protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages){
+    protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages,
+                                        List<Message> deactivateMessages){
 //      testMessageParsing(prototypeMessages);
-      ActorPrototype prototype = new ActorPrototype(data,prototypeMessages);
+      ActorPrototype prototype = new ActorPrototype(data,prototypeMessages, activateMessages, deactivateMessages);
       
       actorPrototypeMap.put(prototype.getName(),prototype);
       prototypeList.add(prototype.getObservablePrototype());

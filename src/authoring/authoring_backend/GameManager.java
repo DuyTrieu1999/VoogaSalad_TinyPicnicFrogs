@@ -56,20 +56,38 @@ public class GameManager {
 
     public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
-        List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
-        for(int i=0;i<interractionArr.size();i+=1)
-        {
-            JSONObject interraction=(JSONObject) interractionArr.get(i);
-            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
 
-            Map<String,Message>messageMap=new HashMap<>();
-            for(int j=0;j<interractionMessages.size();j+=1){
-                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
-                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
-            }
-            prototypeMessageMapList.add(messageMap);
+
+        List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
+       // for(int i=0;i<interractionArr.size();i+=1)
+        {
+//            JSONObject interraction=(JSONObject) interractionArr.get(i);
+//            JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+//
+//            Map<String,Message>messageMap=new HashMap<>();
+//            for(int j=0;j<interractionMessages.size();j+=1){
+//                JSONObject messagePair= (JSONObject)interractionMessages.get(j);
+//                messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
+//            }
+//            prototypeMessageMapList.add(messageMap
         }
-        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList);
+        ArrayList<Message> aMessages = new ArrayList<>();
+        ArrayList<Message> dMessages = new ArrayList<>();
+        JSONArray activeMessages = (JSONArray) formData.get("ActivateMessages");
+        for(int i = 0; i < activeMessages.size(); i++){
+            Message m = messageManager.getMessage((String)activeMessages.get(i));
+            aMessages.add(m);
+        }
+
+        JSONArray deactiveMessages = (JSONArray) formData.get("DeactivateMessages");
+        for(int i = 0; i < deactiveMessages.size(); i++){
+            Message m = messageManager.getMessage((String)deactiveMessages.get(i));
+            dMessages.add(m);
+        }
+
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages );
+
+
     }
 
     /**
@@ -93,7 +111,6 @@ public class GameManager {
      */
     public Actor getActor(String id){return actorManager.getActor(id);}
     public ActorPrototype getPrototype(String id){return actorPrototypeManager.getPrototype(id);
-
 
     }
 
