@@ -1,11 +1,15 @@
 package engine.frontend.game_engine_UI.SplashScreen;
 
 import engine.controller.Controller;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+
+/**
+ * @author pkp9
+ * splash screen super class
+ */
 
 abstract class SplashScreen {
     BorderPane pane = new BorderPane();
@@ -15,6 +19,7 @@ abstract class SplashScreen {
 
     static final double SCREEN_WIDTH = 750;
     static final double SCREEN_HEIGHT = 600;
+
 
     SplashScreen(Controller controller) {
         this.controller = controller;
