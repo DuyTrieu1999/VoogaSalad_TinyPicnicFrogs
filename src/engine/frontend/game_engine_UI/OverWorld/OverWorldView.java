@@ -85,8 +85,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
             animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
             animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
             if(animationObject.getName().equals("idle: background.png")){
-                animation.setLayoutX(-300);
-                animation.setLayoutY(-300);
+                animation.setLayoutX(0);
+                animation.setLayoutY(0);
             }
             else{
                 animation.setLayoutY(100);

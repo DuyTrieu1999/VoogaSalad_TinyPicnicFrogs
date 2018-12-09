@@ -1,6 +1,9 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
+import engine.backend.ServiceLocator;
+import engine.backend.gameevent.GameMenuEvent;
+import engine.backend.gameevent.InputSource;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -52,6 +55,9 @@ public class MenuView extends HBox {
                 System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
                 String command = listView.getSelectionModel().getSelectedItem();
                 activeCommands.add(map.get(command));
+                GameMenuEvent e = new GameMenuEvent(activeCommands.get(0), InputSource.PLAYER);
+                ServiceLocator.getGameWorld().handleInput(e);
+
             }
         });
     }
