@@ -1,11 +1,16 @@
 package engine.frontend.game_engine_UI.MenuView;
 
 import engine.backend.Commands.Command;
+import engine.backend.ServiceLocator;
+import engine.backend.gameevent.GameMenuEvent;
+import engine.backend.gameevent.InputSource;
 import engine.controller.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -41,5 +46,13 @@ public class DialogueMenu extends HBox {
         listView.setPrefSize(100, 50);
         listView.setItems(items);
         pane.setRight(listView);
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("clicked on " + listView.getSelectionModel().getSelectedItem());
+                String command = listView.getSelectionModel().getSelectedItem();
+
+            }
+        });
     }
 }
