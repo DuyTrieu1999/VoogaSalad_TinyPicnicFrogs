@@ -49,7 +49,7 @@ public class AnimationBox extends FormBox {
             //TODO: error check
             if(file != null) {
                 fileName = file.toString();
-                String[]arr=fileName.split("\\\\");
+                String[]arr=fileName.split("/"); // Regex for non-Mac "\\\\"));
                 fileName=arr[arr.length-1];
                 System.out.println(fileName);
                 fileIm.setImage(new Image(file.toURI().toString()));
@@ -84,7 +84,7 @@ public class AnimationBox extends FormBox {
     @Override
     public boolean hasValidEntry() { //TODO: figure out how to check file formats
         return fileName != null;
-    }
+    } //TODO: fix error checking
     private void launchDialog(){
         Alert alert= new Alert(Alert.AlertType.INFORMATION);
         TextField rowText=new TextField(myResources.getString("spriteRows"));
