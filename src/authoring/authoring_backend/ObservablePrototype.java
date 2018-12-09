@@ -12,5 +12,6 @@ import javafx.scene.image.ImageView;
 public class ObservablePrototype {
     public String myId;
     public ImageView myView;
-    public ObservablePrototype(String id, ImageView view){myId=id;myView=view;}
+    public boolean isBackground;
+    public ObservablePrototype(String id, ImageView view, boolean background){myId=id;myView=view;isBackground=background;}
 }

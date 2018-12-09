@@ -219,7 +219,8 @@ public class ActorPrototype {
 	public ObservablePrototype getObservablePrototype() {
 		System.out.println(animationMap.get("idle"));
 		Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
-		return new ObservablePrototype(getName(), new ImageView(img));
+		return new ObservablePrototype(getName(), new ImageView(img),interactionMap.get("idle").getClass().isInstance(BackgroundInteraction.class));
+
 	}
 
 	/**
