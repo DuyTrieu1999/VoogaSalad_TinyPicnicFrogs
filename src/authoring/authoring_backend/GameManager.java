@@ -64,7 +64,7 @@ public class GameManager {
 
     public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
-        Map<String, Dialog> dialogNames = new HashMap<>();
+        Map<String, DialogueTreeNode> dialogNames = new HashMap<>();
 
 
 
@@ -76,7 +76,8 @@ public class GameManager {
             JSONArray interractionMessages=(JSONArray)interraction.get("messages");
             if((interraction.get("type")).equals("dialog")){
                 String dialogKey = (String)interraction.get("dialogKey");
-                dialogNames.put(interraction.get("interractionName"), dialogManager.getDialog(dialogKey));
+                DialogueTreeNode dtNode =dialogManager.getDialog(dialogKey);
+                dialogNames.put((String)interraction.get("interractionName"), dtNode);
         }
 
             Map<String,Message>messageMap=new HashMap<>();

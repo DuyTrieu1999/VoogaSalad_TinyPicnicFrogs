@@ -35,7 +35,7 @@ public class ActorPrototypeManager {
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
     protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages,
-                                        List<Message> deactivateMessages, Map<String, Dialog> stringDialogMap){
+                                        List<Message> deactivateMessages, Map<String, DialogueTreeNode> stringDialogMap){
       ActorPrototype prototype = new ActorPrototype(data,prototypeMessages, activateMessages, deactivateMessages, stringDialogMap);
       
       actorPrototypeMap.put(prototype.getName(),prototype);

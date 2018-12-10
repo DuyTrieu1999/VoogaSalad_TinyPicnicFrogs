@@ -29,7 +29,7 @@ public class ActorPrototype {
 	private String name;
 	private Bounds myBound;
 	private boolean isPlayer;
-	private Map<String, Dialog> dialogMap;
+	private Map<String, DialogueTreeNode> dialogMap;
 
 	/**
 	 * @param data              JSON representation of the prototype
@@ -37,7 +37,7 @@ public class ActorPrototype {
 	 */
 
 	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
-							 Map<String, Dialog> stringDialogMap) {
+							 Map<String, DialogueTreeNode> stringDialogMap) {
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
@@ -62,7 +62,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype(Map<String, String> animationMapP, Map<String, Interaction> interactionMapP,
 							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap, List<Message> activateMessages,
-							 List<Message> deactivateMessages, Map<String, Dialog> stringDialogMap) {
+							 List<Message> deactivateMessages, Map<String, DialogueTreeNode> stringDialogMap) {
 		animationMap = animationMapP;
 		interactionMap = interactionMapP;
 		myStats = statsMap;
