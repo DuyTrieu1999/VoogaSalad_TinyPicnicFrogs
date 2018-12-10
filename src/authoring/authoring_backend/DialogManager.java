@@ -14,7 +14,7 @@ public class DialogManager {
     public DialogManager(){
         dialogMap=new HashMap<>();
     }
-    public void createDialog(String dialogName,JSONArray dialogNodes, JSONObject dialogTree){
+    public DialogueTreeNode createDialog(String dialogName,JSONArray dialogNodes, JSONObject dialogTree){
         Map<String,DialogueTreeNode>nodeMap= new HashMap<>();
         for(int i=0;i<dialogNodes.size();i+=1){
             JSONObject obj= (JSONObject)dialogNodes.get(i);
@@ -23,6 +23,7 @@ public class DialogManager {
 
         dfs(nodeMap,nodeMap.get("root"),new HashSet<>(),dialogTree,"root");
         dialogMap.put(dialogName,nodeMap.get("root"));
+        return nodeMap.get("root");
     }
     private void dfs(Map<String,DialogueTreeNode>nodes,DialogueTreeNode current, Set<DialogueTreeNode>visited, JSONObject dialogTree,String leaf){
         JSONArray arr=(JSONArray) dialogTree.get(leaf);
@@ -34,5 +35,9 @@ public class DialogManager {
                 visited.add(nodes.get((String)entry.get("node")));
                 dfs(nodes,nodes.get((String)entry.get("node")),visited,dialogTree,(String)entry.get("node"));}
         }
+    }
+
+    public DialogueTreeNode getDialog(String key){
+        return dialogMap.get(key);
     }
 }
