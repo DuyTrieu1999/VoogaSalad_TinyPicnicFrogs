@@ -16,7 +16,7 @@ public class Main extends Application {
      * path to game Files to be loaded
      */
 
-    private static String gameFilePath="voogasalad_tinypicnicfrogs/resources/demo/";
+    private static String gameFilePath="./resources/testSave/";
 
     public static void main(String[] args) {
         initialize(gameFilePath);

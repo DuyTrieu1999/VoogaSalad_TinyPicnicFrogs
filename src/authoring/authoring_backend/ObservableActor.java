@@ -1,6 +1,7 @@
 package authoring.authoring_backend;
 
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 /**
  * @author Michael Glushakov
@@ -12,8 +13,8 @@ import javafx.scene.image.ImageView;
 public class ObservableActor {
     public String myId;
     public int x,y,z;
-    public ImageView myView;
-    public ObservableActor (String id, int xc,int yc,int zc,ImageView view){
+    public Image myView;
+    public ObservableActor (String id, int xc,int yc,int zc,Image view){
         x=xc;
         y=yc;
         z=zc;

@@ -1,1 +1,8 @@
-<map/>
+<map>
+  <entry>
+    <string>defeat</string>
+    <engine.backend.Message>
+      <myMessageString>defeat</myMessageString>
+    </engine.backend.Message>
+  </entry>
+</map>

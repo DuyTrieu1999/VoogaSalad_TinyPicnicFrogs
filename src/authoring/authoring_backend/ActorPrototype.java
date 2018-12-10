@@ -125,7 +125,7 @@ public class ActorPrototype {
 	 */
 	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages) {
 		Interaction myInteraction;
-		if (((String) ineractionJSON.get("type")).equals("fight")) {
+		if (((String) ineractionJSON.get("type")).equals("Combat")) {
 			myInteraction = new CombatInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		} else if (((String) ineractionJSON.get("type")).equals("collectible")) {

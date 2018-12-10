@@ -84,7 +84,7 @@ public class SaveForm extends Form {
         String title = gameName.getText();
         String description = gameDescript.getText();
 
-        List<String> arr= Arrays.asList(gamePath.split("/")); // Regex for non-Mac "\\\\"));
+        List<String> arr= Arrays.asList(gamePath.split("\\\\")); // Regex for non-Mac "\\\\"));
         int index=arr.indexOf("resources");
         String path=".";
         for(int i=index;i<arr.size();i+=1){path+="/"+arr.get(i);}

@@ -189,17 +189,17 @@ public class PrototypeForm extends Form {
         }
         myPrototype.put("animations", myAnimations);
 
-        if(!myBounds.hasValidEntry()) {
-            invalidDataAlert("bounds");
-            return;
-        }
+//        if(!myBounds.hasValidEntry()) {
+//            invalidDataAlert("bounds");
+//            return;
+//        }
         myPrototype.put("bounds", myBounds.getJSONContent());
 
         for(int i = 0; i < myStatisticsForms.size(); i++) {
-            if(!myStatisticsForms.get(i).hasValidEntry()) {
-                invalidDataAlert("statistics");
-                return;
-            }
+//            if(!myStatisticsForms.get(i).hasValidEntry()) {
+//                invalidDataAlert("statistics");
+//                return;
+//            }
             myStats.add(myStatisticsForms.get(i).getJSONContent());
         }
         myPrototype.put("stats", myStats);
@@ -212,10 +212,10 @@ public class PrototypeForm extends Form {
         myPrototype.put("DeactivateMessages", myDeactivateBox.getJSONArray());
 
         for(int i = 0; i < myInteractionForms.size(); i++) {
-            if(!myInteractionForms.get(i).hasValidEntry()) {
-                invalidDataAlert("interactions");
-                return;
-            }
+//            if(!myInteractionForms.get(i).hasValidEntry()) {
+//                invalidDataAlert("interactions");
+//                return;
+//            }
             myInteractions.add(myInteractionForms.get(i).getJSONContent());
         }
         myPrototype.put("interactions", myInteractions);

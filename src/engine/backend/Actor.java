@@ -90,7 +90,7 @@ public class Actor {
 	 * @return ObservableActor with appropriate parameters
 	 */
 	public ObservableActor getObservableActor() {
-		return new ObservableActor(myName, myCoordinate.getX(), myCoordinate.getY(), myCoordinate.getZ(), myActiveAnimation.getAnimationView());
+		return new ObservableActor(myName, myCoordinate.getX(), myCoordinate.getY(), myCoordinate.getZ(), myActiveAnimation.getAnimationView().getImage());
 	}
 	/**
 	 * Moves the Actor in the given direction by the given amount

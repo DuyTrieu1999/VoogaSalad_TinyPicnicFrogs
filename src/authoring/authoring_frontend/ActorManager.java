@@ -46,11 +46,11 @@ public class ActorManager {
         gameManager = gm;
         programName = name;
 
-        try {
-            loadDefaultActors();
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//          //  loadDefaultActors();
+//        } catch (IOException | ParseException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
