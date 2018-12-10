@@ -178,7 +178,7 @@ public class ActorManager {
         actorTilePane.setContent(setupTab(getPlayableActors()));
     }
 
-    TabPane getActorMenu(){
+    public TabPane getActorMenu(){
         setupTabs();
         TabPane allTabs = new TabPane();
         Tab backgroundTab = new Tab();

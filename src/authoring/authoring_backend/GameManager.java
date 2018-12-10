@@ -5,6 +5,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.Coordinate;
+import engine.backend.DialogueTreeNode;
 import engine.backend.Message;
 import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
@@ -38,7 +39,11 @@ public class GameManager {
         actorPrototypeManager=new ActorPrototypeManager();
         messageManager= new MessageManager();
         mapManager= new MapManager();
-        dialogManager = new DialogManager();
+
+        dialogManager=new DialogManager();
+    }
+    public DialogueTreeNode createDialog(String dialogName,JSONArray dialogNodes, JSONObject dialogTree){
+        return dialogManager.createDialog(dialogName,dialogNodes,dialogTree);
     }
 
     /**
