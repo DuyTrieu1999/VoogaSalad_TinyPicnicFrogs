@@ -74,6 +74,7 @@ public class GameManager {
             JSONObject interraction=(JSONObject) interractionArr.get(i);
 
             JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+
             if((interraction.get("type")).equals("dialog")){
                 String dialogKey = (String)interraction.get("dialogKey");
                 DialogueTreeNode dtNode =dialogManager.getDialog(dialogKey);

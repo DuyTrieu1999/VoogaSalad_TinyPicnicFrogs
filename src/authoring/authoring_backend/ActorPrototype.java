@@ -36,6 +36,7 @@ public class ActorPrototype {
 	 * @param prototypeMessages List that maps interactions to messages it sends
 	 */
 
+	//NOTE: dialogtreeNode is null for parse interactions, which means
 	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
 							 Map<String, DialogueTreeNode> stringDialogMap) {
 		name = (String) data.get("name");
@@ -43,7 +44,7 @@ public class ActorPrototype {
 		animationMap = parseAnimations(data);
 		myStats = parseStats((JSONArray) data.get("stats"));
 		interactionMap = new HashMap<>();
-		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages, null);
+		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages);
 		isPlayer = (boolean) data.get("isPlayer");
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
@@ -110,9 +111,9 @@ public class ActorPrototype {
 
 	}
 
-	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages, DialogueTreeNode dialogueTreeNode) {
+	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages) {
 		for (int i = 0; i < data.size(); i += 1) {
-			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i), dialogueTreeNode);
+			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i));
 		}
 	}
 
@@ -122,7 +123,7 @@ public class ActorPrototype {
 	 * @param ineractionJSON:      JSON or interraction related data
 	 * @param interactionMessages: messages that this interraction fires
 	 */
-	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages, DialogueTreeNode dialogueTreeNode) {
+	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages) {
 		Interaction myInteraction;
 		if (((String) ineractionJSON.get("type")).equals("fight")) {
 			myInteraction = new CombatInteraction(ineractionJSON, interactionMessages);
@@ -134,7 +135,7 @@ public class ActorPrototype {
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
 		else if(((String)ineractionJSON.get("type")).equals("dialog")){
-			myInteraction = new DialogueInteraction(dialogueTreeNode);
+			myInteraction = new DialogueInteraction(dialogMap.get((String)ineractionJSON.get("dialogKey")));
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
 
