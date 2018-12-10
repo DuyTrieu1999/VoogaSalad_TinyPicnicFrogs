@@ -2,6 +2,7 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.PopupWindows.PopupWindow;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -31,17 +32,20 @@ class TopMenu extends HBox {
     private ResourceBundle myResources;
     private MapManager mapManager;
     private ActorManager actorManager;
-
+    private String programName;
+    private Scene thisScene;
 
     /**
      * Constructor
      */
-    TopMenu(GameManager manager, MapManager maps, ActorManager actor) {
+    TopMenu(GameManager manager, MapManager maps, ActorManager actor, String pName, Scene scene) {
         myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         mapManager = maps;
         actorManager = actor;
+        programName = pName;
+        thisScene = scene;
 
         this.getChildren().add(myMenu);
         this.addAllMenus();
@@ -115,11 +119,11 @@ class TopMenu extends HBox {
 
 
         newActor.setOnAction(e -> {
-            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager, mapManager);
+            PopupWindow myNewActor = PopupFactory.getPopup("prototype", myManager, actorManager, mapManager, programName);
         });
 
         newMessage.setOnAction(e -> {
-            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager, mapManager);
+            PopupWindow myNewMessage = PopupFactory.getPopup("message", myManager, actorManager, mapManager, programName);
         });
 
         // Open Submenu
@@ -127,14 +131,14 @@ class TopMenu extends HBox {
 
         openItem.setOnAction(e -> {
             System.out.println("Open FileChooser"); //TODO: replace this with code
-            PopupFactory.getPopup("open", myManager, actorManager, mapManager);
+            PopupFactory.getPopup("open", myManager, actorManager, mapManager, programName);
         });
 
         // Save Submenu
         MenuItem saveGame = new MenuItem(myResources.getString("Save"));
 
         saveGame.setOnAction(e -> {
-            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager, mapManager);
+            PopupWindow mySaver = PopupFactory.getPopup("save", myManager, actorManager, mapManager, programName);
         });
 
         fileMenu.getItems().addAll(newSubmenu, openItem, saveGame);
@@ -216,9 +220,11 @@ class TopMenu extends HBox {
             });
         });
 
-        actorItem.setOnAction(event -> System.out.print("Edit actors"));
+        actorItem.setOnAction(event -> {
+            PopupFactory.getPopup("editActors", myManager, actorManager, mapManager, programName);
+        });
 
-        editMenu.getItems().add(mapItem);
+        editMenu.getItems().addAll(mapItem, actorItem);
 
         myMenu.getMenus().add(editMenu);
     }
@@ -235,15 +241,16 @@ class TopMenu extends HBox {
         MenuItem darkTheme = new MenuItem(myResources.getString("Dark"));
 
         lightTheme.setOnAction(e -> {
-            System.out.println("Change stylesheet to light version"); //TODO: replace this with code
+            //System.out.println("Change stylesheet to light version"); //TODO: replace this with code
+            thisScene.getStylesheets().remove("dark.css");
         });
 
         darkTheme.setOnAction(e -> {
-            System.out.println("Change stylesheet to dark version"); //TODO: replace this with code
+            //System.out.println("Change stylesheet to dark version"); //TODO: replace this with code
+            thisScene.getStylesheets().add("dark.css");
         });
 
-        themeSubmenu.getItems().add(lightTheme);
-        themeSubmenu.getItems().add(darkTheme);
+        themeSubmenu.getItems().addAll(lightTheme, darkTheme);
         viewMenu.getItems().add(themeSubmenu);
 
         myMenu.getMenus().add(viewMenu);

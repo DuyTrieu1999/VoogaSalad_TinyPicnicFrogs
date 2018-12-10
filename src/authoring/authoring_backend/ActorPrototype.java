@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,13 +29,16 @@ public class ActorPrototype {
 	private String name;
 	private Bounds myBound;
 	private boolean isPlayer;
+	private Map<String, DialogueTreeNode> dialogMap;
 
 	/**
 	 * @param data              JSON representation of the prototype
 	 * @param prototypeMessages List that maps interactions to messages it sends
 	 */
 
-	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages) { //add messages
+	//NOTE: dialogtreeNode is null for parse interactions, which means
+	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
+							 Map<String, DialogueTreeNode> stringDialogMap) {
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
@@ -45,7 +49,7 @@ public class ActorPrototype {
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
-
+		dialogMap = stringDialogMap;
 
 	}
 
@@ -59,7 +63,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype(Map<String, String> animationMapP, Map<String, Interaction> interactionMapP,
 							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap, List<Message> activateMessages,
-							 List<Message> deactivateMessages) {
+							 List<Message> deactivateMessages, Map<String, DialogueTreeNode> stringDialogMap) {
 		animationMap = animationMapP;
 		interactionMap = interactionMapP;
 		myStats = statsMap;
@@ -69,6 +73,7 @@ public class ActorPrototype {
 		spriteDimensionsMap = dimensionMap;
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
+		dialogMap = stringDialogMap;
 
 
 	}
@@ -129,6 +134,10 @@ public class ActorPrototype {
 			myInteraction = new BackgroundInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
+		else if(((String)ineractionJSON.get("type")).equals("dialog")){
+			myInteraction = new DialogueInteraction(dialogMap.get((String)ineractionJSON.get("dialogKey")));
+			interactionMap.put(myInteraction.getName(), myInteraction);
+		}
 
 	}
 
@@ -168,7 +177,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype clone() {
 		return new ActorPrototype(animationMap, interactionMap, myStats, name, isPlayer, myBound, spriteDimensionsMap,
-				activateMessagesList, deactivateMessagesList);
+				activateMessagesList, deactivateMessagesList, dialogMap);
 	}
 
 	/**
@@ -217,9 +226,9 @@ public class ActorPrototype {
 	 */
 
 	public ObservablePrototype getObservablePrototype() {
-		System.out.println(animationMap.get("idle"));
+		System.out.println(interactionMap.get("idle").getName());
 		Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
-		return new ObservablePrototype(getName(), new ImageView(img),interactionMap.get("idle").getClass().isInstance(BackgroundInteraction.class));
+		return new ObservablePrototype(getName(), img,interactionMap.get("idle").getClass().isInstance(BackgroundInteraction.class));
 
 	}
 

@@ -171,7 +171,7 @@ public class Grid {
     public void addActor(StackPane cell, Actor actor, int x, int y){
         cell.getChildren().add(actor.getActorImage());
         myCells.get(x).get(y).addActor(actor);
-        gameManager.createActor(actor.getActorPrototypeID(), x, y, cell.getChildren().size(), 0, 0);
+        gameManager.createActor(actor.getActorPrototypeID(), cellWidth*x, cellHeight*y, cell.getChildren().size(), x, y);
     }
 
     public void addActor(Actor actor, int x, int y){
