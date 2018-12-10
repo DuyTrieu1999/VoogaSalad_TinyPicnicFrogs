@@ -180,7 +180,7 @@ public class GameWorld {
      */
     public void activateOverWorld(){
         myGameState = GameState.Overworld;
-        ServiceLocator.getController().setWorldView();
+        //ServiceLocator.getController().setWorldView();
     }
 
     /**

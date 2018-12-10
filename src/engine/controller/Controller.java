@@ -5,6 +5,7 @@ import engine.backend.Commands.Command;
 import engine.frontend.game_engine_UI.MenuView.DialogueMenu;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.frontend.game_engine_UI.StateView;
+import javafx.stage.Stage;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +18,14 @@ public class Controller {
         ServiceLocator.provideController(this);
         this.myView = view;
     }
+    /**
+     * supplies the Stage of the Engine
+     */
+    private Supplier<Stage> stageSupplier =() -> myView.getMyStage();
+    public Stage getStage () { return stageSupplier.get(); }
+    /**
+     * supplies the overWorldView
+     */
     private Supplier<OverWorldView> viewSupplier = () -> myView.getMyView();
     public OverWorldView getOverWorldView () { return viewSupplier.get(); }
     /**

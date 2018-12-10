@@ -5,6 +5,9 @@ import engine.backend.Commands.CombatMove;
 import engine.backend.Commands.Command;
 import engine.backend.gameevent.GameMenuEvent;
 import engine.backend.gameevent.InputSource;
+import engine.controller.Controller;
+import engine.frontend.game_engine_UI.SplashScreen.Loss;
+import engine.frontend.game_engine_UI.SplashScreen.Victory;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -119,11 +122,19 @@ public class CombatManager {
 
     private void playerDefeat() {
         System.out.println("PLAYER LOST");
+        Controller controller = ServiceLocator.getController();
+        var loss = new Loss(controller);
+        loss.setNextSceneHandler(() -> {controller.getStage().setScene(controller.getOverWorldView().getMyScene());});
+        controller.getStage().setScene(loss.getMyScene());
         ServiceLocator.getGameWorld().activateOverWorld();
     }
 
     private void playerVictory(){
         System.out.println("PLAYER WON");
+        Controller controller = ServiceLocator.getController();
+        var win = new Victory(controller);
+        win.setNextSceneHandler(() -> {controller.getStage().setScene(controller.getOverWorldView().getMyScene());});
+        controller.getStage().setScene(win.getMyScene());
         ServiceLocator.getGameWorld().activateOverWorld();
     }
 

@@ -108,7 +108,6 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
                 frameCounter.set((frameCounter.get() + 1) % (animationObject.getSpriteRows() * animationObject.getSpiteCols()));
                 Sprite sprite = manager.getSpriteMap().get(animationObject)[frameCounter.get()];
                 Rectangle2D rec = new Rectangle2D(sprite.getX(), sprite.getY(), animation.getImage().getWidth()/4, animation.getImage().getHeight());
-                //Rectangle2D rec = new Rectangle2D(0, 0, animation.getImage().getWidth()/4, animation.getImage().getHeight());
                 animation.setPreserveRatio(true);
                 animation.setViewport(rec);
             }

@@ -22,7 +22,7 @@ public class Loss extends SplashScreen {
         pane.setCenter(text);
     }
 
-    Loss(Controller controller) {
+    public Loss(Controller controller) {
         super(controller);
     }
 }

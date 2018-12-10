@@ -1,16 +1,10 @@
 package engine.frontend.game_engine_UI;
 
-import engine.backend.ActorManager;
-import engine.backend.Commands.Command;
-import engine.backend.ServiceLocator;
 import engine.frontend.game_engine_UI.BattleWorld.BattleView;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.OverWorld.OverWorldView;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.SplashScreen.FightScene;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 /**
  * class that manages the switching between different views. There are two functions setWorldView
@@ -22,12 +16,10 @@ public class StateView {
     private Controller myController;
     private OverWorldView myView;
     private BattleView battleView;
-    private MenuView myMenu;
     private Stage myStage;
 
     public StateView(Stage stage) {
         this.myStage = stage;
-       // ActorManager a=ServiceLocator.getActorManager();
         myController = new Controller(this);
         myView = new OverWorldView(myController);
         setUpView();
@@ -62,5 +54,7 @@ public class StateView {
     public OverWorldView getMyView () {
         return myView;
     }
+
+    public Stage getMyStage () { return myStage; }
 
 }
