@@ -120,7 +120,7 @@ public class ActorPrototype {
 	 */
 	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages) {
 		Interaction myInteraction;
-		if (((String) ineractionJSON.get("type")).equals("fight")) {
+		if (((String) ineractionJSON.get("type")).equals("Combat")) {
 			myInteraction = new CombatInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		} else if (((String) ineractionJSON.get("type")).equals("collectible")) {
@@ -217,10 +217,9 @@ public class ActorPrototype {
 	 */
 
 	public ObservablePrototype getObservablePrototype() {
-		Interaction i=null;
-		for(Interaction j:interactionMap.values()){i=j;}
+		System.out.println(interactionMap.get("idle").getName());
 		Image img = new Image((this.getClass().getClassLoader().getResourceAsStream(animationMap.get("idle"))));
-		return new ObservablePrototype(getName(), img,i.getClass().isInstance(BackgroundInteraction.class));
+		return new ObservablePrototype(getName(), img,interactionMap.get("idle").getClass().isInstance(BackgroundInteraction.class));
 
 	}
 

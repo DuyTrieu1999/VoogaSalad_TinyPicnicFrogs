@@ -2,13 +2,13 @@
   <entry>
     <string>./resources/testSave/</string>
     <authoring.authoring__backend.GameData>
-      <title>test</title>
-      <description>tesst</description>
+      <title>messageGame</title>
+      <description>mesages</description>
       <path>./resources/testSave/</path>
-      <mapWidth>480</mapWidth>
-      <mapHeight>320</mapHeight>
-      <squareWidth>16</squareWidth>
-      <squareHeight>16</squareHeight>
+      <mapWidth>400</mapWidth>
+      <mapHeight>400</mapHeight>
+      <squareWidth>20</squareWidth>
+      <squareHeight>20</squareHeight>
     </authoring.authoring__backend.GameData>
   </entry>
   <entry>
