@@ -4,9 +4,11 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import engine.backend.Actor;
 import engine.backend.AnimationObject;
+import engine.backend.DialogueTreeNode;
 import engine.backend.Message;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -33,9 +35,8 @@ public class ActorPrototypeManager {
      * @param prototypeMessages: parsed out messages relevant to each interraction: Each spot is the list is a Map in of the Messages pertaining to the interaction
      */
     protected void createActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages,
-                                        List<Message> deactivateMessages){
-//      testMessageParsing(prototypeMessages);
-      ActorPrototype prototype = new ActorPrototype(data,prototypeMessages, activateMessages, deactivateMessages);
+                                        List<Message> deactivateMessages, Map<String, DialogueTreeNode> stringDialogMap){
+      ActorPrototype prototype = new ActorPrototype(data,prototypeMessages, activateMessages, deactivateMessages, stringDialogMap);
       
       actorPrototypeMap.put(prototype.getName(),prototype);
       prototypeList.add(prototype.getObservablePrototype());

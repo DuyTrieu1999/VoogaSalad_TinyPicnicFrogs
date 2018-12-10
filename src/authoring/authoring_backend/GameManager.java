@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,6 +39,7 @@ public class GameManager {
         actorPrototypeManager=new ActorPrototypeManager();
         messageManager= new MessageManager();
         mapManager= new MapManager();
+
         dialogManager=new DialogManager();
     }
     public DialogueTreeNode createDialog(String dialogName,JSONArray dialogNodes, JSONObject dialogTree){
@@ -62,13 +64,21 @@ public class GameManager {
 
     public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
+        Map<String, DialogueTreeNode> dialogNames = new HashMap<>();
+
 
 
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
         for(int i=0;i<interractionArr.size();i+=1)
         {
             JSONObject interraction=(JSONObject) interractionArr.get(i);
+
             JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+            if((interraction.get("type")).equals("dialog")){
+                String dialogKey = (String)interraction.get("dialogKey");
+                DialogueTreeNode dtNode =dialogManager.getDialog(dialogKey);
+                dialogNames.put((String)interraction.get("interractionName"), dtNode);
+        }
 
             Map<String,Message>messageMap=new HashMap<>();
             for(int j=0;j<interractionMessages.size();j+=1){
@@ -76,6 +86,7 @@ public class GameManager {
                 messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
             }
             prototypeMessageMapList.add(messageMap);
+
         }
         ArrayList<Message> aMessages = new ArrayList<>();
         ArrayList<Message> dMessages = new ArrayList<>();
@@ -91,7 +102,7 @@ public class GameManager {
             dMessages.add(m);
         }
 
-        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages );
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages, dialogNames);
 
 
     }

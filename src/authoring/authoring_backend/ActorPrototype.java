@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,24 +29,26 @@ public class ActorPrototype {
 	private String name;
 	private Bounds myBound;
 	private boolean isPlayer;
+	private Map<String, DialogueTreeNode> dialogMap;
 
 	/**
 	 * @param data              JSON representation of the prototype
 	 * @param prototypeMessages List that maps interactions to messages it sends
 	 */
 
-	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages) { //add messages
+	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
+							 Map<String, DialogueTreeNode> stringDialogMap) {
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
 		myStats = parseStats((JSONArray) data.get("stats"));
 		interactionMap = new HashMap<>();
-		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages);
+		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages, null);
 		isPlayer = (boolean) data.get("isPlayer");
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
-
+		dialogMap = stringDialogMap;
 
 	}
 
@@ -59,7 +62,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype(Map<String, String> animationMapP, Map<String, Interaction> interactionMapP,
 							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap, List<Message> activateMessages,
-							 List<Message> deactivateMessages) {
+							 List<Message> deactivateMessages, Map<String, DialogueTreeNode> stringDialogMap) {
 		animationMap = animationMapP;
 		interactionMap = interactionMapP;
 		myStats = statsMap;
@@ -69,6 +72,7 @@ public class ActorPrototype {
 		spriteDimensionsMap = dimensionMap;
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
+		dialogMap = stringDialogMap;
 
 
 	}
@@ -106,9 +110,9 @@ public class ActorPrototype {
 
 	}
 
-	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages) {
+	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages, DialogueTreeNode dialogueTreeNode) {
 		for (int i = 0; i < data.size(); i += 1) {
-			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i));
+			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i), dialogueTreeNode);
 		}
 	}
 
@@ -118,7 +122,7 @@ public class ActorPrototype {
 	 * @param ineractionJSON:      JSON or interraction related data
 	 * @param interactionMessages: messages that this interraction fires
 	 */
-	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages) {
+	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages, DialogueTreeNode dialogueTreeNode) {
 		Interaction myInteraction;
 		if (((String) ineractionJSON.get("type")).equals("fight")) {
 			myInteraction = new CombatInteraction(ineractionJSON, interactionMessages);
@@ -127,6 +131,10 @@ public class ActorPrototype {
 			//create new collectible interaction
 		} else if (((String) ineractionJSON.get("type")).equals("background")) {
 			myInteraction = new BackgroundInteraction(ineractionJSON, interactionMessages);
+			interactionMap.put(myInteraction.getName(), myInteraction);
+		}
+		else if(((String)ineractionJSON.get("type")).equals("dialog")){
+			myInteraction = new DialogueInteraction(dialogueTreeNode);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
 
@@ -168,7 +176,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype clone() {
 		return new ActorPrototype(animationMap, interactionMap, myStats, name, isPlayer, myBound, spriteDimensionsMap,
-				activateMessagesList, deactivateMessagesList);
+				activateMessagesList, deactivateMessagesList, dialogMap);
 	}
 
 	/**
