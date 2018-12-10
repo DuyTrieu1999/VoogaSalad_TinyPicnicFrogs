@@ -38,6 +38,7 @@ public class GameManager {
         actorPrototypeManager=new ActorPrototypeManager();
         messageManager= new MessageManager();
         mapManager= new MapManager();
+        dialogManager = new DialogManager();
     }
 
     /**
@@ -61,14 +62,17 @@ public class GameManager {
         Map<String, Dialog> dialogNames = new HashMap<>();
 
 
+
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
         for(int i=0;i<interractionArr.size();i+=1)
         {
             JSONObject interraction=(JSONObject) interractionArr.get(i);
+
             JSONArray interractionMessages=(JSONArray)interraction.get("messages");
-            JSONArray dialogInteractions = (JSONArray) interraction.get("dialog");
-
-
+            if((interraction.get("type")).equals("dialog")){
+                String dialogKey = (String)interraction.get("dialogKey");
+                dialogNames.put(interraction.get("interractionName"), dialogManager.getDialog(dialogKey));
+        }
 
             Map<String,Message>messageMap=new HashMap<>();
             for(int j=0;j<interractionMessages.size();j+=1){
@@ -77,10 +81,6 @@ public class GameManager {
             }
             prototypeMessageMapList.add(messageMap);
 
-            for(int k = 0; k <dialogInteractions.size(); k++){
-                String dialogName =(String) dialogInteractions.get(k);
-                dialogNames.put(dialogName, dialogManager.get(dialogName));
-            }
         }
         ArrayList<Message> aMessages = new ArrayList<>();
         ArrayList<Message> dMessages = new ArrayList<>();
@@ -96,7 +96,7 @@ public class GameManager {
             dMessages.add(m);
         }
 
-        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages, dialogNames );
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages, dialogNames);
 
 
     }
