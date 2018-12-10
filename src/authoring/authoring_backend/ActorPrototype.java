@@ -37,21 +37,18 @@ public class ActorPrototype {
 	 */
 
 	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
-							 Map<String, Dialog> stringDialogMap) { //add messages
+							 Map<String, Dialog> stringDialogMap, DialogueTreeNode dialogueTreeNode) { //add messages
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
 		myStats = parseStats((JSONArray) data.get("stats"));
 		interactionMap = new HashMap<>();
-		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages);
+		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages,dialogueTreeNode);
 		isPlayer = (boolean) data.get("isPlayer");
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
 		dialogMap = stringDialogMap;
-
-		//add constructor for dialogue interaction
-
 
 	}
 
@@ -65,7 +62,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype(Map<String, String> animationMapP, Map<String, Interaction> interactionMapP,
 							 Map<String, Integer> statsMap, String nameP, boolean player, Bounds bounds, Map<String, int[]> dimensionMap, List<Message> activateMessages,
-							 List<Message> deactivateMessages) {
+							 List<Message> deactivateMessages, Map<String, Dialog> stringDialogMap) {
 		animationMap = animationMapP;
 		interactionMap = interactionMapP;
 		myStats = statsMap;
@@ -75,6 +72,7 @@ public class ActorPrototype {
 		spriteDimensionsMap = dimensionMap;
 		activateMessagesList = activateMessages;
 		deactivateMessagesList = deactivateMessages;
+		dialogMap = stringDialogMap;
 
 
 	}
@@ -112,9 +110,9 @@ public class ActorPrototype {
 
 	}
 
-	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages) {
+	private void parseInterractions(JSONArray data, List<Map<String, Message>> prototypeMessages, DialogueTreeNode dialogueTreeNode) {
 		for (int i = 0; i < data.size(); i += 1) {
-			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i));
+			parseInteraction((JSONObject) data.get(i), prototypeMessages.get(i), dialogueTreeNode);
 		}
 	}
 
@@ -124,7 +122,7 @@ public class ActorPrototype {
 	 * @param ineractionJSON:      JSON or interraction related data
 	 * @param interactionMessages: messages that this interraction fires
 	 */
-	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages) {
+	private void parseInteraction(JSONObject ineractionJSON, Map<String, Message> interactionMessages, DialogueTreeNode dialogueTreeNode) {
 		Interaction myInteraction;
 		if (((String) ineractionJSON.get("type")).equals("fight")) {
 			myInteraction = new CombatInteraction(ineractionJSON, interactionMessages);
@@ -135,8 +133,9 @@ public class ActorPrototype {
 			myInteraction = new BackgroundInteraction(ineractionJSON, interactionMessages);
 			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
-		else if(((String) ineractionJSON.get("type")).equals("dialog"){
-			myInteraction = new Dialog
+		else if(((String)ineractionJSON.get("type")).equals("dialog")){
+			myInteraction = new DialogueInteraction(dialogueTreeNode);
+			interactionMap.put(myInteraction.getName(), myInteraction);
 		}
 
 	}
@@ -177,7 +176,7 @@ public class ActorPrototype {
 	 */
 	protected ActorPrototype clone() {
 		return new ActorPrototype(animationMap, interactionMap, myStats, name, isPlayer, myBound, spriteDimensionsMap,
-				activateMessagesList, deactivateMessagesList);
+				activateMessagesList, deactivateMessagesList, dialogMap);
 	}
 
 	/**
