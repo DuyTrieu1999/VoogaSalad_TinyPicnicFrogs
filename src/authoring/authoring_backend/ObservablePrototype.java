@@ -1,7 +1,11 @@
 package authoring.authoring_backend;
 
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+
+
 /**
  * @author Michael Glushakov
  * Purpose: Passed to authoring front-end to keep original ActorPrototypes closed to modification
@@ -11,7 +15,7 @@ import javafx.scene.image.ImageView;
 
 public class ObservablePrototype {
     public String myId;
-    public ImageView myView;
+    public Image myView;
     public boolean isBackground;
-    public ObservablePrototype(String id, ImageView view, boolean background){myId=id;myView=view;isBackground=background;}
+    public ObservablePrototype(String id, Image view, boolean background){myId=id;myView=view;isBackground=background;}
 }

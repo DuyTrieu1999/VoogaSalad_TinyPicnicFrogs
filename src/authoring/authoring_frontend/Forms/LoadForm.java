@@ -123,7 +123,7 @@ public class LoadForm extends Form {
 
     private void parsePrototypes(List<ObservablePrototype> prototypes){
         for(ObservablePrototype thisPrototype:prototypes){
-            actorManager.addActor(new Actor(thisPrototype.myId, thisPrototype.myView), !thisPrototype.isBackground);
+         //   actorManager.addActor(new Actor(thisPrototype.myId, thisPrototype.myView), !thisPrototype.isBackground);
         }
     }
 }
