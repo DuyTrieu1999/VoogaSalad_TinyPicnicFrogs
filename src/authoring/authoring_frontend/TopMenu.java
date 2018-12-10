@@ -2,6 +2,7 @@ package authoring.authoring_frontend;
 
 import authoring.authoring_backend.GameManager;
 import authoring.authoring_frontend.PopupWindows.PopupWindow;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -32,18 +33,19 @@ class TopMenu extends HBox {
     private MapManager mapManager;
     private ActorManager actorManager;
     private String programName;
-
+    private Scene thisScene;
 
     /**
      * Constructor
      */
-    TopMenu(GameManager manager, MapManager maps, ActorManager actor, String pName) {
+    TopMenu(GameManager manager, MapManager maps, ActorManager actor, String pName, Scene scene) {
         myManager = manager;
         myMenu = new MenuBar();
         myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE);
         mapManager = maps;
         actorManager = actor;
         programName = pName;
+        thisScene = scene;
 
         this.getChildren().add(myMenu);
         this.addAllMenus();
@@ -239,15 +241,16 @@ class TopMenu extends HBox {
         MenuItem darkTheme = new MenuItem(myResources.getString("Dark"));
 
         lightTheme.setOnAction(e -> {
-            System.out.println("Change stylesheet to light version"); //TODO: replace this with code
+            //System.out.println("Change stylesheet to light version"); //TODO: replace this with code
+            thisScene.getStylesheets().remove("dark.css");
         });
 
         darkTheme.setOnAction(e -> {
-            System.out.println("Change stylesheet to dark version"); //TODO: replace this with code
+            //System.out.println("Change stylesheet to dark version"); //TODO: replace this with code
+            thisScene.getStylesheets().add("dark.css");
         });
 
-        themeSubmenu.getItems().add(lightTheme);
-        themeSubmenu.getItems().add(darkTheme);
+        themeSubmenu.getItems().addAll(lightTheme, darkTheme);
         viewMenu.getItems().add(themeSubmenu);
 
         myMenu.getMenus().add(viewMenu);
