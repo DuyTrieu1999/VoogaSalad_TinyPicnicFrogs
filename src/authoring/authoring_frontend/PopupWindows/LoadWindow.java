@@ -1,23 +1,30 @@
 package authoring.authoring_frontend.PopupWindows;
 
 import authoring.authoring_backend.GameManager;
-import authoring.authoring_frontend.Forms.SaveForm;
+import authoring.authoring_frontend.ActorManager;
+import authoring.authoring_frontend.Forms.LoadForm;
+import authoring.authoring_frontend.MapManager;
 import javafx.scene.control.ScrollPane;
 
 /**
- * SaveWindow
+ * LoadWindow
  *
  * @author brookekeene
  */
-public class SaveWindow extends PopupWindow{
+public class LoadWindow extends PopupWindow{
     private int size;
+    private ActorManager actorManager;
+    private MapManager mapManager;
 
     /**
      * Constructor
      */
-    public SaveWindow(GameManager manager, int n) {
+    public LoadWindow(GameManager manager, int n, ActorManager a, MapManager m) {
         super(manager, n);
         size = n;
+
+        actorManager = a;
+        mapManager = m;
 
         this.display(myResources.getString("GameInfo"));
         this.addContent();
@@ -28,7 +35,7 @@ public class SaveWindow extends PopupWindow{
      */
     public void addContent() {
         ScrollPane mySP = new ScrollPane();
-        myContent = new SaveForm(myManager);
+        myContent = new LoadForm(myManager, actorManager, mapManager);
         mySP.setContent(myContent);
         mySP.setPrefSize(size, size);
         myRoot.getChildren().add(mySP);

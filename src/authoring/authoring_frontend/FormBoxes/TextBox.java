@@ -30,7 +30,7 @@ public class TextBox extends FormBox {
      * @return JSONObject storing the key and value of the user input
      */
     @Override
-    public JSONObject getContent() {
+    public JSONObject getJSONContent() {
         JSONObject myObject = new JSONObject();
         myObject.put("value", myText.getText());
         myObject.put("key", myKey);
@@ -38,11 +38,18 @@ public class TextBox extends FormBox {
     }
 
     /**
+     * @return String representing the user input
+     */
+    public String getField() {
+        return myText.getText();
+    }
+
+    /**
      * error checking for valid text entry
-     * @return
+     * @return true if the user has input text
      */
     @Override
-    public boolean invalidEntry() {
-        return myText.getText().isEmpty();
+    public boolean hasValidEntry() {
+        return !myText.getText().isEmpty();
     }
 }
