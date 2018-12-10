@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,6 +31,7 @@ public class GameManager {
     private ActorPrototypeManager actorPrototypeManager;
     private MessageManager messageManager;
     private MapManager mapManager;
+    private DialogManager dialogManager;
 
     public GameManager(){
         actorManager=new ActorManager();
@@ -56,6 +58,7 @@ public class GameManager {
 
     public void createActorPrototype(JSONObject formData){
         JSONArray interractionArr=(JSONArray)formData.get("interactions");
+        Map<String, Dialog> dialogNames = new HashMap<>();
 
 
         List<Map<String, Message>> prototypeMessageMapList= new ArrayList<Map<String, Message>>();//Each spot in the list is a map of messages sent by that interraction
@@ -63,6 +66,9 @@ public class GameManager {
         {
             JSONObject interraction=(JSONObject) interractionArr.get(i);
             JSONArray interractionMessages=(JSONArray)interraction.get("messages");
+            JSONArray dialogInteractions = (JSONArray) interraction.get("dialog");
+
+
 
             Map<String,Message>messageMap=new HashMap<>();
             for(int j=0;j<interractionMessages.size();j+=1){
@@ -70,6 +76,11 @@ public class GameManager {
                 messageMap.put((String)messagePair.get("key"),messageManager.getMessage((String)messagePair.get("messageKey")));
             }
             prototypeMessageMapList.add(messageMap);
+
+            for(int k = 0; k <dialogInteractions.size(); k++){
+                String dialogName =(String) dialogInteractions.get(k);
+                dialogNames.put(dialogName, dialogManager.get(dialogName));
+            }
         }
         ArrayList<Message> aMessages = new ArrayList<>();
         ArrayList<Message> dMessages = new ArrayList<>();
@@ -85,7 +96,7 @@ public class GameManager {
             dMessages.add(m);
         }
 
-        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages );
+        actorPrototypeManager.createActorPrototype(formData,prototypeMessageMapList,aMessages, dMessages, dialogNames );
 
 
     }

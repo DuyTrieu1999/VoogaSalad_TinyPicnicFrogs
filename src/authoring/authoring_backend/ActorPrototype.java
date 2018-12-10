@@ -37,13 +37,13 @@ public class ActorPrototype {
 	 */
 
 	protected ActorPrototype(JSONObject data, List<Map<String, Message>> prototypeMessages, List<Message> activateMessages, List<Message> deactivateMessages,
-							 Map<String, Dialog> stringDialogMap, DialogueTreeNode dialogueTreeNode) { //add messages
+							 Map<String, Dialog> stringDialogMap) {
 		name = (String) data.get("name");
 		spriteDimensionsMap = new HashMap<>();
 		animationMap = parseAnimations(data);
 		myStats = parseStats((JSONArray) data.get("stats"));
 		interactionMap = new HashMap<>();
-		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages,dialogueTreeNode);
+		parseInterractions((JSONArray) data.get("interactions"), prototypeMessages, null);
 		isPlayer = (boolean) data.get("isPlayer");
 		myBound = parseBounds((JSONObject) data.get("bounds"));
 		activateMessagesList = activateMessages;
