@@ -79,7 +79,7 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         */
         leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane());
-        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
+        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager, projectName);
 
         myMainView.setCenter(new ScrollPane(mapManager.getActiveMap()));
         myMainView.setLeft(leftSide);
@@ -107,7 +107,7 @@ public class AuthoringView {
         layersAndMaps.setSide(Side.BOTTOM);
         */
         leftSide.getChildren().addAll(actorManager.getActorMenu(), myMaps.getMapPane());
-        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager);
+        TopMenu topBar = new TopMenu(myManager, mapManager, actorManager, projectName);
 
         myMainView.setLeft(leftSide);
         myMainView.setCenter(mapManager.getActiveMap());
