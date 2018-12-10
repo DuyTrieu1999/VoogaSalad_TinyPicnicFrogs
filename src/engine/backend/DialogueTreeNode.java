@@ -13,8 +13,7 @@ public class DialogueTreeNode {
 	/**
 	 * @param dialogue
 	 */
-	public DialogueTreeNode(DialogueTreeNode parent, String dialogue) {
-		myParent = parent;
+	public DialogueTreeNode(String dialogue) {
 		myDialogue = dialogue;
 		myChildren = new HashMap<>();
 	}
