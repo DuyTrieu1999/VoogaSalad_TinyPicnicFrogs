@@ -10,6 +10,8 @@ import authoring.authoring_frontend.Grid;
 import authoring.authoring_frontend.MapManager;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -117,13 +119,13 @@ public class LoadForm extends Form {
     private void parseActors(List<ObservableActor> actors){
         Grid currentGrid = mapManager.getMap(mapManager.getActiveMapName()).getGrid();
         for(ObservableActor thisActor:actors){
-            currentGrid.addActorFrontendOnly(new Actor(thisActor.myId, thisActor.myView), thisActor.x, thisActor.y);
+            currentGrid.addActorFrontendOnly(new Actor(thisActor.myId,thisActor.myView),thisActor.x,thisActor.y);
         }
     }
 
     private void parsePrototypes(List<ObservablePrototype> prototypes){
         for(ObservablePrototype thisPrototype:prototypes){
-         //   actorManager.addActor(new Actor(thisPrototype.myId, thisPrototype.myView), !thisPrototype.isBackground);
+            actorManager.addActor(new Actor(thisPrototype.myId, thisPrototype.myView), !thisPrototype.isBackground);
         }
     }
 }

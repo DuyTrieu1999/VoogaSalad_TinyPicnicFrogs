@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
  * @author Allen Qiu
  */
 public class Actor {
-    private ImageView actorImage;
+    private Image actorImage;
     private String actorPrototypeID;
 
     /**
@@ -25,11 +25,11 @@ public class Actor {
         JSONObject defaultSprite = (JSONObject)animations.get(0);
         String imageURL = (String)defaultSprite.get("path");
         System.out.println(actorPrototypeID + ": " + imageURL);
-        actorImage = new ImageView(new Image(imageURL));
+        actorImage = new Image(imageURL);
 
     }
 
-    public Actor(String id, ImageView image){
+    public Actor(String id, Image image){
         actorPrototypeID = id;
         actorImage = image;
     }
@@ -39,7 +39,7 @@ public class Actor {
      * @return
      */
     public ImageView getActorImage(){
-        return actorImage;
+        return new ImageView(actorImage);
     }
 
     /**

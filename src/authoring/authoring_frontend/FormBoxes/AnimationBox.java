@@ -53,7 +53,7 @@ public class AnimationBox extends FormBox {
             File file = myFC.showOpenDialog(getScene().getWindow());
             if(file != null) {
                 fileName = file.toString();
-                String[]arr=fileName.split("/"); // Regex for non-Mac "\\\\"));
+                String[]arr=fileName.split("\\\\"); // Regex for non-Mac "\\\\"));
                 fileName=arr[arr.length-1];
                 System.out.println(fileName);
                 fileIm.setImage(new Image(file.toURI().toString(), DEFAULT_SIZE, DEFAULT_SIZE, true, false));
