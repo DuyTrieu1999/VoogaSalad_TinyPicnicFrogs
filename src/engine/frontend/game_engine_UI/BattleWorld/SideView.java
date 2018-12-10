@@ -7,6 +7,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * @author pkp9
+ * super class for each side of the battle screen (player, enemy)
+ */
+
 abstract class SideView extends HBox {
 
     private ProgressBar hpBar;
