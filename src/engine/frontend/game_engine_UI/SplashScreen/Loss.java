@@ -7,6 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * @author pkp9
+ * splash screen after battle is lost
+ */
 
 public class Loss extends SplashScreen {
 
@@ -22,7 +26,7 @@ public class Loss extends SplashScreen {
         pane.setCenter(text);
     }
 
-    Loss(Controller controller) {
+    public Loss(Controller controller) {
         super(controller);
     }
 }

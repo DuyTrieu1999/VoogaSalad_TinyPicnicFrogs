@@ -12,19 +12,19 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AnimationManager {
-    private Collection<AnimationObject> animationObjects = new ArrayList<>();
-    private HashMap<AnimationObject, Sprite> spriteMap;
+    private Collection<AnimationObject> animationObjects;
+    private HashMap<AnimationObject, Sprite[]> spriteMap;
 
     public AnimationManager(Collection<AnimationObject> objects) {
         animationObjects = objects;
         spriteMap = new HashMap<>();
         for (AnimationObject object : objects) {
-            SpriteProcesser processor = new SpriteProcesser(object.getAnimationView(), object.getSpriteRows(), object.getSpiteCols());
-            spriteMap.put(object, processor.getViewList()[0]);
+            SpriteProcesser processor = new SpriteProcesser(object.getAnimationView().getImage(), object.getSpriteRows(), object.getSpiteCols());
+            spriteMap.put(object, processor.getViewList());
         }
 
     }
-    public HashMap<AnimationObject, Sprite> getSpriteMap () {
+    public HashMap<AnimationObject, Sprite[]> getSpriteMap () {
         return spriteMap;
     }
 }

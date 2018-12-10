@@ -5,6 +5,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * @author pkp9
+ * splash screen after battle is won
+ */
+
 public class Victory extends SplashScreen {
 
     @Override
@@ -13,7 +18,7 @@ public class Victory extends SplashScreen {
         pane.setCenter(you_win);
     }
 
-    Victory(Controller controller) {
+    public Victory(Controller controller) {
         super(controller);
     }
 

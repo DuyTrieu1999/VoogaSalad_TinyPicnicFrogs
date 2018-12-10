@@ -3,7 +3,6 @@ package engine.frontend.game_engine_UI.BattleWorld;
 import engine.backend.AnimationObject;
 import engine.controller.Controller;
 import engine.frontend.game_engine_UI.MenuView.BattleMenu;
-import engine.frontend.game_engine_UI.MenuView.MenuView;
 import engine.frontend.game_engine_UI.WorldView;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -23,7 +22,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
     private OpponentSide opponentSide;
     private AnimationObject myPlayer;
     private AnimationObject myEnemy;
-    private MenuView menuView;
+    private BattleMenu menuView;
     private String pathWay = "";
     private ImageView battle_background;
 
@@ -69,7 +68,7 @@ public class BattleView extends WorldView implements BattleViewAPI {
             System.out.println("health: " + myController.getAlliesHealth().get(0));
         }));
     }
-    public MenuView getMenuView () {
+    public BattleMenu getMenuView () {
         return menuView;
     }
 }

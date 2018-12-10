@@ -36,9 +36,8 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
     private DialogueMenu dialogueMenu;
     private final IntegerProperty frameCounter = new SimpleIntegerProperty(0);
 
-    private static final int FRAMES_PER_SECOND = 60;
+    private static final int FRAMES_PER_SECOND = 1;
     private static final int MILLISECOND_DELAY = 100 / FRAMES_PER_SECOND;
-    private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
     /**
      * @param controller Controller that will send information from the back end to be updated in the front end
@@ -95,56 +94,32 @@ public class OverWorldView extends WorldView implements OverWorldViewAPI {
      */
     private void addActors () {
         myAnimations = myController.getAnimation();
-        for (AnimationObject animationObject: myAnimations) {
+        AnimationManager manager = new AnimationManager(myAnimations);
+        for (AnimationObject animationObject : myAnimations) {
             ImageView animation = animationObject.getAnimationView();
-            animation.setLayoutX(100);
-            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
-            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
             if(animationObject.getName().equals("idle: background.png")){
                 animation.setLayoutX(0);
                 animation.setLayoutY(0);
             }
             else{
-
                 animation.setLayoutY(100);
                 animation.setFitWidth(400);
-                animation.setFitHeight(200);
+                animation.setFitHeight(100);
+                frameCounter.set((frameCounter.get() + 1) % (animationObject.getSpriteRows() * animationObject.getSpiteCols()));
+                Sprite sprite = manager.getSpriteMap().get(animationObject)[frameCounter.get()];
+                Rectangle2D rec = new Rectangle2D(sprite.getX(), sprite.getY(), animation.getImage().getWidth()/4, animation.getImage().getHeight());
+                animation.setPreserveRatio(true);
+                animation.setViewport(rec);
             }
             displayPane.getChildren().add(animation);
         }
-//        AnimationManager manager = new AnimationManager(myAnimations);
-//        for (AnimationObject animationObject : myAnimations) {
-//            ImageView animation = animationObject.getAnimationView();
-//            animation.setX(animationObject.getCoordinate().getX()-myCamera.getxOffset());
-//            animation.setY(animationObject.getCoordinate().getY()-myCamera.getyOffset());
-//            if(animationObject.getName().equals("idle: background.png")){
-//                animation.setLayoutX(0);
-//                animation.setLayoutY(0);
-//            }
-//            else{
-//                animation.setLayoutY(100);
-//                animation.setFitWidth(400);
-//                animation.setFitHeight(200);
-//                Sprite sprite = manager.getSpriteMap().get(animationObject);
-//                Rectangle2D rec = new Rectangle2D(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
-//                animation.setViewport(rec);
-//                frameCounter.set((frameCounter.get() + 1) % (animationObject.getSpiteCols() * animationObject.getSpriteRows()));
-////                animation.setViewport(cellClips[frameCounter.get()]);
-//            }
-//            displayPane.getChildren().add(animation);
-        }
+    }
 
     public void init () {
-        var frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> {this.step(SECOND_DELAY);});
+        var frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY), e -> {updateView();});
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(frame);
         animation.play();
-    }
-    /**
-     * step function that updates the view and detect collisions in each frame
-     */
-    private void step(double elapsedTime) {
-        updateView();
     }
     /**
      * Set up the display
